@@ -1,8 +1,10 @@
+
+
 import { BosClient } from '@baiducloud/sdk';
 
 const client = new BosClient(
     {
-        endpoint: 'http://zfblog.su.bcebos.com',         //传入Bucket所在区域域名
+        endpoint: 'https://zfblog.su.bcebos.com',         //传入Bucket所在区域域名
         credentials: {
             ak: 'acb6c295f9c34fa5a8b5cdd803b6d18b',         //您的AccessKey
             sk: 'a3a95a9b31d1480ab2e5a6c682fd3447'     //您的SecretAccessKey
@@ -11,7 +13,7 @@ const client = new BosClient(
 );
 
 export async function uploadImg(file) {
-    const bucketName = '';
+    const bucketName = 'zfblog';
     const key = 'zfblogpicture/' + file.name;
 
     console.log(bucketName, key, file, 'key');
@@ -19,13 +21,14 @@ export async function uploadImg(file) {
     return result;
 }
 
-export function downloadImg(key) {
-    const bucketName = 'zfblog';
-    const result = client.getObject(bucketName, key);
-    const blob = new Blob([result.body], { type: 'image/png' });
-    const imgUrl = URL.createObjectURL(blob);
-    // const imgUrl = 'http://zfblog.su.bcebos.com/'+key;
-    return imgUrl; // 返回图片 blob 数据
+export async function downloadImg(file) {
+    // const bucketName = 'zfblog';
+    const key = 'zfblogpicture/' + file.name;
+    // const result = await client.getObject(bucketName, key);
+    // console.log(result.body.toString())
+    // const blob = new Blob([result.body],{type: file.type});
+    // console.log(blob)
+    // const imgUrl = URL.createObjectURL(blob);
+    const imgUrl = 'https://zfblog.su.bcebos.com/v1/'+key;
+    return imgUrl;
 }
-
-
