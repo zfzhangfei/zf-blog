@@ -2,6 +2,7 @@
 export const lightTheme = {
     bgColor: '#fff',
     textColor: '#333',
+    introductionBgColor:'url(../../Image/Plantainleaf.jpg)'
     // 其他样式
   }
   

@@ -13,25 +13,27 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color: aquamarine;
 }
 
 #Main .Introduction{
     width: 600px;
     height: 300px;
     border-radius: 18px;
-    background-color: pink;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 #Main .Avatar{
     width: 100%;
-    height: 100px;
+    height: 120px;
     text-align: center;
 }
 #Main .Avatar img{
     width: 100px;
     height: 100px;
+    margin: 10px;
     border-radius: 50%;
     background-color: aqua;
+    object-fit:cover;
 }
 #Main .Quote{
     width: 100%;
