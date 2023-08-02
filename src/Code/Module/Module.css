@@ -1,42 +1,49 @@
 #Main {
-    background: var(--color-angle, 0);
-    /* 设置背景颜色旋转角度 */
-    --color-angle: 180deg;
     transition: background .5s;
     position: relative;
+    height: calc(100vh - 100px);
+
 }
 
-#Main #Homepage{
+#Main #Homepage {
     width: 80%;
-    height: 100vh;
+    height: calc(100vh - 100px);
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    /* border: 0.5px solid rgba(0,0,0,0.1);
+    box-shadow:  0 8px 10px  rgba(0,0,0,0.5); */
 }
 
-#Main .Introduction{
-    width: 600px;
+
+/*#region 个人简介Introduction*/
+#Main .Introduction {
+    width: 500px;
     height: 300px;
     border-radius: 18px;
     background-repeat: no-repeat;
     background-size: contain;
 }
-#Main .Avatar{
+
+#Main .Avatar {
     width: 100%;
-    height: 120px;
+    height: 80px;
     text-align: center;
 }
-#Main .Avatar img{
-    width: 100px;
-    height: 100px;
+
+#Main .Avatar img {
+    width: 50px;
+    height: 50px;
     margin: 10px;
     border-radius: 50%;
-    background-color: aqua;
-    object-fit:cover;
+    object-fit: cover;
 }
-#Main .Quote{
+
+#Main .Quote {
     width: 100%;
     height: 100px;
     text-align: center;
 }
+
+/*#endregion 个人简介Introduction*/

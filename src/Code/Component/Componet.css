@@ -1,0 +1,7 @@
+#Nav{
+    background: var(--color-angle, 0);
+    /* 设置背景颜色旋转角度 */
+    --color-angle: 180deg;
+    transition: background .5s;
+    height: 100px;
+}
