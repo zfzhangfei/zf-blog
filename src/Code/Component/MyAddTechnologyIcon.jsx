@@ -8,15 +8,28 @@ export default class MyAddTechnologyIcon extends Component {
 
     handleUpload = async (e) => {
         const file = e.target.files[0];
+        //上传
         await uploadImg(file);
+        //下载
+        const imgUrl = await downloadImg(file.name);
 
-        const imgUrl = await downloadImg('zfblogpicture/' + file.name);
 
         this.setState({
             imgUrl: imgUrl
         }, () => {
             console.log(this.state.imgUrl, '图片地址');
-            
+            let params = {
+                BosPath: imgUrl,
+                BosName: file.name,
+            }
+            this.post('/putbospicture', params)
+                .then(res => {
+                    // 这里是成功回调
+                    console.log(res);
+                }).catch(err => {
+                    // 这里是错误回调
+                    console.log(err)
+                })
         });
     }
 

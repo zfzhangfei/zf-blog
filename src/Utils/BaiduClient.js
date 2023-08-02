@@ -21,9 +21,9 @@ export async function uploadImg(file) {
     return result;
 }
 
-export async function downloadImg(file) {
+export async function downloadImg(name) {
     // const bucketName = 'zfblog';
-    const key = 'zfblogpicture/' + file.name;
+    const key = 'zfblogpicture/' + name;
     // const result = await client.getObject(bucketName, key);
     // console.log(result.body.toString())
     // const blob = new Blob([result.body],{type: file.type});

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //这是使用代理的路径，如果你想了解的话可以看我之前的文章或者~~问我
-let baseUrl = "http://localhost:3000/"
+let baseUrl = "http://localhost:3001/"
 
 // 创建axios实例，在这里可以设置请求的默认配置
 const instance = axios.create({
@@ -13,7 +13,7 @@ const instance = axios.create({
 instance.defaults.headers.post['Content-Type'] = 'application/json';
 
 // 如果你是上传文件的话需要设置为
-// instance.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+//instance.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
 
 
