@@ -28,7 +28,7 @@ var mysql_config = {
 
   password: '',
 
-  database: 'pro'
+  database: 'zf_blog'
 
 }
 

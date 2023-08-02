@@ -137,4 +137,39 @@ router.post('/adduser', (req, res) => {
 	});
 });
 
+router.post('/putbospicture', (req, res) => {
+  let BosRegion = 'https://zfblog.su.bcebos.com';
+  let BosBucket = 'zfblog';
+  let BosPath = req.body.BosPath;
+  let BosName = req.body.BosName;
+  let BosExtention = '';
+  let Size = 0;
+  let CreateBy = '';
+  let sql = `INSERT INTO bos_picture (
+    BosRegion,
+    BosBucket,
+    BosPath,
+    BosName,
+    BosExtention,
+    Size,
+    CreateBy) 
+    values 
+    ('${BosRegion}',
+    '${BosBucket}',
+    '${BosPath}',
+    '${BosName}',
+    '${BosExtention}',
+    '${Size}',
+    '${CreateBy}')`
+  db.query(sql, [], (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.sendStatus(JSON.stringify({
+        res: results
+      })); 
+    }
+  })
+})
+
 module.exports = router
