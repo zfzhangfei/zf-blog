@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router()
 
-let db= con.handleDisconnection()
+let db = con.handleDisconnection()
 
 
 
@@ -37,16 +37,16 @@ router.get('/manage', (req, res) => {
 })
 
 //用户登录
-router.get('/users', (req, res)=>{
-	let params = req.query;
-	let username = params.username;
-	let password = params.password;
+router.get('/users', (req, res) => {
+  let params = req.query;
+  let username = params.username;
+  let password = params.password;
   let sel_sql = `SELECT * FROM users WHERE users.username = '${username}' `
   let sql = `SELECT * FROM users WHERE users.username = '${username}' and users.password='${password}' `
-    db.query(sql, [params.username, params.password],function(err, result) {
+  db.query(sql, [params.username, params.password], function (err, result) {
     let data = JSON.parse(JSON.stringify(result)) //JSON.stringify方法用于将 JavaScript 值转换为 JSON 字符串。
-    console.log('data '+data.toString()+'result '+result.toString());
-//生成token
+    console.log('data ' + data.toString() + 'result ' + result.toString());
+    //生成token
     let content = {
       password: params.password
     }
@@ -57,87 +57,88 @@ router.get('/users', (req, res)=>{
     if (err) {
       console.log(err)
     }
-		  if(result.length===0) {
-			return res.send(JSON.stringify({ //序列化json数据
-				msg: 'no admin',
-        res:result
-			}))
-		}
+    if (result.length === 0) {
+      return res.send(JSON.stringify({ //序列化json数据
+        msg: 'no admin',
+        res: result
+      }))
+    }
     else {
-      db.query(sel_sql, params.username, (error, result) =>{
-			if(result[0].identity=="admin")
-      {
-        return res.send(JSON.stringify({
-          msg: 'admin login success',
-          success:true,
-           username: params.username,
-          password: params.password,
-          token: token,
-          res:result,
-        }))
-      }
-      if(result[0].identity=="user"){
-        return res.send(JSON.stringify({
-          msg: 'user login success',
-          success:true,
-           username: params.username,
-          password: params.password,
-          token: token,
-          res:result,
-        }))
-      }
-      if(result[0].identity=="author"){
-        return res.send(JSON.stringify({
-          msg: 'author login success',
-          success:true,
-           username: params.username,
-          password: params.password,
-          token: token,
-          res:result,
-        }))
-      }
-    })
-		}
-	})
+      db.query(sel_sql, params.username, (error, result) => {
+        if (result[0].identity == "admin") {
+          return res.send(JSON.stringify({
+            msg: 'admin login success',
+            success: true,
+            username: params.username,
+            password: params.password,
+            token: token,
+            res: result,
+          }))
+        }
+        if (result[0].identity == "user") {
+          return res.send(JSON.stringify({
+            msg: 'user login success',
+            success: true,
+            username: params.username,
+            password: params.password,
+            token: token,
+            res: result,
+          }))
+        }
+        if (result[0].identity == "author") {
+          return res.send(JSON.stringify({
+            msg: 'author login success',
+            success: true,
+            username: params.username,
+            password: params.password,
+            token: token,
+            res: result,
+          }))
+        }
+      })
+    }
+  })
 });
 
 // 注册接口
 router.post('/adduser', (req, res) => {
-	let params = req.body;
+  let params = req.body;
   let username = params.username;
-	let password = params.password; 
-  let email=params.email;
- const sel_sql = `SELECT * FROM users WHERE users.username = '${username}' `
- const add_sql = `INSERT INTO users (username,email,password,identity) values ('${username}','${email}','${password}','user')`
-	console.log(sel_sql);
-	
-	db.query(sel_sql, params.username, (error, results) => {
-		if(error) {
-			console.log(err);
-		}
-		if (results.length != 0 && params.username == results[0].username) {
-			res.send(JSON.stringify({
-        msg:-1,
-        res:results
+  let password = params.password;
+  let email = params.email;
+  const sel_sql = `SELECT * FROM users WHERE users.username = '${username}' `
+  const add_sql = `INSERT INTO users (username,email,password,identity) values ('${username}','${email}','${password}','user')`
+  console.log(sel_sql);
+
+  db.query(sel_sql, params.username, (error, results) => {
+    if (error) {
+      console.log(err);
+    }
+    if (results.length != 0 && params.username == results[0].username) {
+      res.send(JSON.stringify({
+        msg: -1,
+        res: results
       }));  // -1 表示用户名已经存在
-		} 
+    }
     else {
-			db.query(add_sql, [params.username, params.password], (err, rst) => {
-				if (err) {
-					console.log(err);
-				} else{
-					console.log(rst);
+      db.query(add_sql, [params.username, params.password], (err, rst) => {
+        studentmanage
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(rst);
           res.send(JSON.stringify({
-            msg:0,
-            res:results
+            msg: 0,
+            res: results
           })); // 0 表示用户创建成功
-				}
-			});
-		}
-	});
+        }
+      });
+    }
+  });
 });
 
-router.post('/putbospicture', (req, res) => {
+/*#region 数据库上传图片信息，包括bos地址，可链接的网页等*/
+router.post('/putBosPicture', (req, res) => {
   let BosRegion = 'https://zfblog.su.bcebos.com';
   let BosBucket = 'zfblog';
   let BosPath = req.body.BosPath;
@@ -145,6 +146,8 @@ router.post('/putbospicture', (req, res) => {
   let BosExtention = '';
   let Size = 0;
   let CreateBy = '';
+  let PictureType = req.body.PictureType;
+  let Href = req.body.Href;
   let sql = `INSERT INTO bos_picture (
     BosRegion,
     BosBucket,
@@ -152,7 +155,9 @@ router.post('/putbospicture', (req, res) => {
     BosName,
     BosExtention,
     Size,
-    CreateBy) 
+    CreateBy,
+    PictureType,
+    Href) 
     values 
     ('${BosRegion}',
     '${BosBucket}',
@@ -160,16 +165,35 @@ router.post('/putbospicture', (req, res) => {
     '${BosName}',
     '${BosExtention}',
     '${Size}',
-    '${CreateBy}')`
+    '${CreateBy}',
+    '${PictureType}',
+    '${Href}')`
   db.query(sql, [], (err, results) => {
     if (err) {
       console.log(err)
     } else {
-      res.sendStatus(JSON.stringify({
+      res.send(JSON.stringify({
         res: results
-      })); 
+      }));
     }
   })
 })
+
+router.get('/getBosPicture', (req, res) => {
+  let type = req.query.type
+  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = '${type}' `
+  db.query({
+    sql: sql
+  }, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+/*#endregion*/
 
 module.exports = router

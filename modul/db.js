@@ -4,8 +4,8 @@
 // const db = mysql.createConnection({
 //   host: 'localhost',
 //   user: 'root',
-//   password: '123456',
-//   database: 'mydb'
+//   password: '',
+//   database: 'zf_blog'
 // })
 
 
@@ -22,7 +22,8 @@ var mysql = require('mysql')
 
 var mysql_config = {
 
-  host: '192.168.31.117',
+  // host: '192.168.31.117',
+  host: 'localhost',
 
   user: 'root',
 
