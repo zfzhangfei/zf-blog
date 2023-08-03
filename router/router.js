@@ -137,7 +137,8 @@ router.post('/adduser', (req, res) => {
   });
 });
 
-/*#region 数据库上传图片信息，包括bos地址，可链接的网页等*/
+//#region 数据库上传图片信息，包括bos地址，可链接的网页等
+//增
 router.post('/putBosPicture', (req, res) => {
   let BosRegion = 'https://zfblog.su.bcebos.com';
   let BosBucket = 'zfblog';
@@ -178,10 +179,25 @@ router.post('/putBosPicture', (req, res) => {
     }
   })
 })
-
+//删
+router.post('/DeleteBosPicture', (req, res) => {
+  let id = req.body.key;
+  let sql = `UPDATE bos_picture SET DeleteFlag = ? WHERE Id = ?`;
+  db.query(sql, [1, id], (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//查
 router.get('/getBosPicture', (req, res) => {
   let type = req.query.type
-  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = '${type}' `
+  let CreateBy = req.query.username
+  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = '${type}' and bos_picture.DeleteFlag = '${0}' and bos_picture.CreateBy = '${CreateBy}'`
   db.query({
     sql: sql
   }, (err, results) => {
@@ -194,6 +210,9 @@ router.get('/getBosPicture', (req, res) => {
     }
   })
 })
-/*#endregion*/
+//#endregion
+
+
+
 
 module.exports = router
