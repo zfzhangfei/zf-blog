@@ -12,11 +12,10 @@ export default class Homepage extends Component {
     static contextType = ThemeContext;
     state = {
         technologyIcon: null,
-        isModalOpen:false,
     }
 
     componentDidMount = () => {
-        this.get('/getBosPicture',{type:1})
+        this.get('/getBosPicture',{type:1,username:''})
         .then(results => {
             // 这里是成功回调
             this.setState({
@@ -27,23 +26,6 @@ export default class Homepage extends Component {
             console.log(err)
         })
     }
-
-    showModel = () => {
-        this.setState({
-            isModalOpen:true,
-        })
-    }
-    handleOk = () => {
-        this.setState({
-            isModalOpen:false,
-        })
-    };
-    handleCancel = () => {
-        this.setState({
-            isModalOpen:false,
-        })
-    };
-
 
     render() {
         const theme = this.context;
@@ -67,10 +49,6 @@ export default class Homepage extends Component {
                                     )
                                 }) : ''
                             }
-                            <EditOutlined className='EditOutlined' onClick={() => { this.showModel() }} />
-                            <Modal title="Basic Modal" open={this.state.isModalOpen} onOk={()=>{this.handleOk()}} onCancel={()=>{this.handleCancel()}}>
-                                <MyAddTechnologyIcon></MyAddTechnologyIcon>
-                            </Modal>
                         </div>
                     </div>
                 </div>
