@@ -22,7 +22,7 @@ export default class MyChangeThemeBtn extends Component {
     }
     render() {
         return (
-            <div style={{ width: 60, height: 60, padding: 10}}>
+            <div style={{ width: 60, height: 60, padding: 10 ,display:'inline-block',verticalAlign:'middle'}}>
                 <motion.div
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 200, damping: 10 }}

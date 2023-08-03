@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Login from './Module/Login'
-import Main from './Module/Main'
+import Settingspage from "./Module/Page/Settingspage";
+import Homepage from "./Module/Page/Homepage";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AuthRoute from './authRoute'
 import { lightTheme, darkTheme, getNavyBlueWhite, getDarkPurpleLightPurple, getPeachPinkCocoa } from '../Plugin/theme';
 import { ThemeContext } from '../Plugin/themeContext';
 import MyNav from "./Component/MyNav";
@@ -32,10 +32,12 @@ export default class HomeRouter extends Component {
             <ThemeContext.Provider value={this.state.theme}>
                 <Router>
                     <MyNav changeTheme={this.changeTheme}></MyNav>
+                    <div className="Main"></div>
                     <Switch>
-                        <Route exact path="/" component={Main} />
+                        <Route exact path="/" component={Homepage} />
                         <Route path="/Login" component={Login} />
-                        <Route path="/Home" component={Main} />
+                        <Route path="/Home" component={Homepage} />
+                        <Route path="/Settings" component={Settingspage} />
                     </Switch>
                 </Router>
             </ThemeContext.Provider>

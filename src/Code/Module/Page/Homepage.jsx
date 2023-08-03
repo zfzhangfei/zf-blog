@@ -3,39 +3,28 @@ import {
     EditOutlined,
 } from '@ant-design/icons';
 import {Modal } from 'antd';
+import {ThemeContext} from '../../../Plugin/themeContext'
 import MyAddTechnologyIcon from '../../Component/MyAddTechnologyIcon';
-import css from '../../../Image/css.png'
-import HTML5 from '../../../Image/HTML5.png'
-
+import '../Css/Homepage.css'
+import '../Module.css'
 
 export default class Homepage extends Component {
+    static contextType = ThemeContext;
     state = {
-        theme: this.props.theme,
-
         technologyIcon: null,
         isModalOpen:false,
     }
 
     componentDidMount = () => {
-        const data = [
-            {
-                href: "https://www.w3school.com.cn/css/index.asp",
-                src: 'http://zfblog.su.bcebos.com/zfblogpicture/css.png',
-                alt: 'css.png',
-            },
-            {
-                href: "https://www.w3school.com.cn/css/index.asp",
-                src: 'https://zfblog.su.bcebos.com/zfblogpicture/css.png',
-                alt: 'css.png',
-            },
-            {
-                href: "https://www.w3school.com.cn/css/index.asp",
-                src: 'https://zfblog.su.bcebos.com/zfblogpicture/css.png',
-                alt: 'css.png',
-            },
-        ]
-        this.setState({
-            technologyIcon: data
+        this.get('/getBosPicture',{type:1})
+        .then(results => {
+            // 这里是成功回调
+            this.setState({
+                technologyIcon: results.res
+            })
+        }).catch(err => {
+            // 这里是错误回调
+            console.log(err)
         })
     }
 
@@ -57,10 +46,12 @@ export default class Homepage extends Component {
 
 
     render() {
+        const theme = this.context;
         return (
-            <div id='Homepage'>
+          <div id='Main'style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
+              <div id='Homepage'>
                 <div style={{ width: '100%', marginTop: '20px' }}>
-                    <div className='Introduction' style={{ background: this.state.theme.introductionBgColor }}>
+                    <div className='Introduction' style={{ background: theme.introductionBgColor }}>
                         <div className='Avatar'>
                             <img src="https://zfblog.su.bcebos.com/zfblogpicture/%E5%9B%BE%E7%89%871.png" alt="describe image"></img>
                         </div>
@@ -72,7 +63,7 @@ export default class Homepage extends Component {
                             {
                                 this.state.technologyIcon ? this.state.technologyIcon.map((item, index) => {
                                     return (
-                                        <a href={item.href} target='_blank' key={index} style={{ width: 50, height: 50 }}><img src={item.src} alt={item.alt} style={{ width: 25, height: 25 }} /></a>
+                                        <a href={item.Href} target='_blank' key={index} style={{ width: 50, height: 50 }}><img src={item.BosPath} alt={item.BosName} style={{ width: 25, height: 25 }} /></a>
                                     )
                                 }) : ''
                             }
@@ -84,6 +75,7 @@ export default class Homepage extends Component {
                     </div>
                 </div>
             </div>
+          </div>
         )
     }
 }

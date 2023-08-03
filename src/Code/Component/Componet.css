@@ -1,3 +1,4 @@
+/*#region 顶部导航栏*/
 #Nav{
     background: var(--color-angle, 0);
     /* 设置背景颜色旋转角度 */
@@ -5,3 +6,14 @@
     transition: background .5s;
     height: 100px;
 }
+
+
+
+#Nav .MenuItem{
+display: inline-block;
+vertical-align: middle;
+width: 100px;
+height: 100px;
+line-height: 100px;
+}
+/*#endregion*/
