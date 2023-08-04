@@ -3,6 +3,7 @@ import '../../Css/Settingspage.css'
 import '../../Module.css'
 import { Button, Modal } from 'antd';
 import MyAddTechnologyIcon from '../../../Component/MyAddTechnologyIcon';
+import { getSkillIcon, deleteSkillIcon } from '../../Functions/HomepageFuc'
 
 export default class SkillIcon extends Component {
     state = {
@@ -11,24 +12,12 @@ export default class SkillIcon extends Component {
         time: null
     }
 
-    componentDidMount = () => {
-        this.getBosPicture()
+    componentDidMount = async () => {
+        this.setState({
+            technologyIcon: await getSkillIcon(),
+        })
     }
 
-    //#region 获取图片
-    getBosPicture = () => {
-        this.get('/getBosPicture', { type: 1, username: '' })
-            .then(results => {
-                // 这里是成功回调
-                this.setState({
-                    technologyIcon: results.res
-                })
-            }).catch(err => {
-                // 这里是错误回调
-                console.log(err)
-            })
-    }
-    //#endregion
 
     //#region 新增图标的弹窗
     showModel = () => {
@@ -36,9 +25,10 @@ export default class SkillIcon extends Component {
             isModalOpen: true,
         })
     }
-    handleOk = () => {
+    handleOk = async () => {
         this.getBosPicture()
         this.setState({
+            technologyIcon: await getSkillIcon(),
             isModalOpen: false,
         })
     };
@@ -50,21 +40,11 @@ export default class SkillIcon extends Component {
     //#endregion
 
     //#region 删除图标的弹窗
-    DeleteSkillIcon = (key) => {
-        const now = new Date();
-        let params = {
-            key: key,
-            time: now.toLocaleString()
-        }
-        this.post('/DeleteBosPicture', params)
-            .then(results => {
-                // 这里是成功回调
-                console.log(results)
-                this.getBosPicture()
-            }).catch(err => {
-                // 这里是错误回调
-                console.log(err)
-            })
+    DeleteSkillIcon = async (key) => {
+        deleteSkillIcon(key)
+        this.setState({
+            technologyIcon: await getSkillIcon(),
+        })
     }
     //#endregion
 

@@ -5,7 +5,7 @@ let baseUrl = "http://localhost:3001/"
 
 // 创建axios实例，在这里可以设置请求的默认配置
 const instance = axios.create({
-    timeout: 20000, // 设置超时时间10s，如果10秒没有返回结果则中断请求，认为连接超时
+    timeout: 30000, // 设置超时时间10s，如果10秒没有返回结果则中断请求，认为连接超时
     baseURL: baseUrl // 根据自己配置的代理去设置不同环境的baseUrl
 })
 

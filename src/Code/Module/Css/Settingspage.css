@@ -7,6 +7,21 @@
     transform: translate(-50%, -50%);
 }
 
+/*#region 头像设置*/
+#Settingspage .uploadAvatar {
+    width: 100%;
+    text-align: center;
+}
+
+/*#endregion*/
+
+/*#region 格言设置*/
+#Settingspage .MaximInput {
+    width: 100%;
+}
+
+/*#endregion*/
+
 /*#region 技能图标设置*/
 #Settingspage .SkllIconBox {
     width: 100%;
@@ -19,9 +34,10 @@
     vertical-align: middle;
 }
 
-#Settingspage .SkllIconButton{
+#Settingspage .SkllIconButton {
     height: 100%;
     display: flex;
     align-items: center;
 }
+
 /*#endregion*/

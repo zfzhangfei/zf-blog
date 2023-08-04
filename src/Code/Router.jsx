@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Login from './Module/Login'
 import Settingspage from "./Module/Page/Settingspage";
 import Homepage from "./Module/Page/Homepage";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { lightTheme, darkTheme, getNavyBlueWhite, getDarkPurpleLightPurple, getPeachPinkCocoa } from '../Plugin/theme';
 import { ThemeContext } from '../Plugin/themeContext';
+import AuthRoute from "./authRoute";
 import MyNav from "./Component/MyNav";
 
 const themeMap = {
@@ -35,7 +35,6 @@ export default class HomeRouter extends Component {
                     <div className="Main"></div>
                     <Switch>
                         <Route exact path="/" component={Homepage} />
-                        <Route path="/Login" component={Login} />
                         <Route path="/Home" component={Homepage} />
                         <Route path="/Settings" component={Settingspage} />
                     </Switch>
