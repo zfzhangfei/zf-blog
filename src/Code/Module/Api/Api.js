@@ -19,8 +19,21 @@ export async function getCurrentUser() {
 
 
 
+//#region 头像
+export function EditAvatar(value) {
+    let params = {
+        avatar: value,
+    }
+    post('/EditAvatar', params)
+}
+//#endregion
+
+
+
+
+
 //#region 格言
-export  function EditMaxim(value) {
+export function EditMaxim(value) {
     let params = {
         maxim: value,
     }
@@ -42,7 +55,7 @@ export async function getSkillIcon() {
 //#endregion
 
 //#region 删
-export  function deleteSkillIcon(key) {
+export function deleteSkillIcon(key) {
     let params = {
         key: key,
     }
@@ -50,4 +63,15 @@ export  function deleteSkillIcon(key) {
 }
 //#endregion
 
+//#region 增
+export function postSkillIcon(imgUrl, file, link) {
+    let params = {
+        BosPath: imgUrl,
+        BosName: file.name,
+        PictureType: 1,
+        Href: link
+    }
+    post('/putBosPicture', params)
+}
+//#endregion
 //#endregion

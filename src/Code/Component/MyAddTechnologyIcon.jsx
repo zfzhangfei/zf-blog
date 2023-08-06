@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { uploadImg, downloadImg } from '../../Utils/BaiduClient';
+import { postSkillIcon } from '../Module/Api/Api'
+import { Input } from 'antd';
 
 export default class MyAddTechnologyIcon extends Component {
     state = {
-        imgUrl: null
+        imgUrl: null,
+        file:null,
+        link: null,
+
     };
 
     handleUpload = async (e) => {
@@ -13,31 +18,28 @@ export default class MyAddTechnologyIcon extends Component {
         //下载
         const imgUrl = await downloadImg(file.name);
         this.setState({
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            file:file
         }, () => {
-            console.log(this.state.imgUrl, '图片地址');
-            let params = {
-                BosPath: imgUrl,
-                BosName: file.name,
-                PictureType:1,
-                Href:'https://www.w3school.com.cn/css/index.asp'
-            }
-            this.post('/putBosPicture', params)
-                .then(res => {
-                    // 这里是成功回调
-                    console.log(res);
-                }).catch(err => {
-                    // 这里是错误回调
-                    console.log(err)
-                })
+            this.props.uploadSkillIcon(this.state.imgUrl, this.state.file, this.state.link)
         });
     }
 
+    handleLink = async (e) => {
+        this.setState({
+            link: e.target.value
+        },()=>{
+            this.props.uploadSkillIcon(this.state.imgUrl, this.state.file, this.state.link)
+        })
+    }
     render() {
         return (
             <div>
-                <input type="file" onChange={this.handleUpload} />
-                <img key={this.state.imgUrl} src={this.state.imgUrl} width={100} height={100} style={{ background: 'pink' }} />
+                <div>
+                    <input type="file" onChange={this.handleUpload} style={{ verticalAlign: 'top' }} />
+                    <img key={this.state.imgUrl} src={this.state.imgUrl} width={100} height={100} />
+                </div>
+                <Input placeholder="可链接的地址" onChange={this.handleLink} />
             </div>
         )
     }

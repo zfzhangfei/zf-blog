@@ -1,16 +1,53 @@
 #Main #Settingspage {
-    width: 80%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 80px);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
 }
 
+#Settingspage .SettingsContent {
+    width: 1200px;
+    height: calc(100vh - 80px);
+}
+
+#Settingspage .IntroductionConfig {
+    width: 1200px;
+    height: calc(100vh - 80px);
+}
+
+/* #region 侧边栏 */
+#Settingspage .SiderBar {
+    width: 300px;
+    height: calc(100vh - 80px);
+}
+
+#Settingspage .SidebarLink {
+    width: 260px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 10px;
+    padding-left: 20px;
+    line-height: 40px;
+}
+
+#Settingspage .SidebarLink:hover {
+    background: #1677ff;
+}
+
+/* #endregion */
+
 /*#region 头像设置*/
-#Settingspage .uploadAvatar {
+#Settingspage .UploadAvatar {
     width: 100%;
     text-align: center;
+    padding: 10px;
+}
+
+#Settingspage .UploadBox:hover {
+    cursor: pointer;
 }
 
 /*#endregion*/

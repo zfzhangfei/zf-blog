@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Space, Input, Button, message } from 'antd';
-import { EditMaxim, getCurrentUser } from '../../Functions/HomepageFuc'
+import { EditMaxim, getCurrentUser ,Login} from '../../../Api/Api'
 
 
 export default class MaximInput extends Component {
@@ -9,9 +9,10 @@ export default class MaximInput extends Component {
     }
     
     componentDidMount = async () => {
-        let userIntroduction = await getCurrentUser()
+        Login()
+        let currentuser = await getCurrentUser() 
         this.setState({
-            maxim: userIntroduction.maxim
+            maxim: currentuser.maxim
         })
     }
 

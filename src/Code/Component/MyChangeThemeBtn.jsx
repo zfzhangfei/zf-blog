@@ -22,12 +22,12 @@ export default class MyChangeThemeBtn extends Component {
     }
     render() {
         return (
-            <div style={{ width: 60, height: 60, padding: 10 ,display:'inline-block',verticalAlign:'middle'}}>
+            <div style={{ width: 60, height: 80, padding: 25, display: 'inline-block', verticalAlign: 'top' }}>
                 <motion.div
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 200, damping: 10 }}
                 >
-                    <div style={{ borderRadius: '50%', width: 50, height: 50, background: 'pink' }} onClick={() => { this.changeTheme() }}></div>
+                    <Button type="primary" danger onClick={() => { this.changeTheme() }}>主题</Button>
                 </motion.div>
             </div>
         )

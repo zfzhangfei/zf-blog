@@ -4,16 +4,18 @@
     /* 设置背景颜色旋转角度 */
     --color-angle: 180deg;
     transition: background .5s;
-    height: 100px;
+    height: 80px;
 }
 
-
+#Nav .Menu{
+    height: 80px;
+}
 
 #Nav .MenuItem{
 display: inline-block;
 vertical-align: middle;
 width: 100px;
-height: 100px;
-line-height: 100px;
+height: 80px;
+line-height: 80px;
 }
 /*#endregion*/

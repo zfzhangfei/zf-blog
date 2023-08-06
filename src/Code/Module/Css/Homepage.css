@@ -1,47 +1,99 @@
-/*#region 首页Homepage*/
+#Main {
+    position: absolute;
+    height: calc(100vh - 80px);
+    overflow-x: hidden;
+}
+
+/*#region Homepage首页*/
 #Main #Homepage {
-    width: 80%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 80px);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
 }
 
+/*#region Left左*/
+#Main #Left {
+    width: 500px;
+    height: 100%;
+    background-color: aqua;
+}
+
+/*#endregion*/
+
+/*#region Center中*/
+#Main #Center {
+    flex: 1;
+    width: 700px;
+    height: 100%;
+}
+
+/*#endregion*/
+
+/*#region Right右*/
+#Main #Right {
+    width: 300px;
+    height: 100%;
+    background-color: aqua;
+}
+
+/*#endregion*/
+
+/*#region 头像后的背景*/
+#Main .Wallpaper {
+    position: absolute;
+    width: 100%;
+    height: 250px;
+}
+
+/*#endregion 头像后的背景*/
 
 /*#region 个人简介Introduction*/
-#Main .Introduction {
-    width: 500px;
-    height: 300px;
+#Left .Introduction {
+    width: 480px;
+    height: 280px;
+    margin: 10px;
     border-radius: 18px;
     background-repeat: no-repeat;
     background-size: contain;
-    box-shadow:  0 8px 10px  rgba(0,0,0,0.3); 
-    padding-top: 20px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
 }
 
-#Main .Avatar {
+#Left .Avatar {
     width: 100%;
-    margin-bottom: 30px;
     text-align: center;
 }
 
-#Main .Quote {
+#Left .Quote {
     width: 100%;
     height: 100px;
     text-align: center;
 }
 
-#Main .technologyIcon{
+#Left .technologyIcon {
     width: 100%;
     text-align: center;
 }
 
-#Main .EditOutlined{
+#Left .EditOutlined {
     display: none;
     width: 50px;
     height: 50px;
 }
 
 /*#endregion 个人简介Introduction*/
-/*#endregion 首页Homepage*/
+
+/*#region 生活区域LifeBox*/
+#Left .LifeBox {
+    margin: 10px;
+    height: calc(100vh - 400px);
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+/*#endregion*/
+/*#endregion*/
+

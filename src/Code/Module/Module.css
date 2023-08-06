@@ -1,6 +1,0 @@
-#Main {
-    transition: background .5s;
-    position: relative;
-    height: calc(100vh - 100px);
-
-}

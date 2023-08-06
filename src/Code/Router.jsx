@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Settingspage from "./Module/Page/Settingspage";
+// import IntroductionConfig from "./Module/Composition/Settings/IntroductionConfig/IntroductionConfig";
 import Homepage from "./Module/Page/Homepage";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { lightTheme, darkTheme, getNavyBlueWhite, getDarkPurpleLightPurple, getPeachPinkCocoa } from '../Plugin/theme';
@@ -32,7 +33,6 @@ export default class HomeRouter extends Component {
             <ThemeContext.Provider value={this.state.theme}>
                 <Router>
                     <MyNav changeTheme={this.changeTheme}></MyNav>
-                    <div className="Main"></div>
                     <Switch>
                         <Route exact path="/" component={Homepage} />
                         <Route path="/Home" component={Homepage} />

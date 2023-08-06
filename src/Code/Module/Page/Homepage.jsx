@@ -1,24 +1,38 @@
 import React, { Component } from 'react'
 import { ThemeContext } from '../../../Plugin/themeContext'
 import Introduction from '../Composition/Home/Introduction';
-import { Login} from '../Functions/HomepageFuc'
+import LifeBox from '../Composition/Home/LifeBox';
+import { Login } from '../Api/Api'
 import '../Css/Homepage.css'
-import '../Module.css'
 
 export default class Homepage extends Component {
     static contextType = ThemeContext;
 
     componentDidMount = async () => {
-         Login()
+        Login()
     }
 
     render() {
         const theme = this.context;
         return (
-            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
+            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw'}}>
+                {/* <div className='Wallpaper'>
+                    <img src="https://zfblog.su.bcebos.com/zfblogpicture/%E8%83%8C%E6%99%AF.jpg" alt="" width={'100%'} height={300}/>
+                </div> */}
                 <div id='Homepage'>
-                    <div style={{ width: '100%', marginTop: '20px' }}>
-                        <Introduction theme={theme}></Introduction>
+                    <div id='Left'>
+                        <div style={{ width: '100%' }}>
+                            <Introduction theme={theme}></Introduction>
+                        </div >
+                        <div style={{ width: '100%' }}>
+                            <LifeBox theme={theme}></LifeBox>
+                        </div>
+                    </div>
+                    <div id='Center'>
+
+                    </div>
+                    <div id='Right'>
+
                     </div>
                 </div>
             </div>

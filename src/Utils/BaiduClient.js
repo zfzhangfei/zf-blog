@@ -15,8 +15,6 @@ const client = new BosClient(
 export async function uploadImg(file) {
     const bucketName = 'zfblog';
     const key = 'zfblogpicture/' + file.name;
-
-    console.log(bucketName, key, file, 'key');
     const result = await client.putObject(bucketName, key, file);
     return result;
 }
