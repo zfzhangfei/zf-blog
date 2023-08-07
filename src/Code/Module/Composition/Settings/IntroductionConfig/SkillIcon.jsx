@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../../../Css/Settingspage.css'
 import { Button, Modal } from 'antd';
-import MyAddTechnologyIcon from '../../../../Component/MyAddTechnologyIcon';
+import MyAddTechnologyIcon from './MyAddTechnologyIcon';
 import { getSkillIcon, deleteSkillIcon, postSkillIcon } from '../../../Api/Api'
 
 export default class SkillIcon extends Component {

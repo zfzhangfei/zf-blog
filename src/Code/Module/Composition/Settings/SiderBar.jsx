@@ -3,11 +3,13 @@ import { SidebarLink } from './SidebarLink';
 
 export default class SiderBar extends Component {
     state = {
-        index: localStorage.getItem('SidebarLink') ? parseInt(localStorage.getItem('SidebarLink')) : 0
+        index: this.props.index
     }
 
-    componentWillUnmount = () => {
-        localStorage.clear()
+    componentDidMount=()=>{
+        console.log('====================================');
+        console.log(this.props.index);
+        console.log('====================================');
     }
 
     render() {
@@ -21,7 +23,6 @@ export default class SiderBar extends Component {
                     <p style={{ color: this.props.theme.SidebarLinkTextColor }}
                         onClick={() => {
                             this.setState({ index: 0 })
-                            localStorage.setItem('SidebarLink', 0)
                         }}>主题</p>
                 </SidebarLink>
                 <SidebarLink to="/Settings/ArticalConfig"
@@ -31,8 +32,16 @@ export default class SiderBar extends Component {
                     <p style={{ color: this.props.theme.SidebarLinkTextColor }}
                         onClick={() => {
                             this.setState({ index: 1 })
-                            localStorage.setItem('SidebarLink', 1)
                         }}>文章</p>
+                </SidebarLink>
+                <SidebarLink to="/Settings/MarkerConfig"
+                    className={index === 2 ? 'active' : ''}
+                    IsActive={index === 2}
+                    theme={this.props.theme}>
+                    <p style={{ color: this.props.theme.SidebarLinkTextColor }}
+                        onClick={() => {
+                            this.setState({ index: 2 })
+                        }}>标签</p>
                 </SidebarLink>
             </div >
         )

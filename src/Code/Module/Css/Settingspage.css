@@ -13,10 +13,7 @@
     height: calc(100vh - 80px);
 }
 
-#Settingspage .IntroductionConfig {
-    width: 1200px;
-    height: calc(100vh - 80px);
-}
+
 
 /* #region 侧边栏 */
 #Settingspage .SiderBar {
@@ -39,6 +36,9 @@
 
 /* #endregion */
 
+
+
+/*#region 主题*/
 /*#region 头像设置*/
 #Settingspage .UploadAvatar {
     width: 100%;
@@ -49,7 +49,6 @@
 #Settingspage .UploadBox:hover {
     cursor: pointer;
 }
-
 /*#endregion*/
 
 /*#region 格言设置*/
@@ -76,5 +75,42 @@
     display: flex;
     align-items: center;
 }
+/*#endregion*/
+/*#endregion*/
+
+
+
+/*#region 文章*/
+
+
 
 /*#endregion*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

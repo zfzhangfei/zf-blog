@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ThemeContext } from '../../../Plugin/themeContext'
+import { ThemeContext } from '../../../Plugin/Theme/themeContext'
 import Introduction from '../Composition/Home/Introduction';
 import LifeBox from '../Composition/Home/LifeBox';
 import { Login } from '../Api/Api'
@@ -15,7 +15,7 @@ export default class Homepage extends Component {
     render() {
         const theme = this.context;
         return (
-            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw'}}>
+            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
                 {/* <div className='Wallpaper'>
                     <img src="https://zfblog.su.bcebos.com/zfblogpicture/%E8%83%8C%E6%99%AF.jpg" alt="" width={'100%'} height={300}/>
                 </div> */}
@@ -29,7 +29,18 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                     <div id='Center'>
-
+                        <div
+                            dangerouslySetInnerHTML={{ __html: 
+                                ` <h1>23124124</h1>
+                                <tb-jumbotron style="background-size:cover;background-position:center;min-height:200px">
+                                  <div>
+                                    <h1>Hello, world!</h1>
+                                    <p>你好,我是 Textbus,一个给你带来全新体验的富文本开发框架。</p>
+                                    <p>现在我们开始吧!</p>
+                                  </div>
+                                </tb-jumbotron>`
+                             }}
+                        /> 
                     </div>
                     <div id='Right'>
 

@@ -19,7 +19,7 @@
 #Main #Left {
     width: 500px;
     height: 100%;
-    background-color: aqua;
+    background-color: #fff;
 }
 
 /*#endregion*/
@@ -37,7 +37,7 @@
 #Main #Right {
     width: 300px;
     height: 100%;
-    background-color: aqua;
+    background-color: #fff;
 }
 
 /*#endregion*/
@@ -90,8 +90,9 @@
 #Left .LifeBox {
     margin: 10px;
     height: calc(100vh - 400px);
-    background-color: #fff;
+    background-color: antiquewhite;
     border-radius: 20px;
+    padding: 20px;
 }
 
 /*#endregion*/

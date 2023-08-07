@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import '../Css/Settingspage.css'
-import { ThemeContext } from '../../../Plugin/themeContext'
+import { ThemeContext } from '../../../Plugin/Theme/themeContext'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import SiderBar from '../Composition/Settings/SiderBar';
 import IntroductionConfig from '../Composition/Settings/IntroductionConfig/IntroductionConfig';
 import ArticalConfig from '../Composition/Settings/ArticalConfig/ArticalConfig';
+import MarkerConfig from '../Composition/Settings/MarkerConfig/MarkerConfig';
 
 
 export default class Settingspage extends Component {
     static contextType = ThemeContext;
-
-
 
 
 
@@ -19,16 +18,13 @@ export default class Settingspage extends Component {
         return (
             <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
                 <div id='Settingspage'>
-                    <Router>
-                        <SiderBar theme={theme}></SiderBar>
-                        <Switch>
-                            <Route exact path="/Settings">
-                                <Redirect to="/Settings/IntroductionConfig" component={IntroductionConfig}/>
-                            </Route>
-                            <Route path="/Settings/IntroductionConfig" component={IntroductionConfig} />
-                            <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
-                        </Switch>
-                    </Router>
+                    <SiderBar theme={theme} index={this.props.index}></SiderBar>
+                    <Switch>
+                        <Redirect exact from='/Settings' to="/Settings/IntroductionConfig" component={IntroductionConfig} />
+                        <Route path="/Settings/IntroductionConfig" component={IntroductionConfig} />
+                        <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
+                        <Route path="/Settings/MarkerConfig" component={MarkerConfig} />
+                    </Switch>
                 </div>
             </div>
         )

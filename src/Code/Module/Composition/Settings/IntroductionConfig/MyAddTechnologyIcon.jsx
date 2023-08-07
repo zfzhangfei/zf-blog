@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { uploadImg, downloadImg } from '../../Utils/BaiduClient';
-import { postSkillIcon } from '../Module/Api/Api'
+import { uploadImg, downloadImg } from '../../../../../Utils/BaiduClient';
+import { postSkillIcon } from '../../../Api/Api'
 import { Input } from 'antd';
 
 export default class MyAddTechnologyIcon extends Component {

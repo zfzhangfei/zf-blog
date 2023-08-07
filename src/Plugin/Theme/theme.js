@@ -4,7 +4,7 @@ export const lightTheme = {
   textColor: '#333',
   introductionBgColor: '#FFFDD0',
   // introductionBgColor:'url(https://zfblog.su.bcebos.com/zfblogpicture/Plantainleaf.jpg)',
-  navBgColor: '#333',
+  navBgColor: '#000',
   navTextColor: '#fff',
   SidebarBgColor: '#fff',
   SidebarLinkHoverBgColor:'#1677ff',
@@ -17,7 +17,7 @@ export const lightTheme = {
 export const darkTheme = {
   bgColor: '#333',
   textColor: '#fff',
-  navBgColor: '#333',
+  navBgColor: '#000',
   navTextColor: '#fff',
   SidebarBgColor: '#fff',
   SidebarLinkHoverBgColor:'#1677ff',
@@ -30,7 +30,7 @@ export const darkTheme = {
 export const getNavyBlueWhite = {
   bgColor: '#1E1E2D',
   textColor: '#fff',
-  navBgColor: '#333',
+  navBgColor: '#000',
   navTextColor: '#fff',
   SidebarBgColor: '#fff',
   SidebarLinkHoverBgColor:'#1677ff',
@@ -43,7 +43,7 @@ export const getNavyBlueWhite = {
 export const getDarkPurpleLightPurple = {
   bgColor: '#29134e',
   textColor: '#7d5da9',
-  navBgColor: '#333',
+  navBgColor: '#000',
   navTextColor: '#fff',
   SidebarBgColor: '#fff',
   SidebarLinkHoverBgColor:'#1677ff',
@@ -56,7 +56,7 @@ export const getDarkPurpleLightPurple = {
 export const getPeachPinkCocoa = {
   bgColor: '#FFD8D8',
   textColor: '#715344',
-  navBgColor: '#333',
+  navBgColor: '#000',
   navTextColor: '#fff',
   SidebarBgColor: '#fff',
   SidebarLinkHoverBgColor:'#1677ff',
