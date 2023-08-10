@@ -13,7 +13,7 @@ export default class TextbusEditor extends Component {
         const editor = createEditor();
         editor.mount(this.refs.editorContainer)
         editor.onChange.subscribe(() => {
-            console.log(editor.getHTML());
+            this.props.getContent(editor.getHTML())
         });
     }
 

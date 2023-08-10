@@ -26,6 +26,7 @@ export default class HomeRouter extends Component {
             theme: themeMap[value],
         })
     }
+
     render() {
         return (
 

@@ -3,7 +3,7 @@ import { SidebarLink } from './SidebarLink';
 
 export default class SiderBar extends Component {
     state = {
-        index: this.props.index
+        index: 0
     }
 
     componentDidMount=()=>{

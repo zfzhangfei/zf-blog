@@ -3,6 +3,7 @@ import { ThemeContext } from '../../../Plugin/Theme/themeContext'
 import Introduction from '../Composition/Home/Introduction';
 import LifeBox from '../Composition/Home/LifeBox';
 import { Login } from '../Api/Api'
+import ShowArtical from '../Composition/Home/ShowArtical';
 import '../Css/Homepage.css'
 
 export default class Homepage extends Component {
@@ -29,7 +30,7 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                     <div id='Center'>
-                        <div
+                        {/* <div
                             dangerouslySetInnerHTML={{ __html: 
                                 ` <h1>23124124</h1>
                                 <tb-jumbotron style="background-size:cover;background-position:center;min-height:200px">
@@ -40,7 +41,8 @@ export default class Homepage extends Component {
                                   </div>
                                 </tb-jumbotron>`
                              }}
-                        /> 
+                        />  */}
+                        <ShowArtical></ShowArtical>
                     </div>
                     <div id='Right'>
 

@@ -6,6 +6,12 @@ import MaximInput from './MaximInput'
 import SkillIcon from './SkillIcon'
 
 export default class IntroductionConfig extends Component {
+
+    // componentDidMount=()=>{
+    //     this.props.sentIndexToSiderBar(0)
+    // }
+
+
     render() {
         return (
             <div className='SettingsContent'>

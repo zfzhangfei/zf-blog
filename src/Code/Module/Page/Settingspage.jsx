@@ -11,6 +11,11 @@ import MarkerConfig from '../Composition/Settings/MarkerConfig/MarkerConfig';
 export default class Settingspage extends Component {
     static contextType = ThemeContext;
 
+    state={
+        index:0
+    }
+
+    
 
 
     render() {
@@ -18,7 +23,7 @@ export default class Settingspage extends Component {
         return (
             <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
                 <div id='Settingspage'>
-                    <SiderBar theme={theme} index={this.props.index}></SiderBar>
+                    <SiderBar theme={theme} index={this.state.index}></SiderBar>
                     <Switch>
                         <Redirect exact from='/Settings' to="/Settings/IntroductionConfig" component={IntroductionConfig} />
                         <Route path="/Settings/IntroductionConfig" component={IntroductionConfig} />

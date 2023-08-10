@@ -74,3 +74,36 @@ export function postSkillIcon(imgUrl, file, link) {
 }
 //#endregion
 //#endregion
+
+
+
+
+//#region 文章
+//#region 增加
+export function postArtical(Name, Mark, Content) {
+    let params = {
+        Name:Name,
+        Mark:Mark,
+        Content:Content,
+    }
+    post('/putArtical', params)
+}
+//#endregion
+//#region 查
+export async function getArtical(Id) {
+    let params = {
+        Id:Id,
+    }
+    const results = await get('/getArtical', params)
+    return results.res[0];
+}
+//#endregion
+//#endregion
+
+
+
+
+
+
+
+
