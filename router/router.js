@@ -298,6 +298,26 @@ router.get('/getBosPicture', (req, res) => {
 //#endregion
 //#endregion
 
+//#region 查
+router.get('/getBosPicture', (req, res) => {
+  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ? and bos_picture.CreateBy = ?`
+  let params = [
+    req.query.type,
+    0,
+    CURRENT_USER.username,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+//#endregion
 
 
 
