@@ -22,8 +22,8 @@ var mysql = require('mysql')
 
 var mysql_config = {
 
-  host: '192.168.31.117',
-  // host: 'localhost',
+  // host: '192.168.31.117',
+  host: 'localhost',
 
   user: 'root',
 

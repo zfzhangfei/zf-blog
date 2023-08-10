@@ -6,8 +6,12 @@ const jwt = require("jsonwebtoken");
 const router = express.Router()
 
 let db = con.handleDisconnection()
-
-
+const now = new Date();
+let CURRENT_TIMESTAMP = now.toLocaleString()
+let CURRENT_USER = {
+  id: null,
+  username: null,
+}
 
 // 处理数据的函数
 // data 数据
@@ -36,69 +40,7 @@ router.get('/manage', (req, res) => {
   })
 })
 
-//用户登录
-router.get('/users', (req, res) => {
-  let params = req.query;
-  let username = params.username;
-  let password = params.password;
-  let sel_sql = `SELECT * FROM users WHERE users.username = '${username}' `
-  let sql = `SELECT * FROM users WHERE users.username = '${username}' and users.password='${password}' `
-  db.query(sql, [params.username, params.password], function (err, result) {
-    let data = JSON.parse(JSON.stringify(result)) //JSON.stringify方法用于将 JavaScript 值转换为 JSON 字符串。
-    console.log('data ' + data.toString() + 'result ' + result.toString());
-    //生成token
-    let content = {
-      password: params.password
-    }
-    let secretOrPrivateKey = '_jwt'; //这是加密的Key(密钥)
-    let token = jwt.sign(content, secretOrPrivateKey, {
-      expiresIn: 60 * 60 * 1 //1小时过期
-    });
-    if (err) {
-      console.log(err)
-    }
-    if (result.length === 0) {
-      return res.send(JSON.stringify({ //序列化json数据
-        msg: 'no admin',
-        res: result
-      }))
-    }
-    else {
-      db.query(sel_sql, params.username, (error, result) => {
-        if (result[0].identity == "admin") {
-          return res.send(JSON.stringify({
-            msg: 'admin login success',
-            success: true,
-            username: params.username,
-            password: params.password,
-            token: token,
-            res: result,
-          }))
-        }
-        if (result[0].identity == "user") {
-          return res.send(JSON.stringify({
-            msg: 'user login success',
-            success: true,
-            username: params.username,
-            password: params.password,
-            token: token,
-            res: result,
-          }))
-        }
-        if (result[0].identity == "author") {
-          return res.send(JSON.stringify({
-            msg: 'author login success',
-            success: true,
-            username: params.username,
-            password: params.password,
-            token: token,
-            res: result,
-          }))
-        }
-      })
-    }
-  })
-});
+
 
 // 注册接口
 router.post('/adduser', (req, res) => {
@@ -137,70 +79,172 @@ router.post('/adduser', (req, res) => {
   });
 });
 
-//#region 数据库上传图片信息，包括bos地址，可链接的网页等
-//增
+
+
+
+
+
+
+
+
+
+
+
+
+
+//#region 用户登录
+router.get('/users', (req, res) => {
+  let params = req.query;
+  let username = params.username;
+  let password = params.password;
+  let sel_sql = `SELECT * FROM users WHERE users.username = '${username}' `
+  let sql = `SELECT * FROM users WHERE users.username = '${username}' and users.password='${password}' `
+  db.query(sql, [params.username, params.password], function (err, result) {
+    //生成token
+    let content = {
+      password: params.password
+    }
+    let secretOrPrivateKey = '_jwt'; //这是加密的Key(密钥)
+    let token = jwt.sign(content, secretOrPrivateKey, {
+      expiresIn: 60 * 60 * 1 //1小时过期
+    });
+    if (err) {
+      console.log(err)
+    }
+    if (result.length === 0) {
+      return res.send(JSON.stringify({ //序列化json数据
+        msg: 'no admin',
+        res: result
+      }))
+    }
+    else {
+      db.query(sel_sql, params.username, (error, result) => {
+        CURRENT_USER.id = result[0].id
+        CURRENT_USER.username = result[0].username
+        if (err) {
+          console.log(err)
+        } else {
+          return res.send(JSON.stringify({
+            msg: 'login success',
+            success: true,
+            token: token,
+            username: req.query.username,
+            avatar: result[0].avatar,
+            maxim: result[0].maxim,
+          }))
+        }
+      })
+    }
+  })
+});
+
+//#region 获取用户简介
+router.get('/getIntroduction', (req, res) => {
+  let sql = `SELECT * FROM users WHERE users.username = ? and users.password=? `
+  db.query(sql, [req.query.username, req.query.password], (err, result) => {
+    if (err) {
+      console.log(err)
+    } else {
+      return res.send(JSON.stringify({
+        msg: 'login success',
+        success: true,
+        username: req.query.username,
+        avatar: result[0].avatar,
+        maxim: result[0].maxim,
+      }))
+    }
+  })
+});
+//#endregion
+//#endregion
+
+
+
+
+
+//#region 头像
+//#region 改
+router.post('/EditAvatar', (req, res) => {
+  let sql = `UPDATE users SET avatar = ? , UpdateTime =? , UpdateBy =? WHERE id = ?`;
+  let params = [
+    req.body.avatar,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.username,
+    CURRENT_USER.id,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+//#endregion
+
+
+
+
+
+//#region 格言
+//#region 改
+router.post('/EditMaxim', (req, res) => {
+  let sql = `UPDATE users SET maxim = ? , UpdateTime =? , UpdateBy =? WHERE id = ?`;
+  let params = [
+    req.body.maxim,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.username,
+    CURRENT_USER.id,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+//#endregion
+
+
+
+
+
+//#region 图片的增删改查
+
+//#region 增
 router.post('/putBosPicture', (req, res) => {
-  let BosRegion = 'https://zfblog.su.bcebos.com';
-  let BosBucket = 'zfblog';
-  let BosPath = req.body.BosPath;
-  let BosName = req.body.BosName;
-  let BosExtention = '';
-  let Size = 0;
-  let CreateBy = '';
-  let PictureType = req.body.PictureType;
-  let Href = req.body.Href;
-  let sql = `INSERT INTO bos_picture (
-    BosRegion,
+  let sql = ` INSERT INTO bos_picture (
+    BosRegion,  
     BosBucket,
     BosPath,
     BosName,
     BosExtention,
-    Size,
+    Size, 
     CreateBy,
     PictureType,
-    Href) 
-    values 
-    ('${BosRegion}',
-    '${BosBucket}',
-    '${BosPath}',
-    '${BosName}',
-    '${BosExtention}',
-    '${Size}',
-    '${CreateBy}',
-    '${PictureType}',
-    '${Href}')`
-  db.query(sql, [], (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//删
-router.post('/DeleteBosPicture', (req, res) => {
-  let id = req.body.key;
-  let sql = `UPDATE bos_picture SET DeleteFlag = ? WHERE Id = ?`;
-  db.query(sql, [1, id], (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//查
-router.get('/getBosPicture', (req, res) => {
-  let type = req.query.type
-  let CreateBy = req.query.username
-  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = '${type}' and bos_picture.DeleteFlag = '${0}' and bos_picture.CreateBy = '${CreateBy}'`
-  db.query({
-    sql: sql
-  }, (err, results) => {
+    Href,
+    CreateTime
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`
+  let params = [
+    'https://zfblog.su.bcebos.com',
+    'zfblog',
+    req.body.BosPath,
+    req.body.BosName,
+    '',
+    0,
+    CURRENT_USER.username,
+    req.body.PictureType,
+    req.body.Href,
+    CURRENT_TIMESTAMP,
+  ]
+  db.query(sql, params, (err, results) => {
     if (err) {
       console.log(err)
     } else {
@@ -212,7 +256,101 @@ router.get('/getBosPicture', (req, res) => {
 })
 //#endregion
 
+//#region 删
+router.post('/DeleteBosPicture', (req, res) => {
+  let sql = `UPDATE bos_picture SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [
+    1,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.username,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
+//#region 查
+router.get('/getBosPicture', (req, res) => {
+  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ? and bos_picture.CreateBy = ?`
+  let params = [
+    req.query.type,
+    0,
+    CURRENT_USER.username,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+//#endregion
 
 
 
+
+//#region 文章
+//#region 新增
+router.post('/putArtical', (req, res) => {
+  let sql = ` INSERT INTO artical (
+    Name,  
+    Mark,
+    Content,
+    Author,
+    CreateBy,
+    CreateTime
+  ) VALUES (?, ?, ?, ?,?,?)`
+  let params = [
+    req.body.Name,
+    req.body.Mark,
+    req.body.Content,
+    CURRENT_USER.username,
+    CURRENT_USER.username,
+    CURRENT_TIMESTAMP
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
+//#region 查
+router.get('/getArtical', (req, res) => {
+  let sql = `SELECT * FROM artical WHERE artical.Id = ? and artical.DeleteFlag = ? and artical.CreateBy = ?`
+  let params = [
+    req.query.Id,
+    0,
+    CURRENT_USER.username,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
+//#endregion
 module.exports = router
