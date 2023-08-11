@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Button, Typography } from 'antd';
 const { Paragraph } = Typography;
 
-export default function MyParagraph({ onChange }) {
+export default function MyParagraph({ onChange,articalId }) {
     const [editableStr, setEditableStr] = useState('This is an editable text.');
+    const [Id, setId] = useState(articalId);
 
-    onChange(editableStr);
+    onChange(editableStr,Id);
 
     return (
         <div>

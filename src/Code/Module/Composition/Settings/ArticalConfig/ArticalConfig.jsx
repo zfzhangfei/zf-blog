@@ -11,7 +11,25 @@ export default class ArticalConfig extends Component {
 
     state = {
         Content: null,
-        ParagraphValue: '123'
+        ParagraphValue: '123',
+        artical: [
+            {
+                Id: 5,
+                Name: '123',
+                Mark: 1,
+                Summary: '34434',
+                Content: "vvvv",
+                Author: 'admin'
+            },
+            {
+                Id: 6,
+                Name: '6544',
+                Mark: 1,
+                Summary: '34434',
+                Content: "asda",
+                Author: 'admin'
+            },
+        ]
     }
 
     getContent = (value) => {
@@ -27,8 +45,8 @@ export default class ArticalConfig extends Component {
     }
 
 
-    handleChange=(value)=>{
-        console.log(value,'MyParagraph');
+    handleChange = (value,id) => {
+        console.log(value, id,'MyParagraph');
     }
 
     render() {
@@ -38,7 +56,13 @@ export default class ArticalConfig extends Component {
                 <div>
                     <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '20%', height: 'calc(100vh - 120px)', background: 'gray' }}>
                         <div className='ArticalName'>
-                            <MyParagraph onChange={this.handleChange} articalId={5}></MyParagraph>
+                            {
+                                this.state.artical.map((item, index) => {
+                                    return (
+                                        <MyParagraph onChange={this.handleChange} articalId={item.Id}></MyParagraph>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                     <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '80%', height: 'calc(100vh - 120px)', background: '#333' }}>
