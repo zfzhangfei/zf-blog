@@ -89,12 +89,50 @@
 /*#region 生活区域LifeBox*/
 #Left .LifeBox {
     margin: 10px;
-    height: calc(100vh - 400px);
+    height: calc(100vh - 500px);
     background-color: antiquewhite;
     border-radius: 20px;
     padding: 20px;
 }
 
 /*#endregion*/
+
+/*#region 文章显示ShowArtical*/
+
+.ShowArtical .ArticalMarkDown {
+    position: relative;
+}
+
+.ShowArtical .blog-pre {
+    margin-bottom: 3em !important;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 35px -23px 2px -16px rgba(0, 0, 0, 0);
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 35px -23px 2px -16px rgba(0, 0, 0, 0);
+    position: relative;
+}
+
+.ShowArtical .code-copy-btn {
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 101;
+}
+
+.ShowArtical .code-copy-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
 /*#endregion*/
 
+
+
+
+
+
+
+
+/*#endregion*/

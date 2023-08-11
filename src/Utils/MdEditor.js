@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import MdEditor from 'for-editor'
+import { postArtical } from "../Code/Module/Api/Api";
 
 const DemoEditor = () => {
   /** 默认工具栏按钮全部开启, 传入自定义对象
@@ -44,6 +45,7 @@ const DemoEditor = () => {
   // 保存输入内容
   function handleEditorSave (value) {
     console.log('handleEditorSave', value);
+    postArtical('111', 1, value)
   }
   return (
     <MdEditor placeholder="请输入Markdown文本" height={170} lineNum={false}

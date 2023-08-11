@@ -15,11 +15,11 @@ export default class TextbusEditor extends Component {
         editor.onChange.subscribe(() => {
             this.props.getContent(editor.getHTML())
         });
-    }
+    }  
 
     render() {
         return (
-                <div ref="editorContainer" />
+                <div ref="editorContainer" /> 
         );
     }
 }

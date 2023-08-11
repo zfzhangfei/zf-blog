@@ -30,19 +30,7 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                     <div id='Center'>
-                        {/* <div
-                            dangerouslySetInnerHTML={{ __html: 
-                                ` <h1>23124124</h1>
-                                <tb-jumbotron style="background-size:cover;background-position:center;min-height:200px">
-                                  <div>
-                                    <h1>Hello, world!</h1>
-                                    <p>你好,我是 Textbus,一个给你带来全新体验的富文本开发框架。</p>
-                                    <p>现在我们开始吧!</p>
-                                  </div>
-                                </tb-jumbotron>`
-                             }}
-                        />  */}
-                        <ShowArtical></ShowArtical>
+                        {/* <ShowArtical></ShowArtical> */}
                     </div>
                     <div id='Right'>
 
