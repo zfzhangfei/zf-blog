@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import html from 'remark-html';
-import { getArtical } from '../../Api/Api'
+import { getArticalById } from '../../Api/Api'
 // import rehypePrism from 'rehype-prism-plus'
 // import 'prismjs/themes/prism-tomorrow.css';
 // import 'prismjs/components/prism-jsx';
@@ -16,8 +16,9 @@ export default class ShowArtical extends Component {
         htmlString: null
     }
     componentDidMount = async () => {
+        console.log(await getArticalById(5),'await getArticalById(5)');
         this.setState({
-            htmlString: await getArtical(5)
+            htmlString: await getArticalById(5)
         })
     }
     render() {

@@ -1,8 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import MdEditor from 'for-editor'
-import { postArtical } from "../Code/Module/Api/Api";
+import { postArtical,editArtical } from "../Code/Module/Api/Api";
+import { message } from "antd";
+import dayjs from 'dayjs';
 
-const DemoEditor = () => {
+const DemoEditor = ({ CurrentArtical }) => {
   /** 默认工具栏按钮全部开启, 传入自定义对象
   例如: {
     h1: true, // h1
@@ -31,25 +33,65 @@ const DemoEditor = () => {
   };
 
   // 保存Markdown文本内容
-  const [mdContent, setMdContent] = useState('')
+  const [mdContent, setMdContent] = useState(CurrentArtical.Content)
+  const [messageApi, contextHolder] = message.useMessage();
+
+  //每三分钟保存一下内容
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleEditorSave(mdContent);
+
+    }, 3 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [mdContent]);
+
+  useEffect(() => {
+    if (mdContent !== CurrentArtical.Content) {
+      setMdContent(CurrentArtical.Content); 
+    }
+  }, [CurrentArtical.Content]);
 
   // 上传图片
-  function uploadImg (file) {
+  function uploadImg(file) {
     console.log('file', file);
   };
   // 输入内容改变
-  function handleEditorChange (value) {
-    console.log('handleChange', value);
+  function handleEditorChange(value) {
     setMdContent(value)
   }
+
+  // 保存成功
+  const success = () => {
+    const time = dayjs().format('HH:mm:ss');
+    messageApi.open({
+      type: 'success',
+      content: `保存成功! ${time}`
+    });
+  };
+  // 保存失败
+  const error = () => {
+    const time = dayjs().format('HH:mm:ss');
+    messageApi.open({
+      type: 'error',
+      content: `保存失败! ${time}`
+    });
+  };
   // 保存输入内容
-  function handleEditorSave (value) {
-    console.log('handleEditorSave', value);
-    postArtical('111', 1, value)
+  function handleEditorSave(value) {
+    editArtical(CurrentArtical.Name, CurrentArtical.Mark, value,CurrentArtical.Id).then(() => {
+      success();
+    }).catch(() => {
+      error();
+    })
   }
+
+
   return (
-    <MdEditor placeholder="请输入Markdown文本" height={170} lineNum={false}
-      toolbar={toolbar} value={mdContent} onChange={handleEditorChange} onSave={handleEditorSave} addImg={uploadImg} />
+    <>
+      {contextHolder}
+      <MdEditor placeholder="请输入Markdown文本" height={'calc(100vh - 114px)'} lineNum={false}
+        toolbar={toolbar} value={mdContent} onChange={handleEditorChange} onSave={handleEditorSave} addImg={uploadImg} />
+    </>
   )
 }
 export default DemoEditor

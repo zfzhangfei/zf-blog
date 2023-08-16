@@ -80,23 +80,41 @@ export function postSkillIcon(imgUrl, file, link) {
 
 //#region 文章
 //#region 增加
-export function postArtical(Name, Mark, Content) {
+export async function postArtical(Name, Mark, Content) {
     let params = {
         Name:Name,
         Mark:Mark,
         Content:Content,
     }
-    post('/putArtical', params)
+    await post('/putArtical', params)
+}
+//#endregion
+//#region 编辑
+export async function editArtical(Name, Mark, Content,Id) {
+    let params = {
+        Name:Name,
+        Mark:Mark,
+        Content:Content,
+        Id:Id,
+    }
+    await post('/editArtical', params)
 }
 //#endregion
 //#region 查
-export async function getArtical(Id) {
-    let params = {
-        Id:Id,
+export async function getArtical() {
+    const results = await get('/getArtical')
+    return results.res;
+}
+
+export async function getArticalById(Id) {
+    let params={
+        Id:Id
     }
-    const results = await get('/getArtical', params)
+    const results = await get('/getArticalById',params)
     return results.res[0];
 }
+
+
 //#endregion
 //#endregion
 

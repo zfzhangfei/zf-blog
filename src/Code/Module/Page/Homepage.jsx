@@ -4,6 +4,7 @@ import Introduction from '../Composition/Home/Introduction';
 import LifeBox from '../Composition/Home/LifeBox';
 import { Login } from '../Api/Api'
 import ShowArtical from '../Composition/Home/ShowArtical';
+import ArticalList from '../Composition/Home/ArticalList';
 import '../Css/Homepage.css'
 
 export default class Homepage extends Component {
@@ -31,6 +32,7 @@ export default class Homepage extends Component {
                     </div>
                     <div id='Center'>
                         {/* <ShowArtical></ShowArtical> */}
+                        <ArticalList></ArticalList>
                     </div>
                     <div id='Right'>
 

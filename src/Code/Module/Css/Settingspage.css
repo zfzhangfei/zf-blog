@@ -55,7 +55,6 @@
 #Settingspage .MaximInput {
     width: 100%;
 }
-
 /*#endregion*/
 
 /*#region 技能图标设置*/
@@ -81,9 +80,9 @@
 
 
 /*#region 文章*/
-
-
-
+.ArticalName div:hover{
+    background-color: pink;
+}
 /*#endregion*/
 
 
