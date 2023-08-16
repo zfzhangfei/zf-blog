@@ -338,7 +338,32 @@ router.post('/putArtical', (req, res) => {
     req.body.Content,
     CURRENT_USER.username,
     CURRENT_USER.username,
-    CURRENT_TIMESTAMP
+    CURRENT_TIMESTAMP,
+    req.body.Id,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
+//#region 编辑
+router.post('/editArtical', (req, res) => {
+ let sql=`UPDATE artical SET Name=?,Mark=?,Content = ?,Author=?,UpdateBy=?,UpdateTime=? WHERE Id = ?`
+  let params = [
+    req.body.Name,
+    req.body.Mark,
+    req.body.Content,
+    CURRENT_USER.username,
+    CURRENT_USER.username,
+    CURRENT_TIMESTAMP,
+    req.body.Id,
   ]
   db.query(sql, params, (err, results) => {
     if (err) {
@@ -354,7 +379,24 @@ router.post('/putArtical', (req, res) => {
 
 //#region 查
 router.get('/getArtical', (req, res) => {
-  let sql = `SELECT * FROM artical WHERE artical.Id = ? and artical.DeleteFlag = ? and artical.CreateBy = ?`
+  let sql = `SELECT * FROM artical WHERE artical.DeleteFlag = ? and artical.CreateBy = ?`
+  let params = [
+    0,
+    CURRENT_USER.username,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.get('/getArticalById', (req, res) => {
+  let sql = `SELECT * FROM artical WHERE artical.Id=? and artical.DeleteFlag = ? and artical.CreateBy = ?`
   let params = [
     req.query.Id,
     0,
