@@ -68,3 +68,31 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+类名使用大驼峰(PascalCase),第一个单词首字母大写,如StudentModel
+方法名、属性名、事件名使用小驼峰(camelCase),第一个单词首字母小写,如getNextQuestion
+字段名使用小驼峰或下划线,如currentQuestion 或 current_question
+参数名使用小驼峰或下划线,如quizId 或 quiz_id
+本地变量名使用小驼峰或下划线,如index 或 question_index
+常量名通常全部大写,单词间用下划线,如MAX_QUESTIONS
+所以具体来说:
+
+类名使用大驼峰,如StudentModel
+方法名、属性名使用小驼峰,如getNextQuestion
+字段名和本地变量可使用小驼峰或下划线,如currentQuestion或current_question
+参数名也可使用小驼峰或下划线,如quizId或quiz_id
+常量名使用全部大写下划线,如MAX_QUESTIONS

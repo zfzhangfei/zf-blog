@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ThemeContext } from '../../../Plugin/Theme/themeContext'
 import Introduction from '../Composition/Home/Introduction';
 import LifeBox from '../Composition/Home/LifeBox';
-import { Login } from '../Api/Api'
+import { login } from '../Api/Api'
 import ShowArtical from '../Composition/Home/ShowArtical';
 import ArticalList from '../Composition/Home/ArticalList';
 import '../Css/Homepage.css'
@@ -11,7 +11,7 @@ export default class Homepage extends Component {
     static contextType = ThemeContext;
 
     componentDidMount = async () => {
-        Login()
+        login()
     }
 
     render() {
@@ -31,8 +31,10 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                     <div id='Center'>
-                        {/* <ShowArtical></ShowArtical> */}
-                        <ArticalList></ArticalList>
+                        <div>
+                            {/* <ShowArtical></ShowArtical> */}
+                            <ArticalList></ArticalList>
+                        </div>
                     </div>
                     <div id='Right'>
 

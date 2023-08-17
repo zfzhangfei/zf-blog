@@ -2,7 +2,7 @@ import { get, post } from '../../../Utils/request'
 let currentUser = {}
 
 //#region 用户
-export function Login() {
+export function login() {
     const md5 = require('md5');
     const hash = md5(12345);
     const results = get('/users', { username: 'admin', password: hash })
@@ -19,7 +19,7 @@ export async function getCurrentUser() {
 
 
 //#region 头像
-export function EditAvatar(value) {
+export function editAvatar(value) {
     let params = {
         avatar: value,
     }
@@ -32,7 +32,7 @@ export function EditAvatar(value) {
 
 
 //#region 格言
-export function EditMaxim(value) {
+export function editMaxim(value) {
     let params = {
         maxim: value,
     }
@@ -100,6 +100,7 @@ export async function editArtical(Name, Mark, Content,Id) {
     await post('/editArtical', params)
 }
 //#endregion
+
 //#region 查
 export async function getArtical() {
     const results = await get('/getArtical')
@@ -116,6 +117,7 @@ export async function getArticalById(Id) {
 
 
 //#endregion
+
 //#endregion
 
 

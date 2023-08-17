@@ -57,7 +57,7 @@ export default class ArticalConfig extends Component {
             <div className='SettingsContent'>
                 <Button onClick={() => { this.handleArtical() }} block style={{ backgroundColor: 'pink', color: '#333' }}><PlusOutlined /></Button>
                 <div>
-                    <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '20%', height: 'calc(100vh - 112px)', background: 'gray' }}>
+                    <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '20%', height: 'calc(100vh - 92px)', background: 'gray' }}>
                         <div className='ArticalName'>
                             {
                                 this.state.artical.map((item, index) => {
@@ -68,7 +68,7 @@ export default class ArticalConfig extends Component {
                             }
                         </div>
                     </div>
-                    <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '80%', height: 'calc(100vh - 112px)', background: '#333' }}>
+                    <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '80%', height: 'calc(100vh - 92px)', background: '#333' }}>
                         <div className='ArticalSummary'>
 
                         </div>

@@ -1,5 +1,5 @@
 #Main #Settingspage {
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -10,7 +10,7 @@
 
 #Settingspage .SettingsContent {
     width: 1200px;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
 }
 
 
@@ -18,7 +18,7 @@
 /* #region 侧边栏 */
 #Settingspage .SiderBar {
     width: 300px;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
 }
 
 #Settingspage .SidebarLink {

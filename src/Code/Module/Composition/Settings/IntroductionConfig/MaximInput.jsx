@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Space, Input, Button, message } from 'antd';
-import { EditMaxim, getCurrentUser ,Login} from '../../../Api/Api'
+import { editMaxim, getCurrentUser ,login} from '../../../Api/Api'
 
 
 export default class MaximInput extends Component {
@@ -9,7 +9,7 @@ export default class MaximInput extends Component {
     }
     
     componentDidMount = async () => {
-        Login()
+        login()
         let currentuser = await getCurrentUser() 
         this.setState({
             maxim: currentuser.maxim
@@ -17,7 +17,7 @@ export default class MaximInput extends Component {
     }
 
     //#region 编辑格言
-    EditMaxim = (value) => {
+    editMaxim = (value) => {
         this.setState({
             maxim: value
         })
@@ -26,7 +26,7 @@ export default class MaximInput extends Component {
 
     //#region 上传格言
     handleMaxim = (value) => {
-        EditMaxim(value)
+        editMaxim(value)
         message.success({
             content: '上传成功',
         });
@@ -36,7 +36,7 @@ export default class MaximInput extends Component {
     render() {
         return (
             <Space.Compact className='MaximInput' block>
-                <Input placeholder='请输入格言' value={this.state.maxim} onChange={(e) => { this.EditMaxim(e.target.value) }} />
+                <Input placeholder='请输入格言' value={this.state.maxim} onChange={(e) => { this.editMaxim(e.target.value) }} />
                 <Button type="primary" onClick={() => { this.handleMaxim(this.state.maxim) }}>提交</Button>
             </Space.Compact>
         )
