@@ -90,12 +90,9 @@ export function postArtical(Name, Mark, Content) {
 }
 //#endregion
 //#region 查
-export async function getArtical(Id) {
-    let params = {
-        Id:Id,
-    }
-    const results = await get('/getArtical', params)
-    return results.res[0];
+export async function getArtical() {
+    const results = await get('/getArtical')
+    return results.res;
 }
 //#endregion
 //#endregion

@@ -5,6 +5,7 @@ import { Button, Typography } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import DemoEditor from '../../../../../Utils/MdEditor';
 import MyParagraph from '../../../../CommonComponent/MyParagraph';
+import { getArtical } from '../../../Api/Api';
 
 const { Paragraph } = Typography;
 export default class ArticalConfig extends Component {
@@ -12,24 +13,14 @@ export default class ArticalConfig extends Component {
     state = {
         Content: null,
         ParagraphValue: '123',
-        artical: [
-            {
-                Id: 5,
-                Name: '123',
-                Mark: 1,
-                Summary: '34434',
-                Content: "vvvv",
-                Author: 'admin'
-            },
-            {
-                Id: 6,
-                Name: '6544',
-                Mark: 1,
-                Summary: '34434',
-                Content: "asda",
-                Author: 'admin'
-            },
-        ]
+        artical: [],
+        articalContent: null,
+    }
+
+    componentDidMount = async () => {
+        this.setState({
+            artical: await getArtical()
+        })
     }
 
     getContent = (value) => {
@@ -45,9 +36,17 @@ export default class ArticalConfig extends Component {
     }
 
 
-    handleChange = (value,id) => {
-        console.log(value, id,'MyParagraph');
+    handleChange = (value, id) => {
+        console.log(value, id, 'MyParagraph');
     }
+
+    ChooseArtical = (value) => {
+        console.log(value, 'ChooseArtical');
+        this.setState({
+            articalContent: value.Content
+        })
+    }
+
 
     render() {
         return (
@@ -59,7 +58,7 @@ export default class ArticalConfig extends Component {
                             {
                                 this.state.artical.map((item, index) => {
                                     return (
-                                        <MyParagraph onChange={this.handleChange} articalId={item.Id}></MyParagraph>
+                                        <MyParagraph onChange={this.handleChange} articalItem={item} key={index} onClick={this.ChooseArtical}></MyParagraph>
                                     )
                                 })
                             }
@@ -70,7 +69,10 @@ export default class ArticalConfig extends Component {
 
                         </div>
                         <div className='ArticalContent'>
-                            {/* <DemoEditor></DemoEditor> */}
+                            {
+                                this.state.articalContent ?
+                                    <DemoEditor articalContent={this.state.articalContent}></DemoEditor> : ''
+                            }
                         </div>
                         <div className='ArticalMark'>
 

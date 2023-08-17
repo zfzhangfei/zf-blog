@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { Button, Typography } from 'antd';
 const { Paragraph } = Typography;
 
-export default function MyParagraph({ onChange,articalId }) {
-    const [editableStr, setEditableStr] = useState('This is an editable text.');
-    const [Id, setId] = useState(articalId);
+export default function MyParagraph({ onChange,articalItem,onClick}) {
+    const [editableStr, setEditableStr] = useState(articalItem.Name);
+    const [Id, setId] = useState(articalItem.Id);
 
     onChange(editableStr,Id);
+
+    const ChooseArtical=(value)=>{
+        onClick(value)
+    }
 
     return (
         <div>
@@ -14,6 +18,8 @@ export default function MyParagraph({ onChange,articalId }) {
                 editable={{
                     onChange: setEditableStr,
                 }}
+                onClick={()=>{ChooseArtical(articalItem)}}
+                style={{background:'pink'}}
             >
                 {editableStr}
             </Paragraph>

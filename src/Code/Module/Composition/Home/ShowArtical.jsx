@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import html from 'remark-html';
 import { getArtical } from '../../Api/Api'
-// import rehypePrism from 'rehype-prism-plus'
-// import 'prismjs/themes/prism-tomorrow.css';
-// import 'prismjs/components/prism-jsx';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'

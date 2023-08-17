@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import MdEditor from 'for-editor'
 import { postArtical } from "../Code/Module/Api/Api";
+import { calc } from "@chakra-ui/styled-system";
 
-const DemoEditor = () => {
+const DemoEditor = ({articalContent}) => {
   /** 默认工具栏按钮全部开启, 传入自定义对象
   例如: {
     h1: true, // h1
@@ -31,7 +32,7 @@ const DemoEditor = () => {
   };
 
   // 保存Markdown文本内容
-  const [mdContent, setMdContent] = useState('')
+  const [mdContent, setMdContent] = useState(articalContent)
 
   // 上传图片
   function uploadImg (file) {
@@ -48,7 +49,7 @@ const DemoEditor = () => {
     postArtical('111', 1, value)
   }
   return (
-    <MdEditor placeholder="请输入Markdown文本" height={170} lineNum={false}
+    <MdEditor placeholder="请输入Markdown文本" height={'calc(100vh - 120px)'} lineNum={false}
       toolbar={toolbar} value={mdContent} onChange={handleEditorChange} onSave={handleEditorSave} addImg={uploadImg} />
   )
 }
