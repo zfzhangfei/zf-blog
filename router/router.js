@@ -354,9 +354,8 @@ router.post('/putArtical', (req, res) => {
 
 //#region 查
 router.get('/getArtical', (req, res) => {
-  let sql = `SELECT * FROM artical WHERE artical.Id = ? and artical.DeleteFlag = ? and artical.CreateBy = ?`
+  let sql = `SELECT * FROM artical WHERE artical.DeleteFlag = ? and artical.CreateBy = ?`
   let params = [
-    req.query.Id,
     0,
     CURRENT_USER.username,
   ]
