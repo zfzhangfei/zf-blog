@@ -1,25 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { Button, Typography } from 'antd';
 const { Paragraph } = Typography;
 
-export default function MyParagraph({ onChange,articalItem,onClick}) {
+export default function MyParagraph({ onChange, articalItem, onClick }) {
     const [editableStr, setEditableStr] = useState(articalItem.Name);
-    const [Id, setId] = useState(articalItem.Id);
 
-    onChange(editableStr,Id);
-
-    const ChooseArtical=(value)=>{
-        onClick(value)
+    useEffect(() => {
+        if(editableStr !== articalItem.Name) {
+          onChange(editableStr, articalItem);
+        }
+      }, [editableStr]);
+    
+    const ChooseArtical = (articalItem) => {
+        onClick(editableStr,articalItem)
     }
 
     return (
-        <div>
+        <div className='MyParagraph'>
             <Paragraph
                 editable={{
                     onChange: setEditableStr,
                 }}
-                onClick={()=>{ChooseArtical(articalItem)}}
-                style={{background:'pink'}}
+                onClick={() => { ChooseArtical(articalItem) }}
+                ellipsis={true}
+                style={{width:200}}
             >
                 {editableStr}
             </Paragraph>

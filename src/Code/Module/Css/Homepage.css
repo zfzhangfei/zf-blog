@@ -1,12 +1,12 @@
 #Main {
     position: absolute;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
     overflow-x: hidden;
 }
 
 /*#region Homepage首页*/
 #Main #Homepage {
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -17,9 +17,8 @@
 
 /*#region Left左*/
 #Main #Left {
-    width: 500px;
+    width: 400px;
     height: 100%;
-    background-color: #fff;
 }
 
 /*#endregion*/
@@ -29,6 +28,11 @@
     flex: 1;
     width: 700px;
     height: 100%;
+    overflow-y: scroll;
+}
+
+#Main #Center::-webkit-scrollbar {
+    display: none;
 }
 
 /*#endregion*/
@@ -53,7 +57,7 @@
 
 /*#region 个人简介Introduction*/
 #Left .Introduction {
-    width: 480px;
+    width: 380px;
     height: 280px;
     margin: 10px;
     border-radius: 18px;
@@ -93,6 +97,46 @@
     background-color: antiquewhite;
     border-radius: 20px;
     padding: 20px;
+}
+
+/*#endregion*/
+
+/*#region 文章列表ArticalList*/
+.ArticalList {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ArticalList .ArticalCard {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ArticalList .ArticalBox {
+    width: 100%;
+    height: 170px;
+}
+
+.ArticalList .ArticalCover {
+    width: 170px;
+    height: 170px;
+}
+.ArticalList .ArticalMark{
+    overflow-y: scroll;
+}
+
+.ArticalList .ArticalMark::-webkit-scrollbar{
+    display: none;
+}
+
+.ArticalList .ArticalIcons {
+    width: 100%;
+    height: 20px;
+    margin-left: 10px;
 }
 
 /*#endregion*/

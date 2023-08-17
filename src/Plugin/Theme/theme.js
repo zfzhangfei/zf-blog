@@ -1,8 +1,8 @@
 // theme.js
 export const lightTheme = {
   bgColor: 'rgb(247 247 247)',
-  textColor: '#333',
-  introductionBgColor: '#FFFDD0',
+  textColor: '#AA5F9E',
+  introductionBgColor: '#fff',
   // introductionBgColor:'url(https://zfblog.su.bcebos.com/zfblogpicture/Plantainleaf.jpg)',
   navBgColor: '#000',
   navTextColor: '#fff',

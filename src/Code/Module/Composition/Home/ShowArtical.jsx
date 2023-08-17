@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { getArtical } from '../../Api/Api'
+import html from 'remark-html';
+import { getArticalById } from '../../Api/Api'
+// import rehypePrism from 'rehype-prism-plus'
+// import 'prismjs/themes/prism-tomorrow.css';
+// import 'prismjs/components/prism-jsx';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -12,8 +16,9 @@ export default class ShowArtical extends Component {
         htmlString: null
     }
     componentDidMount = async () => {
+        console.log(await getArticalById(5),'await getArticalById(5)');
         this.setState({
-            htmlString: await getArtical(5)
+            htmlString: await getArticalById(5)
         })
     }
     render() {

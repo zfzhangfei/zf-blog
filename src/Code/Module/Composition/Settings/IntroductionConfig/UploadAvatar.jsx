@@ -4,7 +4,7 @@ import {
     PlusOutlined,
 } from '@ant-design/icons';
 import { uploadImg, downloadImg } from '../../../../../Utils/BaiduClient';
-import { EditAvatar, getCurrentUser,Login } from '../../../Api/Api'
+import { editAvatar, getCurrentUser,login } from '../../../Api/Api'
 
 
 export default class UploadAvatar extends Component {
@@ -14,7 +14,7 @@ export default class UploadAvatar extends Component {
     };
 
     componentDidMount = async () => {
-        Login()
+        login()
         let currentuser = await getCurrentUser()
         this.setState({
             imageUrl: currentuser.avatar
@@ -27,7 +27,7 @@ export default class UploadAvatar extends Component {
         this.setState({
             imageUrl: imageUrl
         })
-        EditAvatar(imageUrl)
+        editAvatar(imageUrl)
     }
 
     render() {
