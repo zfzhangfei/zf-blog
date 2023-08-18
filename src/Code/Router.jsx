@@ -29,7 +29,6 @@ export default class HomeRouter extends Component {
 
     render() {
         return (
-
             <ThemeContext.Provider value={this.state.theme}>
                     <Router>
                         <MyNav changeTheme={this.changeTheme}></MyNav>
@@ -40,7 +39,6 @@ export default class HomeRouter extends Component {
                         </Switch>
                     </Router>
             </ThemeContext.Provider>
-
         )
     }
 }

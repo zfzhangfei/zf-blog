@@ -15,7 +15,6 @@ export default function MyParagraph({ onChange, articalItem, onClick }) {
         onClick(editableStr,articalItem)
     }
 
-
     return (
         <div className='MyParagraph'>
             <Paragraph

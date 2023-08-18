@@ -5,12 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import zhCN from "antd/locale/zh_CN";
 import { ConfigProvider } from "antd";
+import {Provider} from 'react-redux';
+import store from './Code/Module/Common/Dictionary/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ConfigProvider locale={zhCN}>
-    <App />
-  </ConfigProvider>
+  <Provider store={store}>
+    <ConfigProvider locale={zhCN}>
+      <App />
+    </ConfigProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

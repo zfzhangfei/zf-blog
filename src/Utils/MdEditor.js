@@ -89,7 +89,7 @@ const DemoEditor = ({ CurrentArtical }) => {
   return (
     <>
       {contextHolder}
-      <MdEditor placeholder="请输入Markdown文本" height={'calc(100vh - 114px)'} lineNum={false}
+      <MdEditor placeholder="请输入Markdown文本" height={'calc(100vh - 94px)'} lineNum={false}
         toolbar={toolbar} value={mdContent} onChange={handleEditorChange} onSave={handleEditorSave} addImg={uploadImg} />
     </>
   )

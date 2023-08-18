@@ -89,6 +89,7 @@ export async function postArtical(Name, Mark, Content) {
     await post('/putArtical', params)
 }
 //#endregion
+
 //#region 编辑
 export async function editArtical(Name, Mark, Content,Id) {
     let params = {
@@ -121,6 +122,15 @@ export async function getArticalById(Id) {
 //#endregion
 
 
+
+
+
+//#region 标签
+export async function getMark() {
+    const results = await get('/getMark')
+    return results.res;
+}
+//#endregion
 
 
 
