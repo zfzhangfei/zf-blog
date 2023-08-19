@@ -298,26 +298,7 @@ router.get('/getBosPicture', (req, res) => {
 //#endregion
 //#endregion
 
-//#region 查
-router.get('/getBosPicture', (req, res) => {
-  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ? and bos_picture.CreateBy = ?`
-  let params = [
-    req.query.type,
-    0,
-    CURRENT_USER.username,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-//#endregion
+
 
 
 
@@ -414,4 +395,32 @@ router.get('/getArticalById', (req, res) => {
 //#endregion
 
 //#endregion
+
+
+
+
+
+
+//#region 标签
+//#region 查
+router.get('/getMark', (req, res) => {
+  let sql = `SELECT * FROM dictionary_mark WHERE dictionary_mark.DeleteFlag = ? and dictionary_mark.CreateBy = ?`
+  let params = [
+    0,
+    CURRENT_USER.username,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+//#endregion
+
+
 module.exports = router
