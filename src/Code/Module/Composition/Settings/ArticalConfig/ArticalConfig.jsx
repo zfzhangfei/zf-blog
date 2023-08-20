@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import TextbusEditor from '../../../../../Plugin/Textbus/TextbusEditor'
-import { postArtical } from '../../../Api/Api';
-import { Button, Typography } from 'antd';
+import { postArtical, getArtical, editArtical } from '../../../Api/Api';
+import { Button, Typography, Select } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import DemoEditor from '../../../../../Utils/MdEditor';
 import MyParagraph from '../../../../CommonComponent/MyParagraph';
-import { getArtical,editArtical } from '../../../Api/Api';
+import SelectTags from '../../../../CommonComponent/SelectTags';
 
 const { Paragraph } = Typography;
 export default class ArticalConfig extends Component {
@@ -14,7 +14,8 @@ export default class ArticalConfig extends Component {
         Content: null,
         ParagraphValue: '123',
         artical: [],
-        CurrentArtical: null,
+        currentArtical: null,
+        currentSelectMark: null,
     }
 
     componentDidMount = async () => {
@@ -42,22 +43,33 @@ export default class ArticalConfig extends Component {
     }
 
 
-    handleChange = (ArticalName, CurrentArtical) => {
-        editArtical(ArticalName, CurrentArtical.Mark, CurrentArtical.Content,CurrentArtical.Id)
+    handleChange = (ArticalName, currentArtical) => {
+        editArtical(ArticalName, currentArtical.Mark, currentArtical.Content, currentArtical.Id)
     }
 
-    ChooseArtical = (editableStr,articalItem) => {
+    ChooseArtical = (editableStr, articalItem) => {
         this.setState({
-            CurrentArtical: articalItem,
+            currentArtical: articalItem,
+        }, async () => {
+            this.setState({
+                artical: await getArtical()
+            })
+        })
+    }
+
+    getSelectMark = (value) => {
+        this.setState({
+            currentSelectMark: value.join('/')
         })
     }
 
     render() {
         return (
             <div className='SettingsContent'>
-                <Button onClick={() => { this.handleArtical() }} block style={{ backgroundColor: 'pink', color: '#333' }}><PlusOutlined /></Button>
+                <Button onClick={() => { this.handleArtical() }} block type='primary'><PlusOutlined /></Button>
+                <SelectTags getSelectMark={this.getSelectMark} currentArtical={this.state.currentArtical}></SelectTags>
                 <div>
-                    <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '20%', height: 'calc(100vh - 92px)', background: 'gray' }}>
+                    <div style={{ display: 'inline-block', verticalAlign: 'top', width: '20%' }}>
                         <div className='ArticalName'>
                             {
                                 this.state.artical.map((item, index) => {
@@ -68,14 +80,14 @@ export default class ArticalConfig extends Component {
                             }
                         </div>
                     </div>
-                    <div style={{ display: 'inline-block', verticalAlign: 'middle', width: '80%', height: 'calc(100vh - 92px)', background: '#333' }}>
+                    <div style={{ display: 'inline-block', verticalAlign: 'top', width: '80%' }}>
                         <div className='ArticalSummary'>
 
                         </div>
                         <div className='ArticalContent'>
                             {
-                                this.state.CurrentArtical ?
-                                    <DemoEditor CurrentArtical={this.state.CurrentArtical}></DemoEditor> : ''
+                                this.state.currentArtical ?
+                                    <DemoEditor currentArtical={this.state.currentArtical} currentSelectMark={this.state.currentSelectMark}></DemoEditor> : ''
                             }
                         </div>
                         <div className='ArticalMark'>

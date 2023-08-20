@@ -6,10 +6,16 @@ export default class SiderBar extends Component {
         index: 0
     }
 
-    componentDidMount=()=>{
-        console.log('====================================');
-        console.log(this.props.index);
-        console.log('====================================');
+    componentDidMount = () => {
+        const index = localStorage.getItem('activeIndex');
+
+        if (index !== null) {
+            this.setState({ index: parseInt(index) });
+        }
+    }
+
+    componentWillUnmount=()=>{
+        localStorage.clear()
     }
 
     render() {
@@ -22,6 +28,7 @@ export default class SiderBar extends Component {
                     theme={this.props.theme}>
                     <p style={{ color: this.props.theme.SidebarLinkTextColor }}
                         onClick={() => {
+                            localStorage.setItem('activeIndex', 0);
                             this.setState({ index: 0 })
                         }}>主题</p>
                 </SidebarLink>
@@ -31,6 +38,7 @@ export default class SiderBar extends Component {
                     theme={this.props.theme}>
                     <p style={{ color: this.props.theme.SidebarLinkTextColor }}
                         onClick={() => {
+                            localStorage.setItem('activeIndex', 1);
                             this.setState({ index: 1 })
                         }}>文章</p>
                 </SidebarLink>
@@ -40,6 +48,7 @@ export default class SiderBar extends Component {
                     theme={this.props.theme}>
                     <p style={{ color: this.props.theme.SidebarLinkTextColor }}
                         onClick={() => {
+                            localStorage.setItem('activeIndex', 2);
                             this.setState({ index: 2 })
                         }}>标签</p>
                 </SidebarLink>

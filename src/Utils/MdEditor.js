@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import MdEditor from 'for-editor'
-import { postArtical,editArtical } from "../Code/Module/Api/Api";
+import { postArtical, editArtical } from "../Code/Module/Api/Api";
 import { message } from "antd";
 import dayjs from 'dayjs';
 
-const DemoEditor = ({ CurrentArtical }) => {
+const DemoEditor = ({ currentArtical, currentSelectMark }) => {
   /** 默认工具栏按钮全部开启, 传入自定义对象
   例如: {
     h1: true, // h1
@@ -33,7 +33,7 @@ const DemoEditor = ({ CurrentArtical }) => {
   };
 
   // 保存Markdown文本内容
-  const [mdContent, setMdContent] = useState(CurrentArtical.Content)
+  const [mdContent, setMdContent] = useState(currentArtical.Content)
   const [messageApi, contextHolder] = message.useMessage();
 
   //每三分钟保存一下内容
@@ -46,10 +46,10 @@ const DemoEditor = ({ CurrentArtical }) => {
   }, [mdContent]);
 
   useEffect(() => {
-    if (mdContent !== CurrentArtical.Content) {
-      setMdContent(CurrentArtical.Content); 
+    if (mdContent !== currentArtical.Content) {
+      setMdContent(currentArtical.Content);
     }
-  }, [CurrentArtical.Content]);
+  }, [currentArtical.Content]);
 
   // 上传图片
   function uploadImg(file) {
@@ -78,7 +78,7 @@ const DemoEditor = ({ CurrentArtical }) => {
   };
   // 保存输入内容
   function handleEditorSave(value) {
-    editArtical(CurrentArtical.Name, CurrentArtical.Mark, value,CurrentArtical.Id).then(() => {
+    editArtical(currentArtical.Name, currentSelectMark ? currentSelectMark : currentArtical.Mark, value, currentArtical.Id).then(() => {
       success();
     }).catch(() => {
       error();
@@ -89,7 +89,7 @@ const DemoEditor = ({ CurrentArtical }) => {
   return (
     <>
       {contextHolder}
-      <MdEditor placeholder="请输入Markdown文本" height={'calc(100vh - 94px)'} lineNum={false}
+      <MdEditor placeholder="请输入Markdown文本" lineNum={false}
         toolbar={toolbar} value={mdContent} onChange={handleEditorChange} onSave={handleEditorSave} addImg={uploadImg} />
     </>
   )

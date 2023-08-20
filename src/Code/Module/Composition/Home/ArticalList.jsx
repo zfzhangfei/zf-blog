@@ -1,30 +1,51 @@
-import React, { Component } from 'react'
-import { getArtical,getMark } from '../../Api/Api'
+import React, { Component, useSelector } from 'react'
+import { getArtical, getMark } from '../../Api/Api'
 import ArticalTitle from '../../../CommonComponent/ArticalTitle'
 import nolikeIcon from '../../Static/Image/取消点赞.png'
 import authorIcon from '../../Static/Image/用户.png'
 import { Divider, Space, Tag } from 'antd'
 import { wrap } from 'framer-motion'
-import RandomMark from '../../Common/RandomMark'
 import { connect } from 'react-redux';
 
 
 const mapStateToProps = state => ({
   dict: state
 });
+
 class ArticalList extends React.Component {
   state = {
     articalList: [],
   }
   componentDidMount = async () => {
-    console.log(this.props.dict, 'this.props.dict');
     this.setState({
       articalList: await getArtical()
     })
   }
 
+  splitMark = (str) => {
+    let arr = []
+    if (str.indexOf("/") != -1) {
+      arr = str.split("/");
+    }
+    else {
+      arr.push(str)
+    }
+    return arr
+  }
+
+  ShowArticalById = (Id) => {
+   this.props.ShowArticalById(Id)
+    // this.props.history.push({
+    //   pathname: `/article/${Id}`,
+    //   state: { Id }
+    // });
+  }
+
   render() {
-    const DICT_MARK = this.context;
+    const { dict } = this.props;
+    if (!dict.dictMark) {
+      return null;
+    }
     return (
       <div className='ArticalList'>
         {
@@ -36,37 +57,30 @@ class ArticalList extends React.Component {
                     <img src={item.Cover} alt="" width={170} height={170} style={{ objectFit: 'cover', borderRadius: '10px 0px 10px 0px' }} />
                   </div>
                   <div style={{ display: 'inline-block', verticalAlign: 'top' }}>
-                    <ArticalTitle Name={item.Name}></ArticalTitle>
-                    <div style={{
-                      margin: 10,
-                      width: 450,
-                      height: 65,
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: "vertical",
-                      wordWrap: 'break-word',
-                      textIndent: '2em'
-                    }}>
+                    <ArticalTitle Name={item.Name} ></ArticalTitle>
+                    <div
+                      className='ArticalSummary'
+                      style={{
+                        margin: 10,
+                        width: 450,
+                        height: 65,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                        wordWrap: 'break-word',
+                        textIndent: '2em'
+                      }}
+                      onClick={() => { this.ShowArticalById(item.Id) }}>
                       {item.Summary}
                     </div>
                     <div className='ArticalMark' style={{ margin: 10, width: 450, height: 60 }}>
                       <Space size={[0, 8]} wrap>
-                        {/* <Tag color="magenta">magenta</Tag>
-                        <Tag color="red">red</Tag>
-                        <Tag color="volcano">volcano</Tag>
-                        <Tag color="orange">orange</Tag>
-                        <Tag color="gold">gold</Tag>
-                        <Tag color="lime">lime</Tag>
-                        <Tag color="green">green</Tag>
-                        <Tag color="cyan">cyan</Tag>
-                        <Tag color="blue">blue</Tag>
-                        <Tag color="geekblue">geekblue</Tag>
-                        <Tag color="purple">purple</Tag> */}
-
                         {
-                          <RandomMark Mark={item.Name}></RandomMark>
+                          this.splitMark(item.Mark).map((value, index) => {
+                            return <Tag color={dict.dictMark[value].color} key={index}>{dict.dictMark[value].value}</Tag>
+                          })
                         }
                       </Space>
                     </div>
@@ -89,7 +103,7 @@ class ArticalList extends React.Component {
           }) : ''
         }
       </div>
-    ) 
+    )
   }
 }
 

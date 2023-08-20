@@ -5,6 +5,7 @@ import LifeBox from '../Composition/Home/LifeBox';
 import { login } from '../Api/Api'
 import ShowArtical from '../Composition/Home/ShowArtical';
 import ArticalList from '../Composition/Home/ArticalList';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import '../Css/Homepage.css'
 
 export default class Homepage extends Component {
@@ -13,8 +14,12 @@ export default class Homepage extends Component {
     componentDidMount = async () => {
         login()
     }
+    ShowArticalById = (value) => {
+        this.props.history.push('/Home/article/' + value)
+    }
 
     render() {
+        const { pathname } = this.props.location;
         const theme = this.context;
         return (
             <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
@@ -32,8 +37,15 @@ export default class Homepage extends Component {
                     </div>
                     <div id='Center'>
                         <div>
-                            {/* <ShowArtical></ShowArtical> */}
-                            <ArticalList></ArticalList>
+                            {pathname.indexOf("/Home") != -1 ? (
+                                <Router>
+                                    <Switch>
+                                        <Route path="/Home/article/:Id" component={ShowArtical} />
+                                    </Switch>
+                                </Router>
+                            ) : (
+                                <ArticalList ShowArticalById={this.ShowArticalById} />
+                            )}
                         </div>
                     </div>
                     <div id='Right'>

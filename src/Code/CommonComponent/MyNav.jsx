@@ -19,6 +19,12 @@ export default class MyNav extends Component {
                             <Link to="/" style={{ color: theme.navTextColor, textDecoration: 'none' }}>首页</Link>
                         </div>
                         <div className='MenuItem'>
+                            <Link to="/Marks" style={{ color: theme.navTextColor, textDecoration: 'none' }}>标签</Link>
+                        </div>
+                        <div className='MenuItem'>
+                            <Link to="/Historys" style={{ color: theme.navTextColor, textDecoration: 'none' }}>建站史</Link>
+                        </div>
+                        <div className='MenuItem'>
                             <Link to="/Settings" style={{ color: theme.navTextColor, textDecoration: 'none' }}>配置</Link>
                         </div>
                         <MyChangeThemeBtn changeTheme={this.changeTheme} theme={theme}></MyChangeThemeBtn>

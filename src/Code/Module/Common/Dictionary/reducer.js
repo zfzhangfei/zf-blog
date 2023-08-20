@@ -3,7 +3,6 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  console.log();
   switch (action.type) {
     case 'MARK_DICT':
       return {
