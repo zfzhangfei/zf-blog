@@ -379,6 +379,7 @@ router.get('/getArtical', (req, res) => {
 router.get('/getArticalById', (req, res) => {
   let sql = `SELECT * FROM artical WHERE artical.Id=? and artical.DeleteFlag = ? and artical.CreateBy = ?`
   let params = [
+    req.query.Id,
     0,
     CURRENT_USER.username,
   ]
