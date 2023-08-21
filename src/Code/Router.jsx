@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { lightTheme, darkTheme, getNavyBlueWhite, getDarkPurpleLightPurple, getPeachPinkCocoa } from '../Plugin/Theme/theme';
 import { ThemeContext } from '../Plugin/Theme/themeContext';
 import MyNav from "./CommonComponent/MyNav";
+import AuthRoute from "./authRoute";
+import Markspage from "./Module/Page/Markspage";
+import Historyspage from "./Module/Page/Historyspage";
 
 const themeMap = {
     'lightTheme': lightTheme,
@@ -30,14 +33,18 @@ export default class HomeRouter extends Component {
     render() {
         return (
             <ThemeContext.Provider value={this.state.theme}>
-                    <Router>
-                        <MyNav changeTheme={this.changeTheme}></MyNav>
-                        <Switch>
-                            <Route exact path="/" component={Homepage} />
-                            <Route path="/Home" component={Homepage} />
-                            <Route path="/Settings" component={Settingspage} />
-                        </Switch>
-                    </Router>
+                <Router>
+                    <MyNav changeTheme={this.changeTheme}></MyNav>
+                    <Switch>
+                        <Route exact path="/" render={(props) => <Homepage {...props} />} />
+                        <Route path="/Home" render={(props) => <Homepage {...props} />} />
+                        {/* <Route exact path="/" component={Homepage} />
+                        <Route path="/Home" component={Homepage} /> */}
+                        <Route path="/Settings" component={Settingspage} />
+                        <Route path="/Marks" component={Markspage} />
+                        <Route path="/Historys" component={Historyspage} />
+                    </Switch>
+                </Router>
             </ThemeContext.Provider>
         )
     }

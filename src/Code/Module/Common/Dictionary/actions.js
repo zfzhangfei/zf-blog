@@ -5,13 +5,13 @@ import { getRoles, genders, getMarkDictionary } from './dicts';
 export function fetchDict() {
   let tags = []
   return dispatch => {
-    getMarkDictionary().then(data => {
+      getMarkDictionary().then(data => {
       tags = data
       // 创建空字典
       let markDict = {};
       // 遍历数组,以Id为key填充字典  
       tags.forEach(tag => {
-        markDict[tag.Id] = tag.Value;
+        markDict[tag.Id] = {value:tag.Value,color:tag.Color};
       });
       dispatch({
         type: 'MARK_DICT',

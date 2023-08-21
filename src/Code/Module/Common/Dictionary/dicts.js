@@ -1,3 +1,4 @@
+import { async } from "q";
 import { getMark } from "../../Api/Api";
 
 export const genders = {
@@ -12,6 +13,6 @@ export function getRoles() {
     }
 }
 
-export function getMarkDictionary() {
-    return getMark()
+export  function getMarkDictionary() {
+    return  getMark();
 }
