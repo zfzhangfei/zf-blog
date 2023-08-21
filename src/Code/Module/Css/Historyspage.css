@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    width: 530px;
+    width: 700px;
 }
 
 .timeline-item:nth-child(even) {
@@ -21,12 +21,13 @@
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-    /* text-align: right; */
+    text-align: right;
 }
 
 .timeline-content {
     width: 45%;
-    padding: 10px;
+    padding-left: 10px;
+    text-align: right;
 }
 
 .timeline-date {
@@ -46,7 +47,6 @@
 }
 
 .timeline-item:nth-child(even):before {
-    left: auto;
-    right: 50%;
+    left: 50%;
 }
 /*#endregion*/
