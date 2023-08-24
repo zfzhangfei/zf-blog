@@ -7,9 +7,8 @@ import DemoEditor from '../../../../../Utils/MdEditor';
 import MyParagraph from '../../../../CommonComponent/MyParagraph';
 import SelectTags from '../../../../CommonComponent/SelectTags';
 
-const { Paragraph } = Typography;
-export default class ArticalConfig extends Component {
-
+export default class EditArticle extends Component {
+  
     state = {
         Content: null,
         ParagraphValue: '123',

@@ -4,8 +4,9 @@ import { ThemeContext } from '../../../Plugin/Theme/themeContext'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import SiderBar from '../Composition/Settings/SiderBar';
 import IntroductionConfig from '../Composition/Settings/IntroductionConfig/IntroductionConfig';
-import ArticalConfig from '../Composition/Settings/ArticalConfig/ArticalConfig';
+import ArticalConfig from '../Composition/Settings/ArticalTable/ArticalConfig';
 import MarkerConfig from '../Composition/Settings/MarkerConfig/MarkerConfig';
+import HistoryConfig from '../Composition/Settings/HistoryConfig/HistoryConfig';
 
 
 export default class Settingspage extends Component {
@@ -29,6 +30,7 @@ export default class Settingspage extends Component {
                         <Route path="/Settings/IntroductionConfig" component={IntroductionConfig} />
                         <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
                         <Route path="/Settings/MarkerConfig" component={MarkerConfig} />
+                        <Route path="/Settings/HistoryConfig" component={HistoryConfig} />
                     </Switch>
                 </div>
             </div>

@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import html from 'remark-html';
 import { getArticalById } from '../../Api/Api'
-// import rehypePrism from 'rehype-prism-plus'
-// import 'prismjs/themes/prism-tomorrow.css';
-// import 'prismjs/components/prism-jsx';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+import remarkGemoji from 'remark-gemoji'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import CodeCopyBtn from '../../../CommonComponent/codeCopyBtn';
@@ -23,6 +21,15 @@ export default class ShowArtical extends Component {
             })
         }
     }
+
+    handleAnchorClick=(event) =>{
+        event.preventDefault();
+        event.stopPropagation() 
+        const id = event.target.hash.substring(1);
+        document.getElementById(id).scrollIntoView(); 
+      }
+
+
     render() {
         const Pre = ({ children }) => <pre className="blog-pre">
             <CodeCopyBtn>{children}</CodeCopyBtn>
@@ -34,9 +41,15 @@ export default class ShowArtical extends Component {
                     this.state.htmlString ?
                         <ReactMarkdown
                             className='ArticalMarkDown'
-                            linkTarget='_blank'
                             rehypePlugins={[rehypeRaw]}
-                            remarkPlugins={[remarkGfm]}
+                            remarkPlugins={[remarkGfm,remarkGemoji]}
+                            onLinkClick={this.handleAnchorClick} 
+                            renderers={{
+                                heading: ({ node, ...props }) => {
+                                  const Tag = `h${node.depth}`;
+                                  return <Tag id={node.children[0].value} {...props} />; 
+                                }
+                              }}
                             components={{
                                 pre: Pre,
                                 code({ node, inline, className = "blog-code", children, ...props }) {

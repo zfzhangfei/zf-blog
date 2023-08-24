@@ -35,10 +35,6 @@ class ArticalList extends React.Component {
 
   ShowArticalById = (Id) => {
    this.props.ShowArticalById(Id)
-    // this.props.history.push({
-    //   pathname: `/article/${Id}`,
-    //   state: { Id }
-    // });
   }
 
   render() {
@@ -56,13 +52,13 @@ class ArticalList extends React.Component {
                   <div className='ArticalCover' style={{ display: 'inline-block', verticalAlign: 'middle' }}>
                     <img src={item.Cover} alt="" width={170} height={170} style={{ objectFit: 'cover', borderRadius: '10px 0px 10px 0px' }} />
                   </div>
-                  <div style={{ display: 'inline-block', verticalAlign: 'top' }}>
+                  <div style={{ display: 'inline-block', verticalAlign: 'top' ,width:'calc(100% - 170px)'}}>
                     <ArticalTitle Name={item.Name} ></ArticalTitle>
                     <div
                       className='ArticalSummary'
                       style={{
                         margin: 10,
-                        width: 450,
+                        width: '95%',
                         height: 65,
                         overflow: "hidden",
                         textOverflow: "ellipsis",
