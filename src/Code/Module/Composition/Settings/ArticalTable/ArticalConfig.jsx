@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
 function ArticalConfig(props) {
     const [articleData, setarticleData] = useState([]);
     const [dict, setdict] = useState(props.dict);
+    const [history,sethistory] = useState(props.history)
     useEffect(() => {
         setdict(props);
     }, []);
@@ -40,7 +41,7 @@ function ArticalConfig(props) {
     return (
         <div className='SettingsContent'>
             <div className='ArticalConfig'>
-                <ArticalTable data={articleData}></ArticalTable>
+                <ArticalTable data={articleData} history={history}></ArticalTable>
                 {/* <EditArticle></EditArticle> */}
             </div>
         </div>

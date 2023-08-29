@@ -7,16 +7,17 @@ import IntroductionConfig from '../Composition/Settings/IntroductionConfig/Intro
 import ArticalConfig from '../Composition/Settings/ArticalTable/ArticalConfig';
 import MarkerConfig from '../Composition/Settings/MarkerConfig/MarkerConfig';
 import HistoryConfig from '../Composition/Settings/HistoryConfig/HistoryConfig';
+import EditArticle from '../Composition/Settings/ArticalTable/EditArticle';
 
 
 export default class Settingspage extends Component {
     static contextType = ThemeContext;
 
-    state={
-        index:0
+    state = {
+        index: 0
     }
 
-    
+
 
 
     render() {
@@ -29,6 +30,7 @@ export default class Settingspage extends Component {
                         <Redirect exact from='/Settings' to="/Settings/IntroductionConfig" component={IntroductionConfig} />
                         <Route path="/Settings/IntroductionConfig" component={IntroductionConfig} />
                         <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
+                        {/* <Route path="/Settings/ArticalConfig/Edit" component={EditArticle} /> */}
                         <Route path="/Settings/MarkerConfig" component={MarkerConfig} />
                         <Route path="/Settings/HistoryConfig" component={HistoryConfig} />
                     </Switch>
