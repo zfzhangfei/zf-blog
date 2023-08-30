@@ -15,7 +15,7 @@ export default function SelectTags({ getSelectMark, currentArtical }) {
                 value: item.Id,
                 color: item.Color
             }))
-
+            console.log(opts, 'optsopts');
             setOptions(opts);
         }
 
@@ -43,7 +43,7 @@ export default function SelectTags({ getSelectMark, currentArtical }) {
         };
         return (
             <Tag
-                color={option.color}
+                color={option? option.color : ''}
                 value={value}
                 onMouseDown={onPreventMouseDown}
                 closable={closable}

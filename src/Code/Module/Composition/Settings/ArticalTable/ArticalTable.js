@@ -57,7 +57,6 @@ const ArticalTable = ({ data ,history}) => {
 
     const showEditPage = (record) => {
       // 将record传递给编辑页面
-      console.log(history,'historyhistory');
       history.push('/Settings/ArticalConfig/Edit/'+record.Id, record) 
     }
   

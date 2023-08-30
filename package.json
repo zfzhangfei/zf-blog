@@ -44,6 +44,7 @@
     "remark-html": "^15.0.2",
     "remark-math": "^5.1.1",
     "remark-parse": "^10.0.2",
+    "vditor": "^3.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

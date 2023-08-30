@@ -6,9 +6,10 @@ import { PlusOutlined } from '@ant-design/icons';
 import DemoEditor from '../../../../../Utils/MdEditor';
 import MyParagraph from '../../../../CommonComponent/MyParagraph';
 import SelectTags from '../../../../CommonComponent/SelectTags';
+import VditorEditor from '../../../../../Utils/VditorEditor';
 
 export default class EditArticle extends Component {
-  
+
     state = {
         Content: null,
         ParagraphValue: '123',
@@ -19,8 +20,12 @@ export default class EditArticle extends Component {
 
     componentDidMount = async () => {
         this.setState({
-            artical: await getArtical()
+            artical: await getArtical(),
+            currentArtical: this.props.location.state,
+            currentSelectMark: this.props.location.state.Mark
         })
+
+
     }
 
     getContent = (value) => {
@@ -31,32 +36,35 @@ export default class EditArticle extends Component {
     }
 
 
-    handleArtical = () => {
-        postArtical('新建文章', null, '').then
-            (async () => {
-                this.setState({
-                    artical: await getArtical()
-                })
-            })
+    // handleArtical = () => {
+    //     postArtical('新建文章', null, '').then
+    //         (async () => {
+    //             this.setState({
+    //                 artical: await getArtical()
+    //             })
+    //         })
 
-    }
+    // }
 
 
-    handleChange = (ArticalName, currentArtical) => {
-        editArtical(ArticalName, currentArtical.Mark, currentArtical.Content, currentArtical.Id)
-    }
+    // handleChange = (ArticalName, currentArtical) => {
+    //     editArtical(ArticalName, currentArtical.Mark, currentArtical.Content, currentArtical.Id)
+    // }
 
-    ChooseArtical = (editableStr, articalItem) => {
-        this.setState({
-            currentArtical: articalItem,
-        }, async () => {
-            this.setState({
-                artical: await getArtical()
-            })
-        })
-    }
+    // ChooseArtical = (editableStr, articalItem) => {
+    //     this.setState({
+    //         currentArtical: articalItem,
+    //     }, async () => {
+    //         this.setState({
+    //             artical: await getArtical()
+    //         })
+    //     })
+    // }
 
     getSelectMark = (value) => {
+        console.log('====================================');
+        console.log(value);
+        console.log('====================================');
         this.setState({
             currentSelectMark: value.join('/')
         })
@@ -65,34 +73,25 @@ export default class EditArticle extends Component {
     render() {
         return (
             <div className='SettingsContent'>
-                <Button onClick={() => { this.handleArtical() }} block type='primary'><PlusOutlined /></Button>
-                <SelectTags getSelectMark={this.getSelectMark} currentArtical={this.state.currentArtical}></SelectTags>
-                <div>
-                    <div style={{ display: 'inline-block', verticalAlign: 'top', width: '20%' }}>
-                        <div className='ArticalName'>
-                            {
-                                this.state.artical.map((item, index) => {
-                                    return (
-                                        <MyParagraph onChange={this.handleChange} articalItem={item} onClick={this.ChooseArtical} key={index}></MyParagraph>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
-                    <div style={{ display: 'inline-block', verticalAlign: 'top', width: '80%' }}>
-                        <div className='ArticalSummary'>
+                {/* <Button onClick={() => { this.handleArtical() }} block type='primary'><PlusOutlined /></Button> */}
+                <div style={{ width: '100%', height: 140 }}>
+                    <SelectTags getSelectMark={this.getSelectMark} currentArtical={this.state.currentArtical}></SelectTags>
+                    <div className='ArticalSummary'>
 
-                        </div>
-                        <div className='ArticalContent'>
-                            {
-                                this.state.currentArtical ?
-                                    <DemoEditor currentArtical={this.state.currentArtical} currentSelectMark={this.state.currentSelectMark}></DemoEditor> : ''
-                            }
-                        </div>
-                        <div className='ArticalMark'>
-
-                        </div>
                     </div>
+                    <div className='ArticalMark'>
+
+                    </div>
+                </div>
+                <div style={{ display: 'inline-block', verticalAlign: 'top', width: '100%',height:'calc(100vh - 200px)'}}>
+                    <div className='ArticalContent'>
+                        {
+                            this.state.currentArtical ?
+                                // <DemoEditor currentArtical={this.state.currentArtical} currentSelectMark={this.state.currentSelectMark}></DemoEditor> : ''
+                                <VditorEditor currentArtical={this.state.currentArtical}></VditorEditor>:''
+                        }
+                    </div>
+
                 </div>
             </div>
         )

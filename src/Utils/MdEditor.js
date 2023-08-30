@@ -89,8 +89,18 @@ const DemoEditor = ({ currentArtical, currentSelectMark }) => {
   return (
     <>
       {contextHolder}
-      <MdEditor placeholder="请输入Markdown文本" lineNum={false}
-        toolbar={toolbar} value={mdContent} onChange={handleEditorChange} onSave={handleEditorSave} addImg={uploadImg} />
+      <MdEditor
+        placeholder="请输入Markdown文本"
+        style={{
+          width: '100%',
+        }}
+        height="calc(100vh - 202px)"
+        lineNum={false}
+        toolbar={toolbar}
+        value={mdContent}
+        onChange={handleEditorChange}
+        onSave={handleEditorSave}
+        addImg={uploadImg} />
     </>
   )
 }

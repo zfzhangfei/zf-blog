@@ -42,7 +42,6 @@ function ArticalConfig(props) {
         <div className='SettingsContent'>
             <div className='ArticalConfig'>
                 <ArticalTable data={articleData} history={history}></ArticalTable>
-                {/* <EditArticle></EditArticle> */}
             </div>
         </div>
     )

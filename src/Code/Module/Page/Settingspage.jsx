@@ -30,7 +30,6 @@ export default class Settingspage extends Component {
                         <Redirect exact from='/Settings' to="/Settings/IntroductionConfig" component={IntroductionConfig} />
                         <Route path="/Settings/IntroductionConfig" component={IntroductionConfig} />
                         <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
-                        {/* <Route path="/Settings/ArticalConfig/Edit" component={EditArticle} /> */}
                         <Route path="/Settings/MarkerConfig" component={MarkerConfig} />
                         <Route path="/Settings/HistoryConfig" component={HistoryConfig} />
                     </Switch>
