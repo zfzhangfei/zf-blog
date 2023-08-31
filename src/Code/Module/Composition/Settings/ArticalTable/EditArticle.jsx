@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TextbusEditor from '../../../../../Plugin/Textbus/TextbusEditor'
 import { postArtical, getArtical, editArtical } from '../../../Api/Api';
-import { Button, Typography, Select ,message} from 'antd';
+import { Button, Typography, Select, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import DemoEditor from '../../../../../Utils/MdEditor';
 import MyParagraph from '../../../../CommonComponent/MyParagraph';
@@ -81,7 +81,7 @@ export default class EditArticle extends Component {
     }
 
     saveArticle = (articleContent) => {
-        //    console.log(articleContent,'articleContent');
+        console.log(articleContent, 'articleContent');
         this.setState(prevState => {
             return {
                 ...prevState,
@@ -96,9 +96,9 @@ export default class EditArticle extends Component {
     handleEditorSave() {
         const time = dayjs().format('HH:mm:ss');
         editArtical(this.state.currentArtical.Name, this.state.currentArtical.Mark, this.state.currentArtical.Content, this.state.currentArtical.Id).then(() => {
-            message.success('保存成功！'+time); 
+            message.success('保存成功！' + time);
         }).catch(() => {
-            message.error('保存失败！'+time);
+            message.error('保存失败！' + time);
 
         })
     }
@@ -109,7 +109,7 @@ export default class EditArticle extends Component {
                 {/* <Button onClick={() => { this.handleArtical() }} block type='primary'><PlusOutlined /></Button> */}
                 <div style={{ width: '100%', height: 140 }}>
                     <SelectTags getSelectMark={this.getSelectMark} currentArtical={this.state.currentArtical}></SelectTags>
-                    <Button onClick={() => { this.handleEditorSave() }} block type='primary'>保存</Button> 
+                    <Button onClick={() => { this.handleEditorSave() }} block type='primary'>保存</Button>
                     <div className='ArticalSummary'>
 
                     </div>
