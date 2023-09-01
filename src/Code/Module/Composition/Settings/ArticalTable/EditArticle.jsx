@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TextbusEditor from '../../../../../Plugin/Textbus/TextbusEditor'
 import { postArtical, getArtical, editArtical } from '../../../Api/Api';
-import { Button, Typography, Select, message, Input } from 'antd';
+import { Button, Typography, Select, message, Input, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import DemoEditor from '../../../../../Utils/MdEditor';
 import MyParagraph from '../../../../CommonComponent/MyParagraph';
@@ -17,7 +17,7 @@ export default class EditArticle extends Component {
         artical: [],
         currentArtical: null,
         Summary: null,
-        ArticalName:null,
+        ArticalName: null,
         // currentSelectMark: null,
     }
 
@@ -26,7 +26,7 @@ export default class EditArticle extends Component {
             artical: await getArtical(),
             currentArtical: this.props.location.state,
             Summary: this.props.location.state.Summary,
-            ArticalName:this.props.location.state.Name,
+            ArticalName: this.props.location.state.Name,
             // currentSelectMark: this.props.location.state.Mark
         })
 
@@ -121,7 +121,7 @@ export default class EditArticle extends Component {
         });
     }
 
-    handleArticalName=(value)=>{
+    handleArticalName = (value) => {
         this.setState({
             ArticalName: value
         })
@@ -141,18 +141,24 @@ export default class EditArticle extends Component {
             <div className='SettingsContent'>
 
                 <div style={{ width: '100%', height: 140 }}>
-                    <div className='ArticalName'>
-                        <Input value={this.state.ArticalName ? this.state.ArticalName : ''} onChange={(e) => { this.handleArticalName(e.target.value) }}></Input>
-                    </div>
-
-                    <Button onClick={() => { this.handleEditorSave() }} block type='primary'>保存</Button>
-
-                    <div className='ArticalSummary'>
-                        <Input value={this.state.Summary ? this.state.Summary : ''} onChange={(e) => { this.handleSummary(e.target.value) }}></Input>
-                    </div>
+                    <Space >
+                        <div className='ArticalName'>
+                            <Space>
+                                <label >文章名:    </label>
+                                <Input value={this.state.ArticalName ? this.state.ArticalName : ''} onChange={(e) => { this.handleArticalName(e.target.value) }} style={{ width: 500 }}></Input>
+                            </Space>
+                        </div>
+                        <div className='ArticalSummary'>
+                            <Space>
+                                <label >文章简介:    </label>
+                                <Input value={this.state.Summary ? this.state.Summary : ''} onChange={(e) => { this.handleSummary(e.target.value) }} style={{ width: 500 }}></Input>
+                            </Space>
+                        </div>
+                    </Space>
                     <div className='ArticalMark'>
                         <SelectTags getSelectMark={this.getSelectMark} currentArtical={this.state.currentArtical}></SelectTags>
                     </div>
+                    <Button onClick={() => { this.handleEditorSave() }} block type='primary'>保存</Button>
                 </div>
                 <div style={{ display: 'inline-block', verticalAlign: 'top', width: '100%', height: 'calc(100vh - 200px)' }}>
                     <div className='ArticalContent'>
