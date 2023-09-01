@@ -309,6 +309,7 @@ router.post('/putArtical', (req, res) => {
     Name,  
     Mark,
     Content,
+    Cover,
     Author,
     CreateBy,
     CreateTime
@@ -317,6 +318,7 @@ router.post('/putArtical', (req, res) => {
     req.body.Name,
     req.body.Mark,
     req.body.Content,
+    req.body.Cover,
     CURRENT_USER.username,
     CURRENT_USER.username,
     CURRENT_TIMESTAMP,
@@ -336,11 +338,12 @@ router.post('/putArtical', (req, res) => {
 
 //#region 编辑
 router.post('/editArtical', (req, res) => {
- let sql=`UPDATE artical SET Name=?,Mark=?,Content = ?,Author=?,UpdateBy=?,UpdateTime=? WHERE Id = ?`
+ let sql=`UPDATE artical SET Name=?,Mark=?,Content = ?,Summary=?,Author=?,UpdateBy=?,UpdateTime=? WHERE Id = ?`
   let params = [
     req.body.Name,
     req.body.Mark,
     req.body.Content,
+    req.body.Summary,
     CURRENT_USER.username,
     CURRENT_USER.username,
     CURRENT_TIMESTAMP,
