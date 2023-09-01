@@ -24,7 +24,7 @@ class ArticalList extends React.Component {
 
   splitMark = (str) => {
     let arr = []
-    if (str.indexOf("/") != -1) {
+    if (str && str.indexOf("/") != -1) {
       arr = str.split("/");
     }
     else {
@@ -34,7 +34,7 @@ class ArticalList extends React.Component {
   }
 
   ShowArticalById = (Id) => {
-   this.props.ShowArticalById(Id)
+    this.props.ShowArticalById(Id)
   }
 
   render() {
@@ -52,7 +52,7 @@ class ArticalList extends React.Component {
                   <div className='ArticalCover' style={{ display: 'inline-block', verticalAlign: 'middle' }}>
                     <img src={item.Cover} alt="" width={170} height={170} style={{ objectFit: 'cover', borderRadius: '10px 0px 10px 0px' }} />
                   </div>
-                  <div style={{ display: 'inline-block', verticalAlign: 'top' ,width:'calc(100% - 170px)'}}>
+                  <div style={{ display: 'inline-block', verticalAlign: 'top', width: 'calc(100% - 170px)' }}>
                     <ArticalTitle Name={item.Name} ></ArticalTitle>
                     <div
                       className='ArticalSummary'
@@ -74,9 +74,9 @@ class ArticalList extends React.Component {
                     <div className='ArticalMark' style={{ margin: 10, width: 450, height: 60 }}>
                       <Space size={[0, 8]} wrap>
                         {
-                          this.splitMark(item.Mark).map((value, index) => {
+                          item.Mark?this.splitMark(item.Mark).map((value, index) => {
                             return <Tag color={dict.dictMark[value].color} key={index}>{dict.dictMark[value].value}</Tag>
-                          })
+                          }):''
                         }
                       </Space>
                     </div>

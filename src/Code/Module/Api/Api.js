@@ -80,22 +80,24 @@ export function postSkillIcon(imgUrl, file, link) {
 
 //#region 文章
 //#region 增加
-export async function postArtical(Name, Mark, Content) {
+export async function postArtical(Name, Mark, Content,Cover) {
     let params = {
         Name:Name,
         Mark:Mark,
         Content:Content,
+        Cover:Cover
     }
     await post('/putArtical', params)
 }
 //#endregion
 
 //#region 编辑
-export async function editArtical(Name, Mark, Content,Id) {
+export async function editArtical(Name, Mark, Content,Summary,Id) {
     let params = {
         Name:Name,
         Mark:Mark,
         Content:Content,
+        Summary:Summary,
         Id:Id,
     }
     await post('/editArtical', params)

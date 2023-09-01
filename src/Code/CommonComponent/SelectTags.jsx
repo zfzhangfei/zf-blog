@@ -23,7 +23,7 @@ export default function SelectTags({ getSelectMark, currentArtical }) {
     }, []);
 
     useEffect(() => {
-        if (currentArtical) {
+        if (currentArtical&&currentArtical.Mark) {
             const marks = currentArtical.Mark.split("/").map(x => parseInt(x));
             setSelectedValues(marks);
         }

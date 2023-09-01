@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { Space, Table, Tag } from 'antd';
 import { connect } from 'react-redux';
 import EditArticle from './EditArticle';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { postArtical, getArtical } from '../../../Api/Api';
+import { Button } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 
 
-const ArticalTable = ({ data ,history}) => {
+const ArticalTable = ({ data, history }) => {
+   const [dataSource, setdataSource] = useState(data)
+   useEffect(() => {
+    setdataSource(data);
+  }, [data]);
+
+
     const columns = [
         {
             title: '文章名',
             dataIndex: 'Name',
             key: 'Name',
-            render: (text) => <a>{text}</a>,
         },
         {
             title: '简介',
@@ -33,13 +41,13 @@ const ArticalTable = ({ data ,history}) => {
             dataIndex: 'tags',
             render: (_, { tags }) => (
                 <>
-                    {tags.map((tag) => {
+                    {tags?tags.map((tag) => {
                         return (
                             <Tag color={tag.color} key={tag.value}>
                                 {tag.value}
                             </Tag>
                         );
-                    })}
+                    }):''}
                 </>
             ),
         },
@@ -56,11 +64,18 @@ const ArticalTable = ({ data ,history}) => {
     ];
 
     const showEditPage = (record) => {
-      // 将record传递给编辑页面
-      history.push('/Settings/ArticalConfig/Edit/'+record.Id, record) 
+        // 将record传递给编辑页面
+        history.push('/Settings/ArticalConfig/Edit/' + record.Id, record)
     }
-  
-    
+
+
+    const handleArtical = async () => {
+        await postArtical('新建文章', null, '','https://zfblog.su.bcebos.com/zfblogpicture/%E5%85%83%E6%B0%94%E6%BB%A1%E6%BB%A1.webp');
+        const newArtical = await getArtical();
+        setdataSource(newArtical);
+    }
+
+
     return (
         history.location.pathname.indexOf("Settings/ArticalConfig/Edit") != -1 ? (
             <Router>
@@ -69,10 +84,13 @@ const ArticalTable = ({ data ,history}) => {
                 </Switch>
             </Router>
         ) : (
-            <Table columns={columns} dataSource={data} />
+            <div>
+                <Button onClick={() => { handleArtical()}} block type='primary'><PlusOutlined /></Button>
+                <Table columns={columns} dataSource={dataSource} />
+            </div>
         )
     );
-  };
-  
+};
+
 
 export default ArticalTable
