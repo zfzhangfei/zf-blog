@@ -1,18 +1,14 @@
 #Main #Settingspage {
     height: calc(100vh - 60px);
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    /* position: relative; */
     display: flex;
     flex-direction: row;
 }
 
 #Settingspage .SettingsContent {
-    /* width: 1200px; */
     width:calc(100vw - 300px);
     height: calc(100vh - 60px);
+    min-width: 800px;
+    position: relative;
 }
 
 
@@ -82,14 +78,39 @@
 
 
 /*#region 文章*/
-.ArticalName div:hover{
-    background-color: pink;
+
+
+/*#endregion*/
+
+
+
+
+/*#region 标签*/
+.MarkerConfig{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 50%;
+}
+.MarkList{
+    border: 3px dashed #9B59B6;
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
 }
 
 /*#endregion*/
 
 
 
+
+/*#region 建站历史*/
+
+
+/*#endregion*/
 
 
 

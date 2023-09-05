@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import html from 'remark-html';
 import { getArticalById } from '../../Api/Api'
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -8,11 +7,28 @@ import remarkGemoji from 'remark-gemoji'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import CodeCopyBtn from '../../../CommonComponent/codeCopyBtn';
+import 'github-markdown-css/github-markdown.css';
+import '../../Css/Markdown.css'
 import { Empty } from 'antd';
+import remarkToc from 'remark-toc';
+
+function Toc({ toc }) {
+    console.log(toc, 'cccccccccccccc');
+    return (
+        <div className="toc">
+            {toc.map(item => (
+                <a key={item.id} href={`#${item.id}`}>
+                    {item.text}
+                </a>
+            ))}
+        </div>
+    )
+}
+
 
 export default class ShowArtical extends Component {
     state = {
-        htmlString: null
+        htmlString: null,
     }
     componentDidMount = async () => {
         if (this.props.match.params) {
@@ -22,12 +38,14 @@ export default class ShowArtical extends Component {
         }
     }
 
-    handleAnchorClick=(event) =>{
+    handleAnchorClick = (event) => {
         event.preventDefault();
-        event.stopPropagation() 
+        event.stopPropagation()
         const id = event.target.hash.substring(1);
-        document.getElementById(id).scrollIntoView(); 
-      }
+        document.getElementById(id).scrollIntoView();
+    }
+
+
 
 
     render() {
@@ -37,21 +55,27 @@ export default class ShowArtical extends Component {
         </pre>
         return (
             <div className='ShowArtical'>
+                <div style={{ width: '100%', height: 200, background: 'pink' }}>
+                    {this.state.toc &&
+                        <Toc toc={this.state.toc} />
+                    }
+                </div>
                 {
                     this.state.htmlString ?
                         <ReactMarkdown
                             className='ArticalMarkDown'
                             rehypePlugins={[rehypeRaw]}
-                            remarkPlugins={[remarkGfm,remarkGemoji]}
-                            onLinkClick={this.handleAnchorClick} 
-                            renderers={{
-                                heading: ({ node, ...props }) => {
-                                  const Tag = `h${node.depth}`;
-                                  return <Tag id={node.children[0].value} {...props} />; 
-                                }
-                              }}
+                            remarkPlugins={[remarkGfm, remarkGemoji, remarkToc]}
+                            onRender={({toc}) => {
+                               console.log(toc,'cccccccccccc')
+                              }}  
+                            onLinkClick={this.handleAnchorClick}
                             components={{
                                 pre: Pre,
+                                heading: ({ node, ...props }) => {
+                                    const Tag = `h${node.depth}`;
+                                    return <Tag id={node.children[0].value} {...props} />;
+                                },
                                 code({ node, inline, className = "blog-code", children, ...props }) {
                                     const match = /language-(\w+)/.exec(className || '')
                                     return !inline && match ? (

@@ -7,7 +7,7 @@ const VditorEditor = ({ currentArtical, saveArticle }) => {
 
   React.useEffect(() => {
     const vditor = new Vditor("vditor", {
-      mode: "sv",
+     // mode: "sv",
       height: "calc(100vh - 200px)",
       after: () => {
         vditor.setValue(currentArtical.Content);
@@ -17,6 +17,10 @@ const VditorEditor = ({ currentArtical, saveArticle }) => {
         // 输入变化时保存当前值 
         saveArticle(value);
       },
+      hashtag(token, index) {
+        return '❤️';
+      }  
+
     });
   }, []);
 
@@ -25,10 +29,3 @@ const VditorEditor = ({ currentArtical, saveArticle }) => {
 };
 
 export default VditorEditor;
-
-
-
-
-
-
-
