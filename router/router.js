@@ -216,7 +216,7 @@ router.post('/EditMaxim', (req, res) => {
 
 
 
-//#region 图片的增删改查
+//#region 图标的增删改查
 
 //#region 增
 router.post('/putBosPicture', (req, res) => {
@@ -313,7 +313,7 @@ router.post('/putArtical', (req, res) => {
     Author,
     CreateBy,
     CreateTime
-  ) VALUES (?, ?, ?, ?,?,?)`
+  ) VALUES (?, ?, ?, ?,?,?,?)`
   let params = [
     req.body.Name,
     req.body.Mark,
@@ -322,7 +322,6 @@ router.post('/putArtical', (req, res) => {
     CURRENT_USER.username,
     CURRENT_USER.username,
     CURRENT_TIMESTAMP,
-    req.body.Id,
   ]
   db.query(sql, params, (err, results) => {
     if (err) {
@@ -338,7 +337,7 @@ router.post('/putArtical', (req, res) => {
 
 //#region 编辑
 router.post('/editArtical', (req, res) => {
- let sql=`UPDATE artical SET Name=?,Mark=?,Content = ?,Summary=?,Author=?,UpdateBy=?,UpdateTime=? WHERE Id = ?`
+  let sql = `UPDATE artical SET Name=?,Mark=?,Content = ?,Summary=?,Author=?,UpdateBy=?,UpdateTime=? WHERE Id = ?`
   let params = [
     req.body.Name,
     req.body.Mark,
@@ -363,7 +362,7 @@ router.post('/editArtical', (req, res) => {
 
 //#region 查
 router.get('/getArtical', (req, res) => {
-  let sql = `SELECT * FROM artical WHERE artical.DeleteFlag = ? and artical.CreateBy = ?`
+  let sql = `SELECT * FROM artical WHERE artical.DeleteFlag = ? and artical.CreateBy = ? ORDER BY artical.id DESC`
   let params = [
     0,
     CURRENT_USER.username,
@@ -380,7 +379,7 @@ router.get('/getArtical', (req, res) => {
 })
 
 router.get('/getArticalById', (req, res) => {
-  let sql = `SELECT * FROM artical WHERE artical.Id=? and artical.DeleteFlag = ? and artical.CreateBy = ?`
+  let sql = `SELECT * FROM artical WHERE artical.Id=? and artical.DeleteFlag = ? and artical.CreateBy = ? ORDER BY artical.id DESC`
   let params = [
     req.query.Id,
     0,
@@ -406,6 +405,53 @@ router.get('/getArticalById', (req, res) => {
 
 
 //#region 标签
+//#region 新增
+router.post('/putMark', (req, res) => {
+  let sql = ` INSERT INTO dictionary_mark (
+    Value,
+    Color,
+    CreateBy,
+    CreateTime
+  ) VALUES (?, ?, ?, ?)`
+  let params = [
+    req.body.Value,
+    req.body.Color,
+    CURRENT_USER.username,
+    CURRENT_TIMESTAMP,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
+//#region 删
+router.post('/deleteMark', (req, res) => {
+  let sql = `UPDATE dictionary_mark SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [
+    1,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.username,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
 //#region 查
 router.get('/getMark', (req, res) => {
   let sql = `SELECT * FROM dictionary_mark WHERE dictionary_mark.DeleteFlag = ? and dictionary_mark.CreateBy = ?`
