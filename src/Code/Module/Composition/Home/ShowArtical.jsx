@@ -11,6 +11,8 @@ import 'github-markdown-css/github-markdown.css';
 import '../../Css/Markdown.css'
 import { Empty } from 'antd';
 import remarkToc from 'remark-toc';
+import { remark } from 'remark';
+import { toc } from 'mdast-util-toc';
 
 function Toc({ toc }) {
     console.log(toc, 'cccccccccccccc');
@@ -26,14 +28,41 @@ function Toc({ toc }) {
 }
 
 
+
+
 export default class ShowArtical extends Component {
     state = {
         htmlString: null,
     }
     componentDidMount = async () => {
         if (this.props.match.params) {
+            let Article = await getArticalById(this.props.match.params.Id)
+
+            // 1. 获取 AST
+            const ast = remark().parse(Article.Content)
+
+            // // 2. 从 AST 提取标题  
+            const headings = ast.children.map(heading => {
+                if (heading.type == 'heading') {
+                    return (
+                        heading.children.map((item, index) => {
+                            console.log(item, 'sssssssss');
+                            return {
+                                id: index,
+                                text: item.value,
+                            }
+                        })
+                    )
+                }
+                return
+            })
+
+
             this.setState({
-                htmlString: await getArticalById(this.props.match.params.Id)
+                htmlString: Article,
+                toc: headings
+            }, () => {
+                console.log(ast, headings, 'Article.Content,Article.Content,')
             })
         }
     }
@@ -56,9 +85,7 @@ export default class ShowArtical extends Component {
         return (
             <div className='ShowArtical'>
                 <div style={{ width: '100%', height: 200, background: 'pink' }}>
-                    {this.state.toc &&
-                        <Toc toc={this.state.toc} />
-                    }
+                    {/* <Toc items={this.state.toc} /> */}
                 </div>
                 {
                     this.state.htmlString ?
@@ -66,9 +93,6 @@ export default class ShowArtical extends Component {
                             className='ArticalMarkDown'
                             rehypePlugins={[rehypeRaw]}
                             remarkPlugins={[remarkGfm, remarkGemoji, remarkToc]}
-                            onRender={({toc}) => {
-                               console.log(toc,'cccccccccccc')
-                              }}  
                             onLinkClick={this.handleAnchorClick}
                             components={{
                                 pre: Pre,
