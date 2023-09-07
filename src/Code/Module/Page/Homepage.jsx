@@ -3,19 +3,30 @@ import { ThemeContext } from '../../../Plugin/Theme/themeContext'
 import Introduction from '../Composition/Home/Introduction';
 import LifeBox from '../Composition/Home/LifeBox';
 import { login } from '../Api/Api'
-import ShowArtical from '../Composition/Home/ShowArtical';
+import ShowArtical from '../Composition/Home/ShowArtical/ShowArtical';
 import ArticalList from '../Composition/Home/ArticalList';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import '../Css/Homepage.css'
+import Directory from '../Composition/Home/Directory/Directory';
 
 export default class Homepage extends Component {
     static contextType = ThemeContext;
+    state = {
+        directList: null
+    }
 
     componentDidMount = async () => {
         login()
     }
     ShowArticalById = (value) => {
         this.props.history.push('/Home/article/' + value)
+    }
+
+    updateArticleInfo = (info) => {
+        console.log(info, 'infoinfo');
+        this.setState({
+            directList: info
+        })
     }
 
     render() {
@@ -40,7 +51,7 @@ export default class Homepage extends Component {
                             {pathname.indexOf("/Home") != -1 ? (
                                 <Router>
                                     <Switch>
-                                        <Route path="/Home/article/:Id" component={ShowArtical} />
+                                        <Route path="/Home/article/:Id" render={(props) => <ShowArtical {...props} directList={this.state.directList} onUpdate={this.updateArticleInfo} />} />
                                     </Switch>
                                 </Router>
                             ) : (
@@ -49,7 +60,7 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                     <div id='Right'>
-
+                        {this.state.directList && <Directory directList={this.state.directList} ></Directory>}
                     </div>
                 </div>
             </div>

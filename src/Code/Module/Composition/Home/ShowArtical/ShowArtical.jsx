@@ -1,68 +1,51 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { getArticalById } from '../../Api/Api'
+import { getArticalById } from '../../../Api/Api'
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import remarkGemoji from 'remark-gemoji'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import CodeCopyBtn from '../../../CommonComponent/codeCopyBtn';
+import CodeCopyBtn from '../../../../CommonComponent/codeCopyBtn';
 import 'github-markdown-css/github-markdown.css';
-import '../../Css/Markdown.css'
+import '../../../Css/Markdown.css'
 import { Empty } from 'antd';
 import remarkToc from 'remark-toc';
 import { remark } from 'remark';
 import { toc } from 'mdast-util-toc';
-
-function Toc({ toc }) {
-    console.log(toc, 'cccccccccccccc');
-    return (
-        <div className="toc">
-            {toc.map(item => (
-                <a key={item.id} href={`#${item.id}`}>
-                    {item.text}
-                </a>
-            ))}
-        </div>
-    )
-}
-
+import remarkSlug from 'remark-slug';
 
 
 
 export default class ShowArtical extends Component {
     state = {
         htmlString: null,
+        toc: null,
     }
     componentDidMount = async () => {
         if (this.props.match.params) {
             let Article = await getArticalById(this.props.match.params.Id)
-
             // 1. 获取 AST
             const ast = remark().parse(Article.Content)
-
+            console.log(remark(), 'remark()remark()');
             // // 2. 从 AST 提取标题  
-            const headings = ast.children.map(heading => {
-                if (heading.type == 'heading') {
-                    return (
-                        heading.children.map((item, index) => {
-                            console.log(item, 'sssssssss');
-                            return {
-                                id: index,
-                                text: item.value,
-                            }
-                        })
-                    )
-                }
-                return
-            })
-
-
+            const headings = ast.children
+                .filter(node => node.type === 'heading')
+                .map(heading => {
+                    console.log(heading, 'heading')
+                    // 从 children 中取文本 
+                    const text = heading.children[0].value;
+                    // 生成 ID 
+                    const id = text.toLowerCase().replace(/\s/g, '-');
+                    return {
+                        id,
+                        text
+                    };
+                });
             this.setState({
                 htmlString: Article,
-                toc: headings
             }, () => {
-                console.log(ast, headings, 'Article.Content,Article.Content,')
+                this.props.onUpdate(headings)
             })
         }
     }
@@ -84,22 +67,15 @@ export default class ShowArtical extends Component {
         </pre>
         return (
             <div className='ShowArtical'>
-                <div style={{ width: '100%', height: 200, background: 'pink' }}>
-                    {/* <Toc items={this.state.toc} /> */}
-                </div>
                 {
                     this.state.htmlString ?
                         <ReactMarkdown
                             className='ArticalMarkDown'
                             rehypePlugins={[rehypeRaw]}
-                            remarkPlugins={[remarkGfm, remarkGemoji, remarkToc]}
+                            remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
                             onLinkClick={this.handleAnchorClick}
                             components={{
                                 pre: Pre,
-                                heading: ({ node, ...props }) => {
-                                    const Tag = `h${node.depth}`;
-                                    return <Tag id={node.children[0].value} {...props} />;
-                                },
                                 code({ node, inline, className = "blog-code", children, ...props }) {
                                     const match = /language-(\w+)/.exec(className || '')
                                     return !inline && match ? (
