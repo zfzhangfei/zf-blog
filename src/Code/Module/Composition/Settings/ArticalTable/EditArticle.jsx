@@ -40,39 +40,7 @@ export default class EditArticle extends Component {
 
     }
 
-
-    // handleArtical = () => {
-    //     postArtical('新建文章', null, '').then
-    //         (async () => {
-    //             this.setState({
-    //                 artical: await getArtical()
-    //             })
-    //         })
-
-    // }
-
-
-    // handleChange = (ArticalName, currentArtical) => {
-    //     editArtical(ArticalName, currentArtical.Mark, currentArtical.Content, currentArtical.Id)
-    // }
-
-    // ChooseArtical = (editableStr, articalItem) => {
-    //     this.setState({
-    //         currentArtical: articalItem,
-    //     }, async () => {
-    //         this.setState({
-    //             artical: await getArtical()
-    //         })
-    //     })
-    // }
-
     getSelectMark = (value) => {
-        // console.log('====================================');
-        // console.log(value);
-        // console.log('====================================');
-        // this.setState({
-        //     currentSelectMark: value.join('/')
-        // })
         this.setState(prevState => {
             return {
                 ...prevState,

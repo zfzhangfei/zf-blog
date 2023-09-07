@@ -25,10 +25,3 @@ const VditorEditor = ({ currentArtical, saveArticle }) => {
 };
 
 export default VditorEditor;
-
-
-
-
-
-
-

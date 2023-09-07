@@ -128,10 +128,36 @@ export async function getArticalById(Id) {
 
 
 //#region 标签
+
+//#region 增加
+export async function putMark(Value, Color) {
+    let params = {
+        Value:Value,
+        Color:Color,
+    }
+    await post('/putMark', params)
+}
+//#endregion
+
+//#region 删除
+export async function deleteMark(key) {
+    let params = {
+        key: key,
+    }
+   const results = await post('/deleteMark', params);
+   return results.res;
+}
+//#endregion
+
+
+//#region 查
 export async function getMark() {
     const results = await get('/getMark')
     return results.res;
 }
+//#endregion
+
+
 //#endregion
 
 
