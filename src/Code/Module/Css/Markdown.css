@@ -2,12 +2,31 @@
     content: "🌸";
 }
 
+.vditor h1::before {
+    content: "🌸";
+}
+
+
+
 .ArticalMarkDown li::marker {
     font-size: 1.5em;
-    content: "🌼"; 
-  }
+    content: "🌼";
+}
+
+.vditor li::marker {
+    font-size: 1.5em;
+    content: "🌼";
+}
+
 
 .ArticalMarkDown blockquote {
+    border: 3px dashed #9B59B6;
+    border-radius: 8px;
+    background-color: #D7BDE2;
+    padding: 0 16px;
+}
+
+.vditor blockquote {
     border: 3px dashed #9B59B6;
     border-radius: 8px;
     background-color: #D7BDE2;

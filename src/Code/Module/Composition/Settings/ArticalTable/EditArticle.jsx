@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import TextbusEditor from '../../../../../Plugin/Textbus/TextbusEditor'
 import { postArtical, getArtical, editArtical } from '../../../Api/Api';
 import { Button, Typography, Select, message, Input, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
