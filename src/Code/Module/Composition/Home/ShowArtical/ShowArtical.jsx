@@ -7,13 +7,11 @@ import remarkGemoji from 'remark-gemoji'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import CodeCopyBtn from '../../../../CommonComponent/codeCopyBtn';
-import 'github-markdown-css/github-markdown.css';
+// import 'github-markdown-css/github-markdown.css';
 import '../../../Css/Markdown.css'
 import { Empty } from 'antd';
 import remarkToc from 'remark-toc';
 import { remark } from 'remark';
-import { toc } from 'mdast-util-toc';
-import remarkSlug from 'remark-slug';
 
 
 
@@ -23,6 +21,7 @@ export default class ShowArtical extends Component {
         toc: null,
     }
     componentDidMount = async () => {
+        let Article = await getArticalById(this.props.match.params.Id)
         if (this.props.match.params) {
             let Article = await getArticalById(this.props.match.params.Id)
             // 1. 获取 AST
@@ -72,7 +71,7 @@ export default class ShowArtical extends Component {
                         <ReactMarkdown
                             className='ArticalMarkDown'
                             rehypePlugins={[rehypeRaw]}
-                            remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
+                            remarkPlugins={[remarkGfm, remarkGemoji, remarkToc]} 
                             onLinkClick={this.handleAnchorClick}
                             components={{
                                 pre: Pre,

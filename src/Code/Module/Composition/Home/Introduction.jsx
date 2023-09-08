@@ -34,7 +34,7 @@ export default class Introduction extends Component {
                             return (
                                 <a href={item.Href} target='_blank' key={index} style={{ width: 50, height: 50,margin:5}}><img src={item.BosPath} alt={item.BosName} style={{ width: 25, height: 25 }} /></a>
                             )
-                        }) : ''
+                        }) : '' 
                     }
                 </div>
             </div>
