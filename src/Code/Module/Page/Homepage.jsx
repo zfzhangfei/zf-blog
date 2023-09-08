@@ -60,7 +60,7 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                     <div id='Right'>
-                        {this.state.directList && <Directory directList={this.state.directList} ></Directory>}
+                        {pathname.indexOf("/Home/article") != -1  && <Directory directList={this.state.directList} ></Directory>}
                     </div>
                 </div>
             </div>
