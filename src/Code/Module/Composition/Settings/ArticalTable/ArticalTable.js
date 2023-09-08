@@ -3,7 +3,7 @@ import { Space, Table, Tag } from 'antd';
 import { connect } from 'react-redux';
 import EditArticle from './EditArticle';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { postArtical, getArtical } from '../../../Api/Api';
+import { postArtical, getArtical } from '../../../../Api/Api';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 

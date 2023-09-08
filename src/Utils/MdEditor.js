@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import MdEditor from 'for-editor'
-import { postArtical, editArtical } from "../Code/Module/Api/Api";
+import { postArtical, editArtical } from "../Code/Api/Api";
 import { message } from "antd";
 import dayjs from 'dayjs';
 

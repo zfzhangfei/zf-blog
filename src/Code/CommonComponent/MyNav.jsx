@@ -22,8 +22,11 @@ export default class MyNav extends Component {
                             <Link to="/Marks" style={{ color: theme.navTextColor, textDecoration: 'none' }}>标签</Link>
                         </div>
                         <div className='MenuItem'>
-                            <Link to="/Historys" style={{ color: theme.navTextColor, textDecoration: 'none' }}>建站史</Link>
+                            <Link to="/FriendLink" style={{ color: theme.navTextColor, textDecoration: 'none' }}>友情链接</Link>
                         </div>
+                        {/* <div className='MenuItem'>
+                            <Link to="/Historys" style={{ color: theme.navTextColor, textDecoration: 'none' }}>建站史</Link>
+                        </div> */}
                         <div className='MenuItem'>
                             <Link to="/Settings" style={{ color: theme.navTextColor, textDecoration: 'none' }}>配置</Link>
                         </div>

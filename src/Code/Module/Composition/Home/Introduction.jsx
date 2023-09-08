@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Avatar } from 'antd';
-import { getSkillIcon, getCurrentUser } from '../../Api/Api'
+import { getSkillIcon, getCurrentUser } from '../../../Api/Api'
 
 export default class Introduction extends Component {
     state = {

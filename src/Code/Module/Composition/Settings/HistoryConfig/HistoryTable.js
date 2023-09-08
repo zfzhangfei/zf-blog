@@ -49,5 +49,5 @@ const columns = [
   },
 ];
 
-const HistoryTable = ({data}) => <Table columns={columns} dataSource={data} />;
+const HistoryTable = ({data}) => <Table columns={columns} dataSource={data}/>;
 export default HistoryTable;

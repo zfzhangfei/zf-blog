@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Space, Input, Button, message } from 'antd';
-import { editMaxim, getCurrentUser ,login} from '../../../Api/Api'
+import { editMaxim, getCurrentUser ,login} from '../../../../../Api/Api'
 
 
 export default class MaximInput extends Component {

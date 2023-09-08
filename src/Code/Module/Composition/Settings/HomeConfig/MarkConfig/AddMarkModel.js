@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Input, Modal, message } from 'antd';
 import ColorSelect from './ColorSelect';
-import { putMark } from '../../../Api/Api';
+import { putMark } from '../../../../../Api/Api';
 
 
 const colors = ['magenta', 'red', 'orange','volcano','gold','lime','green','cyan','blue','geekblue','purple'];
@@ -32,7 +32,7 @@ const AddMarkModel = () => {
     const handleCancel = () => {
         setIsModalOpen(false);
         destroy()
-    };
+    }; 
     const destroy = () => {
         setMarkName('')
         setSelectedColor('')

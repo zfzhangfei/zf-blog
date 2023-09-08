@@ -1,5 +1,5 @@
 import React, { Component, useSelector } from 'react'
-import { getArtical, getMark } from '../../Api/Api'
+import { getArtical, getMark } from '../../../Api/Api'
 import ArticalTitle from '../../../CommonComponent/ArticalTitle'
 import nolikeIcon from '../../Static/Image/取消点赞.png'
 import authorIcon from '../../Static/Image/用户.png'

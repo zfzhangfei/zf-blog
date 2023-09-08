@@ -1,4 +1,4 @@
-import { get, post } from '../../../Utils/request'
+import { get, post } from '../../Utils/request'
 let currentUser = {}
 
 //#region 用户

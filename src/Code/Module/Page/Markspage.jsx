@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ThemeContext } from '../../../Plugin/Theme/themeContext';
 import '../Css/Markspage.css'
-import { getMark } from '../Api/Api';
+import { getMark } from '../../Api/Api';
 
 
 export default class Markspage extends Component {
