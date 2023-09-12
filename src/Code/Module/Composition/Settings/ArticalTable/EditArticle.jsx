@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { postArtical, getArtical, editArtical } from '../../../../Api/Api';
-import { Button, Typography, Select, message, Input, Space } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import DemoEditor from '../../../../../Utils/MdEditor';
-import MyParagraph from '../../../../CommonComponent/MyParagraph';
+import { getArtical, editArtical } from '../../../../Api/Api';
+import { Button, message, Input, Space } from 'antd';
 import SelectTags from '../../../../CommonComponent/SelectTags';
 import VditorEditor from '../../../../../Utils/VditorEditor';
 import dayjs from 'dayjs';

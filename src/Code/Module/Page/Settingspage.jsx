@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../Css/Settingspage.css'
-import { ThemeContext } from '../../../Plugin/Theme/themeContext'
+import { ThemeContext } from '../../../Utils/Theme/themeContext'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import SiderBar from '../Composition/Settings/SiderBar';
 import IntroductionConfig from '../Composition/Settings/HomeConfig/IntroductionConfig/IntroductionConfig';

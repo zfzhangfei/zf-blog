@@ -1,8 +1,8 @@
 import Router from './Code/Router'
 import React, { Component ,useEffect} from 'react'
 import { post, get } from './Utils/request';
-import store from './Code/Module/Common/Dictionary/store';
-import { fetchDict } from './Code/Module/Common/Dictionary/actions';
+import store from './Code/CommonComponent/Dictionary/store';
+import { fetchDict } from './Code/CommonComponent/Dictionary/actions';
 
 Component.prototype.get = get
 Component.prototype.post = post

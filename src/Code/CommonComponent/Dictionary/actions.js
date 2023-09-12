@@ -1,5 +1,5 @@
 import store from './store';
-import { getMark } from '../../../Api/Api';
+import { getMark } from '../../Api/Api';
 import { getRoles, genders, getMarkDictionary } from './dicts';
 
 export function fetchDict() {

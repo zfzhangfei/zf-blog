@@ -12,7 +12,7 @@ import '../../../Css/Markdown.css'
 import { Empty } from 'antd';
 import remarkToc from 'remark-toc';
 import { remark } from 'remark';
-import { toc } from 'mdast-util-toc';
+import Comment from '../Comment/Comment';
 import remarkSlug from 'remark-slug';
 
 
@@ -68,7 +68,7 @@ export default class ShowArtical extends Component {
         return (
             <div className='ShowArtical'>
                 {
-                    this.state.htmlString ?
+                    this.state.htmlString && this.state.htmlString.Content ?
                         <ReactMarkdown
                             className='ArticalMarkDown'
                             rehypePlugins={[rehypeRaw]}
@@ -97,6 +97,9 @@ export default class ShowArtical extends Component {
                         >
                             {this.state.htmlString.Content}
                         </ReactMarkdown> : <Empty></Empty>
+                }
+                {
+                    <Comment></Comment>
                 }
             </div>
         )

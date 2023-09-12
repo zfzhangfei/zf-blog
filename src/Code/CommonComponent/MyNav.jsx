@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import MyChangeThemeBtn from './MyChangeThemeBtn'
-import { ThemeContext } from '../../Plugin/Theme/themeContext';
+import { ThemeContext } from '../../Utils/Theme/themeContext';
 import './Componet.css'
 
 export default class MyNav extends Component {

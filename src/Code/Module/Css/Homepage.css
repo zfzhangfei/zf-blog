@@ -146,13 +146,13 @@
 /*#endregion*/
 
 /*#region 文章显示ShowArtical*/
-#Left .ShowArtical {
-    padding-left: 20px;
-    padding-right: 20px;
+#Center .ShowArtical {
+    padding: 20px;
 }
 
 .ShowArtical .ArticalMarkDown {
     position: relative;
+
 }
 
 .ShowArtical .blog-pre {

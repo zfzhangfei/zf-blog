@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ThemeContext } from '../../../Plugin/Theme/themeContext'
+import { ThemeContext } from '../../../Utils/Theme/themeContext'
 import Introduction from '../Composition/Home/Introduction';
 import LifeBox from '../Composition/Home/LifeBox';
 import { login } from '../../Api/Api'

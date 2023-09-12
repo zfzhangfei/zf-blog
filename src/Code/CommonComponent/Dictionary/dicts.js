@@ -1,5 +1,5 @@
 import { async } from "q";
-import { getMark } from "../../../Api/Api";
+import { getMark } from "../../Api/Api";
 
 export const genders = {
     male: '男',

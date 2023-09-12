@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ThemeContext } from '../../../Plugin/Theme/themeContext';
+import { ThemeContext } from '../../../Utils/Theme/themeContext';
 import '../Css/Historyspage.css'
 import Timeline from '../Composition/Historys/Timeline/Timeline';
 

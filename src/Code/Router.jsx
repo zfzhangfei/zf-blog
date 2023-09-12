@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Settingspage from "./Module/Page/Settingspage";
 import Homepage from "./Module/Page/Homepage";
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { lightTheme, darkTheme, getNavyBlueWhite, getDarkPurpleLightPurple, getPeachPinkCocoa } from '../Plugin/Theme/theme';
-import { ThemeContext } from '../Plugin/Theme/themeContext';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { lightTheme, darkTheme, getNavyBlueWhite, getDarkPurpleLightPurple, getPeachPinkCocoa } from '../Utils/Theme/theme';
+import {ThemeContext} from '../Utils/Theme/themeContext'
 import MyNav from "./CommonComponent/MyNav";
 import AuthRoute from "./authRoute";
 import Markspage from "./Module/Page/Markspage";
