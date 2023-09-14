@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import zhCN from "antd/locale/zh_CN";
 import { ConfigProvider } from "antd";
 import { Provider } from 'react-redux';
-import store from './Code/Module/Common/Dictionary/store';
+import store from './Code/CommonComponent/Dictionary/store';
 import { GlobalProvider} from './Utils/GlobalProvider';
 
 
