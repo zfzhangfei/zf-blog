@@ -6,7 +6,7 @@ import EmojiPicker from './EmojiPicker'
 
 export default class Comment extends Component {
   state = {
-    CommentContent: null
+    CommentContent: ''
   }
 
 

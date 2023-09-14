@@ -14,7 +14,7 @@ import remarkToc from 'remark-toc';
 import { remark } from 'remark';
 import Comment from '../Comment/Comment';
 import remarkSlug from 'remark-slug';
-
+import { GlobalProvider, GlobalContext } from '../../../../../Utils/GlobalProvider';
 
 
 export default class ShowArtical extends Component {
@@ -66,42 +66,51 @@ export default class ShowArtical extends Component {
             {children}
         </pre>
         return (
-            <div className='ShowArtical'>
-                {
-                    this.state.htmlString && this.state.htmlString.Content ?
-                        <ReactMarkdown
-                            className='ArticalMarkDown'
-                            rehypePlugins={[rehypeRaw]}
-                            remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
-                            onLinkClick={this.handleAnchorClick}
-                            components={{
-                                pre: Pre,
-                                code({ node, inline, className = "blog-code", children, ...props }) {
-                                    const match = /language-(\w+)/.exec(className || '')
-                                    return !inline && match ? (
-                                        <SyntaxHighlighter
-                                            style={a11yDark}
-                                            language={match[1]}
-                                            PreTag="div"
-                                            {...props}
-                                        >
-                                            {String(children).replace(/\n$/, '')}
-                                        </SyntaxHighlighter>
-                                    ) : (
-                                        <code className={className} {...props}>
-                                            {children}
-                                        </code>
-                                    )
-                                }
-                            }}
-                        >
-                            {this.state.htmlString.Content}
-                        </ReactMarkdown> : <Empty></Empty>
-                }
-                {
-                    <Comment></Comment>
-                }
-            </div>
+            <GlobalContext.Consumer>
+                {context => (
+                    <div className='ShowArtical'>
+                        {
+                            this.state.htmlString && this.state.htmlString.Content ?
+                                <ReactMarkdown
+                                    className='ArticalMarkDown'
+                                    rehypePlugins={[rehypeRaw]}
+                                    remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
+                                    onLinkClick={this.handleAnchorClick}
+                                    components={{
+                                        pre: Pre,
+                                        code({ node, inline, className = "blog-code", children, ...props }) {
+                                            const match = /language-(\w+)/.exec(className || '')
+                                            return !inline && match ? (
+                                                <SyntaxHighlighter
+                                                    style={a11yDark}
+                                                    language={match[1]}
+                                                    PreTag="div"
+                                                    {...props}
+                                                >
+                                                    {String(children).replace(/\n$/, '')}
+                                                </SyntaxHighlighter>
+                                            ) : (
+                                                <code className={className} {...props}>
+                                                    {children}
+                                                </code>
+                                            )
+                                        }
+                                    }}
+                                >
+                                    {this.state.htmlString.Content}
+                                </ReactMarkdown> : <Empty></Empty>
+                        }
+                        {
+                            <Comment></Comment>
+                        }
+                        {
+                            <div>
+                                Name:{context.state.CurrentUser.username}
+                            </div>
+                        }
+                    </div>
+                )}
+            </GlobalContext.Consumer>
         )
     }
 } 
