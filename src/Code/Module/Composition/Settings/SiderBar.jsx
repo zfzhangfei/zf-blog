@@ -30,7 +30,7 @@ export default class SiderBar extends Component {
                         onClick={() => {
                             localStorage.setItem('activeIndex', 0);
                             this.setState({ index: 0 })
-                        }}>主题</p>
+                        }}>首页</p>
                 </SidebarLink>
                 <SidebarLink to="/Settings/ArticalConfig"
                     className={index === 1 ? 'active' : ''}
@@ -42,7 +42,7 @@ export default class SiderBar extends Component {
                             this.setState({ index: 1 })
                         }}>文章</p>
                 </SidebarLink>
-                <SidebarLink to="/Settings/MarkerConfig"
+                {/* <SidebarLink to="/Settings/MarkerConfig"
                     className={index === 2 ? 'active' : ''}
                     IsActive={index === 2}
                     theme={this.props.theme}>
@@ -51,7 +51,7 @@ export default class SiderBar extends Component {
                             localStorage.setItem('activeIndex', 2);
                             this.setState({ index: 2 })
                         }}>标签</p>
-                </SidebarLink>
+                </SidebarLink> */}
                 <SidebarLink to="/Settings/HistoryConfig"
                     className={index === 3 ? 'active' : ''}
                     IsActive={index === 3}

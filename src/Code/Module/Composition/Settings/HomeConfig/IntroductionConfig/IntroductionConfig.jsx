@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Space } from 'antd';
-import '../../../Css/Settingspage.css'
+import '../../../../Css/Settingspage.css'
 import UploadAvatar from './UploadAvatar'
 import MaximInput from './MaximInput'
 import SkillIcon from './SkillIcon'
@@ -14,7 +14,7 @@ export default class IntroductionConfig extends Component {
 
     render() {
         return (
-            <div className='SettingsContent'>
+            <div>
                  <div className='IntroductionConfig'>
                 <Space.Compact block>
                     <UploadAvatar ></UploadAvatar>

@@ -3,8 +3,8 @@ import { Upload, Avatar, Image } from 'antd';
 import {
     PlusOutlined,
 } from '@ant-design/icons';
-import { uploadImg, downloadImg } from '../../../../../Utils/BaiduClient';
-import { editAvatar, getCurrentUser,login } from '../../../Api/Api'
+import { uploadImg, downloadImg } from '../../../../../../Utils/BaiduClient';
+import { editAvatar, getCurrentUser,login } from '../../../../../Api/Api'
 
 
 export default class UploadAvatar extends Component {

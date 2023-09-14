@@ -7,16 +7,19 @@ import zhCN from "antd/locale/zh_CN";
 import { ConfigProvider } from "antd";
 import { Provider } from 'react-redux';
 import store from './Code/Module/Common/Dictionary/store';
+import { GlobalProvider} from './Utils/GlobalProvider';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
+  <GlobalProvider>
   <Provider store={store} >
       <ConfigProvider locale={zhCN}>
         <App />
       </ConfigProvider>
   </Provider>
+  </GlobalProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

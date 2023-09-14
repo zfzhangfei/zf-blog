@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Select, Tag } from 'antd';
-import { getMark } from '../Module/Api/Api';
+import { getMark } from '../Api/Api';
 
 export default function SelectTags({ getSelectMark, currentArtical }) {
     const [options, setOptions] = useState([]);

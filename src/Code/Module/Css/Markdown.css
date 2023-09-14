@@ -17,6 +17,9 @@
     font-size: 1.5em;
     content: "🌼";
 }
+.vditor li>p {
+ margin-left: 25px;
+}
 
 
 .ArticalMarkDown blockquote {

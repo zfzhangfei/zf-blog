@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import EditArticle from './EditArticle'
 import ArticalTable from './ArticalTable';
-import { getArtical, getMark,postArtical } from '../../../Api/Api';
+import { getArtical, getMark,postArtical } from '../../../../Api/Api';
 import { connect } from 'react-redux';
 
 

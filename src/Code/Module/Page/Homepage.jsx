@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { ThemeContext } from '../../../Plugin/Theme/themeContext'
+import { ThemeContext } from '../../../Utils/Theme/themeContext'
 import Introduction from '../Composition/Home/Introduction';
 import LifeBox from '../Composition/Home/LifeBox';
-import { login } from '../Api/Api'
+import { login } from '../../Api/Api'
 import ShowArtical from '../Composition/Home/ShowArtical/ShowArtical';
 import ArticalList from '../Composition/Home/ArticalList';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';

@@ -1,10 +1,9 @@
 import "vditor/dist/index.css";
-import "../Code/Module/Css/Markdown.css"
+import "../../Code/Module/Css/Markdown.css"
 import React from "react";
 import Vditor from "vditor";
 
 const VditorEditor = ({ currentArtical, saveArticle }) => {
-  const [vd, setVd] = React.useState('1');
 
   React.useEffect(() => {
     const vditor = new Vditor("vditor", {
@@ -12,7 +11,6 @@ const VditorEditor = ({ currentArtical, saveArticle }) => {
       height: "calc(100vh - 200px)",
       after: () => {
         vditor.setValue(currentArtical.Content);
-        setVd(vditor);
       },
       input(value) {
         // 输入变化时保存当前值 
@@ -21,8 +19,12 @@ const VditorEditor = ({ currentArtical, saveArticle }) => {
     });
   }, []);
 
-
   return <div id="vditor" className="vditor" height="1000px" />;
 };
 
 export default VditorEditor;
+
+
+
+
+

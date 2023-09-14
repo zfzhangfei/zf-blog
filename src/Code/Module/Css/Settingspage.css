@@ -5,9 +5,12 @@
 }
 
 #Settingspage .SettingsContent {
-    width:calc(100vw - 300px);
-    height: calc(100vh - 60px);
+    /* width:calc(100vw - 300px);
+    height: calc(100vh - 60px); */
+    width: 100%;
+    margin: 10px;
     min-width: 800px;
+    overflow: hidden;
     position: relative;
 }
 
@@ -36,44 +39,86 @@
 
 
 
-/*#region 主题*/
+
+
+/*#region 首页*/
+/*#region 个人简介模块*/
+
 /*#region 头像设置*/
-#Settingspage .UploadAvatar {
+#IntroductionConfig .UploadAvatar {
     width: 100%;
     text-align: center;
     padding: 10px;
 }
 
-#Settingspage .UploadBox:hover {
+#IntroductionConfig .UploadBox:hover {
     cursor: pointer;
 }
 /*#endregion*/
 
 /*#region 格言设置*/
-#Settingspage .MaximInput {
+#IntroductionConfig .MaximInput {
     width: 100%;
 }
 /*#endregion*/
 
 /*#region 技能图标设置*/
-#Settingspage .SkllIconBox {
+#IntroductionConfig .SkllIconBox {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 10fr;
 }
 
-#Settingspage .SkllIcons {
+#IntroductionConfig .SkllIcons {
     display: inline-block;
     vertical-align: middle;
 }
 
-#Settingspage .SkllIconButton {
+#IntroductionConfig .SkllIconButton {
     height: 100%;
     display: flex;
     align-items: center;
 }
 /*#endregion*/
+
+
+#IntroductionConfig{
+    /* width: 380px; */
+    /* height: 280px; */
+    background-color: #fff;
+    padding: 10px;
+}
+
 /*#endregion*/
+
+/*#region 标签模块*/
+#MarkConfig{
+    /* width: 580px; */
+    /* height: 480px; */
+    background-color: #fff;
+    padding: 10px;
+}
+.MarkList{
+    /* border: 3px dashed #9B59B6; */
+    /* height: 280px; */
+    flex: 1;
+    border-radius: 10px;
+    padding: 10px;
+}
+/*#endregion*/
+
+.HomeConfig{
+    display: flex;
+    flex-direction: column; 
+    height: 100%;
+}
+/*#region 分类模块*/
+
+/*#endregion*/
+
+/*#endregion*/
+
+
 
 
 
@@ -82,27 +127,6 @@
 
 /*#endregion*/
 
-
-
-
-/*#region 标签*/
-.MarkerConfig{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 50%;
-    height: 50%;
-}
-.MarkList{
-    border: 3px dashed #9B59B6;
-    border-radius: 10px;
-    padding: 20px;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-}
-
-/*#endregion*/
 
 
 

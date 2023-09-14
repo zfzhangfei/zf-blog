@@ -17,3 +17,29 @@ export default function Toc({ toc }) {
         </div>
     )
 }
+
+
+
+
+// import React from 'react';
+// import { Anchor } from 'antd';
+
+// export default function Toc({ toc }) {
+//     console.log(toc, 'cccccccccccccc');
+//     let tocList = toc.map((item, index) => {
+//         return ({
+//             key: index + 1,
+//             href: `#${item.id}`,
+//             title: item.text,
+//         })
+//     })
+//     console.log(tocList, 'sssssssss');
+//     return (
+//         <div className="toc">
+//             <Anchor
+//                 affix={false}
+//                 items={tocList}
+//             />
+//         </div>
+//     )
+// }

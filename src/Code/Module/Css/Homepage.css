@@ -40,7 +40,6 @@
 #Main #Right {
     width: 300px;
     height: 100%;
-    background-color: #fff;
 }
 
 /*#endregion*/
@@ -147,13 +146,13 @@
 /*#endregion*/
 
 /*#region 文章显示ShowArtical*/
-#Left .ShowArtical {
-    padding-left: 20px;
-    padding-right: 20px;
+#Center .ShowArtical {
+    padding: 20px;
 }
 
 .ShowArtical .ArticalMarkDown {
     position: relative;
+
 }
 
 .ShowArtical .blog-pre {
@@ -185,7 +184,7 @@
 #Right .Directory {
     width: 240px;
     height: 400px;
-    background-color: pink;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     margin: 10px;
     padding: 20px;
