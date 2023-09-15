@@ -6,12 +6,22 @@ const jwt = require("jsonwebtoken");
 const router = express.Router()
 
 let db = con.handleDisconnection()
+
 const now = new Date();
 let CURRENT_TIMESTAMP = now.toLocaleString()
 let CURRENT_USER = {
   id: null,
   username: null,
 }
+
+
+function getCurrentUser() {
+  return CURRENT_USER; // return current value
+}
+
+
+
+
 
 // 处理数据的函数
 // data 数据
@@ -28,6 +38,7 @@ let getChildren = function (data, root) {
 }
 //左侧管理列表(管理员)
 router.get('/manage', (req, res) => {
+  mysql
   let sql = `SELECT * FROM management_taskes`
   db.query({
     sql: sql
@@ -78,15 +89,6 @@ router.post('/adduser', (req, res) => {
     }
   });
 });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -214,263 +216,4 @@ router.post('/EditMaxim', (req, res) => {
 
 
 
-
-
-//#region 图标的增删改查
-
-//#region 增
-router.post('/putBosPicture', (req, res) => {
-  let sql = ` INSERT INTO bos_picture (
-    BosRegion,  
-    BosBucket,
-    BosPath,
-    BosName,
-    BosExtention,
-    Size, 
-    CreateBy,
-    PictureType,
-    Href,
-    CreateTime
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`
-  let params = [
-    'https://zfblog.su.bcebos.com',
-    'zfblog',
-    req.body.BosPath,
-    req.body.BosName,
-    '',
-    0,
-    CURRENT_USER.username,
-    req.body.PictureType,
-    req.body.Href,
-    CURRENT_TIMESTAMP,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-
-//#region 删
-router.post('/DeleteBosPicture', (req, res) => {
-  let sql = `UPDATE bos_picture SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
-  let params = [
-    1,
-    CURRENT_TIMESTAMP,
-    CURRENT_USER.username,
-    req.body.key,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-
-//#region 查
-router.get('/getBosPicture', (req, res) => {
-  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ? and bos_picture.CreateBy = ?`
-  let params = [
-    req.query.type,
-    0,
-    CURRENT_USER.username,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-//#endregion
-
-
-
-
-
-//#region 文章
-//#region 新增
-router.post('/putArtical', (req, res) => {
-  let sql = ` INSERT INTO artical (
-    Name,  
-    Mark,
-    Content,
-    Cover,
-    Author,
-    CreateBy,
-    CreateTime
-  ) VALUES (?, ?, ?, ?,?,?,?)`
-  let params = [
-    req.body.Name,
-    req.body.Mark,
-    req.body.Content,
-    req.body.Cover,
-    CURRENT_USER.username,
-    CURRENT_USER.username,
-    CURRENT_TIMESTAMP,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-
-//#region 编辑
-router.post('/editArtical', (req, res) => {
-  let sql = `UPDATE artical SET Name=?,Mark=?,Content = ?,Summary=?,Author=?,UpdateBy=?,UpdateTime=? WHERE Id = ?`
-  let params = [
-    req.body.Name,
-    req.body.Mark,
-    req.body.Content,
-    req.body.Summary,
-    CURRENT_USER.username,
-    CURRENT_USER.username,
-    CURRENT_TIMESTAMP,
-    req.body.Id,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-
-//#region 查
-router.get('/getArtical', (req, res) => {
-  let sql = `SELECT * FROM artical WHERE artical.DeleteFlag = ? and artical.CreateBy = ? ORDER BY artical.id DESC`
-  let params = [
-    0,
-    CURRENT_USER.username,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-
-router.get('/getArticalById', (req, res) => {
-  let sql = `SELECT * FROM artical WHERE artical.Id=? and artical.DeleteFlag = ? and artical.CreateBy = ? ORDER BY artical.id DESC`
-  let params = [
-    req.query.Id,
-    0,
-    CURRENT_USER.username,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-
-//#endregion
-
-
-
-
-
-
-//#region 标签
-//#region 新增
-router.post('/putMark', (req, res) => {
-  let sql = ` INSERT INTO dictionary_mark (
-    Value,
-    Color,
-    CreateBy,
-    CreateTime
-  ) VALUES (?, ?, ?, ?)`
-  let params = [
-    req.body.Value,
-    req.body.Color,
-    CURRENT_USER.username,
-    CURRENT_TIMESTAMP,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-
-//#region 删
-router.post('/deleteMark', (req, res) => {
-  let sql = `UPDATE dictionary_mark SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
-  let params = [
-    1,
-    CURRENT_TIMESTAMP,
-    CURRENT_USER.username,
-    req.body.key,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-
-//#region 查
-router.get('/getMark', (req, res) => {
-  let sql = `SELECT * FROM dictionary_mark WHERE dictionary_mark.DeleteFlag = ? and dictionary_mark.CreateBy = ?`
-  let params = [
-    0,
-    CURRENT_USER.username,
-  ]
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(JSON.stringify({
-        res: results
-      }));
-    }
-  })
-})
-//#endregion
-//#endregion
-
-
-module.exports = router
+module.exports = { router, getCurrentUser }
