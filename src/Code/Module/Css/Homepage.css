@@ -1,15 +1,12 @@
-#Main {
-    position: absolute;
-    height: calc(100vh - 60px);
-    overflow-x: hidden;
+#Main #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
 }
 
 #Main #Homepage {
-    height: calc(100vh - 60px);
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
     display: flex;
     flex-direction: row;
 }
@@ -27,7 +24,6 @@
     flex: 1;
     min-width: 700px;
     height: 100%;
-    overflow-y: scroll;
 }
 
 #Main #Center::-webkit-scrollbar {
@@ -148,6 +144,10 @@
 /*#region 文章显示ShowArtical*/
 #Center .ShowArtical {
     padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .ShowArtical .ArticalMarkDown {
@@ -196,4 +196,65 @@
     text-decoration: none;
 }
 
+/*#endregion*/
+
+/*#region 展示评论,父亲节点*/
+.ShowComment {
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.ShowCommentList {
+    margin-top: 50px;
+}
+
+.SingleCommentBox {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+/*#endregion*/
+
+
+
+/*#region 展示评论，子节点*/
+.LeafCommentLeafBox {
+    width: calc(100%-100px);
+    margin-left: 100px;
+    border-radius: 20px;
+    background-color: #dbdbdb;
+    padding: 10px;
+    height: 100px;
+    display: flex;
+}
+
+/*#endregion*/
+
+
+
+
+/*#region 展示评论*/
+/*#endregion*/
+
+
+
+
+
+/*#region 展示评论*/
+/*#endregion*/
+
+
+
+
+/*#region 展示评论*/
+/*#endregion*/
+
+
+
+
+
+/*#region 展示评论*/
 /*#endregion*/

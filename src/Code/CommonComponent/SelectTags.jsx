@@ -15,7 +15,6 @@ export default function SelectTags({ getSelectMark, currentArtical }) {
                 value: item.Id,
                 color: item.Color
             }))
-            console.log(opts, 'optsopts');
             setOptions(opts);
         }
 

@@ -3,7 +3,6 @@ import Toc from './Toc'
 
 export default class Directory extends Component {
     componentDidMount = () => {
-        console.log(this.props.directList, 'directList={this.state.directList} directList={this.state.directList} ');
     }
     render() {
         return (

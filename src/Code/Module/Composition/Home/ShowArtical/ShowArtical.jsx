@@ -15,6 +15,7 @@ import { remark } from 'remark';
 import Comment from '../Comment/Comment';
 import remarkSlug from 'remark-slug';
 import { GlobalProvider, GlobalContext } from '../../../../../Utils/GlobalProvider';
+import ArticalTitle from '../../../../CommonComponent/ArticalTitle';
 
 
 export default class ShowArtical extends Component {
@@ -27,12 +28,10 @@ export default class ShowArtical extends Component {
             let Article = await getArticalById(this.props.match.params.Id)
             // 1. 获取 AST
             const ast = remark().parse(Article.Content)
-            console.log(remark(), 'remark()remark()');
             // // 2. 从 AST 提取标题  
             const headings = ast.children
                 .filter(node => node.type === 'heading')
                 .map(heading => {
-                    console.log(heading, 'heading')
                     // 从 children 中取文本 
                     const text = heading.children[0].value;
                     // 生成 ID 
@@ -68,46 +67,46 @@ export default class ShowArtical extends Component {
         return (
             <GlobalContext.Consumer>
                 {context => (
-                    <div className='ShowArtical'>
-                        {
-                            this.state.htmlString && this.state.htmlString.Content ?
-                                <ReactMarkdown
-                                    className='ArticalMarkDown'
-                                    rehypePlugins={[rehypeRaw]}
-                                    remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
-                                    onLinkClick={this.handleAnchorClick}
-                                    components={{
-                                        pre: Pre,
-                                        code({ node, inline, className = "blog-code", children, ...props }) {
-                                            const match = /language-(\w+)/.exec(className || '')
-                                            return !inline && match ? (
-                                                <SyntaxHighlighter
-                                                    style={a11yDark}
-                                                    language={match[1]}
-                                                    PreTag="div"
-                                                    {...props}
-                                                >
-                                                    {String(children).replace(/\n$/, '')}
-                                                </SyntaxHighlighter>
-                                            ) : (
-                                                <code className={className} {...props}>
-                                                    {children}
-                                                </code>
-                                            )
-                                        }
-                                    }}
-                                >
-                                    {this.state.htmlString.Content}
-                                </ReactMarkdown> : <Empty></Empty>
-                        }
-                        {
+                    <div style={{marginTop:10}}>
+                        <ArticalTitle Name={'文章'}></ArticalTitle>
+                        <div className='ShowArtical'>
+                            {
+                                this.state.htmlString && this.state.htmlString.Content ?
+                                    <ReactMarkdown
+                                        className='ArticalMarkDown'
+                                        rehypePlugins={[rehypeRaw]}
+                                        remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
+                                        onLinkClick={this.handleAnchorClick}
+                                        components={{
+                                            pre: Pre,
+                                            code({ node, inline, className = "blog-code", children, ...props }) {
+                                                const match = /language-(\w+)/.exec(className || '')
+                                                return !inline && match ? (
+                                                    <SyntaxHighlighter
+                                                        style={a11yDark}
+                                                        language={match[1]}
+                                                        PreTag="div"
+                                                        {...props}
+                                                    >
+                                                        {String(children).replace(/\n$/, '')}
+                                                    </SyntaxHighlighter>
+                                                ) : (
+                                                    <code className={className} {...props}>
+                                                        {children}
+                                                    </code>
+                                                )
+                                            }
+                                        }}
+                                    >
+                                        {this.state.htmlString.Content}
+                                    </ReactMarkdown> : <Empty></Empty>
+                            }
+
+                        </div>
+                        <ArticalTitle Name={'评论'}></ArticalTitle>
+                        <div className='ShowComment'>
                             <Comment></Comment>
-                        }
-                        {
-                            <div>
-                                Name:{context.state.CurrentUser.username}
-                            </div>
-                        }
+                        </div>
                     </div>
                 )}
             </GlobalContext.Consumer>

@@ -10,7 +10,6 @@ export default class MarkConfig extends Component {
     }
 
     componentDidMount = async () => {
-        console.log(await getMark(), 'getMark()getMark()getMark()');
         this.setState({
             markList: await getMark()
         })

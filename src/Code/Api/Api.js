@@ -80,25 +80,25 @@ export function postSkillIcon(imgUrl, file, link) {
 
 //#region 文章
 //#region 增加
-export async function postArtical(Name, Mark, Content,Cover) {
+export async function postArtical(Name, Mark, Content, Cover) {
     let params = {
-        Name:Name,
-        Mark:Mark,
-        Content:Content,
-        Cover:Cover
+        Name: Name,
+        Mark: Mark,
+        Content: Content,
+        Cover: Cover
     }
     await post('/putArtical', params)
 }
 //#endregion
 
 //#region 编辑
-export async function editArtical(Name, Mark, Content,Summary,Id) {
+export async function editArtical(Name, Mark, Content, Summary, Id) {
     let params = {
-        Name:Name,
-        Mark:Mark,
-        Content:Content,
-        Summary:Summary,
-        Id:Id,
+        Name: Name,
+        Mark: Mark,
+        Content: Content,
+        Summary: Summary,
+        Id: Id,
     }
     await post('/editArtical', params)
 }
@@ -111,10 +111,10 @@ export async function getArtical() {
 }
 
 export async function getArticalById(Id) {
-    let params={
-        Id:Id
+    let params = {
+        Id: Id
     }
-    const results = await get('/getArticalById',params)
+    const results = await get('/getArticalById', params)
     return results.res[0];
 }
 
@@ -132,8 +132,8 @@ export async function getArticalById(Id) {
 //#region 增加
 export async function putMark(Value, Color) {
     let params = {
-        Value:Value,
-        Color:Color,
+        Value: Value,
+        Color: Color,
     }
     await post('/putMark', params)
 }
@@ -144,8 +144,8 @@ export async function deleteMark(key) {
     let params = {
         key: key,
     }
-   const results = await post('/deleteMark', params);
-   return results.res;
+    const results = await post('/deleteMark', params);
+    return results.res;
 }
 //#endregion
 
@@ -165,3 +165,32 @@ export async function getMark() {
 
 
 
+//#region 评论
+
+//#region 增加
+export async function postComment(ArticleId,Parents, Content, IsLeaf, IsLike) {
+    let params = {
+        ArticleId:5,
+        Parents: 0,
+        Content: '232323',
+        IsLeaf: 0,
+        IsLike: 0,
+    }
+   await post('/postComment', params)
+}
+//#endregion
+
+//#region 删除
+
+//#endregion
+
+
+//#region 查
+export async function getComment() {
+    const results = await get('/getComment')
+    return results.res;
+}
+//#endregion
+
+
+//#endregion

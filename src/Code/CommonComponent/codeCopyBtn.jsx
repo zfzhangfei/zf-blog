@@ -12,7 +12,6 @@ export default function CodeCopyBtn({ children }) {
         const clipboard = new ClipboardJS('.code-copy-btn', {
             text: () => children[0].props.children[0]
         });
-        console.log(clipboard,'clipboardclipboard');
         // 监听复制成功事件
         clipboard.on('success', () => {
             setCopyOk(true);

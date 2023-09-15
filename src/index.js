@@ -7,18 +7,18 @@ import zhCN from "antd/locale/zh_CN";
 import { ConfigProvider } from "antd";
 import { Provider } from 'react-redux';
 import store from './Code/CommonComponent/Dictionary/store';
-import { GlobalProvider, GlobalContext } from './Utils/GlobalProvider';
+import { GlobalProvider} from './Utils/GlobalProvider';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <GlobalProvider>
-    <Provider store={store} >
+  <Provider store={store} >
       <ConfigProvider locale={zhCN}>
         <App />
       </ConfigProvider>
-    </Provider>
+  </Provider>
   </GlobalProvider>
 );
 

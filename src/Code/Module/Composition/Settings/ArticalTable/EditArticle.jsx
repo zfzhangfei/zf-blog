@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { getArtical, editArtical } from '../../../../Api/Api';
 import { Button, message, Input, Space } from 'antd';
 import SelectTags from '../../../../CommonComponent/SelectTags';
-import VditorEditor from '../../../../../Utils/VditorEditor';
+import VditorEditor from '../../../../../Plugin/VditorEditor/VditorEditor'
 import dayjs from 'dayjs';
 
 export default class EditArticle extends Component {
@@ -103,7 +103,6 @@ export default class EditArticle extends Component {
     render() {
         return (
             <div className='SettingsContent'>
-
                 <div style={{ width: '100%', height: 140 }}>
                     <Space >
                         <div className='ArticalName'>

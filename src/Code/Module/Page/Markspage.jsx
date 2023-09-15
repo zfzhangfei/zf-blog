@@ -8,7 +8,6 @@ export default class Markspage extends Component {
     static contextType = ThemeContext;
 
     componentDidMount=async()=>{
-      console.log(await getMark(),'getMark()getMark()getMark()');
     }
 
   render() {
