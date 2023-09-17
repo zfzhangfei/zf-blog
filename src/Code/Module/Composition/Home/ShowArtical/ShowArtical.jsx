@@ -105,7 +105,7 @@ export default class ShowArtical extends Component {
                         </div>
                         <ArticalTitle Name={'评论'}></ArticalTitle>
                         <div className='ShowComment'>
-                            <Comment></Comment>
+                            <Comment ArticleId={this.props.match.params.Id}></Comment>
                         </div>
                     </div>
                 )}

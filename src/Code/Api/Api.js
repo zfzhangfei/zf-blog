@@ -168,15 +168,16 @@ export async function getMark() {
 //#region 评论
 
 //#region 增加
-export async function postComment(ArticleId,Parents, Content, IsLeaf, IsLike) {
+export async function postComment(ArticleId, Parents, Content, IsLeaf, IsLike, Avatar) {
     let params = {
-        ArticleId:5,
-        Parents: 0,
-        Content: '232323',
-        IsLeaf: 0,
-        IsLike: 0,
+        ArticleId:ArticleId,
+        Parents:Parents,
+        Content:Content,
+        IsLeaf:IsLeaf,
+        IsLike:IsLike,
+        Avatar:Avatar,
     }
-   await post('/postComment', params)
+    await post('/postComment', params)
 }
 //#endregion
 
@@ -186,8 +187,11 @@ export async function postComment(ArticleId,Parents, Content, IsLeaf, IsLike) {
 
 
 //#region 查
-export async function getComment() {
-    const results = await get('/getComment')
+export async function getCommentByArticleId(ArticleId) {
+    let params = {
+        ArticleId: ArticleId,
+    }
+    const results = await get('/getComment', params)
     return results.res;
 }
 //#endregion
