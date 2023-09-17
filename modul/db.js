@@ -29,8 +29,9 @@ var mysql_config = {
 
   password: '',
 
-  database: 'zf_blog'
+  database: 'zf_blog',
 
+  charset : 'utf8mb4'
 }
 
 function handleDisconnection() {
