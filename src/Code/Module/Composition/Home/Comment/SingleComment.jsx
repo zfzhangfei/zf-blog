@@ -42,7 +42,7 @@ export default function SingleComment({ currentComment }) {
                     </div> :
                     <div className='LeafCommentLeafBox'>
                         {
-                            console.log(commentData, 'commentData')
+                            console.log(commentData, 'xxxxxxxxxxxxx')
                         }
                         <div style={{ height: "100%", width: 100 }}>
                             <Avatar style={{ marginLeft: 20 }} size={60}
