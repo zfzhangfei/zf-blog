@@ -16,6 +16,7 @@ import Comment from '../Comment/Comment';
 import remarkSlug from 'remark-slug';
 import { GlobalProvider, GlobalContext } from '../../../../../Utils/GlobalProvider';
 import ArticalTitle from '../../../../CommonComponent/ArticalTitle';
+import { visit } from 'unist-util-visit';
 
 
 export default class ShowArtical extends Component {
@@ -35,7 +36,9 @@ export default class ShowArtical extends Component {
                     // 从 children 中取文本 
                     const text = heading.children[0].value;
                     // 生成 ID 
-                    const id = text.toLowerCase().replace(/\s/g, '-');
+                    // const id = text.toLowerCase().replace(/\s/g, '-');
+                    let textback = text.toLowerCase().replace(/\s/g, '-');
+                    const id = textback.toLowerCase().replace(/[^\w\s\u4e00-\u9fa5]/g, '');
                     return {
                         id,
                         text
@@ -57,6 +60,31 @@ export default class ShowArtical extends Component {
     }
 
 
+    remarkSlugCustom = () => {
+        const transformer = (tree) => {
+            const visitor = (node) => {
+                if (node.type === 'heading') {
+                    let text = node.children
+                        .filter(n => n.type === 'text')
+                        .map(n => n.value)
+                        .join('')
+                        .toLowerCase()
+                        .replace(/[^a-z0-9\s]/g, '')
+                        .replace(/\s/g, '-');
+                    node.data = {
+                        id: text,
+                        ...node.data,
+                    };
+                }
+            }
+            visit(tree, 'heading', visitor);
+        }
+        console.log(transformer, 'transformertransformer');
+        return transformer;
+    }
+
+
+
 
 
     render() {
@@ -67,7 +95,7 @@ export default class ShowArtical extends Component {
         return (
             <GlobalContext.Consumer>
                 {context => (
-                    <div style={{marginTop:10}}>
+                    <div style={{ marginTop: 10 }}>
                         <ArticalTitle Name={'文章'}></ArticalTitle>
                         <div className='ShowArtical'>
                             {
@@ -105,7 +133,7 @@ export default class ShowArtical extends Component {
                         </div>
                         <ArticalTitle Name={'评论'}></ArticalTitle>
                         <div className='ShowComment'>
-                            <Comment></Comment>
+                            <Comment ArticleId={this.props.match.params.Id}></Comment>
                         </div>
                     </div>
                 )}

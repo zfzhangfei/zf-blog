@@ -27,8 +27,10 @@ export default class Historyspage extends Component {
     const theme = this.context;
     return (
       <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
-        <div id='Historyspage'>
-          <Timeline items={items}></Timeline>
+        <div id='content'>
+          <div id='Historyspage'>
+            <Timeline items={items}></Timeline>
+          </div>
         </div>
       </div>
     )

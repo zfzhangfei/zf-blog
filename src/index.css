@@ -13,3 +13,14 @@ code {
     monospace;
 }
 
+
+#Main #content {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100%;
+  position: relative;
+  min-height: calc(100vh - 300px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

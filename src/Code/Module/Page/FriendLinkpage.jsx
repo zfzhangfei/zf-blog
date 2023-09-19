@@ -10,8 +10,10 @@ export default class FriendLinkpage extends Component {
         const theme = this.context;
         return (
             <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
-                <div id='FriendLinkpage'>
-                    FriendLinkpage
+                <div id='content'>
+                    <div id='FriendLinkpage'>
+                        FriendLinkpage
+                    </div>
                 </div>
             </div>
         )

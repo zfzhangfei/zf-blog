@@ -64,9 +64,9 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                 </div>
-                <footer style={{ height: 200, background: theme.navBgColor, color: theme.navTextColor, marginTop: 50 }}>
+                {/* <footer style={{ height: 200, background: theme.navBgColor, color: theme.navTextColor, marginTop: 50 }}>
                     321312313
-                </footer>
+                </footer> */}
             </div>
         )
     }

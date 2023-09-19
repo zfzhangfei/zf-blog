@@ -24,16 +24,16 @@ export default class Settingspage extends Component {
         const theme = this.context;
         return (
             <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
-                <div id='Settingspage'>
-                    <SiderBar theme={theme} index={this.state.index}></SiderBar>
-                    <Switch>
-                        <Redirect exact from='/Settings' to="/Settings/IntroductionConfig" component={HomeConfig} />
-                        <Route path="/Settings/IntroductionConfig" component={HomeConfig} />
-                        <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
-                        {/* <Route path="/Settings/MarkerConfig" component={MarkConfig} /> */}
-                        <Route path="/Settings/HistoryConfig" component={HistoryConfig} />
-                    </Switch>
-                </div>
+                    <div id='Settingspage'>
+                        <SiderBar theme={theme} index={this.state.index}></SiderBar>
+                        <Switch>
+                            <Redirect exact from='/Settings' to="/Settings/IntroductionConfig" component={HomeConfig} />
+                            <Route path="/Settings/IntroductionConfig" component={HomeConfig} />
+                            <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
+                            {/* <Route path="/Settings/MarkerConfig" component={MarkConfig} /> */}
+                            <Route path="/Settings/HistoryConfig" component={HistoryConfig} />
+                        </Switch>
+                    </div>
             </div>
         )
     }

@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
 import { ThemeContext } from '../../../Utils/Theme/themeContext';
 import '../Css/Markspage.css'
-import { getMark } from '../../Api/Api';
 
 
 export default class Markspage extends Component {
-    static contextType = ThemeContext;
+  static contextType = ThemeContext;
 
-    componentDidMount=async()=>{
-    }
+  componentDidMount = async () => {
+  }
 
   render() {
     const theme = this.context;
     return (
-        <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
-            <div id='Markspage'>
-                111
-            </div>
+      <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
+        <div id='content'>
+          <div id='Markspage'>
+            111121222222222222222222222222222
+          </div>
         </div>
+      </div>
     )
   }
 }
