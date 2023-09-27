@@ -19,6 +19,7 @@ code {
   justify-content: center;
   /* align-items: center; */
   height: 100%;
+  width: 100%;
   position: relative;
   min-height: calc(100vh - 300px);
   padding-top: 20px;

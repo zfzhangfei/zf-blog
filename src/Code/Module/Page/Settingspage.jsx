@@ -23,7 +23,7 @@ export default class Settingspage extends Component {
     render() {
         const theme = this.context;
         return (
-            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor, width: '100vw' }}>
+            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor}}>
                     <div id='Settingspage'>
                         <SiderBar theme={theme} index={this.state.index}></SiderBar>
                         <Switch>
