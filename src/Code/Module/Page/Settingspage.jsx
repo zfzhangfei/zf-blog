@@ -3,10 +3,8 @@ import '../Css/Settingspage.css'
 import { ThemeContext } from '../../../Utils/Theme/themeContext'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import SiderBar from '../Composition/Settings/SiderBar';
-import IntroductionConfig from '../Composition/Settings/HomeConfig/IntroductionConfig/IntroductionConfig';
 import ArticalConfig from '../Composition/Settings/ArticalTable/ArticalConfig';
 import HistoryConfig from '../Composition/Settings/HistoryConfig/HistoryConfig';
-import EditArticle from '../Composition/Settings/ArticalTable/EditArticle';
 import HomeConfig from '../Composition/Settings/HomeConfig/HomeConfig';
 
 
