@@ -2,8 +2,8 @@
 export const lightTheme = {
   bgColor: '#dbdbdb',
   textColor: '#AA5F9E',
-  introductionBgColor: '#fff',
-  // introductionBgColor:'url(https://zfblog.su.bcebos.com/zfblogpicture/Plantainleaf.jpg)',
+  //introductionBgColor: '#fff',
+  introductionBgColor:'url(https://image.meiye.art/pic_16313389661489xGHwAFyRxT3Nx0bCovxy)',
   navBgColor: '#000',
   navTextColor: '#fff',
   SidebarBgColor: '#fff',

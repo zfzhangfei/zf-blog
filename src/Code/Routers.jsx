@@ -11,6 +11,7 @@ import Markspage from "./Module/Page/Markspage";
 import Historyspage from "./Module/Page/Historyspage";
 import FriendLinkpage from "./Module/Page/FriendLinkpage";
 import PersonalWorkpage from "./Module/Page/PersonalWorkpage";
+import MyFooter from "./CommonComponent/MyFooter";
 
 const themeMap = {
     'lightTheme': lightTheme,
@@ -38,19 +39,21 @@ export default class Routers extends Component {
             <ThemeContext.Provider value={this.state.theme}>
                 <Router>
                     <Switch>
-                    <Route exact path={["/", "/Home", "/Settings", "/Marks", "/Historys", "/FriendLink", "/PersonalWork"]} >
-                        <MyNav changeTheme={this.changeTheme}></MyNav>
-                        <Route exact path="/" render={(props) => <Homepage {...props} />} />
-                        <Route path="/Home" render={(props) => <Homepage {...props} />} />
-                        <Route path="/Settings" component={Settingspage} />
-                        <Route path="/Marks" component={Markspage} />
-                        <Route path="/Historys" component={Historyspage} />
-                        <Route path="/FriendLink" component={FriendLinkpage} />
-                        <Route path="/PersonalWork" component={PersonalWorkpage} />
-                        <footer style={{ height: 200, background: this.state.theme.navBgColor, color: this.state.theme.navTextColor }}>
-                            321312313
-                        </footer>
-                    </Route>
+                        <Route exact path={["/", "/PersonalWork"]} >
+                            <MyNav changeTheme={this.changeTheme}></MyNav>
+                            <Route exact path="/" render={(props) => <Homepage {...props} />} />
+                            <Route path="/PersonalWork" component={PersonalWorkpage} />
+                            <MyFooter></MyFooter>
+                        </Route>
+                        <Route path={["/Home", "/Settings", "/Marks", "/Historys", "/FriendLink"]} >
+                            <MyNav changeTheme={this.changeTheme}></MyNav>
+                            <Route path="/Home" render={(props) => <Homepage {...props} />} />
+                            <Route path="/Settings" component={Settingspage} />
+                            <Route path="/Marks" component={Markspage} />
+                            <Route path="/Historys" component={Historyspage} />
+                            <Route path="/FriendLink" component={FriendLinkpage} />
+                            <MyFooter></MyFooter>
+                        </Route>
                         <WorkRouter></WorkRouter>
                     </Switch>
                 </Router>
