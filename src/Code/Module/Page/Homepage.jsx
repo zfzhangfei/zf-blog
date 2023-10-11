@@ -9,6 +9,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import '../Css/Homepage.css'
 import Directory from '../Composition/Home/Directory/Directory';
 
+
+let screenWidth = window.screen.width;
+let screenHeight = window.screen.height;
 export default class Homepage extends Component {
     static contextType = ThemeContext;
     state = {
@@ -17,6 +20,7 @@ export default class Homepage extends Component {
 
     componentDidMount = async () => {
         login()
+
     }
     ShowArticalById = (value) => {
         this.props.history.push('/Home/article/' + value)
@@ -33,9 +37,9 @@ export default class Homepage extends Component {
         const theme = this.context;
         return (
             <div id='Main' style={{ background: theme.bgColor, color: theme.textColor }}>
-                {/* <div className='Wallpaper'>
-                    <img src="https://zfblog.su.bcebos.com/zfblogpicture/%E8%83%8C%E6%99%AF.jpg" alt="" width={'100%'} height={300} />
-                </div> */}
+                <div className='Wallpaper' style={{ position: 'relative', backgroundImage: 'url("https://zfblog.su.bcebos.com/zfblogpicture/src%3Dhttp___c-ssl.duitang.com_uploads_item_202006_28_20200628135652_wxcsi.thumb.1000_0.jpg%26refer%3Dhttp___c-ssl.duitang.png")', height: '80vh' }}>
+
+                </div>
                 <div id='content'>
                     <div id='Homepage'>
                         <div id='Left'>

@@ -1,21 +1,29 @@
 /*#region 顶部导航栏*/
-#Nav{
+#Nav {
     background: var(--color-angle, 0);
     /* 设置背景颜色旋转角度 */
     --color-angle: 180deg;
     transition: background .5s;
     height: 60px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    /* 确保导航栏始终在其他元素的上方 */
 }
 
-#Nav .Menu{
+#Nav .Menu {
     height: 60px;
 }
 
-#Nav .MenuItem{
-display: inline-block;
-vertical-align: middle;
-width: 100px;
-height: 60px;
-line-height: 60px;
+#Nav .MenuItem {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
 }
+
 /*#endregion*/

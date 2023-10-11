@@ -12,6 +12,7 @@ import Historyspage from "./Module/Page/Historyspage";
 import FriendLinkpage from "./Module/Page/FriendLinkpage";
 import PersonalWorkpage from "./Module/Page/PersonalWorkpage";
 import MyFooter from "./CommonComponent/MyFooter";
+import Webmasterpage from "./Module/Page/Webmasterpage";
 
 const themeMap = {
     'lightTheme': lightTheme,
@@ -45,13 +46,14 @@ export default class Routers extends Component {
                             <Route path="/PersonalWork" component={PersonalWorkpage} />
                             <MyFooter></MyFooter>
                         </Route>
-                        <Route path={["/Home", "/Settings", "/Marks", "/Historys", "/FriendLink"]} >
+                        <Route path={["/Home", "/Settings", "/Marks", "/Historys", "/FriendLink", "/Webmaster"]} >
                             <MyNav changeTheme={this.changeTheme}></MyNav>
                             <Route path="/Home" render={(props) => <Homepage {...props} />} />
                             <Route path="/Settings" component={Settingspage} />
                             <Route path="/Marks" component={Markspage} />
                             <Route path="/Historys" component={Historyspage} />
                             <Route path="/FriendLink" component={FriendLinkpage} />
+                            <Route path="/Webmaster" component={Webmasterpage} />
                             <MyFooter></MyFooter>
                         </Route>
                         <WorkRouter></WorkRouter>

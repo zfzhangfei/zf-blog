@@ -13,7 +13,7 @@ export default class MyNav extends Component {
     render() {
         const theme = this.context;
         return (
-            <nav id='Nav' style={{ background: theme.navBgColor, color: theme.textColor, minWidth: '1500px', textAlign: 'center' }}>
+            <nav id='Nav' style={{ background: theme.navBgColor, color: theme.textColor, textAlign: 'center' }}>
                 <div className='Menu'>
                     <div className='MenuItem'>
                         <Link to="/" style={{ color: theme.navTextColor, textDecoration: 'none' }}>首页</Link>
@@ -27,9 +27,12 @@ export default class MyNav extends Component {
                     <div className='MenuItem'>
                         <Link to="/PersonalWork" style={{ color: theme.navTextColor, textDecoration: 'none' }}>个人作品</Link>
                     </div>
-                    {/* <div className='MenuItem'>
-                            <Link to="/Historys" style={{ color: theme.navTextColor, textDecoration: 'none' }}>建站史</Link>
-                        </div> */}
+                    <div className='MenuItem'>
+                        <Link to="/Historys" style={{ color: theme.navTextColor, textDecoration: 'none' }}>建站史</Link>
+                    </div>
+                    <div className='MenuItem'>
+                        <Link to="/Webmaster" style={{ color: theme.navTextColor, textDecoration: 'none' }}>站长</Link>
+                    </div>
                     <div className='MenuItem'>
                         <Link to="/Settings" style={{ color: theme.navTextColor, textDecoration: 'none' }}>配置</Link>
                     </div>

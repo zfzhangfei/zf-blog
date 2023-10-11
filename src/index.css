@@ -24,3 +24,10 @@ code {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+#Main{
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 60px;
+}

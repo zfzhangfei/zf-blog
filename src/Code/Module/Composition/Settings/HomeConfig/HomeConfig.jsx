@@ -8,7 +8,21 @@ export default class HomeConfig extends Component {
         return (
             <div className='SettingsContent'>
                 <div className='HomeConfig'>
-                    <div style={{ height: 'auto' }}>
+                    <div style={{ width: '100%' }}>
+                        <div style={{ width: '500px', display: 'inline-block', verticalAlign: 'middle' }}>
+                            <IntroductionConfig></IntroductionConfig>
+                        </div>
+                        <div style={{ width: 'calc(100% - 500px)', display: 'inline-block', verticalAlign: 'middle' }}>
+                            <div style={{ height: 100, background: 'pink', margin: 10 }}>
+                            </div>
+                            <div style={{ height: 100, background: 'pink', margin: 10 }}>
+                            </div>
+                        </div>
+                    </div>
+                    <div style={{ width: '100%' }}>
+
+                    </div>
+                    {/* <div style={{ height: 'auto' }}>
                         <Row gutter={[16, 16]} >
                             <Col span={6}>
                                 <div id='IntroductionConfig'>
@@ -58,7 +72,7 @@ export default class HomeConfig extends Component {
                                 </div>
                             </Col>
                         </Row>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )

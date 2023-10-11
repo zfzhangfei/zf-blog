@@ -52,36 +52,66 @@ export default class ShowArtical extends Component {
         }
     }
 
+
+
+
+
+
+
+    // handleAnchorClick = (event) => {
+    //     event.preventDefault();
+    //     event.stopPropagation()
+    //     const id = event.target.hash.substring(1);
+    //     document.getElementById(id).scrollIntoView();
+    // }
+
+
     handleAnchorClick = (event) => {
         event.preventDefault();
-        event.stopPropagation()
-        const id = event.target.hash.substring(1);
-        document.getElementById(id).scrollIntoView();
-    }
-
-
-    remarkSlugCustom = () => {
-        const transformer = (tree) => {
-            const visitor = (node) => {
-                if (node.type === 'heading') {
-                    let text = node.children
-                        .filter(n => n.type === 'text')
-                        .map(n => n.value)
-                        .join('')
-                        .toLowerCase()
-                        .replace(/[^a-z0-9\s]/g, '')
-                        .replace(/\s/g, '-');
-                    node.data = {
-                        id: text,
-                        ...node.data,
-                    };
-                }
-            }
-            visit(tree, 'heading', visitor);
+      
+        // 定位链接所指向的元素
+        let id = event.target.getAttribute('href')
+        if(id) {
+          // href属性以#开头，所以要去掉#
+          id = id.slice(1);
+      
+          // 用该id找到链接所指向的元素
+          const element = document.getElementById(id);
+      
+          if(element) {
+              // 计算出该元素的页面位置，并滚动到此位置
+              const y = element.getBoundingClientRect().top + window.pageYOffset - 100;
+              window.scrollTo({top: y, behavior: 'smooth' });
+          }
         }
-        console.log(transformer, 'transformertransformer');
-        return transformer;
-    }
+      };
+
+
+
+
+
+    // remarkSlugCustom = () => {
+    //     const transformer = (tree) => {
+    //         const visitor = (node) => {
+    //             if (node.type === 'heading') {
+    //                 let text = node.children
+    //                     .filter(n => n.type === 'text')
+    //                     .map(n => n.value)
+    //                     .join('')
+    //                     .toLowerCase()
+    //                     .replace(/[^a-z0-9\s]/g, '')
+    //                     .replace(/\s/g, '-');
+    //                 node.data = {
+    //                     id: text,
+    //                     ...node.data,
+    //                 };
+    //             }
+    //         }
+    //         visit(tree, 'heading', visitor);
+    //     }
+    //     console.log(transformer, 'transformertransformer');
+    //     return transformer;
+    // }
 
 
 
@@ -103,7 +133,7 @@ export default class ShowArtical extends Component {
                                     <ReactMarkdown
                                         className='ArticalMarkDown'
                                         rehypePlugins={[rehypeRaw]}
-                                        remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
+                                        remarkPlugins={[remarkGfm, remarkGemoji, remarkToc,remarkSlug]}
                                         onLinkClick={this.handleAnchorClick}
                                         components={{
                                             pre: Pre,
@@ -129,7 +159,6 @@ export default class ShowArtical extends Component {
                                         {this.state.htmlString.Content}
                                     </ReactMarkdown> : <Empty></Empty>
                             }
-
                         </div>
                         <ArticalTitle Name={'评论'}></ArticalTitle>
                         <div className='ShowComment'>

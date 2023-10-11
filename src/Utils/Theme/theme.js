@@ -1,8 +1,8 @@
 // theme.js
 export const lightTheme = {
   bgColor: '#dbdbdb',
+  // bgColor: 'url(https://preview.qiantucdn.com/58pic/35/84/87/33a58PICRf5HhscMj2Wsf_PIC2018.jpg%21w1024_new_0)',
   textColor: '#AA5F9E',
-  //introductionBgColor: '#fff',
   introductionBgColor:'url(https://image.meiye.art/pic_16313389661489xGHwAFyRxT3Nx0bCovxy)',
   navBgColor: '#000',
   navTextColor: '#fff',
