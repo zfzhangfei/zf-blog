@@ -139,14 +139,7 @@
     margin-bottom: 20px;
 }
 
-#Center h1,
-#Center h2,
-#Center h3,
-#Center h4,
-#Center h5,
-#Center h6 {
-  padding-top: 60px;
-}
+
 
 .ShowArtical .ArticalMarkDown {
     position: relative;
@@ -186,6 +179,8 @@
     border-radius: 20px;
     margin: 10px;
     padding: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 

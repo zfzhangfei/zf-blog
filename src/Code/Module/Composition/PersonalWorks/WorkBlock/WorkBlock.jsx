@@ -6,7 +6,7 @@ export default function WorkBlock({ content }) {
 
     const ShowWork = () => {
         console.log(11111111);
-        window.open('/PersonalWork/Rain', '_blank');
+        window.open(content.URL, '_blank');
     }
 
     const onMouseEnter = () => {

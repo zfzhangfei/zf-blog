@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../../../Css/Settingspage.css'
+import '../../../../Css/Settingspage.scss'
 import { Button, Modal } from 'antd';
 import MyAddTechnologyIcon from './MyAddTechnologyIcon';
 import { getSkillIcon, deleteSkillIcon, postSkillIcon } from '../../../../../Api/Api'
@@ -63,7 +63,7 @@ export default class SkillIcon extends Component {
     render() {
         return (
             <div className='SkllIconBox'>
-                <div className='SkllIconButton'><Button type='primary' onClick={() => { this.showModel() }}>新增技能图标</Button></div>
+                <div className='SkllIconButton' style={{ margin: 10 }}><Button type='primary' onClick={() => { this.showModel() }}>新增技能图标</Button></div>
                 <Modal title="上传图标" open={this.state.isModalOpen} onOk={() => { this.handleOk() }} onCancel={() => { this.handleCancel() }}>
                     <MyAddTechnologyIcon uploadSkillIcon={this.uploadSkillIcon}></MyAddTechnologyIcon>
                 </Modal>

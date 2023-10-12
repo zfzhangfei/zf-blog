@@ -1,31 +1,33 @@
 import React, { Component } from 'react'
 import { Space } from 'antd';
-import '../../../../Css/Settingspage.css'
+import '../../../../Css/Settingspage.scss'
 import UploadAvatar from './UploadAvatar'
-import MaximInput from './MaximInput'
-import SkillIcon from './SkillIcon'
+import { getCurrentUser } from '../../../../../Api/Api';
 
 export default class IntroductionConfig extends Component {
+    state = {
+        currentuser: null
+    }
 
-    // componentDidMount=()=>{
-    //     this.props.sentIndexToSiderBar(0)
-    // }
+    componentDidMount = async () => {
+        let user = await getCurrentUser()
+        this.setState({
+            currentuser: user
+        })
+    }
+
+
 
 
     render() {
         return (
-            <div>
-                 <div className='IntroductionConfig'>
+            <div id='IntroductionConfig'>
                 <Space.Compact block>
                     <UploadAvatar ></UploadAvatar>
                 </Space.Compact>
-                <Space.Compact block>
-                    <MaximInput ></MaximInput>
-                </Space.Compact>
-                <Space.Compact block>
-                    <SkillIcon ></SkillIcon>
-                </Space.Compact>
-                </div>
+                <h1 style={{ textAlign: 'center' }}>
+                    {this.state.currentuser?.username}
+                </h1>
             </div>
         )
     }

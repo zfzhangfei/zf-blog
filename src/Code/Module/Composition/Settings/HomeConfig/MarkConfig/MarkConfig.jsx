@@ -26,7 +26,7 @@ export default class MarkConfig extends Component {
 
     render() {
         return (
-            <div className='MarkConfig'>
+            <div id='MarkConfig'>
                 <AddMarkModel></AddMarkModel>
                 <div className='MarkList'>
                     {
