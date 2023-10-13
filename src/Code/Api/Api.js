@@ -5,7 +5,7 @@ let currentUser = {}
 export function login() {
     const md5 = require('md5');
     const hash = md5(12345);
-    const results = get('/users', { username: 'admin', password: hash })
+    const results = get('/users', { username: '南风知我意', password: hash })
     currentUser = results
 }
 // 获取当前用户
@@ -168,10 +168,12 @@ export async function getMark() {
 //#region 评论
 
 //#region 增加
-export async function postComment(ArticleId, Parents, Content, IsLeaf, IsLike, Avatar) {
+export async function postComment(ArticleId, Parents, ParentsId,ParentsName,Content, IsLeaf, IsLike, Avatar) {
     let params = {
         ArticleId:ArticleId,
         Parents:Parents,
+        ParentsId:ParentsId,
+        ParentsName:ParentsName,
         Content:Content,
         IsLeaf:IsLeaf,
         IsLike:IsLike,

@@ -2,7 +2,7 @@ import React, { Component, useSelector } from 'react'
 import { getArtical, getMark } from '../../../Api/Api'
 import ArticalTitle from '../../../CommonComponent/ArticalTitle'
 import nolikeIcon from '../../Static/Image/取消点赞.png'
-import authorIcon from '../../Static/Image/用户.png'
+import nocollectIcon from '../../Static/Image/取消收藏.png'
 import { Divider, Space, Tag } from 'antd'
 import { GlobalContext } from '../../../../Utils/GlobalProvider'
 import { connect } from 'react-redux';
@@ -90,12 +90,9 @@ class ArticalList extends React.Component {
                       <div className='ArticalIcons'>
                         <Space>
                           <img src={nolikeIcon} alt="" width={20} height={20} style={{ verticalAlign: 'middle' }} />
-                          <img src={nolikeIcon} alt="" width={20} height={20} style={{ verticalAlign: 'middle' }} />
-                          <img src={nolikeIcon} alt="" width={20} height={20} style={{ verticalAlign: 'middle' }} />
-                          <img src={nolikeIcon} alt="" width={20} height={20} style={{ verticalAlign: 'middle' }} />
-                          <div style={{ display: 'inline-block', verticalAlign: 'middle', height: 20 }}>
-                            <img src={authorIcon} alt="" width={20} height={20} style={{ display: 'inline-block' }} />
-                            <span style={{ display: 'inline-block', verticalAlign: 'top' }}>{item.Author}</span>
+                          <img src={nocollectIcon} alt="" width={20} height={20} style={{ verticalAlign: 'middle' }} />
+                          <div style={{ height:20}}>
+                            <div style={{ display: 'inline-block',margin:'2px',verticalAlign:'top'}}>作者 --- {item.Author}</div>
                           </div>
                         </Space>
                       </div>

@@ -8,6 +8,7 @@ import { ConfigProvider } from "antd";
 import { Provider } from 'react-redux';
 import store from './Code/CommonComponent/Dictionary/store';
 import { GlobalProvider} from './Utils/GlobalProvider';
+import './Code/Module/Css/fonts.css'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

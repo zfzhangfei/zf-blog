@@ -6,8 +6,9 @@ import { login } from '../../Api/Api'
 import ShowArtical from '../Composition/Home/ShowArtical/ShowArtical';
 import ArticalList from '../Composition/Home/ArticalList';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import '../Css/Homepage.css'
+import '../Css/Homepage.scss'
 import Directory from '../Composition/Home/Directory/Directory';
+import ShowMarkBox from '../Composition/Home/ShowMarkBox/ShowMarkBox';
 
 
 let screenWidth = window.screen.width;
@@ -65,6 +66,7 @@ export default class Homepage extends Component {
                         </div>
                         <div id='Right'>
                             {pathname.indexOf("/Home/article") != -1 && <Directory directList={this.state.directList} ></Directory>}
+                            <ShowMarkBox></ShowMarkBox>
                         </div>
                     </div>
                 </div>

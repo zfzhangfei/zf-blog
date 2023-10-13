@@ -4,6 +4,7 @@ import store from './Code/CommonComponent/Dictionary/store';
 import { fetchDict } from './Code/CommonComponent/Dictionary/actions';
 import Routers from './Code/Routers';
 
+
 Component.prototype.get = get
 Component.prototype.post = post
 
