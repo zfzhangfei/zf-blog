@@ -19,6 +19,7 @@ router.post('/postComment', (req, res) => {
   let sql = `INSERT INTO comment (
         ArticleId,
         Parents,  
+        ParentsId,
         ParentsName,
         Content,
         IsLeaf,
@@ -26,16 +27,17 @@ router.post('/postComment', (req, res) => {
         Avatar,
         CreateBy,
         CreateTime
-    ) VALUES (?,?,?,?,?,?,?,?,?)`
+    ) VALUES (?,?,?,?,?,?,?,?,?,?)`
   let params = [
     req.body.ArticleId,
     req.body.Parents,
+    req.body.ParentsId,
     req.body.ParentsName,
     req.body.Content,
     req.body.IsLeaf,
     req.body.IsLike,
     req.body.Avatar,
-    CURRENT_USER.username,
+    CURRENT_USER.id,
     CURRENT_TIMESTAMP,
   ]
   db.query(sql, params, (err, results) => {

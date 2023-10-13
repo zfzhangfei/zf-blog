@@ -31,7 +31,7 @@ router.post('/putArtical', (req, res) => {
         req.body.Content,
         req.body.Cover,
         CURRENT_USER.username,
-        CURRENT_USER.username,
+        CURRENT_USER.id,
         CURRENT_TIMESTAMP,
     ]
     db.query(sql, params, (err, results) => {
@@ -55,7 +55,7 @@ router.post('/editArtical', (req, res) => {
         req.body.Content,
         req.body.Summary,
         CURRENT_USER.username,
-        CURRENT_USER.username,
+        CURRENT_USER.id,
         CURRENT_TIMESTAMP,
         req.body.Id,
     ]
@@ -76,7 +76,7 @@ router.get('/getArtical', (req, res) => {
     let sql = `SELECT * FROM artical WHERE artical.DeleteFlag = ? and artical.CreateBy = ? ORDER BY artical.id DESC`
     let params = [
         0,
-        CURRENT_USER.username,
+        CURRENT_USER.id,
     ]
     db.query(sql, params, (err, results) => {
         if (err) {
@@ -94,7 +94,7 @@ router.get('/getArticalById', (req, res) => {
     let params = [
         req.query.Id,
         0,
-        CURRENT_USER.username,
+        CURRENT_USER.id,
     ]
     db.query(sql, params, (err, results) => {
         if (err) {

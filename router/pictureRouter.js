@@ -35,7 +35,7 @@ router.post('/putBosPicture', (req, res) => {
       req.body.BosName,
       '',
       0,
-      CURRENT_USER.username,
+      CURRENT_USER.id,
       req.body.PictureType,
       req.body.Href,
       CURRENT_TIMESTAMP,
@@ -58,7 +58,7 @@ router.post('/putBosPicture', (req, res) => {
     let params = [
       1,
       CURRENT_TIMESTAMP,
-      CURRENT_USER.username,
+      CURRENT_USER.id,
       req.body.key,
     ]
     db.query(sql, params, (err, results) => {
@@ -79,7 +79,7 @@ router.post('/putBosPicture', (req, res) => {
     let params = [
       req.query.type,
       0,
-      CURRENT_USER.username,
+      CURRENT_USER.id,
     ]
     db.query(sql, params, (err, results) => {
       if (err) {

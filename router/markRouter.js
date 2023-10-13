@@ -27,7 +27,7 @@ router.post('/putMark', (req, res) => {
     let params = [
       req.body.Value,
       req.body.Color,
-      CURRENT_USER.username,
+      CURRENT_USER.id,
       CURRENT_TIMESTAMP,
     ]
     db.query(sql, params, (err, results) => {
@@ -48,7 +48,7 @@ router.post('/putMark', (req, res) => {
     let params = [
       1,
       CURRENT_TIMESTAMP,
-      CURRENT_USER.username,
+      CURRENT_USER.id,
       req.body.key,
     ]
     db.query(sql, params, (err, results) => {
@@ -68,7 +68,7 @@ router.post('/putMark', (req, res) => {
     let sql = `SELECT * FROM dictionary_mark WHERE dictionary_mark.DeleteFlag = ? and dictionary_mark.CreateBy = ?`
     let params = [
       0,
-      CURRENT_USER.username,
+      CURRENT_USER.id,
     ]
     db.query(sql, params, (err, results) => {
       if (err) {
