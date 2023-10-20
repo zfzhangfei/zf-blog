@@ -9,6 +9,7 @@ import AuthRoute from "./authRoute";
 import Markspage from "./Module/Page/Markspage";
 import Historyspage from "./Module/Page/Historyspage";
 import FriendLinkpage from "./Module/Page/FriendLinkpage";
+import PersonalWorkspage from "./Module/Page/Personalworkspage";
 
 const themeMap = {
     'lightTheme': lightTheme,
@@ -43,6 +44,7 @@ export default class HomeRouter extends Component {
                         <Route path="/Marks" component={Markspage} />
                         <Route path="/Historys" component={Historyspage} />
                         <Route path="/FriendLink" component={FriendLinkpage} />
+                        <Route path="/PersonalWorks" component={PersonalWorkspage} />
                     </Switch>
                     <footer style={{ height: 200, background: this.state.theme.navBgColor, color: this.state.theme.navTextColor }}>
                         321312313
