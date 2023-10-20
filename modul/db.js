@@ -22,14 +22,15 @@ var mysql = require('mysql')
 
 var mysql_config = {
 
-  host: '192.168.31.117',
+  // host: '192.168.31.117',
   // host: 'localhost',
+  host: '106.14.178.152',
 
   user: 'root',
 
-  password: '',
+  password: 'ot9H3eCxbM9gs9TWgKyr61eUVbmTFVUi',
 
-  database: 'zf_blog',
+  database: 'zf_test',
 
   charset : 'utf8mb4'
 }
