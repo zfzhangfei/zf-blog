@@ -12,7 +12,7 @@ export default class Markspage extends Component {
   render() {
     const theme = this.context;
     return (
-      <div id='Main' style={{ background: theme.bgColor, color: theme.textColor }}>
+      <div id='Main' style={{ background: theme.bgColor, color: theme.textColor}}>
         <div id='content'>
           <div id='Markspage'>
             111121222222222222222222222222222

@@ -9,7 +9,7 @@ export default class FriendLinkpage extends Component {
     render() {
         const theme = this.context;
         return (
-            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor}}>
+            <div id='Main' style={{ background: theme.bgColor, color: theme.textColor }}>
                 <div id='content'>
                     <div id='FriendLinkpage'>
                         FriendLinkpage

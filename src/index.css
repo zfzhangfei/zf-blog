@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 12px;
+  font-size: 16px;
+  font-family:"beautiful";
 }
 
 code {
@@ -14,14 +15,26 @@ code {
 }
 
 
-#Main #content {
+/* #Main #content {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   height: 100%;
   width: 100%;
   position: relative;
   min-height: calc(100vh - 300px);
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+#Main{
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 60px;
+} */
+
+
+#Main{
+  min-height: calc(100vh - 100px);
 }

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { postArtical, getArtical } from '../../../../Api/Api';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import SeachInput from '../../../../CommonComponent/SeachInput';
 
 
 const ArticalTable = ({ data, history }) => {
@@ -85,7 +86,13 @@ const ArticalTable = ({ data, history }) => {
             </Router>
         ) : (
             <div>
-                <Button onClick={() => { handleArtical() }} block type='primary'><PlusOutlined /></Button>
+                <Space direction='horizontal' style={{margin:10}}>
+                    <SeachInput></SeachInput>
+                    <SeachInput></SeachInput>
+                    <SeachInput></SeachInput>
+                    <SeachInput></SeachInput>
+                    <Button onClick={() => { handleArtical() }} block type='primary'><PlusOutlined /></Button>
+                </Space>
                 <Table columns={columns} dataSource={dataSource}
                     scroll={{
                         y: 'calc(100vh - 211px)',

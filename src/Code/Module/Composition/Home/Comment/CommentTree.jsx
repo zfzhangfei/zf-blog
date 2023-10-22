@@ -18,9 +18,10 @@ const TreeNode = ({ node, onReply }) => {
                             />
                         </div>
                         <div style={{ height: "100%", flex: 1, display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ width: '100%', height: 20, fontWeight: 'bold', fontFamily: 'fantasy', fontSize: 14 }}>来自中国的<span style={{ marginLeft: 2, marginRight: 2, color: '#000' }}>{node.CreateBy}</span>同学说：</div>
+                            <div style={{ width: '100%', height: 20, fontWeight: 'bold', fontFamily: 'fantasy', fontSize: 14 }}>来自中国的<span style={{ marginLeft: 2, marginRight: 2, color: '#000' }}>{node.ParentsName}</span>同学说：</div>
                             <div style={{
-                                width: 1000,
+                                width: "100%",
+                                lineHeight: 2,
                                 margin: 10,
                                 flex: 1,
                                 overflow: "hidden",
@@ -47,11 +48,12 @@ const TreeNode = ({ node, onReply }) => {
                         </div>
                         <div style={{ height: "100%", flex: 1, display: 'flex', flexDirection: 'column' }}>
                             <div style={{ width: '100%', height: 20, fontWeight: 'bold', fontFamily: 'fantasy', fontSize: 14 }}>
-                                来自中国的<span style={{ marginLeft: 2, marginRight: 2, color: '#000' }}>{node.CreateBy}</span>同学回复
+                                来自中国的<span style={{ marginLeft: 2, marginRight: 2, color: '#000' }}>{node.ParentsName}</span>同学回复
                                 <span style={{ marginLeft: 2, marginRight: 2, color: '#000' }}>{node.ParentsName}</span>说：</div>
                             <div style={{
-                                width: 900,
+                                width: "90%",
                                 margin: 10,
+                                lineHeight: 2,
                                 flex: 1,
                                 overflow: "hidden",
                                 textOverflow: "ellipsis",

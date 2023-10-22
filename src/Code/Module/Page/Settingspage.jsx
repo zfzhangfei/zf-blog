@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import '../Css/Settingspage.css'
+import '../Css/Settingspage.scss'
 import { ThemeContext } from '../../../Utils/Theme/themeContext'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import SiderBar from '../Composition/Settings/SiderBar';
-import IntroductionConfig from '../Composition/Settings/HomeConfig/IntroductionConfig/IntroductionConfig';
 import ArticalConfig from '../Composition/Settings/ArticalTable/ArticalConfig';
 import HistoryConfig from '../Composition/Settings/HistoryConfig/HistoryConfig';
-import EditArticle from '../Composition/Settings/ArticalTable/EditArticle';
 import HomeConfig from '../Composition/Settings/HomeConfig/HomeConfig';
+import UserConfig from '../Composition/Settings/UserConfig/UserConfig';
 
 
 export default class Settingspage extends Component {
@@ -30,6 +29,7 @@ export default class Settingspage extends Component {
                             <Redirect exact from='/Settings' to="/Settings/IntroductionConfig" component={HomeConfig} />
                             <Route path="/Settings/IntroductionConfig" component={HomeConfig} />
                             <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
+                            <Route path="/Settings/UserConfig" component={UserConfig} />
                             {/* <Route path="/Settings/MarkerConfig" component={MarkConfig} /> */}
                             <Route path="/Settings/HistoryConfig" component={HistoryConfig} />
                         </Switch>

@@ -19,14 +19,15 @@ export default class SubmitComment extends Component {
     }
 
 
-    PostComment = async () => {
+    PostComment = async (CurrentUser) => {
         await postComment(
             this.props.ArticleId,
             this.props.replyComment ? this.props.replyComment.Id : 0,
             this.props.replyComment ? this.props.replyComment.CreateBy : '',
+            CurrentUser.username,
             this.state.CommentContent,
-            0,
             this.props.replyComment ? 1 : 0,
+            0,
             'https://zfblog.su.bcebos.com/zfblogpicture/u%3D1577303935%2C3801284994%26fm%3D253%26fmt%3Dauto%26app%3D138%26f%3DJPEG.webp'
         )
     }
@@ -35,7 +36,9 @@ export default class SubmitComment extends Component {
         return (
             <GlobalContext.Consumer>
                 {context => (
+
                     <div className='SubmitComment' style={{ display: 'flex', alignItems: 'top' }}>
+                      
                         <Avatar style={{ marginRight: 20 }} size={60}
                             src={<img src={context.state.CurrentUser.avatar} alt="avatar" />}
                         />
@@ -60,7 +63,7 @@ export default class SubmitComment extends Component {
                                     </Popover>
                                 </Space>
                                 <div style={{ display: 'inline-block', verticalAlign: 'middle', height: 40, width: 40, position: 'absolute', right: 70, top: 0, }}>
-                                    <Button type='primary' style={{ margin: 5 }} onClick={() => { this.PostComment() }}>发表评论</Button>
+                                    <Button type='primary' style={{ margin: 5 }} onClick={() => { this.PostComment(context.state.CurrentUser) }}>发表评论</Button>
                                 </div>
                             </div>
 

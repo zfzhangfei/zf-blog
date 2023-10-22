@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'beautiful';  /* 填写你的字体名 */
+    src: url('../Static/ttf/和风书道昭和勘亭流-闪(GEETYPE-KanteiryuGBT-Flash).ttf') format('truetype');
+    /* 更新URL为你的实际ttf文件的相对路径 */
+    font-weight: normal;
+    font-style: normal;
+  }
