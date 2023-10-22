@@ -37,7 +37,9 @@ export default class Routers extends Component {
                         <Route>
                             {/* <header style={{ height: 50 }}>header</header> */}
                             <div id="Main">
-                                <HomePage></HomePage>
+                                <Route exact path="/" render={(props) => <HomePage {...props} />} />
+                                <Route path="/Home" component={HomePage} />
+                                <Route path="/Login" component={LoginPage} />
                             </div>
                             {/* <footer style={{ height: 50 }}>footer</footer> */}
                         </Route>
@@ -47,3 +49,5 @@ export default class Routers extends Component {
         )
     }
 }
+
+
