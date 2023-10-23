@@ -7,7 +7,6 @@ import Settingspage from "./Module/Page/Settingspage";
 import Homepage from "./Module/Page/Homepage";
 
 import MyNav from "./CommonComponent/MyNav";
-import Markspage from "./Module/Page/Markspage";
 import Historyspage from "./Module/Page/Historyspage";
 import FriendLinkpage from "./Module/Page/FriendLinkpage";
 import PersonalWorkpage from "./Module/Page/PersonalWorkpage";
@@ -50,7 +49,6 @@ export default class Routers extends Component {
                             <MyNav changeTheme={this.changeTheme}></MyNav>
                             <Route path="/Home" render={(props) => <Homepage {...props} />} />
                             <Route path="/Settings" component={Settingspage} />
-                            <Route path="/Marks" component={Markspage} />
                             <Route path="/Historys" component={Historyspage} />
                             <Route path="/FriendLink" component={FriendLinkpage} />
                             <Route path="/Webmaster" component={Webmasterpage} />

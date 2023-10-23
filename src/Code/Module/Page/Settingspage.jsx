@@ -30,7 +30,6 @@ export default class Settingspage extends Component {
                             <Route path="/Settings/IntroductionConfig" component={HomeConfig} />
                             <Route path="/Settings/ArticalConfig" component={ArticalConfig} />
                             <Route path="/Settings/UserConfig" component={UserConfig} />
-                            {/* <Route path="/Settings/MarkerConfig" component={MarkConfig} /> */}
                             <Route path="/Settings/HistoryConfig" component={HistoryConfig} />
                         </Switch>
                     </div>

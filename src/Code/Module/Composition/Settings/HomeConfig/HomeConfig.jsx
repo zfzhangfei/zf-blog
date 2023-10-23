@@ -5,31 +5,10 @@ import SkillIcon from './IntroductionConfig/SkillIcon'
 import MaximInput from './IntroductionConfig/MaximInput'
 import { Space, Row, Col } from 'antd'
 import HistoryTable from '../HistoryConfig/HistoryTable'
+import ClassificationConfig from './ClassificationConfig/ClassificationConfig'
+import ArticalConfig from '../ArticalTable/ArticalConfig'
 
 
-const data = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-        tags: ['nice', 'developer'],
-    },
-    {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sydney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-    },
-];
 
 export default class HomeConfig extends Component {
 
@@ -70,7 +49,7 @@ export default class HomeConfig extends Component {
                         <MarkConfig></MarkConfig>
                     </div>
                     <div className='item-e'>
-                        <HistoryTable data={data}></HistoryTable>
+                        <ClassificationConfig></ClassificationConfig>
                     </div>
                     <div className='item-f'>
                         <MarkConfig></MarkConfig>
