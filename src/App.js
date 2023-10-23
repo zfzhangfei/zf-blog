@@ -2,7 +2,7 @@ import React, { Component, useEffect } from 'react'
 import { post, get } from './Utils/request';
 import store from './Code/CommonComponent/Dictionary/store';
 import { fetchDict } from './Code/CommonComponent/Dictionary/actions';
-import Routers from './Code/Routers';
+import Routers from './CodeTwo/Pages/Routes/Routers';
 
 
 Component.prototype.get = get

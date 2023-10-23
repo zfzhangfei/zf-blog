@@ -15,9 +15,10 @@ code {
 }
 
 
-#Main #content {
+/* #Main #content {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
   position: relative;
@@ -31,4 +32,32 @@ code {
   background-size: cover;
   position: relative;
   top: 60px;
+} */
+
+
+#Main{
+  min-height: calc(100vh - 100px);
 }
+
+.fade-enter {
+  opacity: 0.01;
+  transform: rotateY(90deg);
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  transition: opacity 300ms ease-in, transform 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transform: rotateY(90deg);
+  transition: opacity 300ms ease-in, transform 300ms;
+}
+
