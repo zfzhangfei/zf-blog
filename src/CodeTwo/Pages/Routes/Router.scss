@@ -1,0 +1,57 @@
+.exist-enter {
+    transform: rotateY(-90deg);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform-origin: right;
+    transition: transform 500ms;
+}
+
+.exist-enter.exist-enter-active {
+    transform: rotateY(0deg);
+    transition: transform 500ms;
+}
+
+.exist-exit {
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform-origin: right;
+    transition: transform 500ms;
+}
+
+.exist-exit.exist-exit-active {
+    transform: rotateY(90deg);
+    transition: transform 500ms;
+}
+
+
+
+
+
+
+
+.fade-enter {
+    transform: rotateY(-90deg);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform-origin: left;
+    transition: transform 500ms;
+}
+
+.fade-enter.fade-enter-active {
+    transform: rotateY(0deg);
+    transition: transform 500ms;
+}
+
+.fade-exit {
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform-origin: left;
+    transition: transform 500ms;
+}
+
+.fade-exit.fade-exit-active {
+    transform: rotateY(90deg);
+    transition: transform 500ms;
+}
