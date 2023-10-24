@@ -1,0 +1,73 @@
+#MenuOne {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "a b";
+
+    .MenuBox1 {
+        grid-area: a;
+        background-image: url("../../../../Static/Image/6.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        position: relative;
+    }
+
+    .MenuBox2 {
+        grid-area: b;
+        background-image: url("../../../../Static/Image/7.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        height: 100%;
+        overflow-y: scroll;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "c d";
+
+        .MenuBox3 {
+            grid-area: c;
+            border: 1px dashed blue;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: 1fr 4fr;
+            grid-template-areas:
+                "e"
+                "f";
+
+            .MenuBox5 {
+                grid-area: e;
+                border: 1px dashed blue;
+            }
+
+            .MenuBox6 {
+                grid-area: f;
+                border: 1px dashed blue;
+                .MenuBox7{
+                    .Category{
+                        font-size: 48px;
+                        color: #641E16;
+                        margin: 20px;
+                    }
+                    .MenuBox8{
+                        .title{
+                            margin: 20px;
+                            margin-left: 4em;
+                            color: #4E342E;
+                        }
+                    }
+                }
+            }
+        }
+
+        .MenuBox4 {
+            grid-area: d;
+            border: 1px dashed blue;
+        }
+    }
+}

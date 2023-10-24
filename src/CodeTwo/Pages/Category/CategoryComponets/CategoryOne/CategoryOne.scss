@@ -1,0 +1,42 @@
+#CategoryOne {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 5fr;
+    grid-template-areas:
+        "CategoryBox1"
+        "CategoryBox2";
+
+    .CategoryBox1 {
+        grid-area: CategoryBox1;
+        border: 1px dashed blue;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .CategoryBox3 {
+            .SearchInput {
+                border-radius: 50px;
+                width: 500px;
+                border: 2px solid #a61c00;
+            }
+
+            .SearchButton {
+                border-radius: 50px;
+                margin-left: 10px;
+                width: 80px;
+                background-color: #a61c00;
+                color: #fff;
+                border: 2px solid #a61c00;
+            }
+        }
+
+    }
+
+    .CategoryBox2 {
+        grid-area: CategoryBox2;
+        border: 1px dashed blue;
+    }
+}
