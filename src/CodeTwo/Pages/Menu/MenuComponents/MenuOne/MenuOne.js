@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './MenuOne.scss'
 import { Button } from 'antd'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import ToolBar from '../ToolBar/ToolBar'
 
 export default function MenuOne({ props, changeAnimation }) {
     const [contens, setContent] = useState(null)
@@ -27,6 +28,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             若没有你，我这一生，就算再快乐，也不会多快乐了。`,
                             IsLike: false,
                             IsCollect: false,
+                            type:'Article',
                         },
                         {
                             title: "南风过境",
@@ -41,6 +43,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             若没有你，我这一生，就算再快乐，也不会多快乐了。`,
                             IsLike: false,
                             IsCollect: false,
+                            type:'Article',
                         }
                     ]
                 },
@@ -54,6 +57,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             summary: `用纯HTML+css写的下雨的云`,
                             IsLike: false,
                             IsCollect: false,
+                            type:'Artwork'
                         },
                         {
                             title: "下雨的云",
@@ -61,6 +65,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             summary: `用纯HTML+css写的下雨的云`,
                             IsLike: false,
                             IsCollect: false,
+                            type:'Artwork'
                         }
                     ]
                 },
@@ -74,6 +79,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             summary: `张菲的介绍`,
                             IsLike: false,
                             IsCollect: false,
+                            type:'PrivateGarden'
                         }
                     ]
                 },
@@ -88,7 +94,7 @@ export default function MenuOne({ props, changeAnimation }) {
 
     const GoCategory = (value) => {
         props.history.push('/Category', value)
-        changeAnimation("up")
+        changeAnimation("animate__animated animate__fadeIn animate__fadeOut")
     }
 
     const GoTitle = (value) => {
@@ -132,7 +138,7 @@ export default function MenuOne({ props, changeAnimation }) {
                     </div>
                 </div>
                 <div className='MenuBox4'>
-
+                    <ToolBar props={props}></ToolBar>
                 </div>
             </div>
         </div>
