@@ -4,6 +4,8 @@
 // import { ThemeContext } from '../../../Utils/Theme/themeContext'
 // import LoginPage from "../Login/LoginPage";
 // import HomePage from "../Home/HomePage";
+// import MenuPage from "../Menu/MenuPage";
+// import CategoryPage from "../Category/CategoryPage";
 
 
 
@@ -35,13 +37,13 @@
 //                 <Router>
 //                     <Switch>
 //                         <Route>
-//                             {/* <header style={{ height: 50 }}>header</header> */}
 //                             <div id="Main">
 //                                 <Route exact path="/" render={(props) => <HomePage {...props} />} />
 //                                 <Route path="/Home" component={HomePage} />
+//                                 <Route path="/Menu" component={MenuPage} />
+//                                 <Route path="/Category" component={CategoryPage} />
 //                                 <Route path="/Login" component={LoginPage} />
 //                             </div>
-//                             {/* <footer style={{ height: 50 }}>footer</footer> */}
 //                         </Route>
 //                     </Switch>
 //                 </Router>

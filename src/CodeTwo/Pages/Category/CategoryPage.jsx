@@ -8,7 +8,7 @@ export default class CategoryPage extends Component {
 
     GoBack = () => {
         this.props.history.goBack();
-        this.props.changeAnimation("up")
+        // this.props.changeAnimation("up")
     }
 
 
