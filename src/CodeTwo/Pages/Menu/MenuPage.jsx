@@ -9,7 +9,7 @@ import 'animate.css'
 export default class MenuPage extends Component {
     GoBack = () => {
         this.props.history.goBack();
-        this.props.changeAnimation("animate__animated animate__zoomIn animate__zoomOut")
+        this.props.changeAnimation("animate__animated animate__slideInRight animate__animated animate__slideOutLeft")
     }
 
     changeAnimation = (value) => {
