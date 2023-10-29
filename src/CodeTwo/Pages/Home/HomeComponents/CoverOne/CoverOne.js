@@ -25,6 +25,7 @@ export default function CoverOne({ props }) {
                             有蝉鸣不止的盛夏，<br />
                             和永不凋零的玫瑰🌹
                         </p>
+
                         <div className='MiddleBox8'>
 
                         </div>
@@ -41,7 +42,7 @@ export default function CoverOne({ props }) {
                     </div>
                 </div>
                 <div className='MiddleBox5'>
-  
+
                 </div>
             </div>
             <text style={{ fontSize: "10vw", position: 'absolute', color: '#fff', opacity: '0.3' }}>

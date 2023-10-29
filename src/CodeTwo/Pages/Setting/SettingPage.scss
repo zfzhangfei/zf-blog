@@ -1,4 +1,20 @@
-#SettingPage{
+#SettingPage {
     width: 100%;
     height: 100vh;
+    display: grid;
+    grid-template-columns: 256px 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "SettingBox1 SettingBox2";
+
+    .SettingBox1 {
+        grid-area: SettingBox1;
+    }
+
+    .SettingBox2 {
+        grid-area: SettingBox2;
+        #SettingRouters{
+            height: 100%;
+        }
+    }
 }

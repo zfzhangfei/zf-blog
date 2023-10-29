@@ -9,40 +9,52 @@ import 'animate.css'
 export default class MenuPage extends Component {
     GoBack = () => {
         this.props.history.goBack();
-        this.props.changeAnimation("animate__animated animate__slideInRight animate__animated animate__slideOutLeft")
+        // this.props.history.push('/Home')
     }
 
     changeAnimation = (value) => {
         this.props.changeAnimation(value)
+
+    }
+
+    toggleMenu = () => {
+        // this.props.toggleMenu()
     }
 
     render() {
         return (
-            <TransitionGroup>
-                <CSSTransition
-                    key={this.props.location.pathname}
-                    timeout={450}
-                    classNames={"animate__animated animate__zoomIn animate__zoomOut"}
+            <div id='MenuPage'>
+                <div className='GoBack'
+                    onClick={() => {
+                        this.GoBack()
+                    }}
                 >
-                    <div id='MenuPage'>
-                        <div className='GoBack'
-                            onClick={() => {
-                                this.GoBack()
-                            }}
-                        >
-                            <Button
-                                type="primary"
-                                shape="circle"
-                                position="absolute"
-                                style={{
-                                    backgroundColor: 'rgba(255,255,255,0)'
-                                }}
-                                icon={<ArrowLeftOutlined />} />
-                        </div>
-                        <MenuOne props={this.props} changeAnimation={this.changeAnimation}></MenuOne>
-                    </div>
-                </CSSTransition>
-            </TransitionGroup>
+                    <Button
+                        type="primary"
+                        shape="circle"
+                        position="absolute"
+                        style={{
+                            backgroundColor: 'rgba(255,255,255,0)'
+                        }}
+                        icon={<ArrowLeftOutlined />} />
+                </div>
+                <div className='GoArticle'
+                    onClick={() => {
+                        this.toggleMenu()
+                    }}
+                >
+                    <Button
+                        type="primary"
+                        shape="circle"
+                        position="absolute"
+                        style={{
+                            backgroundColor: 'rgba(255,255,255,0)'
+                        }}
+                        icon={<ArrowLeftOutlined />} />
+                </div>
+                <MenuOne props={this.props} changeAnimation={this.changeAnimation} toggleMenu={this.toggleMenu}></MenuOne>
+
+            </div>
         )
     }
 }

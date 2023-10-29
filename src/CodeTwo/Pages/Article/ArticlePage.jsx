@@ -12,10 +12,7 @@ export default class ArticlePage extends Component {
     return (
       <div id='ArticlePage'>
         {
-          console.log(this.props.state.state, 'ddddddddd')
-        }
-        {
-          <PrivateGarden></PrivateGarden>
+          this.props.location.state&&this.props.location.state.type=="PrivateGarden"&&<PrivateGarden></PrivateGarden>
         }
       </div>
     )

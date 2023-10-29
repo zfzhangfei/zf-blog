@@ -1,0 +1,15 @@
+#EditArticlePage {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "EditArticleBox1"
+        "EditArticleBox2";
+        .EditArticleBox1{
+            grid-area: EditArticleBox1;
+        }
+        .EditArticleBox2{
+            grid-area: EditArticleBox2;
+        }
+}

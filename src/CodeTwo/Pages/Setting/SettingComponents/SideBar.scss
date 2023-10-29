@@ -1,0 +1,18 @@
+#SideBar{
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "Menu"
+        "collapsedBtn";
+        .Menu{
+            grid-area: Menu;
+        }
+        .collapsedBtn{
+            grid-area: collapsedBtn;
+            border-radius: 0px;
+            transition: width 0.4s ;
+        }
+
+}

@@ -4,7 +4,7 @@ import { Button } from 'antd'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import ToolBar from '../ToolBar/ToolBar'
 
-export default function MenuOne({ props, changeAnimation }) {
+export default function MenuOne({ props, changeAnimation, toggleMenu }) {
     const [contens, setContent] = useState(null)
 
 
@@ -28,7 +28,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             若没有你，我这一生，就算再快乐，也不会多快乐了。`,
                             IsLike: false,
                             IsCollect: false,
-                            type:'Article',
+                            type: 'Article',
                         },
                         {
                             title: "南风过境",
@@ -43,7 +43,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             若没有你，我这一生，就算再快乐，也不会多快乐了。`,
                             IsLike: false,
                             IsCollect: false,
-                            type:'Article',
+                            type: 'Article',
                         }
                     ]
                 },
@@ -57,7 +57,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             summary: `用纯HTML+css写的下雨的云`,
                             IsLike: false,
                             IsCollect: false,
-                            type:'Artwork'
+                            type: 'Artwork'
                         },
                         {
                             title: "下雨的云",
@@ -65,7 +65,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             summary: `用纯HTML+css写的下雨的云`,
                             IsLike: false,
                             IsCollect: false,
-                            type:'Artwork'
+                            type: 'Artwork'
                         }
                     ]
                 },
@@ -79,7 +79,7 @@ export default function MenuOne({ props, changeAnimation }) {
                             summary: `张菲的介绍`,
                             IsLike: false,
                             IsCollect: false,
-                            type:'PrivateGarden'
+                            type: 'PrivateGarden'
                         }
                     ]
                 },
@@ -94,11 +94,13 @@ export default function MenuOne({ props, changeAnimation }) {
 
     const GoCategory = (value) => {
         props.history.push('/Category', value)
-        changeAnimation("animate__animated animate__fadeIn animate__fadeOut")
+        changeAnimation()
     }
 
     const GoTitle = (value) => {
+        // props.history.push('/Menu/Article', value)
         props.history.push('/Article', value)
+        toggleMenu()
     }
 
     return (
