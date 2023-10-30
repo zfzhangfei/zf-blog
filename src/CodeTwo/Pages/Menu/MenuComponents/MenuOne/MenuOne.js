@@ -98,9 +98,7 @@ export default function MenuOne({ props, changeAnimation, toggleMenu }) {
     }
 
     const GoTitle = (value) => {
-        // props.history.push('/Menu/Article', value)
         props.history.push('/Article', value)
-        toggleMenu()
     }
 
     return (

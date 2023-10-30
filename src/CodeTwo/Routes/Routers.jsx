@@ -171,7 +171,7 @@ import MenuPage from "../Pages/Menu/MenuPage";
 import CategoryPage from "../Pages/Category/CategoryPage";
 import 'animate.css';
 import ArticlePage from "../Pages/Article/ArticlePage";
-import SettingPage from "../Pages/Setting/SettingPage";
+import SettingPage from "../Pages/Setting/SettingPage"; 
 import { AnimatePresence, motion } from "framer-motion";
 import SettingRouters from "../Pages/Setting/SettingRouters";
 
@@ -197,15 +197,10 @@ class Routers extends Component {
             exit: { opacity: 0 },
             transition: { duration: 1.0 },
         },
-        isMenuOpen: false,
-        IsFirst: true,
     }
 
     componentDidMount = () => {
-        console.log(1111)
-        this.setState({
-            IsFirst: true,
-        })
+    
     }
 
     changeTheme = (value) => {
@@ -215,118 +210,13 @@ class Routers extends Component {
     }
 
     changeAnimation = () => {
-        this.setState(prevState => ({
-            isMenuOpen: !prevState.isMenuOpen,
-            IsFirst: true
-        }));
+ 
     };
 
-    toggleMenu = () => {
-        this.setState(prevState => ({
-            isMenuOpen: !prevState.isMenuOpen,
-            IsFirst: false
-        }));
-    };
 
     render() {
         return (
             <ThemeContext.Provider value={this.state.theme}>
-                {/* <Route
-                    render={({ location }) => (
-                        <AnimatePresence mode='wait'>
-                            <Switch location={location} key={location.pathname}>
-                                <Route
-                                    exact
-                                    path="/"
-                                    render={(props) => (
-                                        <motion.div
-                                            initial={this.state.animation.in}
-                                            animate={this.state.animation.out}
-                                            exit={this.state.animation.exit}
-                                            transition={this.state.animation.transition}
-                                        >
-                                            <HomePage {...props} changeAnimation={this.changeAnimation} />
-                                        </motion.div>
-                                    )}
-                                />
-                                <Route
-                                    exact
-                                    path="/Home"
-                                    render={(props) => (
-                                        <motion.div
-                                            initial={this.state.animation.in}
-                                            animate={this.state.animation.out}
-                                            exit={this.state.animation.exit}
-                                            transition={this.state.animation.transition}
-                                        >
-                                            <HomePage {...props} changeAnimation={this.changeAnimation} />
-                                        </motion.div>
-                                    )}
-                                />
-                                <div className="MenuArticle">
-                                    {
-                                        console.log(this.state.IsFirst, 'this.state.IsFirstthis.state.IsFirst')
-                                    }
-                                    <div className="Menu" style={{ width: this.state.isMenuOpen ? "100vw" : "100vw" }}>
-                                        <motion.div
-                                            initial={{ x: this.state.IsFirst ? 0 : this.state.isMenuOpen ? "-90%" : 0 }}
-                                            animate={{ x: this.state.IsFirst ? 0 : this.state.isMenuOpen ? 0 : "-90%" }}
-                                            transition={{ duration: 0.5 }}
-                                        >
-                                            <Route
-                                                path="/Menu"
-                                                render={(props) => (
-                                                    <MenuPage {...props} changeAnimation={this.changeAnimation} toggleMenu={this.toggleMenu}/>
-                                                )}
-                                            />
-                                        </motion.div>
-
-                                    </div>
-                                    <div className="Article" style={{ width: this.state.isMenuOpen ? "100vw" : "100vw" }}>
-                                        <motion.div
-                                            initial={{ x: this.state.IsFirst ? 0 : this.state.isMenuOpen ? "-90%" : 0 }}
-                                            animate={{ x: this.state.IsFirst ? 0 : this.state.isMenuOpen ? 0 : "-90%" }}
-                                            transition={{ duration: 0.5 }}
-                                        >
-                                            <Route
-                                                path="/Menu/Article"
-                                                render={(props) => (
-                                                    <ArticlePage {...props} changeAnimation={this.changeAnimation} />
-                                                )}
-                                            />
-                                        </motion.div>
-                                    </div>
-                                </div>
-                                <Route
-                                    exact
-                                    path="/Category"
-                                    render={(props) => (
-                                        <motion.div
-                                            initial={{ opacity: 0 }} // 开始状态，完全透明并且在当前视图的右边100px的位置
-                                            animate={{ opacity: 1 }}   // 结束状态，完全不透明并且位于当前视图原点
-                                            exit={{ opacity: 0 }}   // 退出状态，完全透明并且在当前视图的左边100px的位置
-                                            transition={{ duration: 0.5 }} // 动画过渡时间
-                                        >
-                                            <CategoryPage {...props} changeAnimation={this.changeAnimation} />
-                                        </motion.div>
-                                    )}
-                                />
-
-                                <Route
-                                    path="/Setting"
-                                    render={(props) => (
-                                        <motion.div
-
-                                        >
-                                            <SettingPage {...props} changeAnimation={this.changeAnimation} />
-                                        </motion.div>
-                                    )}
-                                />
-                            </Switch>
-                        </AnimatePresence>
-                    )
-                    }
-                /> */}
                 <Route
                     render={({ location }) => (
                         <AnimatePresence mode='wait'>

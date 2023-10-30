@@ -14,12 +14,9 @@ export default class MenuPage extends Component {
 
     changeAnimation = (value) => {
         this.props.changeAnimation(value)
-
     }
 
-    toggleMenu = () => {
-        // this.props.toggleMenu()
-    }
+
 
     render() {
         return (
@@ -38,22 +35,7 @@ export default class MenuPage extends Component {
                         }}
                         icon={<ArrowLeftOutlined />} />
                 </div>
-                <div className='GoArticle'
-                    onClick={() => {
-                        this.toggleMenu()
-                    }}
-                >
-                    <Button
-                        type="primary"
-                        shape="circle"
-                        position="absolute"
-                        style={{
-                            backgroundColor: 'rgba(255,255,255,0)'
-                        }}
-                        icon={<ArrowLeftOutlined />} />
-                </div>
-                <MenuOne props={this.props} changeAnimation={this.changeAnimation} toggleMenu={this.toggleMenu}></MenuOne>
-
+                <MenuOne props={this.props} changeAnimation={this.changeAnimation} ></MenuOne>
             </div>
         )
     }
