@@ -9,14 +9,14 @@ export default class SettingRouters extends Component {
             <div id='SettingRouters'>
                 <Router>
                     <Switch>
-                        <Route exact path="/Setting/home" render={(props) =>
+                        <Route exact path="/Setting" render={(props) =>
                             111
                         } />
                         <Route exact path="/Setting/articles" render={(props) =>
                             222
                         } />
                         <Route exact path="/Setting/EditArticle" render={(props) =>
-                           <EditArticlePage></EditArticlePage>
+                            <EditArticlePage></EditArticlePage>
                         } />
                     </Switch>
                 </Router>

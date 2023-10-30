@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './SideBar.scss'
 import {
     ContainerOutlined,
@@ -11,66 +11,62 @@ import {
 import { Button, Menu } from 'antd';
 
 const items = [
-    { label: '首页', key: '1', icon: <PieChartOutlined /> },
-    { label: '文章', key: '2', icon: <DesktopOutlined /> },
-    { label: '新建文章', key: '3', icon: <ContainerOutlined /> },
+    { label: '首页', key: '1', icon: <PieChartOutlined />, to: '/Setting' },
+    { label: '文章', key: '2', icon: <DesktopOutlined />, to: '/Setting/articles' },
+    { label: '新建文章', key: '3', icon: <ContainerOutlined />, to: '/Setting/EditArticle' },
 ];
 
-const mapRouteToKey = {
-    "/Setting/home": "1",
-    "/Setting/articles": "2",
-    "/Setting/EditArticle": "3",
-};
+
+
+
+
+
 
 const SideBar = ({ props }) => {
     const location = useLocation();
     const [collapsed, setCollapsed] = useState(false);
-    const [selectedKey, setSelectedKey] = useState(mapRouteToKey[location.pathname] || "1");
-
+    const [selectedKey, setSelectedKey] = useState((items.find(item => item.to === location.pathname).key) || "1");
     const toggleCollapsed = useCallback(() => setCollapsed(prev => !prev), []);
 
-    const handleSelect = useCallback(({ key }) => {
-        setSelectedKey(key);
-        switch (key) {
-            case '1':
-                props.history.push("/Setting/home");
-                break;
-            case '2':
-                props.history.push("/Setting/articles");
-                break;
-            case '3':
-                props.history.push("/Setting/EditArticle");
-                break;
-            default: break;
-        }
-    }, [props]);
+
 
     useEffect(() => {
-        setSelectedKey(mapRouteToKey[location.pathname] || "1");
-    }, [location]);
+        const currentItem = items.find(item => item.to === location.pathname);
+        if (currentItem) {
+            setSelectedKey(currentItem.key);
+        }
+        else {
+            setSelectedKey("1");
+        }
+    }, [location, items]);
+
+
+
 
     return (
         <div id='SideBar' >
-            {/* <Button
-                className='collapsedBtn'
-                type="primary"
-                onClick={toggleCollapsed}
-            >
-                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-            </Button> */}
             <Menu
                 className='Menu'
                 selectedKeys={[selectedKey]}
                 mode="inline"
                 theme="dark"
                 inlineCollapsed={collapsed}
-                onSelect={handleSelect}
             >
-                {items.map(({ label, key, icon }) => (
+                {items.map(({ label, key, icon, to }) => (
                     <Menu.Item key={key} icon={icon}>
-                        {label}
+                        <Link to={to}>
+                            {label}
+                        </Link>
                     </Menu.Item>
                 ))}
+                <div
+                    className='collapsedBtn'
+                    onClick={toggleCollapsed}
+                >
+                    {
+                        collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
+                    }
+                </div>
             </Menu>
         </div>
     );
