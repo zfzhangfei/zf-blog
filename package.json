@@ -38,6 +38,7 @@
     "react-dom": "^18.2.0",
     "react-flip-page": "^1.6.4",
     "react-markdown": "^8.0.7",
+    "react-on-screen": "^2.1.1",
     "react-pageflip": "^2.0.3",
     "react-parallax": "^3.5.1",
     "react-redux": "^8.1.2",

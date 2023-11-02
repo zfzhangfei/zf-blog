@@ -15,12 +15,7 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <TransitionGroup>
-        <CSSTransition
-          key={this.props.location.pathname}
-          timeout={450}
-          classNames={"animate__animated animate__zoomIn animate__zoomOut"}
-        >
+
           <div id='HomePage'>
             <div className='GoNext'
               onClick={() => {
@@ -38,8 +33,6 @@ export default class HomePage extends Component {
             </div>
             <CoverOne props={this.props}></CoverOne>
           </div>
-        </CSSTransition>
-      </TransitionGroup>
     )
   }
 }

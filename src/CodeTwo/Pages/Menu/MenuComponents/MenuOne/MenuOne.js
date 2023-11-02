@@ -52,20 +52,24 @@ export default function MenuOne({ props, changeAnimation, toggleMenu }) {
                     Category: "作品",
                     Children: [
                         {
+                            Id:1,
                             title: "下雨的云",
                             author: "张菲",
                             summary: `用纯HTML+css写的下雨的云`,
                             IsLike: false,
                             IsCollect: false,
-                            type: 'Artwork'
+                            type: 'Artwork',
+                            pagename:'vvv'
                         },
                         {
-                            title: "下雨的云",
+                            Id:2,
+                            title: "仿写---作品集",
                             author: "张菲",
                             summary: `用纯HTML+css写的下雨的云`,
                             IsLike: false,
                             IsCollect: false,
-                            type: 'Artwork'
+                            type: 'Artwork',
+                            pagename:'ImitationPortfolio'
                         }
                     ]
                 },

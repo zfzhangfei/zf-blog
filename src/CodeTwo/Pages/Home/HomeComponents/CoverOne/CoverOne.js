@@ -3,6 +3,9 @@ import './CoverOne.scss'
 import { Button } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import Link from 'antd/es/typography/Link'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import 'animate.css'
+import TrackVisibility from 'react-on-screen'
 
 export default function CoverOne({ props }) {
 
@@ -16,16 +19,21 @@ export default function CoverOne({ props }) {
             <div className='MiddleBox2'>
                 <div className='MiddleBox7'>
                     <div className='CoverText'>
-                        <p style={{
-                            fontSize: '1.5vw',
-                            lineHeight: 3,
-                        }}>
-                            少女的梦里有海，<br />
-                            有日落，<br />
-                            有蝉鸣不止的盛夏，<br />
-                            和永不凋零的玫瑰🌹
-                        </p>
-
+                        <TrackVisibility>
+                            {({ isVisible }) => isVisible &&
+                                <p
+                                    className={isVisible ? "animate__animated animate__backInDown" : ""}
+                                    style={{
+                                        fontSize: '1.5vw',
+                                        lineHeight: 3,
+                                    }}>
+                                    少女的梦里有海，<br />
+                                    有日落，<br />
+                                    有蝉鸣不止的盛夏，<br />
+                                    和永不凋零的玫瑰🌹
+                                </p>
+                            }
+                        </TrackVisibility>
                         <div className='MiddleBox8'>
 
                         </div>
@@ -45,8 +53,10 @@ export default function CoverOne({ props }) {
 
                 </div>
             </div>
+
             <text style={{ fontSize: "10vw", position: 'absolute', color: '#fff', opacity: '0.3' }}>
                 Be <br />&emsp;yourself </text>
+
         </div>
     )
 }
