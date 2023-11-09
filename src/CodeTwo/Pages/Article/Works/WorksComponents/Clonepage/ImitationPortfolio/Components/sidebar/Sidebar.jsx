@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 
  const variants = {
     open: {
-      clipPath: "circle(100vh at 50px 50px)",
+      clipPath: "circle(120vh at 50px 50px)",
       transitiob: {
         type: "spring",
         stiffness: 20,
