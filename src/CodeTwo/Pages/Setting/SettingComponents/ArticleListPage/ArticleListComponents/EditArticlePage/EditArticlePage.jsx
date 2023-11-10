@@ -1,5 +1,5 @@
 import React from "react";
-import VditorEditor from "../../../../../Plugin/VditorEditor/VditorEditor";
+import VditorEditor from "../../../../../../../Plugin/VditorEditor/VditorEditor";
 import "./EditArticlePage.scss";
 import { Button } from "antd";
 import ArticleDrawer from "../Drawer/ArticleDrawer";

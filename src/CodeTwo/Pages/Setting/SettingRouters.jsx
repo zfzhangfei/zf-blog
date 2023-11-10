@@ -6,7 +6,7 @@ import {
   withRouter,
 } from "react-router-dom";
 import VditorEditor from "../../../Plugin/VditorEditor/VditorEditor";
-import EditArticlePage from "./SettingComponents/EditArticlePage/EditArticlePage";
+import EditArticlePage from "./SettingComponents/ArticleListPage/ArticleListComponents/EditArticlePage/EditArticlePage";
 import ArticleListPage from "./SettingComponents/ArticleListPage/ArticleListPage";
 
 export default class SettingRouters extends Component {

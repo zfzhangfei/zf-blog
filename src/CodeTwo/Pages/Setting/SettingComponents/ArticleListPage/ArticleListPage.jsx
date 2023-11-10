@@ -10,16 +10,20 @@ import {
   Tag,
 } from "antd";
 import "./ArticleListPage.scss";
-import ArticleDrawer from "../Drawer/ArticleDrawer";
+import ArticleDrawer from "./ArticleListComponents/Drawer/ArticleDrawer";
 import VditorEditor from "../../../../../Plugin/VditorEditor/VditorEditor";
-import EditArticlePage from "../EditArticlePage/EditArticlePage";
+import EditArticlePage from "./ArticleListComponents/EditArticlePage/EditArticlePage";
+import PreviewModal from "./ArticleListComponents/PreviewModal/PreviewModal";
 
 const createColumns = (handleReleaseChange, edit) => [
   {
     title: "文章名",
     dataIndex: "name",
     key: "name",
-    render: (text) => <a>{text}</a>,
+    render: (_, record) => (
+      <PreviewModal record={record} ></PreviewModal>
+    ),
+    // render: (text) => <PreviewModal text={text} ></PreviewModal>,
   },
   {
     title: "简介",
