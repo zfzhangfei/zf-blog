@@ -13,7 +13,6 @@ import { Button, Menu } from 'antd';
 const items = [
     { label: '首页', key: '1', icon: <PieChartOutlined />, to: '/Setting' },
     { label: '文章', key: '2', icon: <DesktopOutlined />, to: '/Setting/articles' },
-    { label: '新建文章', key: '3', icon: <ContainerOutlined />, to: '/Setting/EditArticle' },
 ];
 
 

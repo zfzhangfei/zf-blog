@@ -8,6 +8,13 @@
         "EditArticleBox2";
         .EditArticleBox1{
             grid-area: EditArticleBox1;
+            background-color: #001529;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            .ArrowLeftOutlined{
+                color: white;
+            }
         }
         .EditArticleBox2{
             grid-area: EditArticleBox2;
