@@ -15,12 +15,6 @@ let CURRENT_USER = {
 }
 
 
-function getCurrentUser() {
-  return CURRENT_USER; // return current value
-}
-
-
-
 
 
 // 处理数据的函数
@@ -140,39 +134,102 @@ router.get('/users', (req, res) => {
   })
 });
 
-//#region 获取用户简介
-router.get('/getIntroduction', (req, res) => {
-  let sql = `SELECT * FROM users WHERE users.username = ? and users.password=? `
-  db.query(sql, [req.query.username, req.query.password], (err, result) => {
+
+
+
+//#region 文章---artical
+router.post('/postArtical', (req, res) => {
+  let sql = ` INSERT INTO article (
+    name,  
+    tags,
+    category,
+    summary,
+    author,
+    cover,
+    isRelease,
+    CreateBy,
+    CreateTime,
+    DeleteFlag
+  ) VALUES (?,?,?,?,?,?,?,?,?,?)`
+  let params = [
+    req.body.name,
+    req.body.tags,
+    req.body.category,
+    req.body.summary,
+    CURRENT_USER.username,
+    req.body.cover,
+    req.body.isRelease,
+    CURRENT_USER.id,
+    CURRENT_TIMESTAMP,
+    0
+  ]
+  db.query(sql, params, (err, results) => {
     if (err) {
       console.log(err)
     } else {
-      return res.send(JSON.stringify({
-        msg: 'login success',
-        success: true,
-        username: req.query.username,
-        avatar: result[0].avatar,
-        maxim: result[0].maxim,
-      }))
+      res.send(JSON.stringify({
+        res: results
+      }));
     }
   })
-});
-//#endregion
-//#endregion
+})
 
 
-
-
-
-//#region 头像
-//#region 改
-router.post('/EditAvatar', (req, res) => {
-  let sql = `UPDATE users SET avatar = ? , UpdateTime =? , UpdateBy =? WHERE id = ?`;
+router.post('/deleteArticle', (req, res) => {
+  let sql = `UPDATE article SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
   let params = [
-    req.body.avatar,
+    1,
     CURRENT_TIMESTAMP,
-    CURRENT_USER.username,
     CURRENT_USER.id,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.post('/updateArticle', (req, res) => {
+  let sql = `UPDATE article SET 
+  Name=?,
+  Mark=?,
+  MarkColor=?,
+  Classification=?,
+  Summary=?,
+  Content=?,
+  UpdateBy=?,
+  UpdateTime=?WHERE Id = ?`;
+  let params = [
+    req.body.Name,
+    req.body.Mark,
+    req.body.MarkColor,
+    req.body.Classification,
+    req.body.Summary,
+    req.body.Content,
+    CURRENT_USER.id,
+    CURRENT_TIMESTAMP,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.get('/getArticle', (req, res) => {
+  let sql = `SELECT * FROM article WHERE article.DeleteFlag = ?`
+  let params = [
+    0,
   ]
   db.query(sql, params, (err, results) => {
     if (err) {
@@ -185,21 +242,109 @@ router.post('/EditAvatar', (req, res) => {
   })
 })
 //#endregion
-//#endregion
 
 
-
-
-
-//#region 格言
-//#region 改
-router.post('/EditMaxim', (req, res) => {
-  let sql = `UPDATE users SET maxim = ? , UpdateTime =? , UpdateBy =? WHERE id = ?`;
+//#region 评论
+router.post('/postComment', (req, res) => {
+  let sql = `INSERT INTO comment (
+        Parents,  
+        ParentsId,
+        ParentsName,
+        Content,
+        IsLeaf,
+        IsLike,
+        Avatar,
+        ArticleId,
+        CreateBy,
+        CreateTime
+    ) VALUES (?,?,?,?,?,?,?,?,?,?)`
   let params = [
-    req.body.maxim,
-    CURRENT_TIMESTAMP,
-    CURRENT_USER.username,
+    req.body.Parents,
+    req.body.ParentsId,
+    req.body.ParentsName,
+    req.body.Content,
+    req.body.IsLeaf,
+    req.body.IsLike,
+    req.body.Avatar,
+    req.body.ArticleId,
     CURRENT_USER.id,
+    CURRENT_TIMESTAMP,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+
+
+router.post('/deleteComment', (req, res) => {
+  let sql = `UPDATE comment SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [
+    1,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.id,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.post('/updateComment', (req, res) => {
+  let sql = `UPDATE comment SET 
+  Parents=?,  
+  ParentsId=?,
+  ParentsName=?,
+  Content=?,
+  IsLeaf=?,
+  IsLike=?,
+  Avatar=?,
+  ArticleId=?,
+  UpdateBy=?,
+  UpdateTime=?WHERE Id = ?`;
+  let params = [
+    req.body.Parents,
+    req.body.ParentsId,
+    req.body.ParentsName,
+    req.body.Content,
+    req.body.IsLeaf,
+    req.body.IsLike,
+    req.body.Avatar,
+    req.body.ArticleId,
+    CURRENT_USER.id,
+    CURRENT_TIMESTAMP,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+
+
+router.get('/getComment', (req, res) => {
+  let sql = `SELECT * FROM comment WHERE comment.DeleteFlag = ? and comment.ArticleId=?`
+  let params = [
+    0,
+    req.query.ArticleId,
   ]
   db.query(sql, params, (err, results) => {
     if (err) {
@@ -212,8 +357,144 @@ router.post('/EditMaxim', (req, res) => {
   })
 })
 //#endregion
+
+
+//#region 图片
+router.post('/postBosPicture', (req, res) => {
+  let sql = ` INSERT INTO bos_picture (
+    BosRegion,  
+    BosBucket,
+    BosPath,
+    BosName,
+    BosExtention,
+    Size, 
+    CreateBy,
+    PictureType,
+    Href,
+    CreateTime
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`
+  let params = [
+    'https://zfblog.su.bcebos.com',
+    'zfblog',
+    req.body.BosPath,
+    req.body.BosName,
+    '',
+    0,
+    CURRENT_USER.id,
+    req.body.PictureType,
+    req.body.Href,
+    CURRENT_TIMESTAMP,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.post('/deleteBosPicture', (req, res) => {
+  let sql = `UPDATE bos_picture SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [
+    1,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.id,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.get('/getBosPicture', (req, res) => {
+  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ?`
+  let params = [
+    req.query.type,
+    0,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
 //#endregion
 
 
 
-module.exports = { router, getCurrentUser }
+//#region 标签
+router.post('/postMark', (req, res) => {
+  let sql = ` INSERT INTO dictionary_mark (
+    Value,
+    Color,
+    CreateBy,
+    CreateTime
+  ) VALUES (?, ?, ?, ?)`
+  let params = [
+    req.body.Value,
+    req.body.Color,
+    CURRENT_USER.id,
+    CURRENT_TIMESTAMP,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.post('/deleteMark', (req, res) => {
+  let sql = `UPDATE dictionary_mark SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [
+    1,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.id,
+    req.body.key,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.get('/getTags', (req, res) => {
+  let sql = `SELECT * FROM dictionary_mark WHERE dictionary_mark.DeleteFlag = ? `
+  let params = [
+    0,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
+
+module.exports = router
