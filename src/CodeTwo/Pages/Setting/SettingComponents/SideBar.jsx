@@ -53,7 +53,7 @@ const SideBar = ({ props }) => {
             >
                 {items.map(({ label, key, icon, to }) => (
                     <Menu.Item key={key} icon={icon}>
-                        <Link to={to}>
+                        <Link to={to} key={key}>
                             {label}
                         </Link>
                     </Menu.Item>

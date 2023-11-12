@@ -9,6 +9,7 @@ export default function EditArticlePage({ list, props }) {
   const goBackList = () => {
     list();
   };
+  
   return (
     <div id="EditArticlePage">
       <div className="EditArticleBox1">

@@ -4,16 +4,15 @@ import remarkGfm from "remark-gfm";
 import remarkGemoji from "remark-gemoji";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import CodeCopyBtn from "../../Code/CommonComponent/codeCopyBtn";
+import CodeCopyBtn from "./codeCopyBtn";
 import "github-markdown-css/github-markdown.css";
 import { Empty } from "antd";
 import remarkToc from "remark-toc";
 import remarkSlug from "remark-slug";
-import "./VditorEditor.scss";
+import "./markDown.scss";
 
 import "vditor/dist/index.css";
 import React, { useState } from "react";
-import Vditor from "vditor";
 
 export default function markDown({ html }) {
 

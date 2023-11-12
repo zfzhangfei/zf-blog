@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./contact.scss";
 import { motion, useInView } from "framer-motion";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 
 const variants = {
   initial: {
@@ -27,23 +27,23 @@ const Contact = () => {
   const isInView = useInView(ref, { margin: "-100px" });
 
   const sendEmail = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        formRef.current,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        (result) => {
-          setSuccess(true);
-        },
-        (error) => {
-          setError(true);
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     "YOUR_SERVICE_ID",
+    //     "YOUR_TEMPLATE_ID",
+    //     formRef.current,
+    //     "YOUR_PUBLIC_KEY"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       setSuccess(true);
+    //     },
+    //     (error) => {
+    //       setError(true);
+    //     }
+    //   );
   };
 
   return (

@@ -14,8 +14,10 @@ import ArticleDrawer from "./ArticleListComponents/Drawer/ArticleDrawer";
 import VditorEditor from "../../../../../Plugin/VditorEditor/VditorEditor";
 import EditArticlePage from "./ArticleListComponents/EditArticlePage/EditArticlePage";
 import PreviewModal from "./ArticleListComponents/PreviewModal/PreviewModal";
+import { getArticle, postArtical } from "../../../../Api/Api";
+import { GlobalContext } from "../../../../../Utils/GlobalProvider";
 
-const createColumns = (handleReleaseChange, edit) => [
+const createColumns = (handleReleaseChange, edit, context) => [
   {
     title: "文章名",
     dataIndex: "name",
@@ -23,7 +25,6 @@ const createColumns = (handleReleaseChange, edit) => [
     render: (_, record) => (
       <PreviewModal record={record} ></PreviewModal>
     ),
-    // render: (text) => <PreviewModal text={text} ></PreviewModal>,
   },
   {
     title: "简介",
@@ -39,23 +40,21 @@ const createColumns = (handleReleaseChange, edit) => [
     title: "标签",
     key: "tags",
     dataIndex: "tags",
-    render: (_, { tags }) => (
-      <>
-        {tags?.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    render: (_, { tags }) => {
+      const tagArray = tags?.split('/'); // 这一行将 'tags' 字符串转换为数组
+      return (
+        <>
+          {tagArray?.map((tag) => {
+            return (
+              <Tag color={context.state.MarkList[tag].color} key={tag}>
+                {context.state.MarkList[tag].value.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </>
+      );
+    },
   },
-  Table.SELECTION_COLUMN,
   {
     title: "是否发布",
     dataIndex: "isRelease",
@@ -79,7 +78,7 @@ const createColumns = (handleReleaseChange, edit) => [
         <Button
           className="edit"
           onClick={() => {
-            edit();
+            edit(record);
           }}
         >
           编辑
@@ -90,36 +89,12 @@ const createColumns = (handleReleaseChange, edit) => [
   },
 ];
 
-const aritcleData = [
-  {
-    key: "1",
-    name: "《海上华庭》",
-    summary: 32,
-    category: "demo2",
-    tags: ["nice", "developer"],
-    isRelease: true,
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    summary: 42,
-    category: "demo1",
-    tags: ["loser"],
-    isRelease: false,
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    summary: 32,
-    category: "demo2",
-    tags: ["cool", "teacher"],
-    isRelease: false,
-  },
-];
 
 const ArticleListPage = () => {
   const [form] = Form.useForm(); // 获取Form实例
-  const [data, setData] = useState(aritcleData);
+  const [data, setData] = useState();
+  const [articleData, setArticleData] = useState();
+  const [currentArticle, setCurrentArticle] = useState();
   const [pageType, setPageType] = useState("ListPage");
   const [searchParams, setSearchParams] = useState({
     name: "",
@@ -127,6 +102,15 @@ const ArticleListPage = () => {
     category: null,
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getArticle();
+      setData(result.res);
+      setArticleData(result.res);
+    };
+
+    fetchData();
+  }, []);
   //#region 测试用
   const handleReleaseChange = (record) => {
     // 更新文章API
@@ -136,11 +120,20 @@ const ArticleListPage = () => {
       ...record,
       isRelease: !record.isRelease,
     };
-    setData(data.map((item) => (item.key === record.key ? newRecord : item)));
+    setData(data.map((item) => (item.Id === record.Id ? newRecord : item)));
   };
 
-  const addArticle = (value) => {
-    console.log(value);
+  const addArticle = async(value) => {
+    const params={
+      name:value.articleName,
+      tags:value.tags,
+      category:value.category,
+      summary:value.description,
+      author:"admin",
+      cover:null,
+      isRelease:false,
+    }
+    await postArtical(params);
     setData([
       ...data,
       {
@@ -148,13 +141,14 @@ const ArticleListPage = () => {
         name: value.articleName,
         summary: value.description,
         category: value.category,
-        tags: value.tag,
-        isRelease: "false",
+        tags: value.tags,
+        isRelease: false,
       },
     ]);
   };
 
-  const edit = () => {
+  const edit = (value) => {
+    setCurrentArticle(value)
     setPageType("EditPage");
   };
   const list = () => {
@@ -162,25 +156,26 @@ const ArticleListPage = () => {
   };
 
   const search = () => {
-    console.log(searchParams);
     if (
       searchParams.name == "" &&
       searchParams.tags.length == 0 &&
       searchParams.category == undefined
     ) {
-      setData(aritcleData);
+      setData(articleData);
     } else {
-      const filterData = aritcleData.filter(
-        (item) =>
-          (searchParams.tags.length > 0
-            ? searchParams.tags.some((tag) => item.tags.includes(tag))
+      const filterData = articleData.filter(
+        (item) => {
+          const tagArray = item.tags?.split('/'); // 这一行将 'tags' 字符串转换为数组
+          return (searchParams.tags.length > 0
+            ? searchParams.tags.some((tag) => tagArray?.includes(tag))
             : true) &&
-          (searchParams.name
-            ? item.name.toLowerCase().includes(searchParams.name.toLowerCase())
-            : true) &&
-          (searchParams.category
-            ? item.category.includes(searchParams.category)
-            : true)
+            (searchParams.name
+              ? item.name.toLowerCase().includes(searchParams.name.toLowerCase())
+              : true) &&
+            (searchParams.category
+              ? item.category.includes(searchParams.category)
+              : true)
+        }
       );
       setData(filterData);
     }
@@ -199,95 +194,105 @@ const ArticleListPage = () => {
 
   const columns = createColumns(handleReleaseChange, edit);
   return (
-    <div>
-      {pageType == "ListPage" && (
-        <div id="ArticleListPage">
-          <div className="filter">
-            <Form form={form}>
-              <Space>
-                <Form.Item>
-                  <ArticleDrawer addArticle={addArticle} />
-                </Form.Item>
-                <Form.Item label="文章名">
-                  <Input
-                    placeholder="请输入要搜索的文章名"
-                    style={{ width: 200 }}
-                    value={searchParams.name}
-                    onChange={(event) =>
-                      setSearchParams({
-                        ...searchParams,
-                        name: event.target.value,
-                      })
-                    }
-                  />
-                </Form.Item>
-                <Form.Item label="标签">
-                  <Select
-                    mode="tags"
-                    style={{ width: 200 }}
-                    value={searchParams.tags}
-                    onChange={(value) =>
-                      setSearchParams({
-                        ...searchParams,
-                        tags: value,
-                      })
-                    }
-                  >
-                    <Select.Option value="nice">NICE</Select.Option>
-                    <Select.Option value="developer">DEVELOPER</Select.Option>
-                    <Select.Option value="loser">LOSER</Select.Option>
-                    <Select.Option value="cool">COOL</Select.Option>
-                    <Select.Option value="teacher">TEACHER</Select.Option>
-                  </Select>
-                </Form.Item>
+    <GlobalContext.Consumer>
+      {
+        context => {
+          const columns = createColumns(handleReleaseChange, edit, context);
+          return (
+            <div>
+              {pageType == "ListPage" && (
+                <div id="ArticleListPage">
+                  <div className="filter">
+                    <Form form={form}>
+                      <Space>
+                        <Form.Item>
+                          <ArticleDrawer addArticle={addArticle} />
+                        </Form.Item>
+                        <Form.Item label="文章名">
+                          <Input
+                            placeholder="请输入要搜索的文章名"
+                            style={{ width: 200 }}
+                            value={searchParams.name}
+                            onChange={(event) =>
+                              setSearchParams({
+                                ...searchParams,
+                                name: event.target.value,
+                              })
+                            }
+                          />
+                        </Form.Item>
+                        <Form.Item label="标签">
+                          <Select
+                            mode="tags"
+                            style={{ width: 200 }}
+                            value={searchParams.tags}
+                            onChange={(value) =>
+                              setSearchParams({
+                                ...searchParams,
+                                tags: value,
+                              })
+                            }
+                          >
+                            {
+                              Object.keys(context.state.MarkList).map(key => {
+                                return (
+                                  <Select.Option key={key} value={key}>{context.state.MarkList[key].value}</Select.Option>
+                                )
+                              })
+                            }
+                          </Select>
+                        </Form.Item>
 
-                <Form.Item label="分类" name="category">
-                  <Select
-                    style={{ width: 200 }}
-                    allowClear
-                    onChange={(value) =>
-                      setSearchParams({
-                        ...searchParams,
-                        category: value,
-                      })
-                    }
-                  >
-                    <Select.Option value="demo1">Demo1</Select.Option>
-                    <Select.Option value="demo2">Demo2</Select.Option>
-                    <Select.Option value="demo3">Demo3</Select.Option>
-                    <Select.Option value="demo4">Demo4</Select.Option>
-                  </Select>
-                </Form.Item>
-                <Form.Item>
-                  <Space>
-                    <Button
-                      size="small"
-                      onClick={() => {
-                        clear();
-                      }}
-                    >
-                      重置
-                    </Button>
-                    <Button
-                      size="small"
-                      onClick={() => {
-                        search();
-                      }}
-                    >
-                      查询
-                    </Button>
-                  </Space>
-                </Form.Item>
-              </Space>
-            </Form>
-          </div>
-          <Table columns={columns} dataSource={data} className="table" />
-        </div>
-      )}
-      {pageType == "EditPage" && (
-        <EditArticlePage list={list}></EditArticlePage>
-      )}
-    </div>
+                        <Form.Item label="分类" name="category">
+                          <Select
+                            style={{ width: 200 }}
+                            allowClear
+                            onChange={(value) =>
+                              setSearchParams({
+                                ...searchParams,
+                                category: value,
+                              })
+                            }
+                          >
+                            <Select.Option value="demo1" key={1}>Demo1</Select.Option>
+                            <Select.Option value="demo2" key={2}>Demo2</Select.Option>
+                          </Select>
+                        </Form.Item>
+                        <Form.Item>
+                          <Space>
+                            <Button
+                              size="small"
+                              onClick={() => {
+                                clear();
+                              }}
+                            >
+                              重置
+                            </Button>
+                            <Button
+                              size="small"
+                              onClick={() => {
+                                search();
+                              }}
+                            >
+                              查询
+                            </Button>
+                          </Space>
+                        </Form.Item>
+                      </Space>
+                    </Form>
+                  </div>
+                  <Table columns={columns} dataSource={data} className="table" />
+                </div>
+              )}
+              {pageType == "EditPage" && (
+                <EditArticlePage list={list} props={currentArticle}></EditArticlePage>
+              )}
+            </div>
+          )
+        }
+      }
+    </GlobalContext.Consumer>
+
   );
 };
 export default ArticleListPage;

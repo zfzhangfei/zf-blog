@@ -13,9 +13,20 @@ export async function getCurrentUser() {
 }
 
 
-export async function getMark() {
+export async function getTags() {
+    const results = get('/getTags')
+    return results;
 }
 
+
+
+export async function postArtical(params) {
+    post('/postArtical',params)
+}
+export async function getArticle() {
+    const results = get('/getArticle')
+    return results;
+}
 //#endregion
 
 

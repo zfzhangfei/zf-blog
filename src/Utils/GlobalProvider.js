@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentUser, getMark } from '../Code/Api/Api';
+import { getTags } from '../CodeTwo/Api/Api';
 
 const GlobalContext = React.createContext();
 
@@ -10,14 +10,14 @@ class GlobalProvider extends React.Component {
   }
 
   componentDidMount = async () => {
-    let userData = await getCurrentUser();
-    let user = {
-      username:userData.username,
-      avatar:userData.avatar
-    }
-    let tags = await getMark();
+    // let userData = await getCurrentUser();
+    // let user = {
+    //   username:userData.username,
+    //   avatar:userData.avatar
+    // }
+    let tags = await getTags();
     let mark = {};
-    tags.forEach(tag => {
+    tags.res.forEach(tag => {
       mark[tag.Id] = {value:tag.Value,color:tag.Color};
     })
 
@@ -26,10 +26,10 @@ class GlobalProvider extends React.Component {
 
 
     this.setState({
-      CurrentUser: user,
+      // CurrentUser: user,
       MarkList: mark
     });
-    localStorage.setItem('CurrentUser', JSON.stringify(user));
+    // localStorage.setItem('CurrentUser', JSON.stringify(user));
     localStorage.setItem('MarkList', JSON.stringify(mark));
   }
 

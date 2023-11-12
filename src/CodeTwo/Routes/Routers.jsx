@@ -171,9 +171,10 @@ import MenuPage from "../Pages/Menu/MenuPage";
 import CategoryPage from "../Pages/Category/CategoryPage";
 import 'animate.css';
 import ArticlePage from "../Pages/Article/ArticlePage";
-import SettingPage from "../Pages/Setting/SettingPage"; 
+import SettingPage from "../Pages/Setting/SettingPage";
 import { AnimatePresence, motion } from "framer-motion";
 import SettingRouters from "../Pages/Setting/SettingRouters";
+import { login } from "../Api/Api";
 
 
 
@@ -199,8 +200,8 @@ class Routers extends Component {
         },
     }
 
-    componentDidMount = () => {
-    
+    componentDidMount = async () => {
+        await login()
     }
 
     changeTheme = (value) => {
@@ -210,7 +211,7 @@ class Routers extends Component {
     }
 
     changeAnimation = () => {
- 
+
     };
 
 
