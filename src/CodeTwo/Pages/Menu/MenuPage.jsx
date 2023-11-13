@@ -8,8 +8,7 @@ import 'animate.css'
 
 export default class MenuPage extends Component {
     GoBack = () => {
-        this.props.history.goBack();
-        // this.props.history.push('/Home')
+        this.props.history.push('/Home')
     }
 
     changeAnimation = (value) => {

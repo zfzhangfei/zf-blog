@@ -5,6 +5,7 @@ import { Button } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import 'animate.css'
+import CoverTwo from './HomeComponents/CoverTwo/CoverTwo'
 
 export default class HomePage extends Component {
 
@@ -17,7 +18,7 @@ export default class HomePage extends Component {
     return (
 
           <div id='HomePage'>
-            <div className='GoNext'
+            {/* <div className='GoNext'
               onClick={() => {
                 this.GoNext()
               }}
@@ -30,8 +31,9 @@ export default class HomePage extends Component {
                   backgroundColor: 'rgba(255,255,255,0)'
                 }}
                 icon={<ArrowRightOutlined />} />
-            </div>
-            <CoverOne props={this.props}></CoverOne>
+            </div> */}
+            {/* <CoverOne props={this.props}></CoverOne> */}
+            <CoverTwo props={this.props}></CoverTwo>
           </div>
     )
   }

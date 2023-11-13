@@ -10,8 +10,9 @@ import Contact from "./Components/contact/Contact";
 export default function ImitationPortfolio() {
   return (
     <div id="ImitationPortfolio">
+    
       <section id="Homepage">
-        <NavBar></NavBar>
+      <NavBar></NavBar>
         <Hero></Hero>
       </section>
       <section id="Services">

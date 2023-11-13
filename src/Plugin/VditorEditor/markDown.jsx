@@ -51,7 +51,7 @@ export default function markDown({ html }) {
                   {String(children).replace(/\n$/, "")}
                 </SyntaxHighlighter>
               ) : (
-                <code className={className} {...props}>
+                <code className={className} {...props} style={{overflowX:'scroll'}}>
                   {children}
                 </code>
               );

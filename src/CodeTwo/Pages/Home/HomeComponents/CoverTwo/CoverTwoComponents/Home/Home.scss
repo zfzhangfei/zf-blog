@@ -1,0 +1,28 @@
+.Home{
+    width: 100%;
+    background: #000;
+    display: grid;
+    grid-template-columns: 1fr 1366px 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "HomeBox1 HomeBox2 HomeBox3";
+
+    .HomeBox1{
+        grid-area: HomeBox1;
+    }
+    .HomeBox2{
+        grid-area: HomeBox2;
+        display: grid;
+        grid-template-columns:366px 1000px;
+        grid-template-rows: auto;
+        grid-template-areas: "HomeBox4 HomeBox5";
+        .HomeBox4{
+            grid-area: HomeBox4;
+        }
+        .HomeBox5{
+            grid-area: HomeBox5;
+        }
+    }
+    .HomeBox3{
+        grid-area: HomeBox3;
+    }
+}

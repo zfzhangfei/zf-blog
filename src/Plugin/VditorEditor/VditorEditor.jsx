@@ -1,39 +1,53 @@
 import React, { useState } from "react";
 import Vditor from "vditor";
-import MarkDown from './markDown';
-import './VditorEditor.scss'
+import MarkDown from "./markDown";
+import "./VditorEditor.scss";
+import { Button, Space } from "antd";
+import { updateArticle } from "../../CodeTwo/Api/Api";
 
 const VditorEditor = ({ props }) => {
-  const [html, setHtml] = useState(props.content)
+  const [html, setHtml] = useState(props.content ? props.content : "");
 
   React.useEffect(() => {
     const vditor = new Vditor("vditor", {
       mode: "wysiwyg",
       after: () => {
-        vditor.setValue(props.content);
+        vditor.setValue(html);
       },
       input(value) {
-        // 输入变化时保存当前值 
-        // saveArticle(value);
-        setHtml(value)
+        // 输入变化时保存当前值
+        // onSave(value);
+        setHtml(value);
       },
     });
   }, []);
 
-
+  const onSave = async (value) => {
+    const params = {
+      ...props,
+      content: value,
+    };
+    await updateArticle(params);
+  };
   return (
-    <div id='MyVditor'>
+    <div id="MyVditor">
       <div id="vditor" className="vditor" />
-      <div id='ShowVditor'>
-        <MarkDown html={html}></MarkDown>
+      <div id="ShowVditor">
+        <Space direction="vertical" style={{ width: "100%" }}>
+          <Button
+            type="primary"
+            style={{ width: "100%" }}
+            onClick={() => {
+              onSave(html);
+            }}
+          >
+            保存
+          </Button>
+          <MarkDown html={html}></MarkDown>
+        </Space>
       </div>
     </div>
   );
 };
 
 export default VditorEditor;
-
-
-
-
-
