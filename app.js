@@ -1,11 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const router = require('./router/router.js')
-const commentRouter = require('./router/commentRouter.js')
-const articleRouter = require('./router/articleRouter.js')
-const markRouter = require('./router/markRouter.js')
-const pictureRouter = require('./router/pictureRouter.js')
-const classificationRouter = require('./router/classificationRouter.js')
+// const commentRouter = require('./router/commentRouter.js')
 // const commentRouter = require('./router/commentRouter.js')
 
 const app = express()
@@ -30,12 +26,8 @@ app.all('*', (req, res, next) => {
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(router.router)
-app.use(commentRouter)
-app.use(articleRouter)
-app.use(markRouter)
-app.use(pictureRouter)
-app.use(classificationRouter)
+app.use(router)
+// app.use(commentRouter)
 // app.use(commentRouter)
 
 //静态托管文件
