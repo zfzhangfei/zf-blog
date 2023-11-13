@@ -3,14 +3,14 @@ import ApplicationPage from './CoverTwoComponents/ApplicationPage/ApplicationPag
 import Home from './CoverTwoComponents/Home/Home'
 import './CoverTwo.scss'
 
-const CoverTwo = () => {
+const CoverTwo = ({props}) => {
   return (
     <div className='CoverTwo'>
       <section id='ApplicationPage'>
-        <ApplicationPage></ApplicationPage>
+        <ApplicationPage props={props}></ApplicationPage>
       </section>
       <section id='Home'>
-        <Home></Home>
+        <Home props={props}></Home>
       </section>
     </div>
   )

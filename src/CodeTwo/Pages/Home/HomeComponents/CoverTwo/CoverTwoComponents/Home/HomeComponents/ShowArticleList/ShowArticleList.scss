@@ -6,16 +6,18 @@
       border-radius: 18px;
       object-fit: cover;
     }
+
     .ArticleListBox2 {
       .title {
         font-size: 32px;
         font-weight: bold;
       }
-      .icon {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 }

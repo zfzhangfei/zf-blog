@@ -1,5 +1,6 @@
 .Home{
     width: 100%;
+    min-height: 100vh;
     background: #000;
     display: grid;
     grid-template-columns: 1fr 1366px 1fr;
@@ -10,6 +11,7 @@
         grid-area: HomeBox1;
     }
     .HomeBox2{
+        margin-top: 20px;
         grid-area: HomeBox2;
         display: grid;
         grid-template-columns:366px 1000px;

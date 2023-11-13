@@ -26,23 +26,24 @@ const ShowArticleList = () => {
                 pathname: `/Article/${item.Id}`,
                 state: { article: item },
               }}
+              style={{ color: '#fff', textDecoration: 'none' }}
             >
               <img src="/CodeTwo/Homepage/NANA1.webp" alt="" />
               <div className="ArticleListBox2">
                 <div className="title">{item.name}</div>
                 <div>{item.summary}</div>
-                <div className="icon">
-                  <div>
-                    <UserOutlined />
-                  </div>
-                  <div style={{ display: "flex", gap: 20 }}>
-                    <HeartFilled />
-                    <LikeFilled />
-                  </div>
-                </div>
               </div>
-              <hr />
             </Link>
+            <div className="icon">
+              <div>
+                <UserOutlined />
+              </div>
+              <div style={{ display: "flex", gap: 20 }}>
+                <HeartFilled />
+                <LikeFilled />
+              </div>
+            </div>
+            <hr />
           </div>
         );
       })}

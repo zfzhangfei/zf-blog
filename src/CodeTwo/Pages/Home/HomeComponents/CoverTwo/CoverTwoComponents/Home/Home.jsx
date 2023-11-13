@@ -8,19 +8,30 @@ import {
   withRouter,
 } from "react-router-dom";
 import ShowArticleContent from "./HomeComponents/ShowArticleContent/ShowArticleContent";
+import SideBorder from "./HomeComponents/SideBorder/SideBorder";
+import { FloatButton } from "antd";
 
-const Home = () => {
+const Home = ({ props }) => {
   return (
     <div className="Home">
       <div className="HomeBox1"></div>
       <div className="HomeBox2">
-        <div className="HomeBox4"></div>
+        <div className="HomeBox4">
+          <SideBorder props={props}></SideBorder>
+        </div>
         <div className="HomeBox5">
-          {/* <ShowArticleList></ShowArticleList> */}
           <Router>
             <Switch>
               <Route
                 exact
+                path="/"
+                render={(props) => (
+                  <div>
+                    <ShowArticleList></ShowArticleList>
+                  </div>
+                )}
+              />
+              <Route
                 path="/Home"
                 render={(props) => (
                   <div>
@@ -34,6 +45,9 @@ const Home = () => {
               />
             </Switch>
           </Router>
+          <div style={{ position: 'absolute' }}>
+            <FloatButton.BackTop />
+          </div>
         </div>
       </div>
       <div className="HomeBox3"></div>
