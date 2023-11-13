@@ -37,6 +37,7 @@ var mysql_config = {
   charset: 'utf8mb4'
 }
 
+
 function handleDisconnection() {
 
   var dbServer = mysql.createConnection(mysql_config)
@@ -70,9 +71,7 @@ function handleDisconnection() {
   })
 
   return dbServer //返回一个connection对象，用于调用它的其他方法
-
   exports.dbServer = dbServer
 
 }
-
 exports.handleDisconnection = handleDisconnection

@@ -5,7 +5,7 @@ const commentRouter = require('./router/commentRouter.js')
 const articleRouter = require('./router/articleRouter.js')
 const markRouter = require('./router/markRouter.js')
 const pictureRouter = require('./router/pictureRouter.js')
-// const commentRouter = require('./router/commentRouter.js')
+const classificationRouter = require('./router/classificationRouter.js')
 // const commentRouter = require('./router/commentRouter.js')
 
 const app = express()
@@ -35,7 +35,7 @@ app.use(commentRouter)
 app.use(articleRouter)
 app.use(markRouter)
 app.use(pictureRouter)
-// app.use(commentRouter)
+app.use(classificationRouter)
 // app.use(commentRouter)
 
 //静态托管文件
