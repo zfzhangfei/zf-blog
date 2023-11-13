@@ -21,7 +21,12 @@ const ShowArticleList = () => {
       {data?.map((item, index) => {
         return (
           <div className="ArticleListBox1">
-            <Link to={`/Article/${item.Id}`} state={item}>
+            <Link
+              to={{
+                pathname: `/Article/${item.Id}`,
+                state: { article: item },
+              }}
+            >
               <img src="/CodeTwo/Homepage/NANA1.webp" alt="" />
               <div className="ArticleListBox2">
                 <div className="title">{item.name}</div>

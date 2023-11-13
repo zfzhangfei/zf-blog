@@ -30,7 +30,7 @@ const Home = () => {
               />
               <Route
                 path="/Article/:id"
-                render={(props) => <ShowArticleContent articleMap={props} />}
+                render={(props) => <ShowArticleContent props={props} />}
               />
             </Switch>
           </Router>

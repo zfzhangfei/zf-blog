@@ -1,19 +1,20 @@
 import React from "react";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import MarkDown from "../../../../../../../../../Plugin/VditorEditor/markDown";
 
-const ShowArticleContent = ({ articleMap }) => {
-//   let { Id } = useParams();
-//   let article = articleMap[Id];
-  console.log('====================================');
-  console.log(articleMap);
-  console.log('====================================');
+
+const ShowArticleContent = ({ props }) => {
+  const [article, setArticle] = useState(props.location.state.article);
+  //   let { Id } = useParams();
+  //   let article = articleMap[Id];
+  console.log("====================================");
+  console.log(props);
+  console.log("====================================");
 
   return (
-    <div className="ShowArticleContent">
-      {/* {console.log(articleMap)}
+    <div className="ShowArticleContent" >
       <h2>{article.name}</h2>
-      <p>{article.content}</p> */}
+      <MarkDown html={article.content}></MarkDown>
     </div>
   );
 };
