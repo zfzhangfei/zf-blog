@@ -23,10 +23,10 @@ const ShowArticleList = () => {
           <div className="ArticleListBox1">
             <Link
               to={{
-                pathname: `/Article/${item.Id}`,
+                pathname: `/Home/Article/${item.Id}`,
                 state: { article: item },
               }}
-              style={{ color: '#fff', textDecoration: 'none' }}
+              style={{ color: "#fff", textDecoration: "none" }}
             >
               <img src="/CodeTwo/Homepage/NANA1.webp" alt="" />
               <div className="ArticleListBox2">
@@ -37,6 +37,7 @@ const ShowArticleList = () => {
             <div className="icon">
               <div>
                 <UserOutlined />
+                {item.author}
               </div>
               <div style={{ display: "flex", gap: 20 }}>
                 <HeartFilled />

@@ -166,6 +166,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import SettingRouters from "../Pages/Setting/SettingRouters";
 import { login } from "../Api/Api";
 import PrivateGarden from "../Pages/Article/PrivateGarden/PrivateGarden";
+import ShowArticleContent from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowArticleContent/ShowArticleContent";
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -196,7 +197,7 @@ class Routers extends Component {
     });
   };
 
-  changeAnimation = () => { };
+  changeAnimation = () => {};
 
   render() {
     return (
@@ -223,7 +224,7 @@ class Routers extends Component {
                   )}
                 />
                 <Route
-                  exact
+                  
                   path="/Home"
                   render={(props) => (
                     // <motion.div
@@ -294,6 +295,8 @@ class Routers extends Component {
                     </motion.div>
                   )}
                 /> */}
+          
+
                 <Route
                   path="/Setting"
                   render={(props) => (
@@ -309,10 +312,8 @@ class Routers extends Component {
                 <Route
                   path="/Garden"
                   render={(props) => (
-                    <div style={{ width: '100vw', height: '100vh' }}>
-                      <PrivateGarden
-                        {...props}
-                      />
+                    <div style={{ width: "100vw", height: "100vh" }}>
+                      <PrivateGarden {...props} />
                     </div>
                   )}
                 />

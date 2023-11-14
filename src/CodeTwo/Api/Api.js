@@ -12,6 +12,11 @@ export async function getCurrentUser() {
   return currentUser;
 }
 
+export async function getUsers() {
+  const results = get("/getUsers");
+  return results;
+}
+
 export async function getTags() {
   const results = get("/getTags");
   return results;
@@ -29,6 +34,11 @@ export async function updateArticle(params) {
 }
 export async function getArticle() {
   const results = get("/getArticle");
+  return results;
+}
+
+export async function getCommentByArticleId(params) {
+  const results = get("/getCommentByArticleId", params);
   return results;
 }
 //#endregion
