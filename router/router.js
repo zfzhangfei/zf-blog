@@ -135,6 +135,22 @@ router.get('/users', (req, res) => {
 });
 
 
+router.get('/getUsers', (req, res) => {
+  let sql = `SELECT * FROM users WHERE users.DeleteFlag = ?`
+  let params = [
+    0,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
 
 
 //#region 文章---artical
@@ -369,6 +385,25 @@ router.get('/getComment', (req, res) => {
     }
   })
 })
+
+router.get('/getCommentByArticleId', (req, res) => {
+  let sql = `SELECT * FROM comment WHERE comment.DeleteFlag = ? and comment.ArticleId=?`
+  let params = [
+    0,
+    req.query.ArticleId,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+
 //#endregion
 
 
