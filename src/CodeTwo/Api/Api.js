@@ -41,4 +41,9 @@ export async function getCommentByArticleId(params) {
   const results = get("/getCommentByArticleId", params);
   return results;
 }
+export async function postComment(params) {
+  const results = post("/postComment", params);
+  return results;
+}
+
 //#endregion

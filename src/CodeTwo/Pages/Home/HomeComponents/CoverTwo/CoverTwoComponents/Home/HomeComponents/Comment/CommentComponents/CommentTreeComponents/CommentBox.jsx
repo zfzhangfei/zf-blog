@@ -4,9 +4,11 @@ import { GlobalContext } from "../../../../../../../../../../../Utils/GlobalProv
 import { Space } from "antd";
 import { useEffect } from "react";
 import { useState } from "react";
+import SubmitComment from "../SubmitComment";
 
-const CommentBox = ({ commentInfo }) => {
+const CommentBox = ({ commentInfo, handleReply}) => {
   const [commentTime, setCommentTime] = useState();
+  const [info, setInfo] = useState();
 
   useEffect(() => {
     const formatDate = (d) => {
@@ -33,32 +35,54 @@ const CommentBox = ({ commentInfo }) => {
     };
     var createTime = new Date(commentInfo.CreateTime);
     setCommentTime(formatDate(createTime));
+    setInfo(commentInfo);
   }, []);
+
+  const Reply = () => {
+    handleReply(info);
+  };
+
 
   return (
     <GlobalContext.Consumer>
       {(context) => (
         <div className="CommentBox">
-          <img
-            src={context.state.UserList[commentInfo.ParentId].avatar}
-            alt=""
-            style={{
-              width: commentInfo.IsLeaf == 0 ? 50 : 35,
-              height: commentInfo.IsLeaf == 0 ? 50 : 35,
-            }}
-          />
-          <div className="CommentBox1">
-            <Space direction="vertical" style={{ width: "100%" }}>
-              <div
-                style={{ width: "100%", color: "#FCF3CF", fontWeight: "bold" }}
-              >
-                {context.state.UserList[commentInfo.ParentId].username}
-              </div>
-              <div style={{ width: "100%" }}>{commentInfo.Content}</div>
-              <div style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}>
-                {commentTime}
-              </div>
-            </Space>
+          <div className="CommentBox2">
+            <img
+              src={context.state.UserList[commentInfo.ParentId]?.avatar}
+              alt=""
+              style={{
+                width: commentInfo.IsLeaf == 0 ? 50 : 35,
+                height: commentInfo.IsLeaf == 0 ? 50 : 35,
+              }}
+            />
+            <div className="CommentBox1">
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <div
+                  style={{
+                    width: "100%",
+                    color: "#FCF3CF",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {context.state.UserList[commentInfo.ParentId]?.username}
+                </div>
+                <div style={{ width: "100%" }}>{commentInfo.Content}</div>
+                <Space direction="horizontal" size={30}>
+                  <div
+                    style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}
+                  >
+                    {commentTime}
+                  </div>
+                  <div
+                    style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}
+                    onClick={Reply}
+                  >
+                    回复
+                  </div>
+                </Space>
+              </Space>
+            </div>
           </div>
         </div>
       )}

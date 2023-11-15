@@ -7,7 +7,7 @@ class GlobalProvider extends React.Component {
   state = {
     CurrentUser: JSON.parse(localStorage.getItem("CurrentUser")) || null,
     MarkList: JSON.parse(localStorage.getItem("MarkList")) || null,
-    UserList: null,
+    UserList: JSON.parse(localStorage.getItem("UserList"))||null,
   };
 
   componentDidMount = async () => {
@@ -35,11 +35,13 @@ class GlobalProvider extends React.Component {
     });
     localStorage.setItem("CurrentUser", JSON.stringify(user));
     localStorage.setItem("MarkList", JSON.stringify(mark));
+    localStorage.setItem("UserList", JSON.stringify(userList));
   };
 
   setUser = (MarkList, CurrentUser,UserList) => {
     localStorage.setItem("CurrentUser", JSON.stringify(CurrentUser));
     localStorage.setItem("MarkList", JSON.stringify(MarkList));
+    localStorage.setItem("UserList", JSON.stringify(UserList));
     this.setState({
       CurrentUser,
       MarkList,
@@ -62,3 +64,8 @@ class GlobalProvider extends React.Component {
 }
 
 export { GlobalProvider, GlobalContext };
+
+
+
+
+

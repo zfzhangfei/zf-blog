@@ -18,24 +18,41 @@ const CommentTree = ({ ArticleId, handleReply }) => {
     fetchData();
   }, []);
 
+
+
+
+
   return (
-    <div style={{ width: "1000px", display: "flex", justifyContent: "center",marginTop:'50px'}}>
+    <div
+      style={{
+        width: "1000px",
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "50px",
+      }}
+    >
       <Space direction="vertical" size={10}>
-      {comments?.map((item) => {
-        if (item.IsLeaf == 0) {
-          return (
-            <div style={{ width: "900px"}}>
-              <CommentBox commentInfo={item}></CommentBox>
-            </div>
-          );
-        } else {
-          return (
-            <div style={{ width: "830px" ,marginLeft:'70px'}}>
-              <CommentBox commentInfo={item}></CommentBox>
-            </div>
-          );
-        }
-      })}
+        {comments?.map((item) => {
+          if (item.IsLeaf == 0) {
+            return (
+              <div style={{ width: "900px" }}>
+                <CommentBox
+                  commentInfo={item}
+                  handleReply={handleReply}
+                ></CommentBox>
+              </div>
+            );
+          } else {
+            return (
+              <div style={{ width: "830px", marginLeft: "70px" }}>
+                <CommentBox
+                  commentInfo={item}
+                  handleReply={handleReply}
+                ></CommentBox>
+              </div>
+            );
+          }
+        })}
       </Space>
     </div>
   );

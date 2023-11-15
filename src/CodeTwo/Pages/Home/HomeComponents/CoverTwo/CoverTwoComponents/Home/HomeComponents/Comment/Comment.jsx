@@ -1,16 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { GlobalContext } from "../../../../../../../../../Utils/GlobalProvider";
 import SubmitComment from "./CommentComponents/SubmitComment";
 import CommentTree from "./CommentComponents/CommentTree";
 import { useState } from "react";
 
 const Comment = (ArticleId) => {
-  const [replyComment, setReplyComment] = useState("");
+  const [replyComment, setReplyComment] = useState();
+
+
 
   const handleReply = (value) => {
     setReplyComment(value);
-    console.log(replyComment);
   };
+
+  useEffect(() => {
+    console.log(replyComment);
+  }, [replyComment]);
 
   return (
     <GlobalContext.Consumer>

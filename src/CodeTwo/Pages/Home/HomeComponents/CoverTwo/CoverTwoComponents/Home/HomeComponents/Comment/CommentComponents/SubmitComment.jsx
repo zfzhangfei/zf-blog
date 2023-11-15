@@ -4,16 +4,27 @@ import TextArea from "antd/es/input/TextArea";
 import EmojiPicker from "./SubmitCommentComponents/EmojiPicker";
 import { GlobalContext } from "../../../../../../../../../../Utils/GlobalProvider";
 import { useState } from "react";
+import { postComment } from "../../../../../../../../../Api/Api";
 
-const SubmitComment = ({ replyComment }) => {
+const SubmitComment = ({ ArticleId, replyComment }) => {
   const [commentContent, setCommentContent] = useState("");
 
   const emojiSelect = (value) => {
     setCommentContent(commentContent + value.native);
-
   };
 
   const PostComment = async (CurrentUser) => {
+    const params = {
+      ParentCommentId: 0,
+      ParentsName: CurrentUser.username,
+      Content: commentContent,
+      IsLeaf: false,
+      IsLike: false,
+      Avatar: CurrentUser.avatar,
+      ArticleId: ArticleId.ArticleId,
+    };
+    console.log(params);
+    await postComment(params)
   };
   return (
     <GlobalContext.Consumer>
@@ -34,7 +45,9 @@ const SubmitComment = ({ replyComment }) => {
                 style={{ width: "100%", resize: "none", minHeight: 200 }}
                 placeholder={
                   replyComment
-                    ? "回复" + replyComment.CreateBy + ":"
+                    ? "回复" +
+                      context.state.UserList[replyComment.CreateBy].username +
+                      ":"
                     : "快来说点什么吧！"
                 }
                 value={commentContent}
