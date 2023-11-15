@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.scss";
 import ShowArticleList from "./HomeComponents/ShowArticleList/ShowArticleList";
 import {
@@ -14,15 +14,21 @@ import { VerticalAlignTopOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 
 const Home = ({ props }) => {
+  const [chooseTag, setChooseTag] = useState()
   const scrollTop = () => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
+
+
+  const filterChooseTag = (value) => {
+    setChooseTag(value)
+  }
   return (
     <div className="Home">
       <div className="HomeBox1"></div>
       <div className="HomeBox2">
         <div className="HomeBox4">
-          <SideBorder props={props}></SideBorder>
+          <SideBorder props={props} filterChooseTag={filterChooseTag}></SideBorder>
         </div>
         <div className="HomeBox5">
           <Router>
@@ -32,7 +38,7 @@ const Home = ({ props }) => {
                 path="/"
                 render={(props) => (
                   <div>
-                    <ShowArticleList></ShowArticleList>
+                    <ShowArticleList props={props} chooseTag={chooseTag}></ShowArticleList>
                   </div>
                 )}
               />
@@ -41,11 +47,21 @@ const Home = ({ props }) => {
                 path="/Home"
                 render={(props) => (
                   <div>
-                    <ShowArticleList></ShowArticleList>
+                    <ShowArticleList props={props} chooseTag={chooseTag}></ShowArticleList>
                   </div>
                 )}
               />
+              {/* <Route
+                exact
+                path="/Home/:tag"
+                render={(props) => (
+                  <div>
+                    <ShowArticleList props={props} chooseTag={chooseTag}></ShowArticleList>
+                  </div>
+                )}
+              /> */}
               <Route
+                exact
                 path="/Home/Article/:id"
                 render={(props) => <ShowArticleContent props={props} />}
               />

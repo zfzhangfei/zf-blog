@@ -197,7 +197,7 @@ class Routers extends Component {
     });
   };
 
-  changeAnimation = () => {};
+  changeAnimation = () => { };
 
   render() {
     return (
@@ -210,41 +210,25 @@ class Routers extends Component {
                   exact
                   path="/"
                   render={(props) => (
-                    <motion.div
-                      initial={{ opacity: 0 }} // 开始状态，完全透明并且在当前视图的右边100px的位置
-                      animate={{ opacity: 1 }} // 结束状态，完全不透明并且位于当前视图原点
-                      exit={{ opacity: 0 }} // 退出状态，完全透明并且在当前视图的左边100px的位置
-                      transition={{ duration: 0.5 }} // 动画过渡时间
-                    >
-                      <HomePage
-                        {...props}
-                        changeAnimation={this.changeAnimation}
-                      />
-                    </motion.div>
+                    <HomePage
+                      {...props}
+                      changeAnimation={this.changeAnimation}
+                    />
                   )}
                 />
                 <Route
-                  
+                  exact
                   path="/Home"
                   render={(props) => (
-                    // <motion.div
-                    //     initial={{ opacity: 0 }} // 开始状态，完全透明并且在当前视图的右边100px的位置
-                    //     animate={{ opacity: 1 }}   // 结束状态，完全不透明并且位于当前视图原点
-                    //     exit={{ opacity: 0 }}   // 退出状态，完全透明并且在当前视图的左边100px的位置
-                    //     transition={{ duration: 0.5 }} // 动画过渡时间
-                    // >
+
                     <div>
                       <HomePage
                         {...props}
                         changeAnimation={this.changeAnimation}
                       />
-                      {/* <MenuPage
-                        {...props}
-                        changeAnimation={this.changeAnimation}
-                      /> */}
+
                     </div>
 
-                    // </motion.div>
                   )}
                 />
                 {/* <Route
@@ -265,17 +249,11 @@ class Routers extends Component {
                   exact
                   path="/Category"
                   render={(props) => (
-                    <motion.div
-                      initial={{ opacity: 0 }} // 开始状态，完全透明并且在当前视图的右边100px的位置
-                      animate={{ opacity: 1 }} // 结束状态，完全不透明并且位于当前视图原点
-                      exit={{ opacity: 0 }} // 退出状态，完全透明并且在当前视图的左边100px的位置
-                      transition={{ duration: 0.5 }} // 动画过渡时间
-                    >
-                      <CategoryPage
-                        {...props}
-                        changeAnimation={this.changeAnimation}
-                      />
-                    </motion.div>
+
+                    <CategoryPage
+                      {...props}
+                      changeAnimation={this.changeAnimation}
+                    />
                   )}
                 />
                 {/* <Route
@@ -295,9 +273,10 @@ class Routers extends Component {
                     </motion.div>
                   )}
                 /> */}
-          
+
 
                 <Route
+                  exact
                   path="/Setting"
                   render={(props) => (
                     <motion.div>
@@ -310,6 +289,7 @@ class Routers extends Component {
                 />
 
                 <Route
+                  exact
                   path="/Garden"
                   render={(props) => (
                     <div style={{ width: "100vw", height: "100vh" }}>

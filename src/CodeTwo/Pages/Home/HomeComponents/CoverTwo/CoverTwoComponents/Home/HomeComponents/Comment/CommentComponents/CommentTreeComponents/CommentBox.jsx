@@ -49,7 +49,7 @@ const CommentBox = ({ commentInfo, handleReply}) => {
         <div className="CommentBox">
           <div className="CommentBox2">
             <img
-              src={context.state.UserList[commentInfo.ParentId]?.avatar}
+              src={context.state.UserList[commentInfo.UserId]?.avatar}
               alt=""
               style={{
                 width: commentInfo.IsLeaf == 0 ? 50 : 35,

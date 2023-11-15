@@ -4,7 +4,7 @@ import "./ShowArticleList.scss";
 import { HeartFilled, LikeFilled, UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-const ShowArticleList = () => {
+const ShowArticleList = ({ props, chooseTag }) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -16,9 +16,12 @@ const ShowArticleList = () => {
     fetchData();
   }, []);
 
+
   return (
     <div className="ShowArticleList">
       {data?.map((item, index) => {
+        if (!item.isRelease) return
+        if (chooseTag && !item.tags?.includes(chooseTag)) return
         return (
           <div className="ArticleListBox1">
             <Link
