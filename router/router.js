@@ -276,9 +276,8 @@ router.get('/getArticle', (req, res) => {
 //#region 评论
 router.post('/postComment', (req, res) => {
   let sql = `INSERT INTO comment (
-        Parents,  
-        ParentsId,
-        ParentsName,
+        ParentCommentId,  
+        UserId,
         Content,
         IsLeaf,
         IsLike,
@@ -286,11 +285,10 @@ router.post('/postComment', (req, res) => {
         ArticleId,
         CreateBy,
         CreateTime
-    ) VALUES (?,?,?,?,?,?,?,?,?,?)`
+    ) VALUES (?,?,?,?,?,?,?,?,?)`
   let params = [
-    req.body.Parents,
-    req.body.ParentsId,
-    req.body.ParentsName,
+    req.body.ParentCommentId,
+    CURRENT_USER.id,
     req.body.Content,
     req.body.IsLeaf,
     req.body.IsLike,
