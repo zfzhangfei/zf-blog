@@ -28,9 +28,7 @@ const VditorEditor = ({ props }) => {
       ...props,
       content: value,
     };
-    console.log(params);
     const result = await updateArticle(params);
-    console.log(result);
     if (result && result.res.warningCount > 0) {
       message.error("保存失败！");
     } else {

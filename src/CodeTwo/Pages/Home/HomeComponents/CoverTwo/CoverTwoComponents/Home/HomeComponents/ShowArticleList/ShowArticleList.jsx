@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../../../../../../../../../Utils/GlobalProvider";
 import { Tag } from "antd";
 
-const ShowArticleList = ({ props, chooseTag }) => {
+const ShowArticleList = ({ props }) => {
   const [data, setData] = useState();
   const [tag, setTag] = useState(props.history.location.state?.key);
 

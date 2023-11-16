@@ -11,7 +11,6 @@ export default class HomePage extends Component {
 
   GoNext = () => {
     this.props.history.push('/Menu')
-    this.props.changeAnimation("animate__animated animate__fadeInLeft animate__animated animate__fadeOutRight")
   }
 
   render() {

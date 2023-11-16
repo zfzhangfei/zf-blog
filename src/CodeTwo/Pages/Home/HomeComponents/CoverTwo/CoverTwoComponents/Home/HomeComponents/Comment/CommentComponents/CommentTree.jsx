@@ -12,7 +12,6 @@ const CommentTree = ({ ArticleId, handleReply }) => {
         ...ArticleId,
       };
       const result = await getCommentByArticleId(params);
-      console.log(result, ArticleId);
       setComments(result.res);
     };
     fetchData();

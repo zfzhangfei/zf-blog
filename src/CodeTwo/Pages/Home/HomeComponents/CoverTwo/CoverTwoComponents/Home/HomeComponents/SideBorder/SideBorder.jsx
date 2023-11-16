@@ -5,7 +5,7 @@ import { CaretUpOutlined, HomeFilled, SettingFilled } from "@ant-design/icons";
 import { GlobalContext } from "../../../../../../../../../Utils/GlobalProvider";
 import { Link } from "react-router-dom";
 
-const SideBorder = ({ props, filterChooseTag, changePage }) => {
+const SideBorder = ({ props, changePage }) => {
   const goMyGarden = () => {
     props.history.push("/Garden");
   };
@@ -14,13 +14,7 @@ const SideBorder = ({ props, filterChooseTag, changePage }) => {
     props.history.push("/Setting");
   };
 
-  const chooseTag = (key, value) => {
-    filterChooseTag(key);
-    let params = {
-      key: key,
-    };
-    props.history.push(`/Home/Tag/${value}`, params);
-  };
+
   return (
     <GlobalContext.Consumer>
       {(context) => (
@@ -80,12 +74,7 @@ const SideBorder = ({ props, filterChooseTag, changePage }) => {
                       state: { key: key, isShowApplicationPage: false },
                     }}
                   >
-                    <Tag
-                      color={context.state.MarkList[key].color}
-                      // onClick={() =>
-                      //   chooseTag(key, context.state.MarkList[key].value)
-                      // }
-                    >
+                    <Tag color={context.state.MarkList[key].color} >
                       {context.state.MarkList[key].value}
                     </Tag>
                   </Link>

@@ -5,10 +5,11 @@ import "./CoverTwo.scss";
 import { motion } from "framer-motion";
 
 const CoverTwo = ({ props }) => {
-  const [isApplicationPageVisible, setApplicationPageVisible] = useState(true);
+  const [isApplicationPageVisible, setApplicationPageVisible] = useState(props.location.state?.isShowApplicationPage != false ? true : false);
+
+
 
   useEffect(() => {
-    console.log(props, "ssss", isApplicationPageVisible);
     document.body.style.overflow = isApplicationPageVisible
       ? "hidden"
       : "visible";
@@ -30,7 +31,7 @@ const CoverTwo = ({ props }) => {
     <div className="CoverTwo">
       <motion.section
         id="ApplicationPage"
-        initial="visible"
+        initial={isApplicationPageVisible ? "visible" : "hidden"}
         animate={isApplicationPageVisible ? "visible" : "hidden"}
         variants={containerVariants}
         transition={{ duration: 0.5 }} // 或其他您喜欢的持续时间

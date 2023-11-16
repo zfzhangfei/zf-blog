@@ -219,7 +219,6 @@ class Routers extends Component {
                 <Route
                   path="/Home"
                   render={(props) => (
-
                     <div>
                       <HomePage
                         {...props}

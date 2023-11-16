@@ -23,7 +23,6 @@ const SubmitComment = ({ ArticleId, replyComment }) => {
       Avatar: CurrentUser.avatar,
       ArticleId: ArticleId.ArticleId,
     };
-    console.log(params);
     await postComment(params)
   };
   return (

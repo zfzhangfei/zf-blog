@@ -10,22 +10,12 @@ import {
 import ShowArticleContent from "./HomeComponents/ShowArticleContent/ShowArticleContent";
 import SideBorder from "./HomeComponents/SideBorder/SideBorder";
 import { FloatButton } from "antd";
-import { VerticalAlignTopOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 
 const Home = ({ props, changePage }) => {
-  const [chooseTag, setChooseTag] = useState();
-  // const scrollTop = () => {
-  //   window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-  // };
+  
 
-  const filterChooseTag = (value) => {
-    setChooseTag(value);
-  };
 
-  // const changePage2 = (value) => {
-  //   changePage(value);
-  // };
   return (
     <div className="Home">
       <div className="HomeBox1"></div>
@@ -33,7 +23,6 @@ const Home = ({ props, changePage }) => {
         <div className="HomeBox4">
           <SideBorder
             props={props}
-            filterChooseTag={filterChooseTag}
             changePage={changePage}
           ></SideBorder>
         </div>
@@ -47,7 +36,6 @@ const Home = ({ props, changePage }) => {
                   <div>
                     <ShowArticleList
                       props={props}
-                      chooseTag={chooseTag}
                     ></ShowArticleList>
                   </div>
                 )}
@@ -59,7 +47,6 @@ const Home = ({ props, changePage }) => {
                   <div>
                     <ShowArticleList
                       props={props}
-                      chooseTag={chooseTag}
                     ></ShowArticleList>
                   </div>
                 )}
@@ -70,7 +57,6 @@ const Home = ({ props, changePage }) => {
                 render={(props) => (
                   <ShowArticleList
                     props={props}
-                    chooseTag={chooseTag}
                   ></ShowArticleList>
                 )}
               />

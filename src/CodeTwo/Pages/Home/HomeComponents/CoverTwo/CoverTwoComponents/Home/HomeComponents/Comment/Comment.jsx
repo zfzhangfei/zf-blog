@@ -13,10 +13,6 @@ const Comment = (ArticleId) => {
     setReplyComment(value);
   };
 
-  useEffect(() => {
-    console.log(replyComment);
-  }, [replyComment]);
-
   return (
     <GlobalContext.Consumer>
       {(context) => (
