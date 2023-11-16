@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import Vditor from "vditor";
 import MarkDown from "./markDown";
 import "./VditorEditor.scss";
-import { Button, Space } from "antd";
+import { Button, message, Space } from "antd";
 import { updateArticle } from "../../CodeTwo/Api/Api";
 
 const VditorEditor = ({ props }) => {
   const [html, setHtml] = useState(props.content ? props.content : "");
+  const [messageApi, contextHolder] = message.useMessage();
 
   React.useEffect(() => {
     const vditor = new Vditor("vditor", {
@@ -27,8 +28,16 @@ const VditorEditor = ({ props }) => {
       ...props,
       content: value,
     };
-    await updateArticle(params);
+    console.log(params);
+    const result = await updateArticle(params);
+    console.log(result);
+    if (result && result.res.warningCount > 0) {
+      message.error("保存失败！");
+    } else {
+      message.success("保存成功！");
+    }
   };
+
   return (
     <div id="MyVditor">
       <div id="vditor" className="vditor" />

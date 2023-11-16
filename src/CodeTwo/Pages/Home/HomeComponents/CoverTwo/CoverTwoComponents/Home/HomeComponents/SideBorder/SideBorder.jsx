@@ -1,10 +1,11 @@
 import React from "react";
 import "./SideBorder.scss";
 import { Space, Tag } from "antd";
-import { HomeFilled, SettingFilled } from "@ant-design/icons";
+import { CaretUpOutlined, HomeFilled, SettingFilled } from "@ant-design/icons";
 import { GlobalContext } from "../../../../../../../../../Utils/GlobalProvider";
+import { Link } from "react-router-dom";
 
-const SideBorder = ({ props, filterChooseTag }) => {
+const SideBorder = ({ props, filterChooseTag, changePage }) => {
   const goMyGarden = () => {
     props.history.push("/Garden");
   };
@@ -14,17 +15,25 @@ const SideBorder = ({ props, filterChooseTag }) => {
   };
 
   const chooseTag = (key, value) => {
-    filterChooseTag(key)
-    props.history.push("/Home");
-    // props.history.push(`/Home/${'#'+value}`);
-  }
+    filterChooseTag(key);
+    let params = {
+      key: key,
+    };
+    props.history.push(`/Home/Tag/${value}`, params);
+  };
   return (
     <GlobalContext.Consumer>
-      {context => (
+      {(context) => (
         <div className="SideBorder">
           <Space direction="vertical" size={20}>
             <div className="SideBorderBox1">
               <Space direction="horizontal" size={20}>
+                <CaretUpOutlined
+                  onClick={() => {
+                    changePage("ApplicationPage");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                />
                 <HomeFilled
                   onClick={() => {
                     goMyGarden();
@@ -39,7 +48,11 @@ const SideBorder = ({ props, filterChooseTag }) => {
             </div>
             <div className="SideBorderBox2">
               <div
-                style={{ fontSize: "24px", fontWeight: "bold", padding: "10px" }}
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  padding: "10px",
+                }}
               >
                 Garden
               </div>
@@ -50,9 +63,32 @@ const SideBorder = ({ props, filterChooseTag }) => {
               />
             </div>
             <div className="SideBorderBox3">
+              <div
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  marginBottom: 10,
+                }}
+              >
+                标签#
+              </div>
               {Object.keys(context.state.MarkList).map((key) => {
                 return (
-                  <Tag color={context.state.MarkList[key].color} onClick={() => chooseTag(key, context.state.MarkList[key].value)}>{context.state.MarkList[key].value}</Tag>
+                  <Link
+                    to={{
+                      pathname: `/Home/Tag/${context.state.MarkList[key].value}`,
+                      state: { key: key, isShowApplicationPage: false },
+                    }}
+                  >
+                    <Tag
+                      color={context.state.MarkList[key].color}
+                      // onClick={() =>
+                      //   chooseTag(key, context.state.MarkList[key].value)
+                      // }
+                    >
+                      {context.state.MarkList[key].value}
+                    </Tag>
+                  </Link>
                 );
               })}
             </div>

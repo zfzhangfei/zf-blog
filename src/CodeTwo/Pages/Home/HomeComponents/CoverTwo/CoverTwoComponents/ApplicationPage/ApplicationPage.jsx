@@ -3,7 +3,7 @@ import "./ApplicationPage.scss";
 import { DownOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 
-const ApplicationPage = () => {
+const ApplicationPage = ({changePage}) => {
   const textVariants = {
     scrollButton: {
       opacity: 0,
@@ -15,10 +15,8 @@ const ApplicationPage = () => {
     },
   };
   const handleDownClick = () => {
-    const currentScrollPos = window.pageYOffset;
-    const viewportHeight = window.innerHeight;
-    const newScrollPos = currentScrollPos + viewportHeight;
-    window.scrollTo({ top: newScrollPos, behavior: "smooth" });
+    // window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+    changePage('Home')
   };
 
   return (

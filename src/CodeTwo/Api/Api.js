@@ -30,7 +30,8 @@ export async function hiddenArticle(params) {
   post("/deleteArticle", params);
 }
 export async function updateArticle(params) {
-  post("/updateArticle", params);
+  const results = post("/updateArticle", params);
+  return results;
 }
 export async function getArticle() {
   const results = get("/getArticle");

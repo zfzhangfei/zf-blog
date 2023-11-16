@@ -13,22 +13,29 @@ import { FloatButton } from "antd";
 import { VerticalAlignTopOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 
-const Home = ({ props }) => {
-  const [chooseTag, setChooseTag] = useState()
-  const scrollTop = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-  };
-
+const Home = ({ props, changePage }) => {
+  const [chooseTag, setChooseTag] = useState();
+  // const scrollTop = () => {
+  //   window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+  // };
 
   const filterChooseTag = (value) => {
-    setChooseTag(value)
-  }
+    setChooseTag(value);
+  };
+
+  // const changePage2 = (value) => {
+  //   changePage(value);
+  // };
   return (
     <div className="Home">
       <div className="HomeBox1"></div>
       <div className="HomeBox2">
         <div className="HomeBox4">
-          <SideBorder props={props} filterChooseTag={filterChooseTag}></SideBorder>
+          <SideBorder
+            props={props}
+            filterChooseTag={filterChooseTag}
+            changePage={changePage}
+          ></SideBorder>
         </div>
         <div className="HomeBox5">
           <Router>
@@ -38,7 +45,10 @@ const Home = ({ props }) => {
                 path="/"
                 render={(props) => (
                   <div>
-                    <ShowArticleList props={props} chooseTag={chooseTag}></ShowArticleList>
+                    <ShowArticleList
+                      props={props}
+                      chooseTag={chooseTag}
+                    ></ShowArticleList>
                   </div>
                 )}
               />
@@ -47,21 +57,24 @@ const Home = ({ props }) => {
                 path="/Home"
                 render={(props) => (
                   <div>
-                    <ShowArticleList props={props} chooseTag={chooseTag}></ShowArticleList>
+                    <ShowArticleList
+                      props={props}
+                      chooseTag={chooseTag}
+                    ></ShowArticleList>
                   </div>
                 )}
               />
-              {/* <Route
-                exact
-                path="/Home/:tag"
-                render={(props) => (
-                  <div>
-                    <ShowArticleList props={props} chooseTag={chooseTag}></ShowArticleList>
-                  </div>
-                )}
-              /> */}
               <Route
                 exact
+                path="/Home/Tag/:name"
+                render={(props) => (
+                  <ShowArticleList
+                    props={props}
+                    chooseTag={chooseTag}
+                  ></ShowArticleList>
+                )}
+              />
+              <Route
                 path="/Home/Article/:id"
                 render={(props) => <ShowArticleContent props={props} />}
               />
@@ -69,11 +82,7 @@ const Home = ({ props }) => {
           </Router>
 
           <motion.div style={{ position: "absolute" }}>
-            <FloatButton
-              onClick={scrollTop}
-              icon={<VerticalAlignTopOutlined />}
-              visibilityHeight="110vh"
-            />
+            <FloatButton.BackTop />
           </motion.div>
         </div>
       </div>

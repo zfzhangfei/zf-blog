@@ -217,7 +217,6 @@ class Routers extends Component {
                   )}
                 />
                 <Route
-                  exact
                   path="/Home"
                   render={(props) => (
 
@@ -246,7 +245,6 @@ class Routers extends Component {
                                     )}
                                 /> */}
                 <Route
-                  exact
                   path="/Category"
                   render={(props) => (
 
@@ -276,7 +274,6 @@ class Routers extends Component {
 
 
                 <Route
-                  exact
                   path="/Setting"
                   render={(props) => (
                     <motion.div>
@@ -289,7 +286,6 @@ class Routers extends Component {
                 />
 
                 <Route
-                  exact
                   path="/Garden"
                   render={(props) => (
                     <div style={{ width: "100vw", height: "100vh" }}>
