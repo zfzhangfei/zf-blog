@@ -277,7 +277,7 @@ router.get('/getArticle', (req, res) => {
 router.post('/postComment', (req, res) => {
   let sql = `INSERT INTO comment (
         ParentCommentId,  
-        UserId,
+        ParentId,
         Content,
         IsLeaf,
         IsLike,
@@ -288,7 +288,7 @@ router.post('/postComment', (req, res) => {
     ) VALUES (?,?,?,?,?,?,?,?,?)`
   let params = [
     req.body.ParentCommentId,
-    CURRENT_USER.id,
+    req.body.ParentId,
     req.body.Content,
     req.body.IsLeaf,
     req.body.IsLike,
