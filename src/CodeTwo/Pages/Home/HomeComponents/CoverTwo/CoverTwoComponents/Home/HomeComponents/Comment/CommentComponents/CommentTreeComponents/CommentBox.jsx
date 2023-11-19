@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import SubmitComment from "../SubmitComment";
 
-const CommentBox = ({ commentInfo, handleReply}) => {
+const CommentBox = ({ commentInfo, handleReply }) => {
   const [commentTime, setCommentTime] = useState();
   const [info, setInfo] = useState();
 
@@ -42,14 +42,13 @@ const CommentBox = ({ commentInfo, handleReply}) => {
     handleReply(info);
   };
 
-
   return (
     <GlobalContext.Consumer>
       {(context) => (
         <div className="CommentBox">
           <div className="CommentBox2">
             <img
-              src={context.state.UserList[commentInfo.UserId]?.avatar}
+              src={context.state.UserList[commentInfo.CreateBy]?.avatar}
               alt=""
               style={{
                 width: commentInfo.IsLeaf == 0 ? 50 : 35,
@@ -63,26 +62,36 @@ const CommentBox = ({ commentInfo, handleReply}) => {
                     width: "100%",
                     color: "#FCF3CF",
                     fontWeight: "bold",
-                  }}
-                >
-                  {context.state.UserList[commentInfo.ParentId]?.username}
+                  }}>
+                  {commentInfo.ParentId == 0
+                    ? context.state.UserList[commentInfo.CreateBy]?.username
+                    : context.state.UserList[commentInfo.CreateBy]?.username +
+                      "-回复-" +
+                      context.state.UserList[commentInfo.ParentId]?.username}
                 </div>
                 <div style={{ width: "100%" }}>{commentInfo.Content}</div>
                 <Space direction="horizontal" size={30}>
                   <div
-                    style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}
-                  >
+                    style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}>
                     {commentTime}
                   </div>
                   <div
                     style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}
-                    onClick={Reply}
-                  >
+                    onClick={Reply}>
                     回复
                   </div>
                 </Space>
               </Space>
             </div>
+          </div>
+          <div
+            className="CommentBox3"
+            style={{ display: commentInfo.IsReply ? "block" : "none" }}>
+            <SubmitComment
+              ArticleId={commentInfo.ArticleId}
+              type={"reply"}
+              replyComment={commentInfo}
+              IsReply={Reply}></SubmitComment>
           </div>
         </div>
       )}

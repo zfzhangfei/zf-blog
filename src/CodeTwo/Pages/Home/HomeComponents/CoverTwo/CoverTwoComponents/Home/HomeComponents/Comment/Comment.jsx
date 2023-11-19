@@ -20,7 +20,7 @@ const Comment = (ArticleId) => {
           <div>
             <SubmitComment
               ArticleId={ArticleId}
-              replyComment={replyComment}
+              type={'comment'}
             ></SubmitComment>
           </div>
           <div className="CommentTree"></div>

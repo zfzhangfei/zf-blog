@@ -1,7 +1,7 @@
 import React from "react";
 import "./SideBorder.scss";
 import { Space, Tag } from "antd";
-import { CaretUpOutlined, HomeFilled, SettingFilled } from "@ant-design/icons";
+import { CaretUpOutlined, HomeFilled, LoginOutlined, SettingFilled } from "@ant-design/icons";
 import { GlobalContext } from "../../../../../../../../../Utils/GlobalProvider";
 import { Link } from "react-router-dom";
 
@@ -14,6 +14,9 @@ const SideBorder = ({ props, changePage }) => {
     props.history.push("/Setting");
   };
 
+  const goLogin = () => {
+    props.history.push("/Login");
+  }
 
   return (
     <GlobalContext.Consumer>
@@ -23,6 +26,7 @@ const SideBorder = ({ props, changePage }) => {
             <div className="SideBorderBox1">
               <Space direction="horizontal" size={20}>
                 <CaretUpOutlined
+                  style={{ fontSize: 30 }}
                   onClick={() => {
                     changePage("ApplicationPage");
                     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -38,6 +42,9 @@ const SideBorder = ({ props, changePage }) => {
                     goSetting();
                   }}
                 />
+                <LoginOutlined onClick={() => {
+                  goLogin();
+                }} />
               </Space>
             </div>
             <div className="SideBorderBox2">

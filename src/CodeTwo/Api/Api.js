@@ -2,10 +2,14 @@ import { get, post } from "../../Utils/request";
 let currentUser = {};
 
 //#region 用户
-export function login() {
+export async function login(params) {
   const md5 = require("md5");
-  const hash = md5(12345);
-  const results = get("/users", { username: "南风知我意", password: hash });
+  const hash = md5(params.password);
+  const results = await get("/users", {
+    username: params.username,
+    password: hash,
+  });
+  localStorage.setItem("token", results.token);
   currentUser = results;
 }
 export async function getCurrentUser() {

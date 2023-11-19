@@ -7,16 +7,19 @@ class GlobalProvider extends React.Component {
   state = {
     CurrentUser: JSON.parse(localStorage.getItem("CurrentUser")) || null,
     MarkList: JSON.parse(localStorage.getItem("MarkList")) || null,
-    UserList: JSON.parse(localStorage.getItem("UserList"))||null,
+    UserList: JSON.parse(localStorage.getItem("UserList")) || null,
   };
 
   componentDidMount = async () => {
     let userData = await getCurrentUser();
+    console.log(userData, "userData");
     let user = {
+      id: userData.id,
       username: userData.username,
       avatar: userData.avatar,
     };
     let tags = await getTags();
+    console.log(tags, "tags");
     let mark = {};
     tags.res.forEach((tag) => {
       mark[tag.Id] = { value: tag.Value, color: tag.Color };
@@ -38,7 +41,7 @@ class GlobalProvider extends React.Component {
     localStorage.setItem("UserList", JSON.stringify(userList));
   };
 
-  setUser = (MarkList, CurrentUser,UserList) => {
+  setUser = (MarkList, CurrentUser, UserList) => {
     localStorage.setItem("CurrentUser", JSON.stringify(CurrentUser));
     localStorage.setItem("MarkList", JSON.stringify(MarkList));
     localStorage.setItem("UserList", JSON.stringify(UserList));
@@ -55,8 +58,7 @@ class GlobalProvider extends React.Component {
         value={{
           state: this.state,
           setUser: this.setUser,
-        }}
-      >
+        }}>
         {this.props.children}
       </GlobalContext.Provider>
     );
@@ -64,8 +66,3 @@ class GlobalProvider extends React.Component {
 }
 
 export { GlobalProvider, GlobalContext };
-
-
-
-
-

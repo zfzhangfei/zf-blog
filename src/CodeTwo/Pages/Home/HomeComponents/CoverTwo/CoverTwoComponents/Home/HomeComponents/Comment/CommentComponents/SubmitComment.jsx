@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Avatar, Button, Popover, Space } from "antd";
+import { Avatar, Button, Popover, Space, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import EmojiPicker from "./SubmitCommentComponents/EmojiPicker";
 import { GlobalContext } from "../../../../../../../../../../Utils/GlobalProvider";
 import { useState } from "react";
 import { postComment } from "../../../../../../../../../Api/Api";
 
-const SubmitComment = ({ ArticleId, replyComment }) => {
+const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
   const [commentContent, setCommentContent] = useState("");
 
   const emojiSelect = (value) => {
@@ -14,30 +14,58 @@ const SubmitComment = ({ ArticleId, replyComment }) => {
   };
 
   const PostComment = async (CurrentUser) => {
-    const params = {
-      ParentCommentId: 0,
-      ParentsName: CurrentUser.username,
-      Content: commentContent,
-      IsLeaf: false,
-      IsLike: false,
-      Avatar: CurrentUser.avatar,
-      ArticleId: ArticleId.ArticleId,
-    };
-    await postComment(params)
+    if (localStorage.getItem("token")) {
+      let params = null;
+      console.log(type, replyComment, ArticleId);
+      if (type == "comment") {
+        params = {
+          ParentCommentId: 0,
+          ParentId: 0,
+          Content: commentContent,
+          IsLeaf: false,
+          IsLike: false,
+          Avatar: CurrentUser.avatar,
+          ArticleId: ArticleId.ArticleId,
+        };
+      }
+      if (type == "reply") {
+        params = {
+          ParentCommentId: replyComment.Id,
+          ParentId: replyComment.CreateBy,
+          Content: commentContent,
+          IsLeaf: true,
+          IsLike: false,
+          Avatar: CurrentUser.avatar,
+          ArticleId: ArticleId,
+        };
+        IsReply(replyComment);
+      }
+
+      await postComment(params);
+    } else {
+      message.error("请先登录！");
+    }
   };
   return (
     <GlobalContext.Consumer>
       {(context) => (
         <div
           className="SubmitComment"
-          style={{ display: "flex", alignItems: "top" }}
-        >
+          style={{ display: "flex", alignItems: "top" }}>
           <Avatar
             style={{ marginRight: 20 }}
             size={60}
-            src={<img src={context.state.CurrentUser.avatar} alt="avatar" />}
+            src={
+              <img
+                src={
+                  context.state.CurrentUser.avatar
+                    ? context.state.CurrentUser.avatar
+                    : "https://img1.baidu.com/it/u=225041176,855892897&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=1422"
+                }
+                alt="avatar"
+              />
+            }
           />
-
           <div style={{ flex: 1 }}>
             <div style={{ width: "100%", height: 200, overflow: "auto" }}>
               <TextArea
@@ -65,16 +93,14 @@ const SubmitComment = ({ ArticleId, replyComment }) => {
                     </div>
                   }
                   title="Title"
-                  trigger="hover"
-                >
+                  trigger="hover">
                   <div
                     style={{
                       display: "inline-block",
                       verticalAlign: "middle",
                       height: 40,
                       width: 40,
-                    }}
-                  >
+                    }}>
                     <img
                       src="/CodeTwo/Comment/表情包.png"
                       alt="表情包"
@@ -92,15 +118,13 @@ const SubmitComment = ({ ArticleId, replyComment }) => {
                   position: "absolute",
                   right: 70,
                   top: 0,
-                }}
-              >
+                }}>
                 <Button
                   type="primary"
                   style={{ margin: 5 }}
                   onClick={() => {
                     PostComment(context.state.CurrentUser);
-                  }}
-                >
+                  }}>
                   发表评论
                 </Button>
               </div>
