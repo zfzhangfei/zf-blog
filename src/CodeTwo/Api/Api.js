@@ -9,7 +9,16 @@ export async function login(params) {
     username: params.username,
     password: hash,
   });
+  console.log(results,'results');
   localStorage.setItem("token", results.token);
+  localStorage.setItem(
+    "CurrentUser",
+    JSON.stringify({
+      username: results.username,
+      avatar: results.avatar,
+    })
+  );
+
   currentUser = results;
 }
 export async function getCurrentUser() {

@@ -3,13 +3,13 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { login } from "../../../Api/Api";
 
 const LoginForm = ({ props }) => {
-  const onFinish = async(values) => {
+  const onFinish = (values) => {
     console.log("Success:", values);
     let params = {
       username: values.username,
       password: values.password,
     };
-   await login(params);
+    login(params);
     props.history.push("/");
   };
   const onFinishFailed = (errorInfo) => {

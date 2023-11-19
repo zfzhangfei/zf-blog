@@ -11,15 +11,12 @@ class GlobalProvider extends React.Component {
   };
 
   componentDidMount = async () => {
-    let userData = await getCurrentUser();
-    console.log(userData, "userData");
+    let userData = JSON.parse(localStorage.getItem("CurrentUser"));
     let user = {
-      id: userData.id,
       username: userData.username,
       avatar: userData.avatar,
     };
     let tags = await getTags();
-    console.log(tags, "tags");
     let mark = {};
     tags.res.forEach((tag) => {
       mark[tag.Id] = { value: tag.Value, color: tag.Color };
@@ -36,13 +33,13 @@ class GlobalProvider extends React.Component {
       MarkList: mark,
       UserList: userList,
     });
-    localStorage.setItem("CurrentUser", JSON.stringify(user));
+    // localStorage.setItem("CurrentUser", JSON.stringify(user));
     localStorage.setItem("MarkList", JSON.stringify(mark));
     localStorage.setItem("UserList", JSON.stringify(userList));
   };
 
   setUser = (MarkList, CurrentUser, UserList) => {
-    localStorage.setItem("CurrentUser", JSON.stringify(CurrentUser));
+    // localStorage.setItem("CurrentUser", JSON.stringify(CurrentUser));
     localStorage.setItem("MarkList", JSON.stringify(MarkList));
     localStorage.setItem("UserList", JSON.stringify(UserList));
     this.setState({

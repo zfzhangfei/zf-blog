@@ -43,7 +43,7 @@ const createColumns = (
       const tagArray = tags?.split("/"); // 这一行将 'tags' 字符串转换为数组
       return (
         <>
-          {tagArray?.map((tag) => {
+          {context.state.MarkList&&tagArray?.map((tag) => {
             return (
               <Tag color={context.state.MarkList[tag]?.color} key={tag}>
                 {context.state.MarkList[tag]?.value.toUpperCase()}

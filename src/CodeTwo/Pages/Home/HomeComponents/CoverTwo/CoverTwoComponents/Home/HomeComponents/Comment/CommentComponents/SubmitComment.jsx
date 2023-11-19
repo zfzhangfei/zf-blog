@@ -16,7 +16,6 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
   const PostComment = async (CurrentUser) => {
     if (localStorage.getItem("token")) {
       let params = null;
-      console.log(type, replyComment, ArticleId);
       if (type == "comment") {
         params = {
           ParentCommentId: 0,
@@ -44,6 +43,7 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
       await postComment(params);
     } else {
       message.error("请先登录！");
+      IsReply(replyComment);
     }
   };
   return (
@@ -63,6 +63,7 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
                     : "https://img1.baidu.com/it/u=225041176,855892897&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=1422"
                 }
                 alt="avatar"
+                style={{ objectFit: "cover" }}
               />
             }
           />

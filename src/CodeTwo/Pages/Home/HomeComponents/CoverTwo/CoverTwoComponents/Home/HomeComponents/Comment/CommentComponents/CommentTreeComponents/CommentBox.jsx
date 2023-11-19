@@ -53,6 +53,7 @@ const CommentBox = ({ commentInfo, handleReply }) => {
               style={{
                 width: commentInfo.IsLeaf == 0 ? 50 : 35,
                 height: commentInfo.IsLeaf == 0 ? 50 : 35,
+                objectFit: "cover",
               }}
             />
             <div className="CommentBox1">

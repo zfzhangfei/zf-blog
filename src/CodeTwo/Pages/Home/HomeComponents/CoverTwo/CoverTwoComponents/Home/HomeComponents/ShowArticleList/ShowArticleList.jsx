@@ -38,8 +38,7 @@ const ShowArticleList = ({ props }) => {
                     pathname: `/Home/Article/${item.Id}`,
                     state: { article: item },
                   }}
-                  style={{ color: "#fff", textDecoration: "none" }}
-                >
+                  style={{ color: "#fff", textDecoration: "none" }}>
                   <img src="/CodeTwo/Homepage/NANA1.webp" alt="" />
                   <div className="ArticleListBox2">
                     <div className="title">{item.name}</div>
@@ -57,7 +56,8 @@ const ShowArticleList = ({ props }) => {
                   </div>
                 </div>
                 <div className="tags">
-                  {item.tags &&
+                  {context.state.MarkList &&
+                    item.tags &&
                     item.tags.split("/").map((item, index) => {
                       return (
                         <Tag color={context.state.MarkList[item].color}>

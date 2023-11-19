@@ -65,7 +65,7 @@ export default function ArticleDrawer({
               </Form.Item>
               <Form.Item label="标签" name="tag">
                 <Select mode="multiple">
-                  {Object.keys(context.state.MarkList).map((key) => {
+                  {context.state.MarkList&&Object.keys(context.state.MarkList).map((key) => {
                     return (
                       <Select.Option key={key} value={key}>
                         {context.state.MarkList[key].value}
