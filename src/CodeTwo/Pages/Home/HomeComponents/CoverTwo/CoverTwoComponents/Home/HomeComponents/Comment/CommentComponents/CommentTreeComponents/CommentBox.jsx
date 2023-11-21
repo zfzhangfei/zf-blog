@@ -94,5 +94,4 @@ const CommentBox = ({ commentInfo, handleReply }) => {
   );
 };
 
-
 export default CommentBox;

@@ -64,7 +64,6 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
       IsReply(replyComment);
     }
   };
-
   return (
     <GlobalContext.Consumer>
       {(context) => (
