@@ -1,0 +1,59 @@
+// 帧动画
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 1000ms ease-out;
+}
+
+
+.slide-enter {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.slide-enter.slide-enter-active {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: opacity 1000ms ease-in, transform 1000ms ease-in;
+}
+
+.slide-exit {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.slide-exit.slide-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 1000ms ease-out, transform 1000ms ease-out;
+}
+
+
+.MenuArticle {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "Menu Article";
+
+    .Menu {
+        grid-area: Menu;
+    }
+
+    .Article {
+        grid-area: Article;
+    }
+
+}

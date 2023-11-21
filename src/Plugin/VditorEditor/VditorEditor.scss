@@ -1,0 +1,23 @@
+#MyVditor {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 48vw 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "vditor ShowVditor";
+
+    #vditor {
+        grid-area: vditor;
+        height: 100%;
+        word-wrap: break-word;
+    }
+
+    #ShowVditor {
+        grid-area: ShowVditor;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        word-wrap: break-word;
+    }
+}

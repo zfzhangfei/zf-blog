@@ -1,0 +1,73 @@
+#CategoryOne {
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../Static/Image/11.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 0%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 5fr;
+    grid-template-areas:
+        "CategoryBox1"
+        "CategoryBox2";
+
+    .CategoryBox1 {
+        grid-area: CategoryBox1;
+        border: 1px dashed blue;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .CategoryGoBack {
+            background-color: #6E2C00;
+            color: #fff;
+            border: 2px solid #6E2C00;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .SearchInput {
+            border-radius: 50px;
+            width: 50%;
+            border: 2px solid #6E2C00;
+        }
+
+        .SearchButton {
+            border-radius: 50px;
+            margin-left: 10px;
+            width: 80px;
+            background-color: #6E2C00;
+            color: #fff;
+            border: 2px solid #6E2C00;
+        }
+
+    }
+
+    .CategoryBox2 {
+        grid-area: CategoryBox2;
+        border: 1px dashed blue;
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "CategoryBox3 CategoryBox4 CategoryBox5";
+
+        .CategoryBox3 {
+            grid-area: CategoryBox3;
+
+        }
+
+        .CategoryBox4 {
+            grid-area: CategoryBox4;
+            border: 1px dashed blue;
+        }
+
+        .CategoryBox5 {
+            grid-area: CategoryBox5;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+#EditArticlePage {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "EditArticleBox1"
+        "EditArticleBox2";
+        .EditArticleBox1{
+            grid-area: EditArticleBox1;
+            background-color: #001529;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            .ArrowLeftOutlined{
+                color: white;
+            }
+        }
+        .EditArticleBox2{
+            grid-area: EditArticleBox2;
+        }
+}

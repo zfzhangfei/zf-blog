@@ -1,0 +1,28 @@
+.ShowArticleList {
+  .ArticleListBox1 {
+    img {
+      width: 100%;
+      height: 200px;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+
+    .ArticleListBox2 {
+      .title {
+        font-size: 32px;
+        font-weight: bold;
+      }
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tags {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+  }
+}

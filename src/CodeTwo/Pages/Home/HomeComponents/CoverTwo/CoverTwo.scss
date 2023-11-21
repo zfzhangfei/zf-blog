@@ -1,0 +1,26 @@
+.CoverTwo {
+  color: #fff;
+  // section {
+  //   scroll-snap-align: center;
+  // }
+
+  #ApplicationPage {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  
+  #ApplicationPage {
+    top: 0;
+    z-index: 2; /* 确保 ApplicationPage 位于 Home 之上 */
+    height: 100vh; /* 使它占据整个视口高度 */
+  }
+  
+  #Home {
+    top: 100vh; /* 最初在视口的底部 */
+    z-index: 1;
+    height: 100vh;
+  }
+
+}

@@ -1,0 +1,98 @@
+#PrivateGarden {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "PrivateGardenBox1 PrivateGardenBox2 PrivateGardenBox3";
+
+  .PrivateGardenBox1 {
+    grid-area: PrivateGardenBox1;
+    // border: 1px dashed blue;
+  }
+
+  .PrivateGardenBox2 {
+    grid-area: PrivateGardenBox2;
+    // border: 1px dashed blue;
+    // background-color: #d0d0d0;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas: "PrivateGardenBox4 PrivateGardenBox5";
+    grid-gap: 10px;
+
+    .PrivateGardenBox4 {
+      grid-area: PrivateGardenBox4;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "PrivateGardenBox6 "
+        "PrivateGardenBox7";
+      grid-gap: 10px;
+
+      .PrivateGardenBox6 {
+        grid-area: PrivateGardenBox6;
+        .ContactDetails {
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+        }
+      }
+
+      .PrivateGardenBox7 {
+        grid-area: PrivateGardenBox7;
+        // border: 1px dashed blue;
+      }
+    }
+
+    .PrivateGardenBox5 {
+      grid-area: PrivateGardenBox5;
+
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: 3fr 1fr;
+      grid-template-areas:
+        "PrivateGardenBox8"
+        " PrivateGardenBox9";
+      grid-gap: 10px;
+
+      .PrivateGardenBox8 {
+        grid-area: PrivateGardenBox8;
+        padding-left: 20px;
+        .AboutMe {
+          width: 100%;
+        }
+        .Skill {
+          width: 100%;
+          .card {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            grid-template-rows: auto;
+            grid-template-areas: "CommonTools SkillCard";
+            #CommonTools {
+              grid-area: CommonTools;
+              width: 320px;
+            }
+            #SkillCard {
+              grid-area: SkillCard;
+            }
+          }
+          .Portfolio {
+            width: 100%;
+          }
+        }
+      }
+
+      .PrivateGardenBox9 {
+        grid-area: PrivateGardenBox9;
+        // border: 1px dashed blue;
+      }
+    }
+  }
+
+  .PrivateGardenBox3 {
+    // border: 1px dashed blue;
+    grid-area: PrivateGardenBox3;
+  }
+}
