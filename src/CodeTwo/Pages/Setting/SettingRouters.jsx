@@ -13,7 +13,7 @@ import CommentManagePage from "./SettingComponents/CommentManagePage/CommentMana
 export default class SettingRouters extends Component {
   render() {
     return (
-      <div id="SettingRouters">
+      <div id="SettingRouters" style={{height:'100%'}}>
         <Router>
           <Switch>
             <Route exact path="/Setting" render={(props) => 111} />

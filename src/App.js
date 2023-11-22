@@ -11,9 +11,11 @@ Component.prototype.post = post
 
 
 function App() {
-  // useEffect(() => {
-  //   store.dispatch(fetchDict())
-  // }, [])
+  useEffect(() => {
+    return () => {
+      localStorage.clear();
+    };
+  }, []); 
 
   return (
     <div>

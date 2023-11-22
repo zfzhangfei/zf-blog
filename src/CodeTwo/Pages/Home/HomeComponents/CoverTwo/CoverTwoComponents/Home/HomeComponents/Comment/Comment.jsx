@@ -5,13 +5,8 @@ import CommentTree from "./CommentComponents/CommentTree";
 import { useState } from "react";
 
 const Comment = (ArticleId) => {
-  const [replyComment, setReplyComment] = useState();
 
-
-
-  const handleReply = (value) => {
-    setReplyComment(value);
-  };
+ 
 
   return (
     <GlobalContext.Consumer>
@@ -24,7 +19,7 @@ const Comment = (ArticleId) => {
             ></SubmitComment>
           </div>
           <div className="CommentTree"></div>
-          <CommentTree ArticleId={ArticleId} handleReply={handleReply}></CommentTree>
+          <CommentTree ArticleId={ArticleId}></CommentTree>
         </div>
       )}
     </GlobalContext.Consumer>

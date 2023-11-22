@@ -17,6 +17,18 @@ import React, { useState } from "react";
 export default function markDown({ html }) {
 
 
+  const navigateToSection = (event, itemId) => {
+    var decodedStr = decodeURIComponent(itemId);
+    event.preventDefault(); // 阻止默认锚点跳转行为
+    const sectionElement = document.getElementById(decodedStr);
+    if(sectionElement) {
+      window.scrollTo({
+        top: sectionElement.offsetTop,
+        behavior: "smooth"
+      });
+    }
+  };
+
     
   const Pre = ({ children }) => (
     <pre className="blog-pre">
@@ -32,6 +44,15 @@ export default function markDown({ html }) {
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkGfm, remarkGemoji, remarkToc, remarkSlug]}
           components={{
+            a: ({node, ...props}) => (
+              <a
+                {...props}
+                // 确保这个onClick处理器调用你自己的函数并传递适当的参数
+                onClick={(e) => navigateToSection(e, props.href.slice(1))}
+              >
+                {props.children}
+              </a>
+            ),
             pre: Pre,
             code({
               node,

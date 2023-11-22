@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getCommentByArticleId } from "../../../../../../../../../Api/Api";
 import CommentBox from "./CommentTreeComponents/CommentBox";
 import { Space } from "antd";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 const nestComments = (comments, ParentCommentId = 0, seenIds = new Set()) => {
   const commentTree = [];
@@ -27,9 +27,11 @@ const nestComments = (comments, ParentCommentId = 0, seenIds = new Set()) => {
   return commentTree;
 };
 
-const CommentTree = ({ ArticleId, handleReply }) => {
+const CommentTree = ({ ArticleId }) => {
   const [comments, setComments] = useState();
   const [commentsTreeData, setCommentsTreeData] = useState();
+  const dispatch = useDispatch();
+  const commenList = useSelector((state) => state.commenList); // 确保这里的路径与你的状态树匹配
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +52,14 @@ const CommentTree = ({ ArticleId, handleReply }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setComments(commenList);
+    const commentsWithIsReply = nestComments(commenList);
+    setCommentsTreeData(commentsWithIsReply);
+  }, [commenList]);
+
+
+
   const upDataCommentData = (value) => {
     const updatedComments = comments?.map((comment) => {
       if (value.Id === comment.Id) {
@@ -67,7 +77,6 @@ const CommentTree = ({ ArticleId, handleReply }) => {
     setComments(updatedComments);
     const commentsWithIsReply = nestComments(updatedComments);
     setCommentsTreeData(commentsWithIsReply);
-    handleReply(value);
   };
 
   const renderComments = (comments, depth = 0) => {
@@ -80,7 +89,7 @@ const CommentTree = ({ ArticleId, handleReply }) => {
               marginLeft: comment.IsLeaf == false ? "0px" : "70px",
             }}
           >
-            <CommentBox commentInfo={comment} handleReply={upDataCommentData} />
+            <CommentBox commentInfo={comment}  handleReply={upDataCommentData}/>
           </div>
           {comment.children && renderComments(comment.children, depth + 1)}
         </div>
@@ -104,6 +113,25 @@ const CommentTree = ({ ArticleId, handleReply }) => {
   );
 };
 
-
-
 export default CommentTree;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,17 +8,17 @@ import SubmitComment from "../SubmitComment";
 import { getUsers, getUsersAsync } from "../../../../../../../../../../Api/Api";
 import { connect, useDispatch, useSelector } from "react-redux";
 import formatDate from "../../../../../../../../../../CommonFuc/Time";
+import { useCallback } from "react";
 
 const CommentBox = ({ commentInfo, handleReply }) => {
   const [commentTime, setCommentTime] = useState();
-  const [info, setInfo] = useState();
   const dispatch = useDispatch();
-  const userList = useSelector(state => state.userList); // 确保这里的路径与你的状态树匹配
+  const userList = useSelector((state) => state.userList); // 确保这里的路径与你的状态树匹配
 
   useEffect(() => {
     var createTime = new Date(commentInfo.CreateTime);
     setCommentTime(formatDate(createTime));
-    setInfo(commentInfo);
+    dispatch(getUsersAsync());
   }, []);
 
   useEffect(() => {
@@ -26,8 +26,12 @@ const CommentBox = ({ commentInfo, handleReply }) => {
   }, [dispatch]);
 
   const Reply = () => {
-    handleReply(info);
+    handleReply(commentInfo);
   };
+
+
+
+  
 
   return (
     <GlobalContext.Consumer>
@@ -48,29 +52,27 @@ const CommentBox = ({ commentInfo, handleReply }) => {
                 <div
                   style={{
                     width: "100%",
-                    color: "#FCF3CF",
+                    color: "rgba(255,255,255,0.5)",
+                    fontSize: 14,
                     fontWeight: "bold",
                   }}
                 >
-                  {commentInfo.ParentId == 0
-                    ? userList && userList[commentInfo.CreateBy]?.username
-                    : userList &&
-                      userList[commentInfo.CreateBy]?.username +
-                        "-回复-" +
-                        userList &&
+                  {userList && commentInfo.ParentId == 0
+                    ? userList[commentInfo.CreateBy]?.username
+                    : userList[commentInfo.CreateBy]?.username +
+                      "-回复-" +
                       userList[commentInfo.ParentId]?.username}
                 </div>
                 <div style={{ width: "100%" }}>{commentInfo.Content}</div>
-                <Space direction="horizontal" size={30}>
-                  <div
-                    style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}
-                  >
+                <Space
+                  direction="horizontal"
+                  size={30}
+                  style={{ color: "rgba(255,255,255,0.5)" }}
+                >
+                  <div style={{ width: "100%", fontSize: 14 }}>
                     {commentTime}
                   </div>
-                  <div
-                    style={{ width: "100%", color: "#FCF3CF", fontSize: 14 }}
-                    onClick={Reply}
-                  >
+                  <div style={{ width: "100%", fontSize: 14 }} onClick={Reply}>
                     回复
                   </div>
                 </Space>

@@ -4,8 +4,13 @@ import TextArea from "antd/es/input/TextArea";
 import EmojiPicker from "./SubmitCommentComponents/EmojiPicker";
 import { GlobalContext } from "../../../../../../../../../../Utils/GlobalProvider";
 import { useState } from "react";
-import { getUsers, postComment } from "../../../../../../../../../Api/Api";
+import {
+  getCommentByArticleIdAsync,
+  getUsers,
+  postComment,
+} from "../../../../../../../../../Api/Api";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
   const [commentContent, setCommentContent] = useState("");
@@ -13,6 +18,7 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
     JSON.parse(localStorage.getItem("CurrentUser"))
   );
   const [userList, setUserList] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -34,6 +40,7 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
   const PostComment = async (value) => {
     if (localStorage.getItem("token")) {
       let params = null;
+      let param = null;
       if (type == "comment") {
         params = {
           ParentCommentId: 0,
@@ -44,6 +51,11 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
           Avatar: CurrentUser.avatar,
           ArticleId: ArticleId.ArticleId,
         };
+        setCommentContent("");
+        param = {
+          ArticleId: ArticleId.ArticleId,
+        };
+        dispatch(getCommentByArticleIdAsync(param));
       }
       if (type == "reply") {
         params = {
@@ -56,14 +68,18 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
           ArticleId: ArticleId,
         };
         IsReply(replyComment);
+        param = {
+          ArticleId: ArticleId,
+        };
       }
-
       await postComment(params);
+      dispatch(getCommentByArticleIdAsync(param));
     } else {
       message.error("请先登录！");
       IsReply(replyComment);
     }
   };
+
   return (
     <GlobalContext.Consumer>
       {(context) => (
@@ -91,8 +107,8 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
               <TextArea
                 style={{ width: "100%", resize: "none", minHeight: 200 }}
                 placeholder={
-                  userList&&replyComment
-                    ? "回复" + userList[replyComment.CreateBy].username + ":"
+                  userList && replyComment
+                    ? "回复" + userList[replyComment.CreateBy]?.username + ":"
                     : "快来说点什么吧！"
                 }
                 value={commentContent}

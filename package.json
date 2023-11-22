@@ -11,6 +11,7 @@
     "@emailjs/browser": "^3.11.0",
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
+    "@ffmpeg/ffmpeg": "^0.12.7",
     "@react-three/drei": "^9.88.7",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

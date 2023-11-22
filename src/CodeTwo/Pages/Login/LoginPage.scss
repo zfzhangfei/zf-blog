@@ -4,9 +4,88 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   .LoginBox {
-    width: 800px;
-    height: 600px;
-    background-color: aqua;
+    width: 600px;
+    height: 400px;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    label{
+      color: #fff;
+    }
+
+  }
+
+  .LoginBoxBottom{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 560px;
+    padding: 20px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @function getShadows($n) {
+    $shadows: "#{random(100)}vw #{random(100)}vh #fff";
+
+    @for $i from 2 through $n {
+      $shadows: "#{$shadows},#{random(100)}vw #{random(100)}vh #fff";
+    }
+
+    @return unquote($shadows);
+  }
+  $duration:400s;
+  $count:400s;
+  @for $i from 1 through 3 {
+    $duration:floor($duration/2);
+    $count:floor($count/2);
+    .layer#{$i} {
+      $size: #{$i}px;
+      $duration: 5s;
+      position: fixed;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background: #f40;
+      left: 0;
+      top: 0;
+      box-shadow: getShadows($count);
+      animation: moveUp 100s linear infinite;
+      &::after {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 100vh;
+        width: $size;
+        height: $size;
+        border-radius: inherit;
+        box-shadow: inherit;
+      }
+    }
+  }
+  @keyframes moveUp {
+    100% {
+      transform: translateY(-100vh);
+    }
   }
 }

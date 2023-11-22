@@ -12,7 +12,6 @@ const CoverTwo = ({ props }) => {
   );
 
   useEffect(() => {
-    console.log(isApplicationPageVisible, "isApplicationPageVisible");
     document.body.style.overflow = isApplicationPageVisible
       ? "hidden"
       : "visible";

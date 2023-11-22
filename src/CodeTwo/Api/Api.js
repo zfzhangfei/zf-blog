@@ -18,16 +18,15 @@ export async function login(params) {
   );
 }
 
-
 export async function getUsers() {
   const results = get("/getUsers");
   return results;
 }
 
 export function getUsersAsync() {
-  return function(dispatch) {
-    get('/getUsers')
-      .then(data => {
+  return function (dispatch) {
+    get("/getUsers")
+      .then((data) => {
         let userList = {};
         data.res.forEach((user) => {
           userList[user.id] = {
@@ -35,9 +34,9 @@ export function getUsersAsync() {
             avatar: user.avatar,
           };
         });
-        dispatch({ type: 'SET_USER_LIST', payload: userList });
+        dispatch({ type: "SET_USER_LIST", payload: userList });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("An error occurred:", error);
       });
   };
@@ -68,6 +67,25 @@ export async function getCommentByArticleId(params) {
   const results = get("/getCommentByArticleId", params);
   return results;
 }
+
+export function getCommentByArticleIdAsync(params) {
+  return function (dispatch) {
+    get("/getCommentByArticleId", params)
+      .then((data) => {
+        const updatedComments = data.res.map((comment) => {
+          return {
+            ...comment,
+            IsReply: false,
+          };
+        });
+        dispatch({ type: "SET_COMMENLIST", payload: updatedComments });
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  };
+}
+
 export async function postComment(params) {
   const results = post("/postComment", params);
   return results;
