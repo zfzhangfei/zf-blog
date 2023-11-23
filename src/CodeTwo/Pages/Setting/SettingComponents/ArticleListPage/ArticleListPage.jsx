@@ -43,13 +43,14 @@ const createColumns = (
       const tagArray = tags?.split("/"); // 这一行将 'tags' 字符串转换为数组
       return (
         <>
-          {context.state.MarkList&&tagArray?.map((tag) => {
-            return (
-              <Tag color={context.state.MarkList[tag]?.color} key={tag}>
-                {context.state.MarkList[tag]?.value.toUpperCase()}
-              </Tag>
-            );
-          })}
+          {context.state.MarkList &&
+            tagArray?.map((tag) => {
+              return (
+                <Tag color={context.state.MarkList[tag]?.color} key={tag}>
+                  {context.state.MarkList[tag]?.value.toUpperCase()}
+                </Tag>
+              );
+            })}
         </>
       );
     },
@@ -170,10 +171,10 @@ const ArticleListPage = () => {
    * 删除文章
    */
   const deleteArticle = async (value) => {
-      if (window.confirm("确定要删除该文章?")) {
-        await hiddenArticle(value);
-        setData(data.filter((item) => item.Id !== value.Id));
-      }
+    if (window.confirm("确定要删除该文章?")) {
+      await hiddenArticle(value);
+      setData(data.filter((item) => item.Id !== value.Id));
+    }
   };
   /**
    * 切换编辑文章内容的页面(编辑器页面)
@@ -329,7 +330,12 @@ const ArticleListPage = () => {
                     </Space>
                   </Form>
                 </div>
-                <Table columns={columns} dataSource={data} className="table" />
+                <Table
+                  columns={columns}
+                  dataSource={data}
+                  scroll={{ y: "calc(100vh - 195px)" }}
+                  className="table"
+                />
               </div>
             )}
             {pageType == "EditPage" && (

@@ -82,7 +82,7 @@ const SideBorder = ({ props, changePage }) => {
                     }}
                     key={key}
                   >
-                    <Tag color={context.state.MarkList[key].color} >
+                    <Tag color={context.state.MarkList[key].color} style={{margin:5}}>
                       {context.state.MarkList[key].value}
                     </Tag>
                   </Link>

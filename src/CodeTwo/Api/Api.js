@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { get, post } from "../../Utils/request";
 
 //#region 用户
@@ -42,10 +43,26 @@ export function getUsersAsync() {
   };
 }
 
+export async function postTag(params) {
+  const results = post("/postTag", params);
+  message.success("标签新增成功");
+  return results;
+}
+export async function hiddenTag(params) {
+  const results = post("/deleteTag", params);
+  message.success("标签删除成功");
+  return results;
+}
 export async function getTags() {
   const results = get("/getTags");
   return results;
 }
+
+
+
+
+
+
 
 export async function postArtical(params) {
   const results = post("/postArtical", params);
@@ -62,7 +79,6 @@ export async function getArticle() {
   const results = get("/getArticle");
   return results;
 }
-
 
 
 
@@ -106,6 +122,5 @@ export function getCommentByArticleIdAsync(params) {
       });
   };
 }
-
 
 //#endregion

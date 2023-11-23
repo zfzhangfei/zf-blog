@@ -27,7 +27,7 @@ class GlobalProvider extends React.Component {
   };
 
 
-  setUser = (MarkList, UserList) => {
+  setMarkList = (MarkList) => {
     localStorage.setItem("MarkList", JSON.stringify(MarkList));
     this.setState({
       MarkList,
@@ -43,7 +43,7 @@ class GlobalProvider extends React.Component {
       <GlobalContext.Provider
         value={{
           state: this.state,
-          setUser: this.setUser,
+          setMarkList: this.setMarkList,
         }}
       >
         {this.props.children}

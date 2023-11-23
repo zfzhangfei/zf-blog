@@ -47,12 +47,19 @@ const CommentManagePage = () => {
       await hiddenComment(value);
       setData(data.filter((item) => item.Id !== value.Id));
     }
-};
+  };
 
   const columns = createColumns(deleteComment);
   return (
     <div className="CommentManagePage">
-      <Table columns={columns} dataSource={data} className="table" />
+      <Table
+        columns={columns}
+        dataSource={data}
+        scroll={{
+          y: 'calc(100vh - 119px)'
+        }}
+        className="table"
+      />
     </div>
   );
 };
