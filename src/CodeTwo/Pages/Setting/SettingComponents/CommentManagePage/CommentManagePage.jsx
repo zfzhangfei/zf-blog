@@ -1,45 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CommentManagePage.scss";
-// import videojs from 'video.js';
-// import 'video.js/dist/video-js.css';
+import { Space, Button, Table } from "antd";
+import { getComments, hiddenComment } from "../../../../Api/Api";
+import { useEffect } from "react";
+
+const createColumns = (deleteComment) => [
+  {
+    title: "评论",
+    dataIndex: "Content",
+    key: "Content",
+    flex: 1,
+  },
+  {
+    title: "操作",
+    key: "action",
+    width: 200,
+    render: (_, record) => (
+      <Space size="middle" className="actionBtns">
+        <Button
+          className="delete"
+          onClick={() => {
+            deleteComment(record);
+          }}
+        >
+          删除
+        </Button>
+      </Space>
+    ),
+  },
+];
 
 const CommentManagePage = () => {
+  const [data, setData] = useState();
 
-  // var player = videojs('my-video');
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getComments();
+      setData(result.res);
+    };
 
-  // player.ready(function() {
-  //   console.log('Player is ready!');
-  //   // 在这里调用 Video.js 的 API 方法
-  //   this.play();
-  
-  //   this.on('ended', function() {
-  //     console.log('The video has ended!');
-  //   });
-  // });
-  
+    fetchData();
+  }, []);
+
+  const deleteComment = async (value) => {
+    if (window.confirm("确定要删除该评论?")) {
+      await hiddenComment(value);
+      setData(data.filter((item) => item.Id !== value.Id));
+    }
+};
+
+  const columns = createColumns(deleteComment);
   return (
-    <div>
-
-{/* <video
-  id="my-video"
-  class="video-js"
-  controls
-  preload="auto"
-  width="640"
-  height="264"
-  poster="MY_VIDEO_POSTER.jpg"
-  data-setup="{}">
-  <source src="/111.mp4" type='video/mp4' />
-  <source src="/111.webm" type='video/webm' />
-  <p class="vjs-no-js">
-    To view this video please enable JavaScript, and consider upgrading to a
-    web browser that
-    <a href="https://videojs.com/html5-video-support/" target="_blank">
-      supports HTML5 video
-    </a>
-  </p>
-</video> */}
-
+    <div className="CommentManagePage">
+      <Table columns={columns} dataSource={data} className="table" />
     </div>
   );
 };

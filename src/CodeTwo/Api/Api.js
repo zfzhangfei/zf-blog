@@ -63,6 +63,27 @@ export async function getArticle() {
   return results;
 }
 
+
+
+
+
+
+
+
+
+export async function postComment(params) {
+  const results = post("/postComment", params);
+  return results;
+}
+
+export async function hiddenComment(params) {
+  post("/deleteComment", params);
+}
+export async function getComments() {
+  const results = get("/getComments");
+  return results;
+}
+
 export async function getCommentByArticleId(params) {
   const results = get("/getCommentByArticleId", params);
   return results;
@@ -86,9 +107,5 @@ export function getCommentByArticleIdAsync(params) {
   };
 }
 
-export async function postComment(params) {
-  const results = post("/postComment", params);
-  return results;
-}
 
 //#endregion
