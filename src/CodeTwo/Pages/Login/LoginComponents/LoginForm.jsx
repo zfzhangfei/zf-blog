@@ -4,7 +4,6 @@ import { login } from "../../../Api/Api";
 
 const LoginForm = ({ props }) => {
   const onFinish = (values) => {
-    console.log("Success:", values);
     let params = {
       username: values.username,
       password: values.password,
@@ -13,7 +12,6 @@ const LoginForm = ({ props }) => {
     props.history.push("/");
   };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
   return (
     <Form

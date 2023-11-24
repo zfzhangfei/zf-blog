@@ -32,7 +32,7 @@ function reducer(state = initialState, action) {
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["isShowApplicationPage", "commenList", "userList"], // 只有这个状态会被持久化
+  whitelist: ["isShowApplicationPage"], // 只有这个状态会被持久化
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

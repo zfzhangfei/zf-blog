@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
   const [commentContent, setCommentContent] = useState("");
   const [CurrentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("CurrentUser"))
+    JSON.parse(sessionStorage.getItem("CurrentUser"))
   );
   const [userList, setUserList] = useState();
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
   };
 
   const PostComment = async (value) => {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       let params = null;
       let param = null;
       if (type == "comment") {

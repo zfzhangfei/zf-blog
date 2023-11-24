@@ -1,8 +1,8 @@
 import React from "react";
 import "./TagsOperation.scss";
 import { useState } from "react";
-import { ExclamationCircleFilled, PlusOutlined } from "@ant-design/icons";
-import { Button, Tag, Modal, message } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { Button, Tag, message } from "antd";
 import { GlobalContext } from "../../../../../../../Utils/GlobalProvider";
 import { hiddenTag, postTag } from "../../../../../../Api/Api";
 import { useContext } from "react";
@@ -32,23 +32,29 @@ const TagsOperation = () => {
     // 返回在该选定索引处的颜色
     return colors[randomIndex];
   };
-  const addTag = async () => {
+  const addTag = () => {
+    if (!tag) {
+      message.error("新增标签不能为空！");
+      return;
+    }
     const color = getRandomColor();
     let params = {
       Value: tag,
       Color: color,
     };
-    let result = await postTag(params);
-    let newTag = { value: tag, color: color };
-    setMarkList({ ...state.MarkList, [result.res.insertId]: newTag });
-    setTag("");
+    let result = postTag(params);
+    if (result) {
+      let newTag = { value: tag, color: color };
+      setMarkList({ ...state.MarkList, [result.insertId]: newTag });
+      setTag("");
+    }
   };
 
-  const deleteTag = async (Id) => {
+  const deleteTag = (Id) => {
     let params = {
       Id: Id,
     };
-    await hiddenTag(params);
+    hiddenTag(params);
   };
 
   return (

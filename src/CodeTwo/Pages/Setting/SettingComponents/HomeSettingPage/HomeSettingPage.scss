@@ -1,8 +1,13 @@
 .HomeSettingPage {
     width: 100%;
     height: 100%;
-
+    display: flex;
+    flex-wrap: wrap;
     .HomeSettingBox1{
+        width: calc(100%/3);
+        height: calc(100%/2);
+    }
+    .HomeSettingBox2{
         width: calc(100%/3);
         height: calc(100%/2);
     }

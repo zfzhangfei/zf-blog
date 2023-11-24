@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomeSettingPage.scss";
 import TagsOperation from "./HomeSettingPageComponents/Tags/TagsOperation";
+import CategoriesOperation from "./HomeSettingPageComponents/Categories/CategoriesOperation";
 
 const HomeSettingPage = () => {
   return (
@@ -8,7 +9,9 @@ const HomeSettingPage = () => {
       <div className="HomeSettingBox1">
         <TagsOperation></TagsOperation>
       </div>
-      <div className="HomeSettingBox2"></div>
+      <div className="HomeSettingBox2">
+        <CategoriesOperation></CategoriesOperation>
+      </div>
       <div className="HomeSettingBox3"></div>
       <div className="HomeSettingBox4"></div>
       <div className="HomeSettingBox5"></div>

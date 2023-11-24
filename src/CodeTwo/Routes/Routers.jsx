@@ -6,11 +6,6 @@ import {
   withRouter,
 } from "react-router-dom";
 import {
-  CSSTransition,
-  TransitionGroup,
-  SwitchTransition,
-} from "react-transition-group";
-import {
   lightTheme,
   darkTheme,
   getNavyBlueWhite,
@@ -21,18 +16,16 @@ import { ThemeContext } from "../../Utils/Theme/themeContext";
 import LoginPage from "../Pages/Login/LoginPage";
 import HomePage from "../Pages/Home/HomePage";
 import "./Router.scss";
-import MenuPage from "../Pages/Menu/MenuPage";
 import CategoryPage from "../Pages/Category/CategoryPage";
 import "animate.css";
-import ArticlePage from "../Pages/Article/ArticlePage";
 import SettingPage from "../Pages/Setting/SettingPage";
 import { AnimatePresence, motion } from "framer-motion";
-import SettingRouters from "../Pages/Setting/SettingRouters";
-import { login } from "../Api/Api";
 import PrivateGarden from "../Pages/Article/PrivateGarden/PrivateGarden";
-import ShowArticleContent from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowArticleContent/ShowArticleContent";
 import AuthRoute from "./authRoute";
 import { GlobalContext } from "../../Utils/GlobalProvider";
+
+
+
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -73,7 +66,7 @@ class Routers extends Component {
             <Route
               render={({ location }) => (
                 <AnimatePresence mode="wait">
-                  <Switch location={location} key={location.pathname}>
+                  <Switch location={location} key={location.pathname} >
                     <Route
                       exact
                       path="/"

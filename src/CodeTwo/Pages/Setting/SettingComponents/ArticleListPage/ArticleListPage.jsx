@@ -299,12 +299,15 @@ const ArticleListPage = () => {
                             })
                           }
                         >
-                          <Select.Option value="demo1" key={1}>
-                            Demo1
-                          </Select.Option>
-                          <Select.Option value="demo2" key={2}>
-                            Demo2
-                          </Select.Option>
+                          {Object.keys(context.state.CategoryList).map(
+                            (key) => {
+                              return (
+                                <Select.Option key={key} value={key}>
+                                  {context.state.CategoryList[key].Title}
+                                </Select.Option>
+                              );
+                            }
+                          )}
                         </Select>
                       </Form.Item>
                       <Form.Item>

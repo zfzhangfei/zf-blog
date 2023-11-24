@@ -14,10 +14,6 @@ const ShowArticleContent = ({ props }) => {
   };
 
 
-  useEffect(()=>{
-    console.log(article,props);
-  },[article])
-
   return (
     <div className="ShowArticleContent">
       {article && (

@@ -3,11 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import "./SideBar.scss";
 import {
   CommentOutlined,
-  ContainerOutlined,
   DesktopOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   PieChartOutlined,
+  UnlockOutlined,
+  UsergroupAddOutlined,
 } from "@ant-design/icons";
 import { Button, Menu } from "antd";
 
@@ -24,6 +23,18 @@ const items = [
     key: "3",
     icon: <CommentOutlined />,
     to: "/Setting/comments",
+  },
+  {
+    label: "用户管理",
+    key: "4",
+    icon: <UsergroupAddOutlined />,
+    to: "/Setting/users",
+  },
+  {
+    label: "权限管理",
+    key: "5",
+    icon: <UnlockOutlined />,
+    to: "/Setting/authorities",
   },
 ];
 
@@ -42,11 +53,11 @@ const SideBar = ({ props }) => {
     } else {
       setSelectedKey("1");
     }
-  }, [location, items]);
+  }, [location]);
 
-  const goOut=()=>{
-    props.history.push('/Home');
-  }
+  const goOut = () => {
+    props.history.push("/Home");
+  };
 
   return (
     <div id="SideBar">
@@ -58,7 +69,13 @@ const SideBar = ({ props }) => {
         inlineCollapsed={collapsed}
       >
         <div className="info">
-          <Button onClick={()=>{goOut()}}>退出</Button>
+          <Button
+            onClick={() => {
+              goOut();
+            }}
+          >
+            退出
+          </Button>
         </div>
         {items.map(({ label, key, icon, to }) => (
           <Menu.Item key={key} icon={icon}>

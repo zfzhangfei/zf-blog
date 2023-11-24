@@ -9,8 +9,8 @@ export async function login(params) {
     username: params.username,
     password: hash,
   });
-  localStorage.setItem("token", results.token);
-  localStorage.setItem(
+  sessionStorage.setItem("token", results.token);
+  sessionStorage.setItem(
     "CurrentUser",
     JSON.stringify({
       username: results.username,
@@ -44,25 +44,36 @@ export function getUsersAsync() {
 }
 
 export async function postTag(params) {
-  const results = post("/postTag", params);
+  const results = await post("/postTag", params);
   message.success("标签新增成功");
-  return results;
+  return results.res;
 }
+
 export async function hiddenTag(params) {
-  const results = post("/deleteTag", params);
-  message.success("标签删除成功");
-  return results;
+    const results = await post("/deleteTag", params);
+    message.success("标签删除成功");
+    return results.res;
+  
 }
 export async function getTags() {
   const results = get("/getTags");
   return results;
 }
 
-
-
-
-
-
+export async function postCategory(params) {
+  const results = post("/postCategory", params);
+  message.success("分类新增成功");
+  return results;
+}
+export async function hiddenCategory(params) {
+  const results = post("/deleteCategory", params);
+  message.success("分类删除成功");
+  return results;
+}
+export async function getCategories() {
+  const results = get("/getCategories");
+  return results;
+}
 
 export async function postArtical(params) {
   const results = post("/postArtical", params);
@@ -79,13 +90,6 @@ export async function getArticle() {
   const results = get("/getArticle");
   return results;
 }
-
-
-
-
-
-
-
 
 export async function postComment(params) {
   const results = post("/postComment", params);
