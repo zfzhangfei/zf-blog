@@ -76,7 +76,13 @@ export default function ArticleDrawer({
               </Form.Item>
               <Form.Item label="分类" name="category">
                 <Select>
-                  <Select.Option value="demo">Demo</Select.Option>
+                {context.state.CategoryList&&Object.keys(context.state.CategoryList).map((key) => {
+                    return (
+                      <Select.Option key={key} value={key}>
+                        {context.state.CategoryList[key].Title}
+                      </Select.Option>
+                    );
+                  })}
                 </Select>
               </Form.Item>
               <Form.Item label="简介" name="summary">

@@ -4,33 +4,33 @@ import { Progress } from "antd";
 
 const SkillCard = () => {
   return (
-    <div className="SkillCard">
-      <div class="container">
-        <div class="skill-box">
-          <span class="title">HTML</span>
+    <div classNameName="SkillCard">
+      <div className="container">
+        <div className="skill-box">
+          <span className="title">HTML</span>
 
-          <div class="skill-bar">
-            <span class="skill-per html">
-              <span class="tooltip">70%</span>
+          <div className="skill-bar">
+            <span className="skill-per html">
+              <span className="tooltip">70%</span>
             </span>
           </div>
         </div>
 
-        <div class="skill-box">
-          <span class="title">SCSS</span>
+        <div className="skill-box">
+          <span className="title">SCSS</span>
 
-          <div class="skill-bar">
-            <span class="skill-per scss">
-              <span class="tooltip">80%</span>
+          <div className="skill-bar">
+            <span className="skill-per scss">
+              <span className="tooltip">80%</span>
             </span>
           </div>
         </div>
-        <div class="skill-box">
-          <span class="title">Boostrap</span>
+        <div classNameName="skill-box">
+          <span className="title">Boostrap</span>
 
-          <div class="skill-bar">
-            <span class="skill-per Boostrap">
-              <span class="tooltip">50%</span>
+          <div className="skill-bar">
+            <span className="skill-per Boostrap">
+              <span className="tooltip">50%</span>
             </span>
           </div>
         </div>

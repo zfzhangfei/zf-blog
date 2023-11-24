@@ -34,6 +34,14 @@ const createColumns = (
     title: "分类",
     dataIndex: "category",
     key: "category",
+    render: (_, { category }) => {
+      return (
+        <span>
+          {context.state.CategoryList &&
+            context.state.CategoryList[category]?.Title.toUpperCase()}
+        </span>
+      );
+    },
   },
   {
     title: "标签",
@@ -60,7 +68,7 @@ const createColumns = (
     dataIndex: "isRelease",
     key: "isRelease",
     render: (_, record) => (
-      <div class="checkbox-con">
+      <div className="checkbox-con">
         <input
           id="checkbox"
           type="checkbox"
@@ -212,7 +220,7 @@ const ArticleListPage = () => {
             ? item.name.toLowerCase().includes(searchParams.name.toLowerCase())
             : true) &&
           (searchParams.category
-            ? item.category.includes(searchParams.category)
+            ? item.category?.includes(searchParams.category)
             : true)
         );
       });
