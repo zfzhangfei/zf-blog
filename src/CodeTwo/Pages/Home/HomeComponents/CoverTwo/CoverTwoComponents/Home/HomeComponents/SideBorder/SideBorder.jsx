@@ -1,7 +1,12 @@
 import React from "react";
 import "./SideBorder.scss";
 import { Space, Tag } from "antd";
-import { CaretUpOutlined, HomeFilled, LoginOutlined, SettingFilled } from "@ant-design/icons";
+import {
+  CaretUpOutlined,
+  HomeFilled,
+  LoginOutlined,
+  SettingFilled,
+} from "@ant-design/icons";
 import { GlobalContext } from "../../../../../../../../../Utils/GlobalProvider";
 import { Link } from "react-router-dom";
 
@@ -16,7 +21,7 @@ const SideBorder = ({ props, changePage }) => {
 
   const goLogin = () => {
     props.history.push("/Login");
-  }
+  };
 
   return (
     <GlobalContext.Consumer>
@@ -42,9 +47,11 @@ const SideBorder = ({ props, changePage }) => {
                     goSetting();
                   }}
                 />
-                <LoginOutlined onClick={() => {
-                  goLogin();
-                }} />
+                <LoginOutlined
+                  onClick={() => {
+                    goLogin();
+                  }}
+                />
               </Space>
             </div>
             <div className="SideBorderBox2">
@@ -73,21 +80,37 @@ const SideBorder = ({ props, changePage }) => {
               >
                 标签#
               </div>
-              {context.state.MarkList&&Object.keys(context.state.MarkList).map((key) => {
-                return (
-                  <Link
-                    to={{
-                      pathname: `/Home/Tag/${context.state.MarkList[key].value}`,
-                      state: { key: key, isShowApplicationPage: false },
-                    }}
-                    key={key}
-                  >
-                    <Tag color={context.state.MarkList[key].color} style={{margin:5}}>
-                      {context.state.MarkList[key].value}
-                    </Tag>
-                  </Link>
-                );
-              })}
+              {context.state.MarkList &&
+                Object.keys(context.state.MarkList).map((key) => {
+                  return (
+                    <Link
+                      to={{
+                        pathname: `/Home/Tag/${context.state.MarkList[key].value}`,
+                        state: { key: key, isShowApplicationPage: false },
+                      }}
+                      key={key}
+                    >
+                      <Tag
+                        color={context.state.MarkList[key].color}
+                        style={{ margin: 5 }}
+                      >
+                        {context.state.MarkList[key].value}
+                      </Tag>
+                    </Link>
+                  );
+                })}
+            </div>
+
+            <div className="SideBorderBox4">
+              <div
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  marginBottom: 10,
+                }}
+              >
+                分类
+              </div>
             </div>
           </Space>
         </div>

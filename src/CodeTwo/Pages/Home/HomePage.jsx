@@ -34,6 +34,7 @@ export default class HomePage extends Component {
             {/* <CoverOne props={this.props}></CoverOne> */}
             <CoverTwo props={this.props}></CoverTwo>
           </div>
+          
     )
   }
 }

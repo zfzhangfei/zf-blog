@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import AuthRoute from "../../../../../../Routes/authRoute";
 
 const Home = ({ props, changePage }) => {
+
   return (
     <div className="Home">
       <div className="HomeBox1"></div>

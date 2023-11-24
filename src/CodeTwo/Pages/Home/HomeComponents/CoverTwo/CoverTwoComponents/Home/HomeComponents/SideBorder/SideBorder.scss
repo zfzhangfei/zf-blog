@@ -1,6 +1,6 @@
 .SideBorder {
   width: 300px;
-  // height: 500px;
+  height: 100vh;
   .SideBorderBox1 {
     width: 100%;
     height: 50px;
@@ -24,7 +24,13 @@
   .SideBorderBox3 {
     width: 280px;
     padding: 10px;
-    height: 200px;
+    height: 300px;
+    background-color: #333;
+    border-radius: 10px;
+  }
+  .SideBorderBox4{
+    width: 280px;
+    padding: 10px;
     background-color: #333;
     border-radius: 10px;
   }

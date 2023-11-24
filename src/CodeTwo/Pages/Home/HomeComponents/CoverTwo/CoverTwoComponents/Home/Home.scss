@@ -6,7 +6,6 @@
     grid-template-columns: 1fr 1366px 1fr;
     grid-template-rows: auto;
     grid-template-areas: "HomeBox1 HomeBox2 HomeBox3";
-
     .HomeBox1{
         grid-area: HomeBox1;
     }
@@ -22,6 +21,7 @@
         }
         .HomeBox5{
             grid-area: HomeBox5;
+            margin-bottom: 20px;
         }
     }
     .HomeBox3{
