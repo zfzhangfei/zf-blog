@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideBorder.scss";
-import { Space, Tag } from "antd";
+import { List, Space, Tag } from "antd";
 import {
   CaretUpOutlined,
   HomeFilled,
@@ -111,6 +111,38 @@ const SideBorder = ({ props, changePage }) => {
               >
                 分类
               </div>
+              {context.state.CategoryList && (
+                <List
+                  itemLayout="horizontal"
+                  dataSource={context.state.CategoryList}
+                  renderItem={(item, index) => (
+                    <Link
+                      to={{
+                        pathname: `/Home/${item.UrlParam}`,
+                        state: { isShowApplicationPage: false },
+                      }}
+                      key={index}
+                    >
+                      <List.Item key={index}>
+                        <List.Item.Meta
+                          avatar={
+                            <img
+                              src={item.Icon}
+                              style={{
+                                objectFit: "fill",
+                                width: 20,
+                                height: 20,
+                                margin: 5,
+                              }}
+                            />
+                          }
+                          title={item.Title}
+                        />
+                      </List.Item>
+                    </Link>
+                  )}
+                />
+              )}
             </div>
           </Space>
         </div>

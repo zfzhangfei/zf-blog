@@ -12,9 +12,10 @@ import SideBorder from "./HomeComponents/SideBorder/SideBorder";
 import { FloatButton } from "antd";
 import { motion } from "framer-motion";
 import AuthRoute from "../../../../../../Routes/authRoute";
+import ShowVideoList from "./HomeComponents/ShowVideoList/ShowVideoList";
+import ShowPhotoList from "./HomeComponents/ShowPhotoList/ShowPhotoList";
 
 const Home = ({ props, changePage }) => {
-
   return (
     <div className="Home">
       <div className="HomeBox1"></div>
@@ -53,6 +54,20 @@ const Home = ({ props, changePage }) => {
               <Route
                 path="/Home/Article/:id"
                 render={(props) => <ShowArticleContent props={props} />}
+              />
+              <Route
+                exact
+                path="/Home/Video"
+                render={(props) => (
+                  <ShowVideoList props={props}></ShowVideoList>
+                )}
+              />
+              <Route
+                exact
+                path="/Home/Photo"
+                render={(props) => (
+                  <ShowPhotoList props={props}></ShowPhotoList>
+                )}
               />
             </Switch>
           </Router>

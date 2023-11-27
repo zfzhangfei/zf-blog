@@ -15,6 +15,7 @@ const CategoriesOperation = () => {
   const [category, setCategory] = useState({
     Title: "",
     Icon: "",
+    UrlParam:''
   });
   const [categoryData, setCategoryData] = useState();
 
@@ -34,6 +35,7 @@ const CategoriesOperation = () => {
       let params = {
         Title: category.Title,
         Icon: category.Icon,
+        UrlParam:category.UrlParam
       };
       await postCategory(params);
       const newCategoryData = [...categoryData, category]; // 创建一个新的数组

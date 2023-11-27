@@ -18,6 +18,7 @@ const AddCategoryModal = ({ setCategory }) => {
     setCategory({
       Title: values.title,
       Icon: values.icon,
+      UrlParam:values.urlParam
     });
   };
   return (
@@ -68,6 +69,19 @@ const AddCategoryModal = ({ setCategory }) => {
               {
                 required: true,
                 message: "图片地址不能为空!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="路由地址"
+            name="urlParam"
+            rules={[
+              {
+                required: true,
+                message: "路由地址不能为空!",
               },
             ]}
           >

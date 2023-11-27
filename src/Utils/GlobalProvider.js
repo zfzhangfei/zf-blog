@@ -17,10 +17,11 @@ class GlobalProvider extends React.Component {
     });
 
     let categories = await getCategories();
-    let category = {};
-    categories.res.forEach((item) => {
-      category[item.Id] = { Title: item.Title, Icon: item.Icon };
-    });
+    let category = categories.res;
+    // let category = {};
+    // categories.res.forEach((item) => {
+    //   category[item.Id] = { Title: item.Title, Icon: item.Icon };
+    // });
 
     this.setState({
       MarkList: mark,
