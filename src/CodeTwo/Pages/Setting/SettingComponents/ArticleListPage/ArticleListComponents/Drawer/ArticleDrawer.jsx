@@ -48,8 +48,8 @@ export default function ArticleDrawer({
             open={open}
           >
             <Form
-              labelCol={{ span: 4 }}
-              wrapperCol={{ span: 20 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 16 }}
               layout="horizontal"
               style={{ maxWidth: 600 }}
               onFinish={onFinish}
@@ -58,6 +58,7 @@ export default function ArticleDrawer({
                 tag: EditContent ? EditContent.tags?.split("/") : [],
                 category: EditContent ? EditContent.category : "",
                 summary: EditContent ? EditContent.summary : "",
+                cover: EditContent ? EditContent.cover : "/CodeTwo/Homepage/NANA1.Webp",
               }}
             >
               <Form.Item label="文章名" name="name">
@@ -65,28 +66,33 @@ export default function ArticleDrawer({
               </Form.Item>
               <Form.Item label="标签" name="tag">
                 <Select mode="multiple">
-                  {context.state.MarkList&&Object.keys(context.state.MarkList).map((key) => {
-                    return (
-                      <Select.Option key={key} value={key}>
-                        {context.state.MarkList[key].value}
-                      </Select.Option>
-                    );
-                  })}
+                  {context.state.MarkList &&
+                    Object.keys(context.state.MarkList).map((key) => {
+                      return (
+                        <Select.Option key={key} value={key}>
+                          {context.state.MarkList[key].value}
+                        </Select.Option>
+                      );
+                    })}
                 </Select>
               </Form.Item>
               <Form.Item label="分类" name="category">
                 <Select>
-                {context.state.CategoryList&&Object.keys(context.state.CategoryList).map((key) => {
-                    return (
-                      <Select.Option key={key} value={key}>
-                        {context.state.CategoryList[key].Title}
-                      </Select.Option>
-                    );
-                  })}
+                  {context.state.CategoryList &&
+                    Object.keys(context.state.CategoryList).map((key) => {
+                      return (
+                        <Select.Option key={key} value={key}>
+                          {context.state.CategoryList[key].Title}
+                        </Select.Option>
+                      );
+                    })}
                 </Select>
               </Form.Item>
               <Form.Item label="简介" name="summary">
                 <TextArea></TextArea>
+              </Form.Item>
+              <Form.Item label="封面图片地址" name="cover">
+                <Input></Input>
               </Form.Item>
               <Form.Item
                 style={{

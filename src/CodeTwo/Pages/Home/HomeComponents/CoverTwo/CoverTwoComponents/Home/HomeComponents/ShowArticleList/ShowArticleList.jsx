@@ -39,7 +39,8 @@ const ShowArticleList = ({ props }) => {
                     state: { article: item },
                   }}
                   style={{ color: "#fff", textDecoration: "none" }}>
-                  <img src="/CodeTwo/Homepage/NANA1.webp" alt="" />
+                  {/* <img src="/CodeTwo/Homepage/NANA1.webp" alt="" /> */}
+                  <img src={item.cover} alt="" />
                   <div className="ArticleListBox2">
                     <div className="title">{item.name}</div>
                     <div>{item.summary}</div>

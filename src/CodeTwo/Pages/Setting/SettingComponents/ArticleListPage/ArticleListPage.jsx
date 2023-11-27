@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Select, Space, Table, Tag } from "antd";
+import { Button, Form, Image, Input, Select, Space, Table, Tag } from "antd";
 import "./ArticleListPage.scss";
 import ArticleDrawer from "./ArticleListComponents/Drawer/ArticleDrawer";
 import EditArticlePage from "./ArticleListComponents/EditArticlePage/EditArticlePage";
@@ -24,6 +24,12 @@ const createColumns = (
     dataIndex: "name",
     key: "name",
     render: (_, record) => <PreviewModal record={record}></PreviewModal>,
+  },
+  {
+    title: "封面",
+    dataIndex: "cover",
+    key: "cover",
+    render: (_, {cover}) => <Image src={cover} style={{width:50,height:50,objectFit:'cover'}}></Image>,
   },
   {
     title: "简介",
@@ -151,7 +157,6 @@ const ArticleListPage = () => {
     const params = {
       ...value,
       author: "admin",
-      cover: null,
       isRelease: false,
     };
     const result = await postArtical(params);
@@ -163,6 +168,7 @@ const ArticleListPage = () => {
         summary: params.summary,
         category: params.category,
         tags: params.tags,
+        cover:params.cover,
         isRelease: false,
       },
     ]);
