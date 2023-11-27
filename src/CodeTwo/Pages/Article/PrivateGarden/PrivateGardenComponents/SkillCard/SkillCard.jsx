@@ -1,10 +1,9 @@
 import React from "react";
 import "./SkillCard.scss";
-import { Progress } from "antd";
 
 const SkillCard = () => {
   return (
-    <div classNameName="SkillCard">
+    <div className="SkillCard">
       <div className="container">
         <div className="skill-box">
           <span className="title">HTML</span>
@@ -25,7 +24,7 @@ const SkillCard = () => {
             </span>
           </div>
         </div>
-        <div classNameName="skill-box">
+        <div className="skill-box">
           <span className="title">Boostrap</span>
 
           <div className="skill-bar">

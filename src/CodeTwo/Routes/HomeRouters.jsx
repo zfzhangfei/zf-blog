@@ -44,10 +44,6 @@ class Routers extends Component {
     },
   };
 
-  componentDidMount = () => {
-    // login();
-  };
-
   changeTheme = (value) => {
     this.setState({
       theme: themeMap[value],
@@ -63,7 +59,6 @@ class Routers extends Component {
           <ThemeContext.Provider value={this.state.theme}>
             <Route
               render={({ location }) => (
-                <AnimatePresence mode="wait">
                   <Switch location={location} key={location.pathname}>
                     <Route
                       exact
@@ -122,7 +117,6 @@ class Routers extends Component {
                       render={(props) => <MessageWall {...props} />}
                     />
                   </Switch>
-                </AnimatePresence>
               )}
             />
           </ThemeContext.Provider>

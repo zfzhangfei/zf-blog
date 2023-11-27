@@ -3,7 +3,7 @@ import "./ApplicationPage.scss";
 import { DownOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 
-const ApplicationPage = ({changePage}) => {
+const ApplicationPage = ({ changePage }) => {
   const textVariants = {
     scrollButton: {
       opacity: 0,
@@ -15,7 +15,7 @@ const ApplicationPage = ({changePage}) => {
     },
   };
   const handleDownClick = () => {
-    changePage()
+    changePage();
   };
 
   return (
@@ -37,7 +37,6 @@ const ApplicationPage = ({changePage}) => {
           </a>
         </div>
       </div>
-
       <motion.div
         className="sliderBtn"
         variants={textVariants}

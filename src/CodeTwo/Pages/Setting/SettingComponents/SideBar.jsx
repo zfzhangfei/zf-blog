@@ -13,7 +13,7 @@ import { Button, Menu } from "antd";
 const items = [
   { label: "首页", key: "1", icon: <PieChartOutlined />, to: "/Setting" },
   {
-    label: "文章",
+    label: "文章管理",
     key: "2",
     icon: <DesktopOutlined />,
     to: "/Setting/articles",
@@ -25,14 +25,26 @@ const items = [
     to: "/Setting/comments",
   },
   {
-    label: "用户管理",
+    label: "照片管理",
     key: "4",
+    icon: <DesktopOutlined />,
+    to: "/Setting/photos",
+  },
+  {
+    label: "视频管理",
+    key: "5",
+    icon: <DesktopOutlined />,
+    to: "/Setting/videos",
+  },
+  {
+    label: "用户管理",
+    key: "99",
     icon: <UsergroupAddOutlined />,
     to: "/Setting/users",
   },
   {
     label: "权限管理",
-    key: "5",
+    key: "100",
     icon: <UnlockOutlined />,
     to: "/Setting/authorities",
   },

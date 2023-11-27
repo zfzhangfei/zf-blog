@@ -3,6 +3,7 @@ import "./SideBorder.scss";
 import { List, Space, Tag } from "antd";
 import {
   CaretUpOutlined,
+  CommentOutlined,
   HomeFilled,
   LoginOutlined,
   SettingFilled,
@@ -23,6 +24,9 @@ const SideBorder = ({ props, changePage }) => {
     props.history.push("/Login");
   };
 
+  const goMessageWall = () => {
+    props.history.push("/MessageWall");
+  };
   return (
     <GlobalContext.Consumer>
       {(context) => (
@@ -45,6 +49,11 @@ const SideBorder = ({ props, changePage }) => {
                 <SettingFilled
                   onClick={() => {
                     goSetting();
+                  }}
+                />
+                <CommentOutlined
+                  onClick={() => {
+                    goMessageWall();
                   }}
                 />
                 <LoginOutlined
