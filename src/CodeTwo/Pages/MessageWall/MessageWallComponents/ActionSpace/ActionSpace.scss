@@ -1,0 +1,92 @@
+.ActionSpace {
+    width: 80vw;
+    height: 20vh;
+    padding: 10px;
+    background-color: pink;
+    .CartoonCircleButton {
+      /* 基本样式 */
+      display: inline-block;
+      padding: 20px 20px;
+      border-radius: 50%; /* 使其成圆形 */
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+
+      /* 文字颜色 */
+      color: #333;
+
+      /* 背景颜色，简单渐变实现黑白效果 */
+      background: linear-gradient(#ffffff, #fff);
+
+      /* 边框样式 */
+      border: 2px solid #333;
+
+      /* 阴影颜色 */
+      box-shadow: 0px 7px 0px #333;
+
+      /* 当按钮被点击时的激活状态 */
+      &:active {
+        /* 使按钮看起来像是被按下去 */
+        transform: translateY(5px);
+        /* 按下去状态下的较小阴影 */
+        box-shadow: 0px 1px 0px #333, 0px 0px 5px rgba(0, 0, 0, 0.4); /* 减少发光 */
+      }
+    }
+    .CartoonRectangleButton {
+      /* 基本样式 */
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px; /* 使其成圆形 */
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+
+      /* 文字颜色 */
+      color: #333;
+
+      /* 背景颜色，简单渐变实现黑白效果 */
+      background: linear-gradient(#ffffff, #fff);
+
+      /* 边框样式 */
+      border: 2px solid #333;
+
+      /* 阴影颜色 */
+      box-shadow: 0px 7px 0px #333;
+
+      /* 当按钮被点击时的激活状态 */
+      &:active {
+        /* 使按钮看起来像是被按下去 */
+        transform: translateY(5px);
+        /* 按下去状态下的较小阴影 */
+        box-shadow: 0px 1px 0px #333, 0px 0px 5px rgba(0, 0, 0, 0.4); /* 减少发光 */
+      }
+    }
+    .CartoonRectangleInput {
+      /* 基本样式 */
+      display: inline-block;
+      width: 70vw;
+      padding: 20px 20px;
+      border-radius: 10px; /* 使其成圆形 */
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+
+      /* 文字颜色 */
+      color: #333;
+
+      /* 背景颜色，简单渐变实现黑白效果 */
+      background: linear-gradient(#ffffff, #fff);
+
+      /* 边框样式 */
+      border: 2px solid #333;
+
+      /* 阴影颜色 */
+    //   box-shadow: 0px 7px 0px #333;
+    }
+  }
