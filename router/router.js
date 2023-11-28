@@ -18,7 +18,7 @@ let CURRENT_USER = {
 const isAuthenticated = (req, res, next) => {
   // 这里应该是您的身份验证逻辑
   // if (CURRENT_USER.id) {
-    next();
+  next();
   // } else {
   //   res.status(401).send({ message: "未授权的访问" });
   // }
@@ -552,12 +552,14 @@ router.post("/postCategory", isAuthenticated, (req, res) => {
   let sql = ` INSERT INTO category (
     Title,
     Icon,
+    UrlParam,
     CreateBy,
     CreateTime
-  ) VALUES (?, ?, ?, ?)`;
+  ) VALUES (?, ?, ?, ?,?)`;
   let params = [
     req.body.Title,
     req.body.Icon,
+    req.body.UrlParam,
     CURRENT_USER.id,
     CURRENT_TIMESTAMP,
   ];
@@ -592,6 +594,70 @@ router.post("/deleteCategory", isAuthenticated, (req, res) => {
 
 router.get("/getCategories", (req, res) => {
   let sql = `SELECT * FROM category WHERE category.DeleteFlag = ? `;
+  let params = [0];
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(
+        JSON.stringify({
+          res: results,
+        })
+      );
+    }
+  });
+});
+//#endregion
+
+//#region 留言墙
+router.post("/postMessage", isAuthenticated, (req, res) => {
+  let sql = ` INSERT INTO message (
+    Content,
+    FontFamily,
+    Color,
+    Avatar,
+    CreateBy,
+    CreateTime
+  ) VALUES (?, ?, ?, ?,?,?)`;
+  let params = [
+    req.body.Content,
+    req.body.FontFamily,
+    req.body.Color,
+    req.body.Avatar,
+    CURRENT_USER.id,
+    CURRENT_TIMESTAMP,
+  ];
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(
+        JSON.stringify({
+          res: results,
+        })
+      );
+    }
+  });
+});
+
+router.post("/deleteMessage", isAuthenticated, (req, res) => {
+  let sql = `UPDATE message SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [1, CURRENT_TIMESTAMP, CURRENT_USER.id, req.body.Id];
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(
+        JSON.stringify({
+          res: results,
+        })
+      );
+    }
+  });
+});
+
+router.get("/getMessage", (req, res) => {
+  let sql = `SELECT * FROM message WHERE message.DeleteFlag = ? `;
   let params = [0];
   db.query(sql, params, (err, results) => {
     if (err) {
