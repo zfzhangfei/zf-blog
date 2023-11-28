@@ -2,10 +2,29 @@
   width: 100vw;
   height: 100vh;
 
-  #Wall {
+  .MessageWallBox {
     width: 80vw;
-    height: 60vh;
-    border: 10px double #333;
-    border-radius: 20px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: auto;
+    grid-template-areas: "Wall" "ActionSpace";
+    grid-gap: 20px;
+    #Wall {
+      height: 70vh;
+      min-height: 550px;
+      grid-area: Wall;
+      border: 10px double #333;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+    }
+    #ActionSpace {
+      height: 20vh;
+      min-height: 200px;
+      grid-area: ActionSpace;
+      display: flex;
+      align-items: center;
+    }
   }
 }

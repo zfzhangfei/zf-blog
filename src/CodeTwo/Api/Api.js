@@ -50,10 +50,9 @@ export async function postTag(params) {
 }
 
 export async function hiddenTag(params) {
-    const results = await post("/deleteTag", params);
-    message.success("标签删除成功");
-    return results.res;
-  
+  const results = await post("/deleteTag", params);
+  message.success("标签删除成功");
+  return results.res;
 }
 export async function getTags() {
   const results = get("/getTags");
@@ -119,12 +118,34 @@ export function getCommentByArticleIdAsync(params) {
             IsReply: false,
           };
         });
-        dispatch({ type: "SET_COMMENLIST", payload: updatedComments });
+        dispatch({ type: "SET_COMMENTLIST", payload: updatedComments });
       })
       .catch((error) => {
         console.error("An error occurred:", error);
       });
   };
 }
+
+//#region 留言墙
+export async function postMessage(params) {
+  const results = await post("/postMessage", params);
+  return results;
+}
+
+export async function hiddenMessage(params) {
+  post("/deleteMessage", params);
+}
+export function getMessageAsync() {
+  return function (dispatch) {
+    get("/getMessage")
+      .then((data) => {
+        dispatch({ type: "SET_MESSAGE", payload: data.res });
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  };
+}
+//#endregion
 
 //#endregion

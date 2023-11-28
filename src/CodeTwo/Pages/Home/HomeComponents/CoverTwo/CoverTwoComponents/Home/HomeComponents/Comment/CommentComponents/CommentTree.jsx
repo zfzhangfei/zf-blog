@@ -31,7 +31,7 @@ const CommentTree = ({ ArticleId }) => {
   const [comments, setComments] = useState();
   const [commentsTreeData, setCommentsTreeData] = useState();
   const dispatch = useDispatch();
-  const commenList = useSelector((state) => state.commenList); // 确保这里的路径与你的状态树匹配
+  const commentList = useSelector((state) => state.commentList); // 确保这里的路径与你的状态树匹配
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,10 +53,10 @@ const CommentTree = ({ ArticleId }) => {
   }, []);
 
   useEffect(() => {
-    setComments(commenList);
-    const commentsWithIsReply = nestComments(commenList);
+    setComments(commentList);
+    const commentsWithIsReply = nestComments(commentList);
     setCommentsTreeData(commentsWithIsReply);
-  }, [commenList]);
+  }, [commentList]);
 
 
 

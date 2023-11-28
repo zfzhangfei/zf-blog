@@ -7,7 +7,7 @@ import persistStore from "redux-persist/es/persistStore";
 const initialState = {
   userList: {},
   isShowApplicationPage: true,
-  commenList: [],
+  commentList: [],
 };
 
 // 这是一个简单的reducer，它接受旧的state和一个action，返回新的state。
@@ -20,8 +20,10 @@ function reducer(state = initialState, action) {
       return { ...state, userList: action.payload };
     case "SET_SHOWAPPLICATIONPAGE":
       return { ...state, isShowApplicationPage: action.payload };
-    case "SET_COMMENLIST":
-      return { ...state, commenList: action.payload };
+    case "SET_COMMENTLIST":
+      return { ...state, commentList: action.payload };
+    case "SET_MESSAGE":
+      return { ...state, messageList: action.payload };
     // 定义更多的case处理其他actions...
     default:
       return state;

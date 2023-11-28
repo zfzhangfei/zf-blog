@@ -1,4 +1,28 @@
-.Wall{
-    display: flex;
-    justify-content: center;
+.Wall {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .MessageScreen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    .barrage {
+      max-width: 300px;
+      min-width: 100px;
+      height: 50px;
+      border-radius: 50px;
+      background-color: rgba(0, 0, 0, 0.8);
+      line-height: 50px;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
 }

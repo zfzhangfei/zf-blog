@@ -11,12 +11,10 @@ const LoginForm = ({ props }) => {
     login(params);
     props.history.push("/");
   };
-  const onFinishFailed = (errorInfo) => {
-  };
+  const onFinishFailed = (errorInfo) => {};
   return (
     <Form
       name="basic"
- 
       wrapperCol={{
         span: 24,
       }}
@@ -39,7 +37,7 @@ const LoginForm = ({ props }) => {
           },
         ]}
       >
-        <Input placeholder="请输入用户名" />
+        <Input placeholder="请输入用户名" autoComplete="username" />
       </Form.Item>
 
       <Form.Item
@@ -51,7 +49,10 @@ const LoginForm = ({ props }) => {
           },
         ]}
       >
-        <Input.Password placeholder="请输入密码" />
+        <Input.Password
+          placeholder="请输入密码"
+          autoComplete="current-password"
+        />
       </Form.Item>
 
       <Form.Item

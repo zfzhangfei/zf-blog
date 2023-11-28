@@ -55,7 +55,6 @@ const SubmitComment = ({ ArticleId, replyComment, type, IsReply }) => {
         param = {
           ArticleId: ArticleId.ArticleId,
         };
-        dispatch(getCommentByArticleIdAsync(param));
       }
       if (type == "reply") {
         params = {
