@@ -30,7 +30,7 @@ const Wall = () => {
 
             const itemVariants = {
               visible: {
-                x: ["2000%", "-2000%"],
+                x: ["2000%", "-500%"],
                 transition: {
                   delay: delay,
                   duration: duration,
@@ -49,27 +49,29 @@ const Wall = () => {
                   position: "absolute",
                   top: `${topPosition}px`,
                   fontFamily: item.FontFamily,
+                  display: "flex",
+                  alignItems: "center",
                 }}
                 key={index}
               >
                 <Space
                   style={{
-                    width:'100%',
-                    textAlign: "left",
+                    width: "100%",
                   }}
                 >
                   <img
                     src={item.Avatar}
                     alt=""
                     style={{
-                      width: 46,
-                      height: 46,
-                      marginLeft: 2,
+                      width: 40,
+                      height: 40,
+                      margin: 5,
+                      display: "block",
                       borderRadius: "50%",
                       objectFit: "cover",
                     }}
                   />
-                  <span>{item.Content}</span>
+                  <div style={{ margin: 5 }}>{item.Content}</div>
                 </Space>
               </motion.div>
             );
