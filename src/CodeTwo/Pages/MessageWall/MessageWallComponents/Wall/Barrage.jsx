@@ -15,18 +15,31 @@ const Barrage = ({ item }) => {
       delay: delay,
       duration: duration,
       onComplete: () => {
+        console.log(111);
         setPausedX('80vw');
         setAnimateState('restart');
       },
     },
   };
-  
+  const restartVariants = {
+    x: [pausedX, "-20vw"],
+    transition: {
+      delay: delay,
+      duration: duration,
+      onComplete: () => {
+        console.log(222);
+        setPausedX('80vw');
+        setAnimateState('visible');
+      },
+    },
+  };
+
   const itemVariants = {
     visible: visibleVariants,
     paused: {
       x: pausedX,
     },
-    restart: visibleVariants,
+    restart: restartVariants,
   };
   return (
     <motion.div
