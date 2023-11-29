@@ -28,3 +28,16 @@
         grid-area: HomeBox3;
     }
 }
+
+
+
+@media (max-width: 1366px) {
+    .Home {
+        grid-template-columns: 10px auto 10px;
+        .HomeBox2 {
+            grid-template-columns:366px auto;
+         
+        }
+    }
+    
+}

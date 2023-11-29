@@ -5,11 +5,11 @@ import {
   Switch,
   withRouter,
 } from "react-router-dom";
-import VditorEditor from "../../../Plugin/VditorEditor/VditorEditor";
-import EditArticlePage from "./SettingComponents/ArticleListPage/ArticleListComponents/EditArticlePage/EditArticlePage";
-import ArticleListPage from "./SettingComponents/ArticleListPage/ArticleListPage";
-import CommentManagePage from "./SettingComponents/CommentManagePage/CommentManagePage";
-import HomeSettingPage from "./SettingComponents/HomeSettingPage/HomeSettingPage";
+import VditorEditor from "../../Plugin/VditorEditor/VditorEditor";
+import EditArticlePage from "../Pages/Setting/SettingComponents/ArticleListPage/ArticleListComponents/EditArticlePage/EditArticlePage";
+import ArticleListPage from "../Pages/Setting/SettingComponents/ArticleListPage/ArticleListPage";
+import CommentManagePage from "../Pages/Setting/SettingComponents/CommentManagePage/CommentManagePage";
+import HomeSettingPage from "../Pages/Setting/SettingComponents/HomeSettingPage/HomeSettingPage";
 
 export default class SettingRouters extends Component {
   render() {

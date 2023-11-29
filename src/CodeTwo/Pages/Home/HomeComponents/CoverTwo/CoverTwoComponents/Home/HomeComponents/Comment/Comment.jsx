@@ -3,6 +3,7 @@ import { GlobalContext } from "../../../../../../../../../Utils/GlobalProvider";
 import SubmitComment from "./CommentComponents/SubmitComment";
 import CommentTree from "./CommentComponents/CommentTree";
 import { useState } from "react";
+import './Comment.scss'
 
 const Comment = (ArticleId) => {
 
@@ -18,7 +19,6 @@ const Comment = (ArticleId) => {
               type={'comment'}
             ></SubmitComment>
           </div>
-          <div className="CommentTree"></div>
           <CommentTree ArticleId={ArticleId}></CommentTree>
         </div>
       )}

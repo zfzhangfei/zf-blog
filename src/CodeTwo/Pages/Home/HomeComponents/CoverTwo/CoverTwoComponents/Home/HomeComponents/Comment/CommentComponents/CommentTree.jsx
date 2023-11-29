@@ -58,8 +58,6 @@ const CommentTree = ({ ArticleId }) => {
     setCommentsTreeData(commentsWithIsReply);
   }, [commentList]);
 
-
-
   const upDataCommentData = (value) => {
     const updatedComments = comments?.map((comment) => {
       if (value.Id === comment.Id) {
@@ -85,11 +83,11 @@ const CommentTree = ({ ArticleId }) => {
         <div key={index}>
           <div
             style={{
-              width: comment.IsLeaf == false ? "900px" : "830px",
+              width: comment.IsLeaf == false ? "100%-100px" : "calc(100% - 170px)",
               marginLeft: comment.IsLeaf == false ? "0px" : "70px",
             }}
           >
-            <CommentBox commentInfo={comment}  handleReply={upDataCommentData}/>
+            <CommentBox commentInfo={comment} handleReply={upDataCommentData} />
           </div>
           {comment.children && renderComments(comment.children, depth + 1)}
         </div>
@@ -100,13 +98,13 @@ const CommentTree = ({ ArticleId }) => {
   return (
     <div
       style={{
-        width: "1000px",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
         marginTop: "50px",
       }}
     >
-      <Space direction="vertical" size={10}>
+      <Space direction="vertical" size={10} style={{width:'100%'}}>
         {renderComments(commentsTreeData)}
       </Space>
     </div>
@@ -114,24 +112,3 @@ const CommentTree = ({ ArticleId }) => {
 };
 
 export default CommentTree;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import AuthRoute from "../../../../../../Routes/authRoute";
 import ShowVideoList from "./HomeComponents/ShowVideoList/ShowVideoList";
 import ShowPhotoList from "./HomeComponents/ShowPhotoList/ShowPhotoList";
+import SiderBorderRouters from "../../../../../../Routes/SiderBorderRouters";
 
 const Home = ({ props, changePage }) => {
   return (
@@ -24,54 +25,7 @@ const Home = ({ props, changePage }) => {
           <SideBorder props={props} changePage={changePage}></SideBorder>
         </div>
         <div className="HomeBox5">
-          <Router>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={(props) => (
-                  <div>
-                    <ShowArticleList props={props}></ShowArticleList>
-                  </div>
-                )}
-              />
-              <Route
-                exact
-                path="/Home"
-                render={(props) => (
-                  <div>
-                    <ShowArticleList props={props}></ShowArticleList>
-                  </div>
-                )}
-              />
-              <Route
-                exact
-                path="/Home/Tag/:name"
-                render={(props) => (
-                  <ShowArticleList props={props}></ShowArticleList>
-                )}
-              />
-              <Route
-                path="/Home/Article/:id"
-                render={(props) => <ShowArticleContent props={props} />}
-              />
-              <Route
-                exact
-                path="/Home/Video"
-                render={(props) => (
-                  <ShowVideoList props={props}></ShowVideoList>
-                )}
-              />
-              <Route
-                exact
-                path="/Home/Photo"
-                render={(props) => (
-                  <ShowPhotoList props={props}></ShowPhotoList>
-                )}
-              />
-            </Switch>
-          </Router>
-
+          <SiderBorderRouters></SiderBorderRouters>
           <div style={{ position: "absolute" }}>
             <FloatButton.BackTop />
           </div>

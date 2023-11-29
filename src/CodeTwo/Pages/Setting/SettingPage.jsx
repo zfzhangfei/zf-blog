@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import VditorEditor from '../../../Plugin/VditorEditor/VditorEditor'
 import './SettingPage.scss'
 import SideBar from './SettingComponents/SideBar'
-import SettingRouters from './SettingRouters'
+import SettingRouters from '../../Routes/SettingRouters'
 
 export default class SettingPage extends Component {
   render() {
