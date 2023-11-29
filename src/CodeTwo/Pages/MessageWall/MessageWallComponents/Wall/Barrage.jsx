@@ -16,6 +16,7 @@ const Barrage = ({ item }) => {
       duration: duration,
       onComplete: () => {
         setPausedX('80vw');
+        setDuration(20);
         setAnimateState('restart');
       },
     },
@@ -27,6 +28,7 @@ const Barrage = ({ item }) => {
       duration: duration,
       onComplete: () => {
         setPausedX('80vw');
+        setDuration(20);
         setAnimateState('visible');
       },
     },
