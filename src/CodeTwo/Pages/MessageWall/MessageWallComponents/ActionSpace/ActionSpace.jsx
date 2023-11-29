@@ -15,13 +15,19 @@ const ActionSpace = () => {
   };
 
   const AddMessage = () => {
-    console.log(messageContent, "messageContentmessageContent");
+    console.log(
+      sessionStorage.getItem("CurrenUser"),
+      "messageContentmessageContent"
+    );
+    let currenUser = JSON.parse(sessionStorage.getItem("CurrentUser"));
     let params = {
       Content: messageContent,
+      Avatar: currenUser.avatar,
       FontFamily: "beautiful",
       Color: "#fff",
     };
     postMessage(params);
+    setMessageContent("");
     dispatch(getMessageAsync());
   };
 
