@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideBorder.scss";
-import { List, Space, Tag } from "antd";
+import { List, Popover, Space, Tag } from "antd";
 import {
   CaretUpOutlined,
   CommentOutlined,
@@ -34,33 +34,47 @@ const SideBorder = ({ props, changePage }) => {
           <Space direction="vertical" size={20}>
             <div className="SideBorderBox1">
               <Space direction="horizontal" size={20}>
-                <CaretUpOutlined
-                  style={{ fontSize: 30 }}
-                  onClick={() => {
-                    changePage();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                />
-                <HomeFilled
-                  onClick={() => {
-                    goMyGarden();
-                  }}
-                />
-                <SettingFilled
-                  onClick={() => {
-                    goSetting();
-                  }}
-                />
-                <CommentOutlined
-                  onClick={() => {
-                    goMessageWall();
-                  }}
-                />
-                <LoginOutlined
-                  onClick={() => {
-                    goLogin();
-                  }}
-                />
+                <Popover content={<div>封面</div>}>
+                  <CaretUpOutlined
+                    style={{ fontSize: 30 }}
+                    onClick={() => {
+                      changePage();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  />
+                </Popover>
+
+                <Popover content={<div>家园</div>}>
+                  <HomeFilled
+                    onClick={() => {
+                      goMyGarden();
+                    }}
+                  />
+                </Popover>
+
+                <Popover content={<div>设置</div>}>
+                  <SettingFilled
+                    onClick={() => {
+                      goSetting();
+                    }}
+                  />
+                </Popover>
+
+                <Popover content={<div>留言墙</div>}>
+                  <CommentOutlined
+                    onClick={() => {
+                      goMessageWall();
+                    }}
+                  />
+                </Popover>
+
+                <Popover content={<div>登录登出</div>}>
+                  <LoginOutlined
+                    onClick={() => {
+                      goLogin();
+                    }}
+                  />
+                </Popover>
               </Space>
             </div>
             <div className="SideBorderBox2">

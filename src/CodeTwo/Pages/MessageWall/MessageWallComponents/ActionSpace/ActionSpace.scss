@@ -2,7 +2,7 @@
   width: 80vw;
   height: 20vh;
   padding: 10px;
-  background-color: pink;
+  background-color: #e6e6e6;
   .CartoonCircleButton {
     /* 基本样式 */
     display: inline-block;
@@ -68,7 +68,7 @@
   .CartoonRectangleInput {
     /* 基本样式 */
     display: inline-block;
-    width: 70vw;
+    width: calc(80vw - 80px);
     border-radius: 10px; /* 使其成圆形 */
     font-weight: bold;
     text-align: center;
