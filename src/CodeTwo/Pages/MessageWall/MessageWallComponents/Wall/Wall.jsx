@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Wall.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessageAsync } from "../../../../Api/Api";
-import { motion } from "framer-motion";
-import { Space } from "antd";
 import Barrage from "./Barrage";
 
 const Wall = () => {
@@ -12,7 +10,7 @@ const Wall = () => {
 
   useEffect(() => {
     dispatch(getMessageAsync());
-  }, [dispatch]);
+  }, [messageList]);
 
   return (
     <div className="Wall">
@@ -25,7 +23,7 @@ const Wall = () => {
       <div className="MessageScreen">
         {messageList &&
           messageList.map((item, index) => {
-           return <Barrage item={item} key={index}></Barrage>;
+            return <Barrage item={item} key={index}></Barrage>;
           })}
       </div>
     </div>

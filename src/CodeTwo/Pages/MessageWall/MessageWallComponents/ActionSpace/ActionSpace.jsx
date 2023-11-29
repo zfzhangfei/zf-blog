@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./ActionSpace.scss";
-import { Input, Space } from "antd";
+import { ColorPicker, Input, Popover, Space } from "antd";
 import { getMessageAsync, postMessage } from "../../../../Api/Api";
 import { useDispatch } from "react-redux";
 
 const ActionSpace = () => {
   const dispatch = useDispatch();
   const [messageContent, setMessageContent] = useState("");
+  const [fontColor, setFontColor] = useState("#fff");
 
   const history = useHistory();
   const GoHome = () => {
@@ -15,21 +16,24 @@ const ActionSpace = () => {
   };
 
   const AddMessage = () => {
-    console.log(
-      sessionStorage.getItem("CurrenUser"),
-      "messageContentmessageContent"
-    );
     let currenUser = JSON.parse(sessionStorage.getItem("CurrentUser"));
     let params = {
       Content: messageContent,
       Avatar: currenUser.avatar,
       FontFamily: "beautiful",
-      Color: "#fff",
+      Color: fontColor,
     };
     postMessage(params);
     setMessageContent("");
     dispatch(getMessageAsync());
   };
+
+  const GetColor = (e, color) => {
+    console.log(color);
+    setFontColor(color);
+  };
+
+  useEffect(() => {}, [fontColor]);
 
   return (
     <div className="ActionSpace">
@@ -38,10 +42,19 @@ const ActionSpace = () => {
           <Input
             showCount
             maxLength={100}
+            size="large"
             className="CartoonRectangleInput"
             placeholder="请输入弹幕留言"
             onChange={(e) => setMessageContent(e.target.value)}
             value={messageContent}
+            style={{ resize: "none" }}
+            addonAfter={
+              <ColorPicker
+                size="large"
+                onChange={GetColor}
+                defaultValue={"#fff"}
+              />
+            }
           ></Input>
           <div className="CartoonCircleButton" onClick={AddMessage}>
             新增
