@@ -12,16 +12,8 @@ export default function EditArticlePage({ list, props }) {
   
   return (
     <div id="EditArticlePage">
-      <div className="EditArticleBox1">
-        <ArrowLeftOutlined
-          className="ArrowLeftOutlined"
-          onClick={() => {
-            goBackList();
-          }}
-        />
-      </div>
       <div className="EditArticleBox2">
-        <VditorEditor props={props} />
+        <VditorEditor props={props} goBackList={goBackList}/>
       </div>
     </div>
   );

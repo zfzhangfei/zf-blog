@@ -82,7 +82,7 @@ export async function hiddenArticle(params) {
   post("/deleteArticle", params);
 }
 export async function updateArticle(params) {
-  const results = post("/updateArticle", params);
+  const results = await post("/updateArticle", params);
   return results;
 }
 export async function getArticle() {
