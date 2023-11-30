@@ -32,6 +32,8 @@ const CoverTwo = ({ props }) => {
     });
   }, [dispatch, isApplicationPageVisible]);
 
+
+
   return (
     <div className="CoverTwo">
       <motion.section

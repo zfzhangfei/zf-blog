@@ -96,7 +96,7 @@ class SiderBorderRouters extends Component {
                 exact
                 path="/Home/Video"
                 render={(props) => (
-                  <ShowVideoList props={props}></ShowVideoList>
+                  <ShowVideoList props={props} goShowVideo={this.props.goShowVideo}></ShowVideoList>
                 )}
               />
               <Route

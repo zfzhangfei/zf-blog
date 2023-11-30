@@ -1,0 +1,44 @@
+.ShowVideo {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1366px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "ShowVideoBox1 ShowVideoBox2 ShowVideoBox3";
+  .ShowVideoBox1 {
+    grid-area: ShowVideoBox1;
+  }
+  .ShowVideoBox2 {
+    grid-area: ShowVideoBox2;
+    display: grid;
+    grid-template-columns: 1000px 366px;
+    grid-template-rows: auto;
+    grid-template-areas: "VideoBox InfoBox";
+    .VideoBox {
+      grid-area: VideoBox;
+      video {
+        width: 100%;
+        border-radius: 20px;
+      }
+    }
+    .InfoBox {
+      grid-area: InfoBox;
+      background-color: aqua;
+    }
+  }
+  .ShowVideoBox3 {
+    grid-area: ShowVideoBox3;
+  }
+}
+
+@media (max-width: 1366px) {
+  .ShowVideo {
+    grid-template-columns: 10px auto 10px;
+    .ShowVideoBox2 {
+      grid-template-columns: auto 366px;
+      video {
+        min-width: 500px;
+      }
+    }
+  }
+}

@@ -8,39 +8,378 @@ const items = [
     Cover:
       "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
     Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
   },
   {
     Cover:
       "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
     Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
   },
   {
     Cover:
       "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
     Name: "111",
-  },
-  {
-    Cover:
-      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%85%83%E6%B0%94%E6%BB%A1%E6%BB%A1.webp",
-    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
   },
   {
     Cover:
       "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
     Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
   },
   {
     Cover:
       "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
     Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
   },
   {
     Cover:
-      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%85%83%E6%B0%94%E6%BB%A1%E6%BB%A1.webp",
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
     Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
+  },
+  {
+    Cover:
+      "https://zfblog.su.bcebos.com/zfblogpicture/%E5%A4%B4%E5%83%8F111.webp",
+    Name: "111",
+    children: [
+      {
+        Episode: 1,
+        Name: "222222",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 2,
+        Name: "3333333",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+      {
+        Episode: 3,
+        Name: "444444",
+        url: "https://2cpro.oss-cn-shanghai.aliyuncs.com/zhangfei/Grammar/Picture/216C266F6328F6D085B9FAB377624CE9.mp4?OSSAccessKeyId=LTAI5t5qDM9xCBygiycrcDbM&Expires=1701330499&Signature=5icvZFcVjND3A2V3unoy7rgQ4mQ%3D",
+      },
+    ],
   },
 ];
-const VideoList = () => {
+const VideoList = ({ goShowVideo }) => {
   return (
     <div className="VideoList">
       {items &&
@@ -54,7 +393,19 @@ const VideoList = () => {
                 display: "inline-block",
                 margin: 10,
               }}
-              cover={<img alt="example" src={item.Cover} style={{width:230,height:250,objectFit:'cover'}}/>}
+              onClick={() => {
+                goShowVideo({
+                  url: `/ShowVideo/${item.Name}`,
+                  state: item,
+                });
+              }}
+              cover={
+                <img
+                  alt="example"
+                  src={item.Cover}
+                  style={{ width: 230, height: 250, objectFit: "cover" }}
+                />
+              }
               actions={[]}
             >
               <Meta title={item.Name} description="This is the description" />

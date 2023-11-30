@@ -24,6 +24,7 @@ import PrivateGarden from "../Pages/Article/PrivateGarden/PrivateGarden";
 import AuthRoute from "./authRoute";
 import { GlobalContext } from "../../Utils/GlobalProvider";
 import MessageWall from "../Pages/MessageWall/MessageWall";
+import ShowVideo from "../Pages/ShowVideo/ShowVideo";
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -59,64 +60,69 @@ class Routers extends Component {
           <ThemeContext.Provider value={this.state.theme}>
             <Route
               render={({ location }) => (
-                  <Switch location={location} key={location.pathname}>
-                    <Route
-                      exact
-                      path="/"
-                      render={(props) => (
+                <Switch location={location} key={location.pathname}>
+                  <Route
+                    exact
+                    path="/"
+                    render={(props) => (
+                      <HomePage
+                        {...props}
+                        changeAnimation={this.changeAnimation}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/Home"
+                    render={(props) => (
+                      <div>
                         <HomePage
                           {...props}
                           changeAnimation={this.changeAnimation}
                         />
-                      )}
-                    />
-                    <Route
-                      path="/Home"
-                      render={(props) => (
-                        <div>
-                          <HomePage
-                            {...props}
-                            changeAnimation={this.changeAnimation}
-                          />
-                        </div>
-                      )}
-                    />
-                    <Route
-                      path="/Login"
-                      render={(props) => <LoginPage {...props} />}
-                    />
-                    <AuthRoute
-                      path="/Category"
-                      render={(props) => (
-                        <CategoryPage
-                          {...props}
-                          changeAnimation={this.changeAnimation}
-                        />
-                      )}
-                    />
-                    <AuthRoute
-                      path="/Setting"
-                      render={(props) => (
-                        <SettingPage
-                          {...props}
-                          changeAnimation={this.changeAnimation}
-                        />
-                      )}
-                    />
+                      </div>
+                    )}
+                  />
+                  <Route
+                    path="/Login"
+                    render={(props) => <LoginPage {...props} />}
+                  />
+                  <AuthRoute
+                    path="/Category"
+                    render={(props) => (
+                      <CategoryPage
+                        {...props}
+                        changeAnimation={this.changeAnimation}
+                      />
+                    )}
+                  />
+                  <AuthRoute
+                    path="/Setting"
+                    render={(props) => (
+                      <SettingPage
+                        {...props}
+                        changeAnimation={this.changeAnimation}
+                      />
+                    )}
+                  />
 
-                    <AuthRoute
-                      path="/Garden"
-                      render={(props) => (
-                        <div style={{ width: "100vw", height: "100vh" }}>
-                          <PrivateGarden {...props} />
-                        </div>
-                      )}
-                    />
-                    <AuthRoute
-                      path="/MessageWall"
-                      render={(props) => <MessageWall {...props} />}
-                    />
-                  </Switch>
+                  <AuthRoute
+                    path="/Garden"
+                    render={(props) => (
+                      <div style={{ width: "100vw", height: "100vh" }}>
+                        <PrivateGarden {...props} />
+                      </div>
+                    )}
+                  />
+                  <AuthRoute
+                    path="/MessageWall"
+                    render={(props) => <MessageWall {...props} />}
+                  />
+                  <AuthRoute
+                    exact
+                    path="/ShowVideo/:name"
+                    render={(props) => <ShowVideo {...props}></ShowVideo>}
+                  />
+                </Switch>
               )}
             />
           </ThemeContext.Provider>

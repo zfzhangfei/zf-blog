@@ -8,6 +8,7 @@ const initialState = {
   userList: {},
   isShowApplicationPage: true,
   commentList: [],
+  messageList:[],
 };
 
 // 这是一个简单的reducer，它接受旧的state和一个action，返回新的state。

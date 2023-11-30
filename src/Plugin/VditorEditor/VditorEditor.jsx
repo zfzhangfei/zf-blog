@@ -14,6 +14,7 @@ const VditorEditor = ({ props, goBackList }) => {
 
   React.useEffect(() => {
     const vditor = new Vditor("vditor", {
+      height: "100%",
       mode: "sv",
       render: {
         anchor: true, // 假设的配置项，根据实际文档来调整
@@ -23,35 +24,8 @@ const VditorEditor = ({ props, goBackList }) => {
       },
       input(value) {
         // 输入变化时保存当前值
-        // onSave(value);
         setHtml(value);
       },
-      // link: {
-      //   click: (e) => {
-      //     // 获取被点击的元素
-      //     const target = e;
-      //     console.log(e, target.tagName, "targettargettarget");
-      //     // 检查是否是 A 标签且具有 href 属性
-      //     if (target.tagName === "A" && target.href) {
-      //       // 阻止默认行为
-      //       // target.preventDefault();
-      //       // 获取 href 属性
-      //       const href = target.getAttribute("href");
-      //       // 如果 href 是一个锚点链接（以 '#' 开头）
-      //       if (href.startsWith("#")) {
-      //         // 获取要跳转到的元素
-      //         const anchorElement = document.getElementById(href.slice(1));
-      //         // 如果找到元素，则滚动到该元素的位置
-      //         if (anchorElement) {
-      //           anchorElement.scrollIntoView({
-      //             behavior: "smooth",
-      //             block: "start",
-      //           });
-      //         }
-      //       }
-      //     }
-      //   },
-      // },
       toolbar: [
         {
           name: "goback",
