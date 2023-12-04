@@ -3,7 +3,7 @@ import "./ShowVideo.scss";
 
 const ShowVideo = (props) => {
   useEffect(() => {
-    console.log(props.location.state);
+    // console.log(props.location.state);
   }, []);
 
   return (

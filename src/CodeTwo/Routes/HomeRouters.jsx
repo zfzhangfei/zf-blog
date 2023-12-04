@@ -25,6 +25,8 @@ import AuthRoute from "./authRoute";
 import { GlobalContext } from "../../Utils/GlobalProvider";
 import MessageWall from "../Pages/MessageWall/MessageWall";
 import ShowVideo from "../Pages/ShowVideo/ShowVideo";
+import ShowDesignExample from "../Pages/ShowDesignExample/ShowDesignExample";
+import Works from "../Pages/Article/Works/Works";
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -121,6 +123,18 @@ class Routers extends Component {
                     exact
                     path="/ShowVideo/:name"
                     render={(props) => <ShowVideo {...props}></ShowVideo>}
+                  />
+                  <AuthRoute
+                    exact
+                    path="/ShowDesignExample"
+                    render={(props) => (
+                      <ShowDesignExample {...props}></ShowDesignExample>
+                    )}
+                  />
+                  <AuthRoute
+                    exact
+                    path="/ShowWebWorks"
+                    render={(props) => <Works {...props} pagename={"ImitationPortfolio"}></Works>}
                   />
                 </Switch>
               )}

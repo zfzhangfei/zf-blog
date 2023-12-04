@@ -49,7 +49,9 @@ const CoverTwo = ({ props }) => {
       <section id="Home" className="section">
         <Home props={props} changePage={handlechangePage} />
       </section>
-      <section id="Footer" className="section"></section>
+      <section id="Footer" className="section">
+        zhangfeiのblog
+      </section>
     </div>
   );
 };

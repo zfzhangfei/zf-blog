@@ -28,6 +28,7 @@ import ShowArticleList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoCompo
 import ShowArticleContent from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowArticleContent/ShowArticleContent";
 import ShowVideoList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowVideoList/ShowVideoList";
 import ShowPhotoList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowPhotoList/ShowPhotoList";
+import ShowDesignExampleList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowDesignExampleList/ShowDesignExampleList";
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -61,53 +62,66 @@ class SiderBorderRouters extends Component {
       <GlobalContext.Consumer>
         {(context) => (
           <ThemeContext.Provider value={this.state.theme}>
-           <Router>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={(props) => (
-                  <div>
+            <Router>
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => (
+                    <div>
+                      <ShowArticleList props={props}></ShowArticleList>
+                    </div>
+                  )}
+                />
+                <Route
+                  exact
+                  path="/Home"
+                  render={(props) => (
+                    <div>
+                      <ShowArticleList props={props}></ShowArticleList>
+                    </div>
+                  )}
+                />
+                <Route
+                  exact
+                  path="/Home/Tag/:name"
+                  render={(props) => (
                     <ShowArticleList props={props}></ShowArticleList>
-                  </div>
-                )}
-              />
-              <Route
-                exact
-                path="/Home"
-                render={(props) => (
-                  <div>
-                    <ShowArticleList props={props}></ShowArticleList>
-                  </div>
-                )}
-              />
-              <Route
-                exact
-                path="/Home/Tag/:name"
-                render={(props) => (
-                  <ShowArticleList props={props}></ShowArticleList>
-                )}
-              />
-              <Route
-                path="/Home/Article/:id"
-                render={(props) => <ShowArticleContent props={props} />}
-              />
-              <Route
-                exact
-                path="/Home/Video"
-                render={(props) => (
-                  <ShowVideoList props={props} goShowVideo={this.props.goShowVideo}></ShowVideoList>
-                )}
-              />
-              <Route
-                exact
-                path="/Home/Photo"
-                render={(props) => (
-                  <ShowPhotoList props={props}></ShowPhotoList>
-                )}
-              />
-            </Switch>
-          </Router>
+                  )}
+                />
+                <Route
+                  path="/Home/Article/:id"
+                  render={(props) => <ShowArticleContent props={props} />}
+                />
+                <Route
+                  exact
+                  path="/Home/Video"
+                  render={(props) => (
+                    <ShowVideoList
+                      props={props}
+                      goShowVideo={this.props.goShowVideo}
+                    ></ShowVideoList>
+                  )}
+                />
+                <Route
+                  exact
+                  path="/Home/Photo"
+                  render={(props) => (
+                    <ShowPhotoList props={props}></ShowPhotoList>
+                  )}
+                />
+                <Route
+                  exact
+                  path="/Home/DesignExample"
+                  render={(props) => (
+                    <ShowDesignExampleList
+                      props={props}
+                      goShowVideo={this.props.goShowVideo}
+                    ></ShowDesignExampleList>
+                  )}
+                />
+              </Switch>
+            </Router>
           </ThemeContext.Provider>
         )}
       </GlobalContext.Consumer>

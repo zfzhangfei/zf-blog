@@ -1,0 +1,15 @@
+.ShowDesignExample {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "DesignExampleBox1 DesignExampleBox2";
+  .DesignExampleBox1 {
+    grid-area: DesignExampleBox1;
+    background-color: aqua;
+  }
+  .DesignExampleBox2 {
+    grid-area: DesignExampleBox2;
+  }
+}
