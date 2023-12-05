@@ -56,7 +56,7 @@ class WebWorkRouters extends Component {
                   <Route
                     exact
                     path="/ShowWebWorks/:id"
-                    render={(props) => <Works {...props} pagename={'ImitationPortfolio'}></Works>}
+                    render={(props) => <Works {...props} ></Works>}
                   />
                 </Switch>
               )}
