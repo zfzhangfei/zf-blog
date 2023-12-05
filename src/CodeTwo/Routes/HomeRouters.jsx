@@ -19,14 +19,12 @@ import "./Router.scss";
 import CategoryPage from "../Pages/Category/CategoryPage";
 import "animate.css";
 import SettingPage from "../Pages/Setting/SettingPage";
-import { AnimatePresence, motion } from "framer-motion";
 import PrivateGarden from "../Pages/Article/PrivateGarden/PrivateGarden";
 import AuthRoute from "./authRoute";
 import { GlobalContext } from "../../Utils/GlobalProvider";
 import MessageWall from "../Pages/MessageWall/MessageWall";
 import ShowVideo from "../Pages/ShowVideo/ShowVideo";
-import ShowDesignExample from "../Pages/ShowDesignExample/ShowDesignExample";
-import Works from "../Pages/Article/Works/Works";
+import WebWorkRouters from "./WebWorkRouters";
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -124,18 +122,7 @@ class Routers extends Component {
                     path="/ShowVideo/:name"
                     render={(props) => <ShowVideo {...props}></ShowVideo>}
                   />
-                  <AuthRoute
-                    exact
-                    path="/ShowDesignExample"
-                    render={(props) => (
-                      <ShowDesignExample {...props}></ShowDesignExample>
-                    )}
-                  />
-                  <AuthRoute
-                    exact
-                    path="/ShowWebWorks"
-                    render={(props) => <Works {...props} pagename={"ImitationPortfolio"}></Works>}
-                  />
+                  <WebWorkRouters></WebWorkRouters>
                 </Switch>
               )}
             />

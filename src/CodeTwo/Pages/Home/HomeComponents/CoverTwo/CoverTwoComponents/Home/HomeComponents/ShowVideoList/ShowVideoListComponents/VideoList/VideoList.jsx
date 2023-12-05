@@ -397,6 +397,7 @@ const VideoList = ({ goShowVideo }) => {
                 goShowVideo({
                   url: `/ShowVideo/${item.Name}`,
                   state: item,
+                  search:''
                 });
               }}
               cover={

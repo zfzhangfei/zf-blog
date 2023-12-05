@@ -142,7 +142,7 @@ const SideBorder = ({ props, changePage }) => {
                     <Link
                       to={{
                         pathname: `/Home/${item.UrlParam}`,
-                        state: { isShowApplicationPage: false },
+                        state: { isShowApplicationPage: false},
                       }}
                       key={index}
                     >
