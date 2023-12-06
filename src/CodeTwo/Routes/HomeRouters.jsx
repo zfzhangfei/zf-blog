@@ -19,12 +19,13 @@ import "./Router.scss";
 import CategoryPage from "../Pages/Category/CategoryPage";
 import "animate.css";
 import SettingPage from "../Pages/Setting/SettingPage";
-import PrivateGarden from "../Pages/Article/PrivateGarden/PrivateGarden";
+import PrivateGarden from "../Pages/PrivateGarden/PrivateGarden";
 import AuthRoute from "./authRoute";
 import { GlobalContext } from "../../Utils/GlobalProvider";
 import MessageWall from "../Pages/MessageWall/MessageWall";
 import ShowVideo from "../Pages/ShowVideo/ShowVideo";
 import WebWorkRouters from "./WebWorkRouters";
+import ComponentLibrary from "../Pages/ComponentLibrary/ComponentLibrary";
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -118,6 +119,10 @@ class Routers extends Component {
                     render={(props) => <MessageWall {...props} />}
                   />
                   <AuthRoute
+                    path="/ComponentLibrary"
+                    render={(props) => <ComponentLibrary {...props} />}
+                  />
+                  <Route
                     exact
                     path="/ShowVideo/:name"
                     render={(props) => <ShowVideo {...props}></ShowVideo>}

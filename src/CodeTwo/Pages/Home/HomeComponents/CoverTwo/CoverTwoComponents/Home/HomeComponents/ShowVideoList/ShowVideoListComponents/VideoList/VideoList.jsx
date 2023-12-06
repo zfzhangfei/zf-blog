@@ -1,6 +1,7 @@
 import React from "react";
 import "./VideoList.scss";
 import { Card } from "antd";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 
 const items = [
@@ -379,38 +380,41 @@ const items = [
     ],
   },
 ];
-const VideoList = ({ goShowVideo }) => {
+const VideoList = () => {
   return (
     <div className="VideoList">
       {items &&
         items.map((item, index) => {
           return (
-            <Card
-              style={{
-                width: 230,
-                border: "none",
-                background: "rgba(51, 51, 51, 0.5)",
-                display: "inline-block",
-                margin: 10,
+            <Link
+              to={{
+                pathname: `/ShowVideo/${item.Name}`,
+                state: { item },
               }}
-              onClick={() => {
-                goShowVideo({
-                  url: `/ShowVideo/${item.Name}`,
-                  state: item,
-                  search:''
-                });
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src={item.Cover}
-                  style={{ width: 230, height: 250, objectFit: "cover" }}
-                />
-              }
-              actions={[]}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={index}
             >
-              <Meta title={item.Name} description="This is the description" />
-            </Card>
+              <Card
+                style={{
+                  width: 230,
+                  border: "none",
+                  background: "rgba(51, 51, 51, 0.5)",
+                  display: "inline-block",
+                  margin: 10,
+                }}
+                cover={
+                  <img
+                    alt="example"
+                    src={item.Cover}
+                    style={{ width: 230, height: 250, objectFit: "cover" }}
+                  />
+                }
+                actions={[]}
+              >
+                <Meta title={item.Name} description="This is the description" />
+              </Card>
+            </Link>
           );
         })}
     </div>

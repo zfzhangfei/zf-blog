@@ -13,22 +13,15 @@ import {
   getPeachPinkCocoa,
 } from "../../Utils/Theme/theme";
 import { ThemeContext } from "../../Utils/Theme/themeContext";
-import LoginPage from "../Pages/Login/LoginPage";
-import HomePage from "../Pages/Home/HomePage";
 import "./Router.scss";
-import CategoryPage from "../Pages/Category/CategoryPage";
 import "animate.css";
-import SettingPage from "../Pages/Setting/SettingPage";
-import { AnimatePresence, motion } from "framer-motion";
-import PrivateGarden from "../Pages/Article/PrivateGarden/PrivateGarden";
-import AuthRoute from "./authRoute";
 import { GlobalContext } from "../../Utils/GlobalProvider";
-import MessageWall from "../Pages/MessageWall/MessageWall";
 import ShowArticleList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowArticleList/ShowArticleList";
 import ShowArticleContent from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowArticleContent/ShowArticleContent";
 import ShowVideoList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowVideoList/ShowVideoList";
 import ShowPhotoList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowPhotoList/ShowPhotoList";
 import ShowDesignExampleList from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowDesignExampleList/ShowDesignExampleList";
+import ShowPhoto from "../Pages/Home/HomeComponents/CoverTwo/CoverTwoComponents/Home/HomeComponents/ShowPhotoList/ShowPhotoListComponents/ShowPhoto";
 
 const themeMap = {
   lightTheme: lightTheme,
@@ -97,10 +90,7 @@ class SiderBorderRouters extends Component {
                   exact
                   path="/Home/Video"
                   render={(props) => (
-                    <ShowVideoList
-                      props={props}
-                      goShowVideo={this.props.goShowVideo}
-                    ></ShowVideoList>
+                    <ShowVideoList props={props}></ShowVideoList>
                   )}
                 />
                 <Route
@@ -116,9 +106,13 @@ class SiderBorderRouters extends Component {
                   render={(props) => (
                     <ShowDesignExampleList
                       props={props}
-                      goShowVideo={this.props.goShowVideo}
                     ></ShowDesignExampleList>
                   )}
+                />
+                <Route
+                  exact
+                  path="/Home/ShowPhoto/:name"
+                  render={(props) => <ShowPhoto props={props}></ShowPhoto>}
                 />
               </Switch>
             </Router>

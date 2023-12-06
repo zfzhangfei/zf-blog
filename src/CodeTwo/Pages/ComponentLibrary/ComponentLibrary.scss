@@ -1,0 +1,21 @@
+.ComponentLibrary {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  grid-template-rows: auto;
+  grid-template-areas: "Left Center Right";
+
+  .Left {
+    grid-area: Left;
+    border: 1px dashed blue;
+  }
+  .Center {
+    grid-area: Center;
+    border: 1px dashed blue;
+  }
+  .Right {
+    grid-area: Right;
+    border: 1px dashed blue;
+  }
+}

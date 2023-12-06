@@ -10,6 +10,7 @@ import EditArticlePage from "../Pages/Setting/SettingComponents/ArticleListPage/
 import ArticleListPage from "../Pages/Setting/SettingComponents/ArticleListPage/ArticleListPage";
 import CommentManagePage from "../Pages/Setting/SettingComponents/CommentManagePage/CommentManagePage";
 import HomeSettingPage from "../Pages/Setting/SettingComponents/HomeSettingPage/HomeSettingPage";
+import PhotoSettingPage from "../Pages/Setting/SettingComponents/PhotoSettingPage/PhotoSettingPage";
 
 export default class SettingRouters extends Component {
   render() {
@@ -31,6 +32,11 @@ export default class SettingRouters extends Component {
               exact
               path="/Setting/comments"
               render={(props) => <CommentManagePage />}
+            />
+            <Route
+              exact
+              path="/Setting/photos"
+              render={(props) => <PhotoSettingPage />}
             />
           </Switch>
         </Router>

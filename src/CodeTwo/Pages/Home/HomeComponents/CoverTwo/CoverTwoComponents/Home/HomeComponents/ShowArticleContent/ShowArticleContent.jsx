@@ -13,17 +13,18 @@ const ShowArticleContent = ({ props }) => {
     props.history.push("/Home");
   };
 
-
   return (
     <div className="ShowArticleContent">
-      {article && (
-        <div>
-          <ArrowLeftOutlined onClick={goHome} />
-          <h2 style={{ textAlign: "center" }}>{article.name}</h2>
-          <MarkDown html={article.content}></MarkDown>
-          <Comment ArticleId={article.Id}></Comment>
-        </div>
-      )}
+      <div>
+        <ArrowLeftOutlined onClick={goHome} />
+        {article && (
+          <div>
+            <h2 style={{ textAlign: "center" }}>{article.name}</h2>
+            <MarkDown html={article.content}></MarkDown>
+            <Comment ArticleId={article.Id}></Comment>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ import { ThemeContext } from "../../Utils/Theme/themeContext";
 import "./Router.scss";
 import "animate.css";
 import { GlobalContext } from "../../Utils/GlobalProvider";
-import Works from "../Pages/Article/Works/Works";
+import Works from "../Pages/Works/Works";
 
 const themeMap = {
   lightTheme: lightTheme,

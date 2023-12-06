@@ -18,9 +18,7 @@ import SiderBorderRouters from "../../../../../../Routes/SiderBorderRouters";
 
 const Home = ({ props, changePage }) => {
 
-  const goShowVideo=(value)=>{
-    props.history.push(value.url,value.state)
-  }
+
 
 
   return (
@@ -31,7 +29,7 @@ const Home = ({ props, changePage }) => {
           <SideBorder props={props} changePage={changePage}></SideBorder>
         </div>
         <div className="HomeBox5">
-          <SiderBorderRouters goShowVideo={goShowVideo}></SiderBorderRouters>
+          <SiderBorderRouters></SiderBorderRouters>
           <div style={{ position: "absolute" }}>
             <FloatButton.BackTop />
           </div>

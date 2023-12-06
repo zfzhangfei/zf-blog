@@ -3,7 +3,7 @@ import "./ShowVideoList.scss";
 import VideoFilter from "./ShowVideoListComponents/VideoFilter/VideoFilter";
 import VideoList from "./ShowVideoListComponents/VideoList/VideoList";
 
-const ShowVideoList = ({ goShowVideo }) => {
+const ShowVideoList = () => {
   const src =
     "https://img0.baidu.com/it/u=306686722,3113766110&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800";
   return (
@@ -27,7 +27,7 @@ const ShowVideoList = ({ goShowVideo }) => {
         )}
       </div>
       <div id="VideoList">
-        <VideoList goShowVideo={goShowVideo}></VideoList>
+        <VideoList ></VideoList>
       </div>
     </div>
   );

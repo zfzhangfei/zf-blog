@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Space } from "antd";
-import me from "../../../Static/Image/12.webp";
+import me from "../../Static/Image/12.webp";
 import "./PrivateGarden.scss";
 import BonsaiDemo from "./PrivateGardenComponents/xxx/BonsaiDemo";
 import SkillCard from "./PrivateGardenComponents/SkillCard/SkillCard";

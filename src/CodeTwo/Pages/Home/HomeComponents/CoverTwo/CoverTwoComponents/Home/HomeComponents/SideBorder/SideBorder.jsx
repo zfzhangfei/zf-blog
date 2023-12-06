@@ -2,6 +2,7 @@ import React from "react";
 import "./SideBorder.scss";
 import { List, Popover, Space, Tag } from "antd";
 import {
+  ApartmentOutlined,
   CaretUpOutlined,
   CommentOutlined,
   HomeFilled,
@@ -27,6 +28,11 @@ const SideBorder = ({ props, changePage }) => {
   const goMessageWall = () => {
     props.history.push("/MessageWall");
   };
+
+  const goComponentLibrary = () => {
+    props.history.push("/ComponentLibrary");
+  };
+  
   return (
     <GlobalContext.Consumer>
       {(context) => (
@@ -64,6 +70,14 @@ const SideBorder = ({ props, changePage }) => {
                   <CommentOutlined
                     onClick={() => {
                       goMessageWall();
+                    }}
+                  />
+                </Popover>
+
+                <Popover content={<div>组件库</div>}>
+                  <ApartmentOutlined
+                    onClick={() => {
+                      goComponentLibrary();
                     }}
                   />
                 </Popover>
@@ -142,7 +156,7 @@ const SideBorder = ({ props, changePage }) => {
                     <Link
                       to={{
                         pathname: `/Home/${item.UrlParam}`,
-                        state: { isShowApplicationPage: false},
+                        state: { isShowApplicationPage: false },
                       }}
                       key={index}
                     >

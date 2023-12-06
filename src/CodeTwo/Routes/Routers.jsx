@@ -20,7 +20,7 @@ import CategoryPage from "../Pages/Category/CategoryPage";
 import "animate.css";
 import SettingPage from "../Pages/Setting/SettingPage";
 import { AnimatePresence, motion } from "framer-motion";
-import PrivateGarden from "../Pages/Article/PrivateGarden/PrivateGarden";
+import PrivateGarden from "../Pages/PrivateGarden/PrivateGarden";
 import AuthRoute from "./authRoute";
 import { GlobalContext } from "../../Utils/GlobalProvider";
 import MessageWall from "../Pages/MessageWall/MessageWall";
