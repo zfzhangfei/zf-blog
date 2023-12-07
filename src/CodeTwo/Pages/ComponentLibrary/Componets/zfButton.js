@@ -1,6 +1,6 @@
 import React from "react";
 
-const zfButton = ({ props }) => {
+const ZfButton = ({ props }) => {
   const text = props && props.text ? props.text : 1111;
   const style =
     props && props.style
@@ -16,9 +16,9 @@ const zfButton = ({ props }) => {
 
   return (
     <div>
-      <button style={style}>{text}</button>
+      <button style={style} className="ZfButton">{text}</button>
     </div>
   );
 };
 
-export default zfButton;
+export default ZfButton;
