@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import RandomNum from "../../../CommonFuc/RandomNum";
 
 const ZfGrid = ({ style, children, component, onDrop, onDragOver, key }) => {
+  const [gridClass1, setGridClass1] = useState(`ZfGrid${RandomNum()}`);
+  const [gridClass2, setGridClass2] = useState(`ZfGrid${RandomNum()}`);
+  const [gridClass3, setGridClass3] = useState(`ZfGrid${RandomNum()}`);
   // 注意这里直接解构赋值style，不需要再props里面解构
   const defaultStyle = {
     width: "100%",
@@ -31,7 +34,8 @@ const ZfGrid = ({ style, children, component, onDrop, onDragOver, key }) => {
     >
       <div
         // className={`ZfGrid${RandomNum()}`}
-        className="ZfGrid1"
+        // className="ZfGrid1"
+        className={gridClass1}
         parentClass={component && component.parent && component.parent}
         style={gridItemStyle}
       >
@@ -42,7 +46,9 @@ const ZfGrid = ({ style, children, component, onDrop, onDragOver, key }) => {
           })}
       </div>
       <div
-        className="ZfGrid2"
+        // className={`ZfGrid${RandomNum()}`}
+        // className="ZfGrid2"
+        className={gridClass2}
         parentClass={component && component.parent && component.parent}
         style={gridItemStyle}
       >
@@ -52,7 +58,9 @@ const ZfGrid = ({ style, children, component, onDrop, onDragOver, key }) => {
           })}
       </div>
       <div
-        className="ZfGrid3"
+        // className={`ZfGrid${RandomNum()}`}
+        // className="ZfGrid3"
+        className={gridClass3}
         parentClass={component && component.parent && component.parent}
         style={gridItemStyle}
       >
