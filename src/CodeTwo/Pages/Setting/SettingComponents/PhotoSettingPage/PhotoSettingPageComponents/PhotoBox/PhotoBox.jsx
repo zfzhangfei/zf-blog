@@ -1,17 +1,31 @@
 import React from "react";
 import "./PhotoBox.scss";
-import { ArrowLeftOutlined ,ArrowRightOutlined} from "@ant-design/icons";
-import { Space ,Image} from "antd";
-import { useRef ,useEffect} from "react";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import { Space, Image, Card } from "antd";
+import { useRef, useEffect } from "react";
+import AddPhotoModal from "../../PhotoSettingPageComponents/AddPhotoModal/AddPhotoModal";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { getAlbumPictureAsync } from "../../../../../../Api/Api";
+import { useDispatch } from "react-redux";
+import Meta from "antd/es/card/Meta";
 
-const PhotoBox = ({item}) => {
+const PhotoBox = ({ item }) => {
   const scrollContainerRef = useRef(null);
+  const dispatch = useDispatch();
+  const photoList = useSelector((state) => state.photoList); // 确保这里的路径与你的状态树匹配
+  const [photoListById, setPhotoListById] = useState([]);
 
   useEffect(() => {
+    dispatch(getAlbumPictureAsync());
     if (scrollContainerRef.current) {
-      // 当元素已经挂载到DOM上时，可以在这里进行额外操作。
     }
-  }, []); // 依赖数组为空，表示仅在组件挂载时执行
+  }, []);
+
+  useEffect(() => {
+    const filteredPhotos = photoList.filter((x) => x.PhotoId === item.Id);
+    setPhotoListById(filteredPhotos);
+  }, [photoList]);
 
   const scroll = (direction) => {
     console.log(direction, scrollContainerRef);
@@ -19,13 +33,26 @@ const PhotoBox = ({item}) => {
       const { current } = scrollContainerRef;
       const scrollAmount =
         direction === "left" ? -current.offsetWidth : current.offsetWidth;
-      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
+
   return (
     <div className="PhotoBox">
-      <div className="Name" style={{ width: "100px" }}>
+      <div className="Name" style={{ width: "300px" }}>
         {item.Name}
+        <AddPhotoModal item={item}></AddPhotoModal>
+       { item.Cover&&<Image src={item.Cover} style={{width:50,height:50}}></Image>}
+
+        {/* <Card
+          style={{
+            width: 200,
+            height:150
+          }}
+          cover={<img alt="example" src={item.Cover} />}
+          actions={[<AddPhotoModal item={item}></AddPhotoModal>]}
+        >
+          <Meta title={item.Name} description={item.Description} />
+        </Card> */}
       </div>
       <div className="Box">
         <div className="ArrowLeft" onClick={() => scroll("left")}>
@@ -33,13 +60,12 @@ const PhotoBox = ({item}) => {
         </div>
         <div className="Photo" ref={scrollContainerRef}>
           <Space direction="horizontal" size={10}>
-            {item &&
-              item.Children.length > 0 &&
-              item.Children.map((photo, index) => (
+            {photoListById.length > 0 &&
+              photoListById.map((photo, index) => (
                 <Image
-                  src={photo.Url}
+                  src={photo.BosPath}
                   key={index}
-                  style={{ width: 100, height: 100 }}
+                  style={{ width: 150, height: 150, objectFit: "cover" }}
                 />
               ))}
           </Space>

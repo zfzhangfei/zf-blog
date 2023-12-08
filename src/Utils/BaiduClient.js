@@ -1,7 +1,6 @@
 
 
 import { BosClient } from '@baiducloud/sdk';
-
 const client = new BosClient(
     {
         endpoint: 'https://zfblog.su.bcebos.com',         //传入Bucket所在区域域名

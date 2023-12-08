@@ -8,7 +8,9 @@ const initialState = {
   userList: {},
   isShowApplicationPage: true,
   commentList: [],
-  messageList:[],
+  messageList: [],
+  albumList:[],
+  photoList: [],
 };
 
 // 这是一个简单的reducer，它接受旧的state和一个action，返回新的state。
@@ -25,6 +27,10 @@ function reducer(state = initialState, action) {
       return { ...state, commentList: action.payload };
     case "SET_MESSAGE":
       return { ...state, messageList: action.payload };
+    case "SET_ALBUM":
+      return { ...state, albumList: action.payload };
+    case "SET_PICTURE":
+      return { ...state, photoList: action.payload };
     // 定义更多的case处理其他actions...
     default:
       return state;

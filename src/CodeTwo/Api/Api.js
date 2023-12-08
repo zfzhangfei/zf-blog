@@ -148,4 +148,65 @@ export function getMessageAsync() {
 }
 //#endregion
 
+//#region 相册
+export async function postAlbum(params) {
+  const results = await post("/postAlbum", params);
+  return results;
+}
+
+export async function hiddenAlbum(params) {
+  post("/DeleteAlbum", params);
+}
+
+export async function updateAlbum(params) {
+  const results = await post("/updateAlbum", params);
+  return results;
+}
+export function getAlbumAsync() {
+  return function (dispatch) {
+    get("/getAlbum")
+      .then((data) => {
+        dispatch({ type: "SET_ALBUM", payload: data.res });
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  };
+}
+export  function getAlbumPictureAsync() {
+  return function (dispatch) {
+    get("/getAlbumPicture")
+      .then((data) => {
+        dispatch({ type: "SET_PICTURE", payload: data.res });
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  };
+}
+
+//#endregion
+
+//#region 图片
+export async function putBosPicture(params) {
+  const results = await post("/putBosPicture", params);
+  return results;
+}
+
+export async function hiddenBosPicture(params) {
+  post("/DeleteBosPicture", params);
+}
+export function getBosPictureAsync() {
+  return function (dispatch) {
+    get("/getBosPicture")
+      .then((data) => {
+        dispatch({ type: "SET_PICTURE", payload: data.res });
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  };
+}
+//#endregion
+
 //#endregion
