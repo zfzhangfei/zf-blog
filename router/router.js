@@ -415,78 +415,6 @@ router.get("/getCommentByArticleId", (req, res) => {
 
 //#endregion
 
-//#region 图片
-router.post("/postBosPicture", isAuthenticated, (req, res) => {
-  let sql = ` INSERT INTO bos_picture (
-    BosRegion,  
-    BosBucket,
-    BosPath,
-    BosName,
-    BosExtention,
-    Size, 
-    CreateBy,
-    PictureType,
-    Href,
-    CreateTime
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
-  let params = [
-    "https://zfblog.su.bcebos.com",
-    "zfblog",
-    req.body.BosPath,
-    req.body.BosName,
-    "",
-    0,
-    CURRENT_USER.id,
-    req.body.PictureType,
-    req.body.Href,
-    CURRENT_TIMESTAMP,
-  ];
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(
-        JSON.stringify({
-          res: results,
-        })
-      );
-    }
-  });
-});
-
-router.post("/deleteBosPicture", isAuthenticated, (req, res) => {
-  let sql = `UPDATE bos_picture SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
-  let params = [1, CURRENT_TIMESTAMP, CURRENT_USER.id, req.body.key];
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(
-        JSON.stringify({
-          res: results,
-        })
-      );
-    }
-  });
-});
-
-router.get("/getBosPicture", (req, res) => {
-  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ?`;
-  let params = [req.query.type, 0];
-  db.query(sql, params, (err, results) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(
-        JSON.stringify({
-          res: results,
-        })
-      );
-    }
-  });
-});
-//#endregion
-
 //#region 标签
 router.post("/postTag", isAuthenticated, (req, res) => {
   let sql = ` INSERT INTO dictionary_mark (
@@ -671,6 +599,204 @@ router.get("/getMessage", (req, res) => {
     }
   });
 });
+//#endregion
+
+
+
+//#region 图片
+router.post('/putBosPicture', (req, res) => {
+  let sql = ` INSERT INTO bos_picture (
+    BosRegion,  
+    BosBucket,
+    BosPath,
+    BosName,
+    BosExtention,
+    Size, 
+    CreateBy,
+    PictureType,
+    Href,
+    PhotoTime,
+    PhotoId,
+    CreateTime
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)`
+  let params = [
+    'https://zfblog.su.bcebos.com',
+    'zfblog',
+    req.body.BosPath,
+    req.body.BosName,
+    '',
+    0,
+    CURRENT_USER.id,
+    req.body.PictureType,
+    req.body.Href,
+    req.body.PhotoTime,
+    req.body.PhotoId,
+    CURRENT_TIMESTAMP,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.post('/DeleteBosPicture', (req, res) => {
+  let sql = `UPDATE bos_picture SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [
+    1,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.id,
+    req.body.id,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.get('/getBosPicture', (req, res) => {
+  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ? and bos_picture.CreateBy = ?`
+  let params = [
+    req.query.type,
+    0,
+    CURRENT_USER.id,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+//#endregion
+
+//#region 相册
+router.post('/postAlbum', (req, res) => {
+  let sql = ` INSERT INTO album (
+    Name,  
+    Cover,
+    Description,
+    CreateBy,
+    CreateTime
+  ) VALUES (?, ?, ?, ?, ?)`
+  let params = [
+    req.body.Name,
+    req.body.Cover,
+    req.body.Description,
+    CURRENT_USER.id,
+    CURRENT_TIMESTAMP,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.post('/DeleteAlbum', (req, res) => {
+  let sql = `UPDATE album SET DeleteFlag = ? , DeleteTime =? , DeleteBy =? WHERE Id = ?`;
+  let params = [
+    1,
+    CURRENT_TIMESTAMP,
+    CURRENT_USER.id,
+    req.body.id,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.post("/updateAlbum", isAuthenticated, (req, res) => {
+  let sql = "UPDATE album SET ";
+  let params = [];
+  if (req.body.Name != null) {
+    sql += "Name = ?,";
+    params.push(req.body.Name);
+  }
+  if (req.body.Cover != null) {
+    sql += "Cover = ?,";
+    params.push(req.body.Cover);
+  }
+  if (req.body.Description != null) {
+    sql += "Description = ?,";
+    params.push(req.body.Description);
+  }
+  sql += "UpdateBy = ?,";
+  params.push(CURRENT_USER.id);
+  sql += "UpdateTime = ? ";
+  params.push(CURRENT_TIMESTAMP);
+  sql += "WHERE Id = ?";
+  params.push(req.body.Id);
+
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(
+        JSON.stringify({
+          res: results,
+        })
+      );
+    }
+  });
+});
+
+
+router.get('/getAlbum', (req, res) => {
+  let sql = `SELECT * FROM album WHERE  album.DeleteFlag = ? and album.CreateBy = ?`
+  let params = [
+    0,
+    CURRENT_USER.id,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
+
+router.get('/getAlbumPicture', (req, res) => {
+  let sql = `SELECT * FROM bos_picture WHERE bos_picture.PictureType = ? and bos_picture.DeleteFlag = ? `
+  let params = [
+    2,
+    0,
+  ]
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(JSON.stringify({
+        res: results
+      }));
+    }
+  })
+})
 //#endregion
 
 module.exports = router;
