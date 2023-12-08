@@ -38,21 +38,10 @@ const PhotoBox = ({ item }) => {
 
   return (
     <div className="PhotoBox">
-      <div className="Name" style={{ width: "300px" }}>
+      <div className="Name" style={{ width: "100px" }}>
         {item.Name}
-        <AddPhotoModal item={item}></AddPhotoModal>
-       { item.Cover&&<Image src={item.Cover} style={{width:50,height:50}}></Image>}
-
-        {/* <Card
-          style={{
-            width: 200,
-            height:150
-          }}
-          cover={<img alt="example" src={item.Cover} />}
-          actions={[<AddPhotoModal item={item}></AddPhotoModal>]}
-        >
-          <Meta title={item.Name} description={item.Description} />
-        </Card> */}
+        {/* <AddPhotoModal item={item}></AddPhotoModal> */}
+        {/* { item.Cover&&<Image src={item.Cover} style={{width:50,height:50}}></Image>} */}
       </div>
       <div className="Box">
         <div className="ArrowLeft" onClick={() => scroll("left")}>
@@ -65,7 +54,7 @@ const PhotoBox = ({ item }) => {
                 <Image
                   src={photo.BosPath}
                   key={index}
-                  style={{ width: 150, height: 150, objectFit: "cover" }}
+                  style={{ width: 100, height: 100, objectFit: "cover" }}
                 />
               ))}
           </Space>

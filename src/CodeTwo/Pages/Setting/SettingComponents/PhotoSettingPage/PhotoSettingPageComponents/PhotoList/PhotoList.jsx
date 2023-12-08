@@ -45,7 +45,7 @@ const PhotoList = () => {
           key={item.title}
           style={{
             width: "100%",
-            height: 200,
+            height: 150,
           }}
         >
           <PhotoBox item={item}></PhotoBox>
