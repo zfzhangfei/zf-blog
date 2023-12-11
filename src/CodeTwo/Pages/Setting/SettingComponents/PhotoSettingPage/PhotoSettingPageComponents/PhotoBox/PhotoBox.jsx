@@ -28,11 +28,11 @@ const PhotoBox = ({ item }) => {
   }, [photoList]);
 
   const scroll = (direction) => {
-    console.log(direction, scrollContainerRef);
     if (scrollContainerRef.current) {
       const { current } = scrollContainerRef;
       const scrollAmount =
         direction === "left" ? -current.offsetWidth : current.offsetWidth;
+      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
