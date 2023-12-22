@@ -38,9 +38,9 @@ const PhotoBox = ({ item }) => {
 
   return (
     <div className="PhotoBox">
-      <div className="Name" style={{ width: "100px" }}>
-        {item.Name}
-        {/* <AddPhotoModal item={item}></AddPhotoModal> */}
+      <div className="Name"  style={{ width: "100px", backgroundImage: `url(${item.Cover})` }}>
+        <span style={{color:'#fff'}}>{item.Name}</span>
+        <AddPhotoModal item={item}></AddPhotoModal>
         {/* { item.Cover&&<Image src={item.Cover} style={{width:50,height:50}}></Image>} */}
       </div>
       <div className="Box">
