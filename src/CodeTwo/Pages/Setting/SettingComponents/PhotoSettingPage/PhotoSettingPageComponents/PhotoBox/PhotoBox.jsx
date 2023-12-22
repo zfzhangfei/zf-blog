@@ -38,10 +38,18 @@ const PhotoBox = ({ item }) => {
 
   return (
     <div className="PhotoBox">
-      <div className="Name"  style={{ width: "100px", backgroundImage: `url(${item.Cover})` }}>
-        <span style={{color:'#fff'}}>{item.Name}</span>
-        <AddPhotoModal item={item}></AddPhotoModal>
-        {/* { item.Cover&&<Image src={item.Cover} style={{width:50,height:50}}></Image>} */}
+      <div
+        className="Name"
+        style={{
+          width: "100px",
+          backgroundSize:'cover',
+          backgroundImage: `url("${item.Cover}")`, // 在URL周围添加引号
+        }}
+      >
+        <div className="Cover">
+          <span style={{ color: "#fff" }}>{item.Name}</span>
+          <AddPhotoModal item={item}></AddPhotoModal>
+        </div>
       </div>
       <div className="Box">
         <div className="ArrowLeft" onClick={() => scroll("left")}>

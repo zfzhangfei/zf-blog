@@ -42,9 +42,10 @@ const AddPhotoModal = ({ item }) => {
     });
 
     let ablumParams = {
-      Id:item.Id,
+      Id: item.Id,
       Name: albumName,
-      Cover: "https://zfblog.su.bcebos.com/zfblogpicture/" + imageUrlOrigin.name,
+      Cover:
+        "https://zfblog.su.bcebos.com/zfblogpicture/" + imageUrlOrigin.name,
       Description: "",
     };
     updateAlbum(ablumParams);
@@ -62,13 +63,11 @@ const AddPhotoModal = ({ item }) => {
       return;
     }
     if (info.file.status === "done") {
-      // Get this url from response in real world.
       setImageUrlOrigin(info.file.originFileObj);
-      uploadImg(info.file.originFileObj)
+      uploadImg(info.file.originFileObj);
       setFileList([...fileList, info.file]);
       getBase64(info.file.originFileObj, (url) => {
         setLoading(false);
-        console.log(url,'urlurl');
         setImageUrl(url);
       });
     }
@@ -117,6 +116,14 @@ const AddPhotoModal = ({ item }) => {
             {imageUrl ? (
               <img
                 src={imageUrl}
+                alt="avatar"
+                style={{
+                  width: "100%",
+                }}
+              />
+            ) : item.Cover ? (
+              <img
+                src={item.Cover}
                 alt="avatar"
                 style={{
                   width: "100%",

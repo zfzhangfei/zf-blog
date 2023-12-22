@@ -7,10 +7,19 @@
     display: inline-block;
     vertical-align: middle;
     align-items: center;
+    position: relative;
+    .Cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
   }
-  .Name:hover{
-    background-color: rgba(0,0,0,0.5);
-    opacity: 0.5;
+  .Name:hover {
+    .Cover {
+      display: block;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
   .Box {
     display: inline-block;
